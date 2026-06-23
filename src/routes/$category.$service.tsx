@@ -46,19 +46,46 @@ function ServiceDetailPage() {
             ))}
           </article>
 
-          {item.whatToExpect && item.whatToExpect.length > 0 && (
-            <aside className="rounded-xl border border-border bg-surface p-6 shadow-card">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">What to expect</p>
-              <ul className="mt-4 space-y-3">
-                {item.whatToExpect.map((w: string) => (
-                  <li key={w} className="flex items-start gap-3 text-sm">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
-                    <span>{w}</span>
-                  </li>
-                ))}
-              </ul>
-            </aside>
-          )}
+          <aside className="space-y-6 md:sticky md:top-24">
+            {item.whatToExpect && item.whatToExpect.length > 0 && (
+              <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">What to expect</p>
+                <ul className="mt-4 space-y-3">
+                  {item.whatToExpect.map((w: string) => (
+                    <li key={w} className="flex items-start gap-3 text-sm">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+                      <span>{w}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <figure className="relative overflow-hidden rounded-xl shadow-elegant">
+              <img
+                src={coloradoMountains.url}
+                alt="Colorado Springs landscape with Pikes Peak"
+                loading="lazy"
+                width={1280}
+                height={1600}
+                className="h-72 w-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
+              <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                  <MapPin className="h-3.5 w-3.5" /> Serving Colorado Springs
+                </p>
+                <p className="mt-1 font-display text-lg">Proudly representing clients across El Paso & Teller County.</p>
+              </figcaption>
+            </figure>
+
+            <div className="rounded-xl border border-border bg-card p-6 shadow-card">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-crimson">Confidential consultation</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Speak directly with an attorney about your case. No judgment — just clear, honest answers.
+              </p>
+            </div>
+          </aside>
         </div>
       </section>
 
