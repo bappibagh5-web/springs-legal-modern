@@ -70,7 +70,7 @@ const MEMBERS: Member[] = [
 ];
 
 function TeamPage() {
-  const isShimon = (name: string) => name === "Shimon Kohn";
+  
 
   return (
     <PageShell>
@@ -122,11 +122,7 @@ function TeamPage() {
                         src={m.img}
                         alt={m.name}
                         loading="lazy"
-                        className={`h-full w-full transition-transform duration-700 hover:scale-105 ${
-                          isShimon(m.name)
-                            ? "object-contain"
-                            : "object-cover object-top"
-                        }`}
+                        className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
                         width={680}
                         height={850}
                       />
