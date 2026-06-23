@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
-import { findService } from "@/lib/site";
+import { findService, type ServiceItem } from "@/lib/site";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/$category/$service")({
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/$category/$service")({
 
 function ServiceDetailPage() {
   const { category, item } = Route.useLoaderData();
-  const related = category.items.filter((i) => i.slug !== item.slug).slice(0, 3);
+  const related = category.items.filter((i: ServiceItem) => i.slug !== item.slug).slice(0, 3);
 
   return (
     <PageShell>
@@ -39,7 +39,7 @@ function ServiceDetailPage() {
           <article className="space-y-5 text-base leading-relaxed text-foreground">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Overview</p>
             <h2 className="font-display text-3xl text-ink md:text-4xl">{item.title} in Colorado Springs</h2>
-            {item.body.map((p, i) => (
+            {item.body.map((p: string, i: number) => (
               <p key={i} className="text-muted-foreground">{p}</p>
             ))}
           </article>
@@ -48,7 +48,7 @@ function ServiceDetailPage() {
             <aside className="rounded-xl border border-border bg-surface p-6 shadow-card">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">What to expect</p>
               <ul className="mt-4 space-y-3">
-                {item.whatToExpect.map((w) => (
+                {item.whatToExpect.map((w: string) => (
                   <li key={w} className="flex items-start gap-3 text-sm">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
                     <span>{w}</span>
@@ -73,7 +73,7 @@ function ServiceDetailPage() {
             </Link>
           </div>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((r) => (
+            {related.map((r: ServiceItem) => (
               <Link
                 key={r.slug}
                 to="/$category/$service"

@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
-import { findCategory } from "@/lib/site";
+import { findCategory, type ServiceItem } from "@/lib/site";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/$category/")({
@@ -46,7 +46,7 @@ function CategoryPage() {
           <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Services</p>
             <ul className="mt-4 divide-y divide-border">
-              {category.items.map((it) => (
+              {category.items.map((it: ServiceItem) => (
                 <li key={it.slug}>
                   <Link
                     to="/$category/$service"
@@ -67,7 +67,7 @@ function CategoryPage() {
         <div className="container-page">
           <h2 className="font-display text-3xl text-ink md:text-4xl">Explore {category.title}</h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {category.items.map((it) => (
+            {category.items.map((it: ServiceItem) => (
               <Link
                 key={it.slug}
                 to="/$category/$service"
