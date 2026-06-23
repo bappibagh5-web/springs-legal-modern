@@ -11,7 +11,7 @@ import officeImg from "@/assets/office-interior.jpg";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
 import courthouseImg from "@/assets/courthouse.jpg";
-import { Phone, Shield, Scale, Users, Award, CheckCircle2, Quote, ChevronDown } from "lucide-react";
+import { Phone, Shield, Scale, Users, CheckCircle2, Quote, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
