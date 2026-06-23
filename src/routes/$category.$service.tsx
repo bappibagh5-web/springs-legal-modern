@@ -49,6 +49,7 @@ export const Route = createFileRoute("/$category/$service")({
 function ServiceDetailPage() {
   const { category, item } = Route.useLoaderData();
   const related = category.items.filter((i: ServiceItem) => i.slug !== item.slug).slice(0, 3);
+  const landscape = pickLandscape(`${category.slug}/${item.slug}`);
 
   return (
     <PageShell>
