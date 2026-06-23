@@ -287,7 +287,7 @@ const TEAM = [
     title: "Founding Attorney",
     bio: "Over 24 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
     img: shimonAsset.url,
-    fit: "contain" as const,
+    fit: "cover" as const,
   },
   {
     name: "Erica Bertini",
