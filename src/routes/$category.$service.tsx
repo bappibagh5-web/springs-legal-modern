@@ -92,6 +92,7 @@ function ServiceDetailPage() {
         </div>
       </section>
 
+      <TestimonialsSection variant="light" />
       <CTASection />
     </PageShell>
   );
