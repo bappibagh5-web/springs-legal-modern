@@ -4,7 +4,8 @@ import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findService, type ServiceItem } from "@/lib/site";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
+import coloradoMountains from "@/assets/colorado-mountains.jpg.asset.json";
 
 export const Route = createFileRoute("/$category/$service")({
   head: ({ params }) => {
