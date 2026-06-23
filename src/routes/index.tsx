@@ -334,7 +334,7 @@ function TeamPreview() {
                   src={m.img}
                   alt={m.name}
                   loading="lazy"
-                  className={`h-full w-full ${m.fit === "contain" ? "object-contain" : "object-cover object-top"} transition-transform duration-700 group-hover:scale-105`}
+                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   width={1024}
                   height={1280}
                 />
