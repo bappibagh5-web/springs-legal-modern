@@ -70,7 +70,7 @@ const MEMBERS: Member[] = [
 ];
 
 function TeamPage() {
-  const isShimon = (name: string) => name === "Shimon Kohn";
+
 
   return (
     <PageShell>
