@@ -70,6 +70,9 @@ const MEMBERS: Member[] = [
 ];
 
 function TeamPage() {
+  const attorneys = MEMBERS.filter((m) => m.title !== "Paralegal");
+  const staff = MEMBERS.filter((m) => m.title === "Paralegal");
+
   return (
     <PageShell>
       <ServiceHero
@@ -78,43 +81,148 @@ function TeamPage() {
         subtitle="A boutique team means your case is led by an attorney from intake to verdict — backed by experienced support staff at every step."
       />
 
+      {/* Attorney grid */}
       <section className="py-20 md:py-28">
-        <div className="container-page space-y-20 md:space-y-28">
-          {MEMBERS.map((m, i) => (
-            <article
-              key={m.name}
-              className={`grid gap-10 md:grid-cols-[1fr_1.5fr] md:items-start ${
-                i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-              <div className="relative">
-                <img
-                  src={m.img}
-                  alt={m.name}
-                  loading="lazy"
-                  className="aspect-[4/5] w-full rounded-xl object-cover shadow-elegant"
-                  width={1024}
-                  height={1280}
-                />
-                <span className="absolute -bottom-3 left-6 h-1 w-16 bg-gold" />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-                  {m.title}
-                </p>
-                <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-                  {m.name}
-                </h2>
-                <div className="mt-6 space-y-4 text-muted-foreground">
-                  {m.bio.map((p, idx) => (
-                    <p key={idx}>{p}</p>
-                  ))}
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+              Attorneys
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+              Counsel you can call by name.
+            </h2>
+          </div>
+
+          <div className="mt-14 grid gap-8 md:grid-cols-3">
+            {attorneys.map((m) => (
+              <article
+                key={m.name}
+                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+                  <img
+                    src={m.img}
+                    alt={m.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    width={1024}
+                    height={1280}
+                  />
+                  <span className="absolute left-5 top-5 inline-block h-1 w-10 bg-gold" />
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="flex flex-1 flex-col p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-crimson">
+                    {m.title}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl text-brand">
+                    {m.name}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {m.bio[0]}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* Detailed attorney bios */}
+      <section className="bg-surface py-20 md:py-28">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+              Attorney Bios
+            </p>
+            <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+              Meet the team.
+            </h2>
+          </div>
+
+          <div className="mt-14 space-y-16">
+            {attorneys.map((m) => (
+              <article
+                key={m.name}
+                className="grid gap-10 md:grid-cols-[280px_1fr] md:items-start lg:grid-cols-[320px_1fr] lg:gap-12"
+              >
+                <div className="relative mx-auto w-full max-w-[320px] md:mx-0">
+                  <img
+                    src={m.img}
+                    alt={m.name}
+                    loading="lazy"
+                    className="aspect-[4/5] w-full rounded-xl object-cover object-top shadow-elegant"
+                    width={640}
+                    height={800}
+                  />
+                  <span className="absolute -bottom-3 left-6 h-1 w-16 bg-gold" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+                    {m.title}
+                  </p>
+                  <h3 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+                    {m.name}
+                  </h3>
+                  <div className="mt-6 space-y-4 text-muted-foreground">
+                    {m.bio.map((p, idx) => (
+                      <p key={idx}>{p}</p>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Support staff */}
+      {staff.length > 0 && (
+        <section className="py-20 md:py-28">
+          <div className="container-page">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+                Support Staff
+              </p>
+              <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+                The people who keep every case on track.
+              </h2>
+            </div>
+
+            <div className="mt-14 grid gap-10 md:grid-cols-2 md:items-start">
+              {staff.map((m) => (
+                <article
+                  key={m.name}
+                  className="grid gap-6 sm:grid-cols-[180px_1fr] sm:items-start"
+                >
+                  <div className="mx-auto w-full max-w-[220px] sm:mx-0">
+                    <img
+                      src={m.img}
+                      alt={m.name}
+                      loading="lazy"
+                      className="aspect-square w-full rounded-xl object-cover object-top shadow-elegant"
+                      width={440}
+                      height={440}
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+                      {m.title}
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl text-ink">
+                      {m.name}
+                    </h3>
+                    <div className="mt-4 space-y-3 text-sm text-muted-foreground">
+                      {m.bio.map((p, idx) => (
+                        <p key={idx}>{p}</p>
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <CTASection />
     </PageShell>
