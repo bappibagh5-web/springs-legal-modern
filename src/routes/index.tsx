@@ -2,16 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs-hero.webp.asset.json";
 import shimonAsset from "@/assets/shimon-kohn.png.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
-import officeImg from "@/assets/office-interior.jpg";
+import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
 import courthouseImg from "@/assets/courthouse.jpg";
-import { Phone, Shield, Scale, Users, CheckCircle2, Quote, ChevronDown } from "lucide-react";
+import { Phone, Shield, Scale, Users, CheckCircle2, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
