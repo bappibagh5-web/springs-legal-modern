@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findCategory, type ServiceItem } from "@/lib/site";
 import { ArrowRight } from "lucide-react";
 
@@ -85,6 +86,7 @@ function CategoryPage() {
         </div>
       </section>
 
+      <TestimonialsSection variant="light" />
       <CTASection />
     </PageShell>
   );

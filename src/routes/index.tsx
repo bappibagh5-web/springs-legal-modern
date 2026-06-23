@@ -2,16 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs-hero.webp.asset.json";
 import shimonAsset from "@/assets/shimon-kohn.png.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
-import officeImg from "@/assets/office-interior.jpg";
+import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
 import courthouseImg from "@/assets/courthouse.jpg";
-import { Phone, Shield, Scale, Users, CheckCircle2, Quote, ChevronDown } from "lucide-react";
+import { Phone, Shield, Scale, Users, CheckCircle2, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -229,12 +230,12 @@ function AboutSection() {
       <div className="container-page grid gap-12 md:grid-cols-2 md:items-center">
         <div className="relative">
           <img
-            src={officeImg}
-            alt="The Kohn Law Firm office interior"
+            src={aboutFirmImg.url}
+            alt="Modern courthouse exterior in Colorado"
             loading="lazy"
-            className="rounded-xl shadow-elegant"
+            className="aspect-[4/3] w-full rounded-xl object-cover shadow-elegant"
             width={1280}
-            height={896}
+            height={960}
           />
           <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-crimson p-6 text-white shadow-elegant md:block">
             <p className="font-display text-3xl">15+</p>
@@ -286,18 +287,21 @@ const TEAM = [
     title: "Founding Attorney",
     bio: "Over 24 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
     img: shimonAsset.url,
+    fit: "contain" as const,
   },
   {
     name: "Erica Bertini",
     title: "Managing Attorney – Family Law",
     bio: "15+ years guiding clients through family law matters that intersect with criminal court, with a background as a Deputy District Attorney in Colorado and Illinois.",
     img: ericaAsset.url,
+    fit: "cover" as const,
   },
   {
     name: "Jerome Aquino",
     title: "Attorney – Family Law",
     bio: "Long-time Colorado Springs resident with 16+ years of trial experience, advocating for clients through divorce, parenting time, and support matters.",
     img: jeromeAsset.url,
+    fit: "cover" as const,
   },
 ];
 
@@ -325,16 +329,16 @@ function TeamPreview() {
               key={m.name}
               className="group relative overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
             >
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-80 overflow-hidden bg-surface">
                 <img
                   src={m.img}
                   alt={m.name}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={`h-full w-full ${m.fit === "contain" ? "object-contain" : "object-cover object-top"} transition-transform duration-700 group-hover:scale-105`}
                   width={1024}
                   height={1280}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/0 to-transparent" />
                 <span className="absolute left-4 top-4 inline-block h-1 w-10 bg-gold" />
               </div>
               <div className="p-6">
@@ -443,41 +447,3 @@ function WhoWeAre() {
   );
 }
 
-const REVIEWS = [
-  { q: "Shimon was straightforward from the first call. He explained the realistic outcomes and then delivered better than we hoped.", a: "Former Client, Colorado Springs" },
-  { q: "I never felt like a case number. Every email, every call — answered promptly and with respect.", a: "Former Client, El Paso County" },
-  { q: "Trial preparation was meticulous. The other side knew it the moment we walked into court.", a: "Former Client, Pueblo County" },
-];
-
-function TestimonialsSection() {
-  return (
-    <section className="py-20 md:py-28">
-      <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-            Client Testimonials
-          </p>
-          <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            What clients say.
-          </h2>
-        </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {REVIEWS.map((r) => (
-            <figure key={r.a} className="relative rounded-xl border border-border bg-card p-7 shadow-card">
-              <Quote className="absolute -top-3 left-6 h-7 w-7 rounded bg-gold p-1.5 text-gold-foreground" />
-              <blockquote className="mt-3 text-sm leading-relaxed text-foreground">
-                "{r.q}"
-              </blockquote>
-              <figcaption className="mt-4 text-xs font-semibold uppercase tracking-wide text-crimson">
-                {r.a}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        <p className="mt-6 text-center text-xs text-muted-foreground">
-          Testimonials reflect individual client experiences and do not guarantee a similar outcome.
-        </p>
-      </div>
-    </section>
-  );
-}
