@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
-import officeImg from "@/assets/office-interior.jpg";
+import officeImg from "@/assets/kohn-office-building.webp.asset.json";
 import { CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
@@ -28,7 +28,7 @@ function AboutPage() {
 
       <section className="py-20 md:py-28">
         <div className="container-page grid gap-12 md:grid-cols-2 md:items-center">
-          <img src={officeImg} alt="The Kohn Law Firm office" loading="lazy" className="rounded-xl shadow-elegant" width={1280} height={896} />
+          <img src={officeImg.url} alt="The Kohn Law Firm office building in Colorado Springs" loading="lazy" className="rounded-xl shadow-elegant w-full" width={1280} height={1200} />
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Our Story</p>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">A boutique by choice.</h2>

@@ -4,9 +4,9 @@ import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs.webp.asset.json";
-import attorneyImg from "@/assets/attorney-portrait.jpg";
-import attorney2 from "@/assets/attorney-2.jpg";
-import attorney3 from "@/assets/attorney-3.jpg";
+import shimonAsset from "@/assets/shimon-kohn.png.asset.json";
+import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
+import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
 import officeImg from "@/assets/office-interior.jpg";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
@@ -92,17 +92,9 @@ function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3 animate-fade-up"
             style={{ animationDelay: "320ms" }}
           >
-            <Link to="/consultation">
-              <div className="group relative overflow-hidden rounded-md">
-                <ActionButton variant="gold" size="lg">
-                  Schedule a Consultation
-                </ActionButton>
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-white/40 animate-shine"
-                />
-              </div>
-            </Link>
+            <ActionButton variant="gold" size="lg" to="/consultation">
+              Schedule a Consultation
+            </ActionButton>
             <a
               href={SITE.phoneHref}
               className="group inline-flex h-12 items-center gap-3 rounded-md border border-white/25 bg-white/5 px-5 text-sm font-semibold uppercase tracking-wide text-white backdrop-blur transition-all hover:border-gold hover:bg-white/10 hover:text-gold"
@@ -296,22 +288,22 @@ function AboutSection() {
 
 const TEAM = [
   {
-    name: "Shimon Kohn, Esq.",
+    name: "Shimon Kohn",
     title: "Founding Attorney",
-    bio: "Lead trial counsel for the firm's criminal defense and protection-order practices.",
-    img: attorneyImg,
+    bio: "Over 24 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
+    img: shimonAsset.url,
   },
   {
-    name: "Rachel Bennett, Esq.",
-    title: "Senior Family Law Attorney",
-    bio: "Guides clients through divorce, custody, and protection orders with steady, strategic counsel.",
-    img: attorney2,
+    name: "Erica Bertini",
+    title: "Managing Attorney – Family Law",
+    bio: "15+ years guiding clients through family law matters that intersect with criminal court, with a background as a Deputy District Attorney in Colorado and Illinois.",
+    img: ericaAsset.url,
   },
   {
-    name: "Marcus Patel, Esq.",
-    title: "Associate Attorney",
-    bio: "Handles criminal defense matters from arraignment through trial across the Front Range.",
-    img: attorney3,
+    name: "Jerome Aquino",
+    title: "Attorney – Family Law",
+    bio: "Long-time Colorado Springs resident with 16+ years of trial experience, advocating for clients through divorce, parenting time, and support matters.",
+    img: jeromeAsset.url,
   },
 ];
 
