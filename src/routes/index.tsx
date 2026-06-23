@@ -3,7 +3,7 @@ import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { SITE, CATEGORIES } from "@/lib/site";
-import heroAsset from "@/assets/colorado-springs.webp.asset.json";
+import heroAsset from "@/assets/colorado-springs-hero.webp.asset.json";
 import shimonAsset from "@/assets/shimon-kohn.png.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
@@ -122,25 +122,19 @@ function Hero() {
         <img
           src={heroAsset.url}
           alt="Downtown Colorado Springs with the Rocky Mountains"
-          className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+          className="absolute inset-0 h-full w-full object-cover"
           width={1920}
           height={1280}
         />
-        {/* gentle inner edge fade so the split feels soft, not harsh */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-ink to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/60 to-transparent" />
 
-        {/* floating badge over image */}
-        <div className="absolute bottom-10 left-10 animate-float rounded-xl border border-white/20 bg-white/95 px-5 py-4 text-ink shadow-elegant backdrop-blur">
+        {/* floating badges */}
+        <div className="absolute bottom-10 left-10 rounded-xl border border-white/20 bg-white/95 px-5 py-4 text-ink shadow-elegant backdrop-blur">
           <p className="font-display text-2xl font-bold text-brand">A+</p>
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             Client rated
           </p>
         </div>
-        <div
-          className="absolute right-10 top-10 animate-float rounded-xl border border-white/20 bg-gold px-5 py-4 text-gold-foreground shadow-elegant"
-          style={{ animationDelay: "-2.5s" }}
-        >
+        <div className="absolute right-10 top-10 rounded-xl border border-white/20 bg-gold px-5 py-4 text-gold-foreground shadow-elegant">
           <p className="font-display text-2xl font-bold">15+</p>
           <p className="text-[10px] font-semibold uppercase tracking-wider">
             Years trial
