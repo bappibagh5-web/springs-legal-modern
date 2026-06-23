@@ -126,11 +126,11 @@ function Hero() {
       </div>
 
       {/* ── RIGHT: image half ── */}
-      <div className="relative hidden lg:block">
+      <div className="relative hidden h-full lg:block">
         <img
           src={heroAsset.url}
           alt="Downtown Colorado Springs with the Rocky Mountains"
-          className="h-full w-full object-cover animate-ken-burns"
+          className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
           width={1920}
           height={1280}
         />
