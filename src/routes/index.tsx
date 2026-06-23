@@ -3,13 +3,15 @@ import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { SITE, CATEGORIES } from "@/lib/site";
-import heroImg from "@/assets/colorado-springs-hero.jpg";
+import heroAsset from "@/assets/colorado-springs.webp.asset.json";
 import attorneyImg from "@/assets/attorney-portrait.jpg";
+import attorney2 from "@/assets/attorney-2.jpg";
+import attorney3 from "@/assets/attorney-3.jpg";
 import officeImg from "@/assets/office-interior.jpg";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
 import courthouseImg from "@/assets/courthouse.jpg";
-import { Phone, Shield, Scale, Users, Award, CheckCircle2, Quote, ChevronDown } from "lucide-react";
+import { Phone, Shield, Scale, Users, CheckCircle2, Quote, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -41,61 +43,153 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-surface">
-      <div className="container-page grid items-stretch gap-0 md:grid-cols-2">
-        <div className="flex flex-col justify-center py-16 pr-0 md:py-24 md:pr-10 lg:py-32">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson animate-fade-up">
-            Colorado Springs · Established Defense Counsel
-          </p>
-          <h1 className="mt-4 font-display text-4xl leading-[1.05] text-ink md:text-5xl lg:text-6xl animate-fade-up" style={{ animationDelay: "80ms" }}>
-            When everything is on the line,{" "}
-            <span className="gold-underline text-brand">representation matters</span>.
+    <section className="relative isolate overflow-hidden bg-ink text-white">
+      {/* Background image with ken burns */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={heroAsset.url}
+          alt="Aerial view of downtown Colorado Springs with the Rocky Mountains"
+          className="h-full w-full object-cover animate-ken-burns"
+          width={1920}
+          height={1280}
+        />
+        {/* Layered gradient overlays for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/80 to-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+      </div>
+
+      {/* Animated decorative blobs */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-32 top-20 h-96 w-96 bg-brand/35 blur-3xl animate-blob"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-20 bottom-10 h-[28rem] w-[28rem] bg-crimson/30 blur-3xl animate-blob"
+        style={{ animationDelay: "-6s" }}
+      />
+
+      <div className="container-page relative grid items-center gap-12 py-24 md:py-32 lg:grid-cols-[1.15fr_1fr] lg:py-40">
+        {/* Text column */}
+        <div className="max-w-2xl">
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-gold backdrop-blur animate-fade-up">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-gold animate-pulse-ring" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+            </span>
+            Colorado Springs · Trusted Trial Counsel
+          </div>
+
+          <h1
+            className="mt-6 font-display text-5xl font-black leading-[0.98] tracking-tight md:text-6xl lg:text-7xl animate-fade-up"
+            style={{ animationDelay: "100ms" }}
+          >
+            We Help You Solve <br className="hidden md:block" />
+            <span className="relative inline-block">
+              <span className="relative z-10 text-white">Your Legal</span>{" "}
+              <span className="relative z-10 bg-gradient-to-r from-gold via-gold to-[#ffd773] bg-clip-text text-transparent">
+                Challenges
+              </span>
+              <span
+                aria-hidden
+                className="absolute -bottom-1 left-0 right-0 h-3 bg-crimson/70 -skew-x-6 -z-0"
+              />
+            </span>
           </h1>
-          <p className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg animate-fade-up" style={{ animationDelay: "160ms" }}>
-            The Kohn Law Firm defends the accused and represents families across
-            Colorado Springs and the Front Range. Every case gets the preparation,
-            discretion, and trial readiness it deserves.
+
+          <p
+            className="mt-7 max-w-xl text-base leading-relaxed text-white/80 md:text-lg animate-fade-up"
+            style={{ animationDelay: "220ms" }}
+          >
+            Kohn Law Firm provides focused and aggressive legal representation in
+            criminal defense and family law cases. With decades of combined
+            experience, our attorneys protect your rights and guide you through
+            the legal process with clarity and care.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3 animate-fade-up" style={{ animationDelay: "220ms" }}>
-            <ActionButton variant="primary" size="lg">
-              Schedule a Consultation
-            </ActionButton>
+
+          <div
+            className="mt-9 flex flex-wrap items-center gap-3 animate-fade-up"
+            style={{ animationDelay: "320ms" }}
+          >
+            <div className="group relative overflow-hidden rounded-md">
+              <ActionButton variant="gold" size="lg">
+                Schedule a Consultation
+              </ActionButton>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-white/40 animate-shine"
+              />
+            </div>
             <a
               href={SITE.phoneHref}
-              className="inline-flex h-13 items-center gap-2 rounded-md border border-border bg-white px-6 text-sm font-semibold uppercase tracking-wide text-brand transition-colors hover:bg-brand hover:text-white"
+              className="group inline-flex h-13 items-center gap-3 rounded-md border border-white/25 bg-white/5 px-6 text-sm font-semibold uppercase tracking-wide text-white backdrop-blur transition-all hover:border-gold hover:bg-white/10 hover:text-gold"
             >
-              <Phone className="h-4 w-4" /> {SITE.phone}
+              <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gold/15 ring-1 ring-gold/40 transition-transform group-hover:scale-110">
+                <Phone className="h-4 w-4 text-gold" />
+              </span>
+              {SITE.phone}
             </a>
           </div>
-          <div className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6 text-center animate-fade-up" style={{ animationDelay: "300ms" }}>
+
+          <div
+            className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-white/15 pt-8 animate-fade-up"
+            style={{ animationDelay: "420ms" }}
+          >
             <Stat n="15+" label="Years experience" />
             <Stat n="1000+" label="Cases handled" />
             <Stat n="24/7" label="Case response" />
           </div>
         </div>
 
-        <div className="relative min-h-[320px] md:min-h-[560px]">
-          <img
-            src={heroImg}
-            alt="Colorado Springs skyline with Pikes Peak"
-            className="absolute inset-0 h-full w-full object-cover"
-            width={1280}
-            height={1280}
-          />
-          <div className="absolute inset-0 bg-gradient-to-tr from-brand/40 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 rounded-lg bg-white/95 p-5 shadow-elegant backdrop-blur md:bottom-10 md:left-10 md:right-auto md:max-w-xs">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-              Serving
-            </p>
-            <p className="mt-1 font-display text-xl text-brand">
-              Colorado Springs & El Paso County
-            </p>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Including Pueblo, Teller, Fremont, and Douglas counties.
-            </p>
+        {/* Floating info card column */}
+        <div className="relative hidden lg:block">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
+            <div
+              aria-hidden
+              className="absolute -inset-6 bg-gradient-to-br from-gold/40 via-crimson/30 to-brand/40 blur-2xl animate-blob"
+            />
+            <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5 shadow-elegant backdrop-blur-md">
+              <img
+                src={heroAsset.url}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-90"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+              <div className="absolute inset-x-6 bottom-6">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gold">
+                  Serving
+                </p>
+                <p className="mt-2 font-display text-2xl font-bold leading-tight text-white">
+                  Colorado Springs &amp; the entire Front Range
+                </p>
+                <p className="mt-2 text-xs text-white/75">
+                  El Paso · Pueblo · Teller · Fremont · Douglas counties
+                </p>
+              </div>
+            </div>
+
+            {/* Floating badge */}
+            <div className="absolute -left-8 top-10 animate-float rounded-xl border border-white/20 bg-white/95 px-5 py-4 text-ink shadow-elegant backdrop-blur">
+              <p className="font-display text-2xl font-bold text-brand">A+</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Client rated
+              </p>
+            </div>
+            <div
+              className="absolute -right-6 bottom-16 animate-float rounded-xl border border-white/20 bg-gold px-5 py-4 text-gold-foreground shadow-elegant"
+              style={{ animationDelay: "-2.5s" }}
+            >
+              <p className="font-display text-2xl font-bold">15+</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider">
+                Years trial
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom fade into next section */}
+      <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-background" />
     </section>
   );
 }
@@ -103,8 +197,8 @@ function Hero() {
 function Stat({ n, label }: { n: string; label: string }) {
   return (
     <div>
-      <p className="font-display text-2xl text-brand md:text-3xl">{n}</p>
-      <p className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">
+      <p className="font-display text-3xl font-bold text-gold md:text-4xl">{n}</p>
+      <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70">
         {label}
       </p>
     </div>
@@ -223,6 +317,27 @@ function AboutSection() {
   );
 }
 
+const TEAM = [
+  {
+    name: "Shimon Kohn, Esq.",
+    title: "Founding Attorney",
+    bio: "Lead trial counsel for the firm's criminal defense and protection-order practices.",
+    img: attorneyImg,
+  },
+  {
+    name: "Rachel Bennett, Esq.",
+    title: "Senior Family Law Attorney",
+    bio: "Guides clients through divorce, custody, and protection orders with steady, strategic counsel.",
+    img: attorney2,
+  },
+  {
+    name: "Marcus Patel, Esq.",
+    title: "Associate Attorney",
+    bio: "Handles criminal defense matters from arraignment through trial across the Front Range.",
+    img: attorney3,
+  },
+];
+
 function TeamPreview() {
   return (
     <section className="py-20 md:py-28">
@@ -242,39 +357,32 @@ function TeamPreview() {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          <article className="overflow-hidden rounded-xl border border-border bg-card shadow-card">
-            <img
-              src={attorneyImg}
-              alt="Attorney Shimon Kohn"
-              loading="lazy"
-              className="h-80 w-full object-cover"
-              width={1024}
-              height={1280}
-            />
-            <div className="p-6">
-              <h3 className="font-display text-xl text-brand">Shimon Kohn, Esq.</h3>
-              <p className="mt-1 text-xs uppercase tracking-wide text-crimson">
-                Founding Attorney
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Lead trial counsel for the firm's criminal defense and protection-order practices.
-              </p>
-            </div>
-          </article>
-          <article className="rounded-xl border border-dashed border-border bg-muted/40 p-8 text-center">
-            <Award className="mx-auto h-10 w-10 text-gold" />
-            <h3 className="mt-4 font-display text-xl text-brand">Of Counsel</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Experienced co-counsel brought in for complex felony and family matters when the case calls for it.
-            </p>
-          </article>
-          <article className="rounded-xl border border-dashed border-border bg-muted/40 p-8 text-center">
-            <Users className="mx-auto h-10 w-10 text-gold" />
-            <h3 className="mt-4 font-display text-xl text-brand">Support Staff</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Paralegal and intake team available to coordinate filings, documents, and court dates.
-            </p>
-          </article>
+          {TEAM.map((m) => (
+            <article
+              key={m.name}
+              className="group relative overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+            >
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={m.img}
+                  alt={m.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={1024}
+                  height={1280}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-transparent" />
+                <span className="absolute left-4 top-4 inline-block h-1 w-10 bg-gold" />
+              </div>
+              <div className="p-6">
+                <h3 className="font-display text-xl font-bold text-brand">{m.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-crimson">
+                  {m.title}
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">{m.bio}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
