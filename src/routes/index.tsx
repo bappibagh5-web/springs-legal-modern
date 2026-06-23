@@ -43,7 +43,7 @@ function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-white lg:grid lg:grid-cols-2">
+    <section className="relative isolate min-h-[600px] overflow-hidden bg-ink text-white md:min-h-[680px] lg:grid lg:min-h-[760px] lg:grid-cols-2">
       {/* ── LEFT: clean text half ── */}
       <div className="relative flex flex-col justify-center px-6 py-20 md:px-12 md:py-28 lg:px-16 lg:py-0 lg:pr-10 xl:px-24">
         {/* subtle top-to-bottom warmth on the dark panel */}
