@@ -27,20 +27,34 @@ function AboutPage() {
       />
 
       <section className="py-20 md:py-28">
-        <div className="container-page grid gap-12 md:grid-cols-2 md:items-center">
-          <img src={officeImg.url} alt="The Kohn Law Firm office building in Colorado Springs" loading="lazy" className="rounded-xl shadow-elegant w-full" width={1280} height={1200} />
+        <div className="container-page grid gap-10 md:grid-cols-2 md:items-center lg:gap-16">
+          <div className="relative">
+            <img
+              src={officeImg.url}
+              alt="The Kohn Law Firm office building in Colorado Springs"
+              loading="lazy"
+              className="aspect-[4/3] w-full rounded-xl object-cover shadow-elegant"
+              width={1280}
+              height={960}
+            />
+            <div className="absolute -bottom-5 -right-5 hidden rounded-xl bg-crimson p-5 text-white shadow-elegant md:block">
+              <p className="font-display text-2xl">Est. 2003</p>
+              <p className="mt-1 text-[11px] uppercase tracking-wide">Colorado Springs</p>
+            </div>
+          </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Our Story</p>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">A boutique by choice.</h2>
             <p className="mt-5 text-muted-foreground">
+              Founded in 2003 by former 4th Judicial District Attorney Shimon Kohn,
+              The Kohn Law Firm is built on ethical service and strong advocacy. We
+              give every client personal attention and clear legal guidance — and
+              our goal is to secure the best possible outcome for your case.
+            </p>
+            <p className="mt-4 text-muted-foreground">
               We chose to stay small for a reason. Boutique practice means our
               attorneys handle their own cases — start to finish — and our clients
               always know who is answering the phone.
-            </p>
-            <p className="mt-4 text-muted-foreground">
-              From routine misdemeanors to the most serious felony allegations,
-              every matter receives the same disciplined preparation: independent
-              investigation, candid counsel, and a defense built for trial.
             </p>
           </div>
         </div>
