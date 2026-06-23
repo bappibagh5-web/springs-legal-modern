@@ -5,16 +5,43 @@ import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findService, type ServiceItem } from "@/lib/site";
 import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
-import coloradoMountains from "@/assets/colorado-mountains.jpg.asset.json";
+
+/* Colorado & Colorado Springs landscapes — one unique image per service page */
+import coloradoSpringsDowntown from "@/assets/colorado-springs-downtown.jpg.asset.json";
+import coloradoSevenFalls from "@/assets/colorado-seven-falls.jpg.asset.json";
+import coloradoRedRockCanyon from "@/assets/colorado-red-rock-canyon.jpg.asset.json";
+import coloradoAirForceAcademy from "@/assets/colorado-air-force-academy.jpg.asset.json";
+import coloradoCheyenneMountain from "@/assets/colorado-cheyenne-mountain.jpg.asset.json";
+import coloradoWildflowers from "@/assets/colorado-wildflowers.jpg.asset.json";
+import coloradoAspenFall from "@/assets/colorado-aspen-fall.jpg.asset.json";
+import coloradoRoyalGorge from "@/assets/colorado-royal-gorge.jpg.asset.json";
 import coloradoPikesPeak from "@/assets/colorado-pikes-peak.jpg.asset.json";
 import coloradoGardenGods from "@/assets/colorado-garden-gods.jpg.asset.json";
 import coloradoLake from "@/assets/colorado-lake.jpg.asset.json";
+import coloradoMountains from "@/assets/colorado-mountains.jpg.asset.json";
 
-const LANDSCAPES = [coloradoPikesPeak, coloradoGardenGods, coloradoLake, coloradoMountains];
-const pickLandscape = (key: string) => {
-  let h = 0;
-  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
-  return LANDSCAPES[h % LANDSCAPES.length];
+const SERVICE_IMAGES: Record<string, { url: string; alt: string }> = {
+  /* Criminal Defense */
+  "misdemeanor-crimes": { url: coloradoSpringsDowntown.url, alt: "Colorado Springs downtown skyline with Pikes Peak" },
+  "financial-crimes": { url: coloradoSevenFalls.url, alt: "Seven Falls waterfall in Colorado Springs" },
+  "sexual-assault": { url: coloradoRedRockCanyon.url, alt: "Red Rock Canyon Open Space" },
+  "burglary": { url: coloradoAirForceAcademy.url, alt: "United States Air Force Academy Chapel" },
+  "domestic-violence": { url: coloradoCheyenneMountain.url, alt: "Cheyenne Mountain in Colorado Springs" },
+  "felony-crimes": { url: coloradoWildflowers.url, alt: "Colorado mountain wildflower meadow" },
+  "theft": { url: coloradoAspenFall.url, alt: "Golden aspen trees in Colorado fall" },
+  "sexual-offenses": { url: coloradoRoyalGorge.url, alt: "Royal Gorge Bridge spanning the canyon" },
+  "crimes-against-a-person": { url: coloradoPikesPeak.url, alt: "Pikes Peak mountain summit" },
+  "murder-attempted-murder": { url: coloradoGardenGods.url, alt: "Garden of the Gods red rock formations" },
+  "sexual-assault-on-a-child": { url: coloradoLake.url, alt: "Serene Colorado alpine lake" },
+  "sexual-exploitation-of-a-child": { url: coloradoMountains.url, alt: "Rocky Mountain panorama" },
+  /* Family Law */
+  "divorce-separation": { url: coloradoSpringsDowntown.url, alt: "Colorado Springs downtown skyline with Pikes Peak" },
+  "adoption": { url: coloradoSevenFalls.url, alt: "Seven Falls waterfall in Colorado Springs" },
+  "child-support": { url: coloradoRedRockCanyon.url, alt: "Red Rock Canyon Open Space" },
+  "allocation-of-parental-responsibilities": { url: coloradoCheyenneMountain.url, alt: "Cheyenne Mountain in Colorado Springs" },
+  /* Protection Orders */
+  "permanent-protection-order": { url: coloradoWildflowers.url, alt: "Colorado mountain wildflower meadow" },
+  "temporary-protection-order": { url: coloradoAirForceAcademy.url, alt: "United States Air Force Academy Chapel" },
 };
 
 export const Route = createFileRoute("/$category/$service")({
@@ -41,7 +68,7 @@ export const Route = createFileRoute("/$category/$service")({
 function ServiceDetailPage() {
   const { category, item } = Route.useLoaderData();
   const related = category.items.filter((i: ServiceItem) => i.slug !== item.slug).slice(0, 3);
-  const landscape = pickLandscape(`${category.slug}/${item.slug}`);
+  const image = SERVICE_IMAGES[item.slug] ?? { url: coloradoMountains.url, alt: "Colorado landscape" };
 
   return (
     <PageShell>
@@ -74,8 +101,8 @@ function ServiceDetailPage() {
 
             <figure className="relative overflow-hidden rounded-xl shadow-elegant">
               <img
-                src={landscape.url}
-                alt="Colorado landscape"
+                src={image.url}
+                alt={image.alt}
                 loading="lazy"
                 width={1280}
                 height={1600}
