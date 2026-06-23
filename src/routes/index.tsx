@@ -317,6 +317,27 @@ function AboutSection() {
   );
 }
 
+const TEAM = [
+  {
+    name: "Shimon Kohn, Esq.",
+    title: "Founding Attorney",
+    bio: "Lead trial counsel for the firm's criminal defense and protection-order practices.",
+    img: attorneyImg,
+  },
+  {
+    name: "Rachel Bennett, Esq.",
+    title: "Senior Family Law Attorney",
+    bio: "Guides clients through divorce, custody, and protection orders with steady, strategic counsel.",
+    img: attorney2,
+  },
+  {
+    name: "Marcus Patel, Esq.",
+    title: "Associate Attorney",
+    bio: "Handles criminal defense matters from arraignment through trial across the Front Range.",
+    img: attorney3,
+  },
+];
+
 function TeamPreview() {
   return (
     <section className="py-20 md:py-28">
@@ -336,39 +357,32 @@ function TeamPreview() {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          <article className="overflow-hidden rounded-xl border border-border bg-card shadow-card">
-            <img
-              src={attorneyImg}
-              alt="Attorney Shimon Kohn"
-              loading="lazy"
-              className="h-80 w-full object-cover"
-              width={1024}
-              height={1280}
-            />
-            <div className="p-6">
-              <h3 className="font-display text-xl text-brand">Shimon Kohn, Esq.</h3>
-              <p className="mt-1 text-xs uppercase tracking-wide text-crimson">
-                Founding Attorney
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Lead trial counsel for the firm's criminal defense and protection-order practices.
-              </p>
-            </div>
-          </article>
-          <article className="rounded-xl border border-dashed border-border bg-muted/40 p-8 text-center">
-            <Award className="mx-auto h-10 w-10 text-gold" />
-            <h3 className="mt-4 font-display text-xl text-brand">Of Counsel</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Experienced co-counsel brought in for complex felony and family matters when the case calls for it.
-            </p>
-          </article>
-          <article className="rounded-xl border border-dashed border-border bg-muted/40 p-8 text-center">
-            <Users className="mx-auto h-10 w-10 text-gold" />
-            <h3 className="mt-4 font-display text-xl text-brand">Support Staff</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Paralegal and intake team available to coordinate filings, documents, and court dates.
-            </p>
-          </article>
+          {TEAM.map((m) => (
+            <article
+              key={m.name}
+              className="group relative overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+            >
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={m.img}
+                  alt={m.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={1024}
+                  height={1280}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-transparent" />
+                <span className="absolute left-4 top-4 inline-block h-1 w-10 bg-gold" />
+              </div>
+              <div className="p-6">
+                <h3 className="font-display text-xl font-bold text-brand">{m.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-crimson">
+                  {m.title}
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">{m.bio}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
