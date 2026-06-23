@@ -5,7 +5,7 @@ import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs-hero.webp.asset.json";
-import shimonAsset from "@/assets/shimon-kohn.webp.asset.json";
+import shimonAsset from "@/assets/shimon-kohn-v2.webp.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
 import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
@@ -287,7 +287,7 @@ const TEAM = [
     title: "Founding Attorney",
     bio: "Over 24 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
     img: shimonAsset.url,
-    fit: "contain" as const,
+    fit: "cover" as const,
   },
   {
     name: "Erica Bertini",
@@ -334,7 +334,7 @@ function TeamPreview() {
                   src={m.img}
                   alt={m.name}
                   loading="lazy"
-                  className={`h-full w-full ${m.fit === "contain" ? "object-contain" : "object-cover object-top"} transition-transform duration-700 group-hover:scale-105`}
+                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   width={1024}
                   height={1280}
                 />

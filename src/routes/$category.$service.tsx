@@ -6,6 +6,16 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findService, type ServiceItem } from "@/lib/site";
 import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 import coloradoMountains from "@/assets/colorado-mountains.jpg.asset.json";
+import coloradoPikesPeak from "@/assets/colorado-pikes-peak.jpg.asset.json";
+import coloradoGardenGods from "@/assets/colorado-garden-gods.jpg.asset.json";
+import coloradoLake from "@/assets/colorado-lake.jpg.asset.json";
+
+const LANDSCAPES = [coloradoPikesPeak, coloradoGardenGods, coloradoLake, coloradoMountains];
+const pickLandscape = (key: string) => {
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return LANDSCAPES[h % LANDSCAPES.length];
+};
 
 export const Route = createFileRoute("/$category/$service")({
   head: ({ params }) => {
@@ -31,6 +41,7 @@ export const Route = createFileRoute("/$category/$service")({
 function ServiceDetailPage() {
   const { category, item } = Route.useLoaderData();
   const related = category.items.filter((i: ServiceItem) => i.slug !== item.slug).slice(0, 3);
+  const landscape = pickLandscape(`${category.slug}/${item.slug}`);
 
   return (
     <PageShell>
@@ -63,8 +74,8 @@ function ServiceDetailPage() {
 
             <figure className="relative overflow-hidden rounded-xl shadow-elegant">
               <img
-                src={coloradoMountains.url}
-                alt="Colorado Springs landscape with Pikes Peak"
+                src={landscape.url}
+                alt="Colorado landscape"
                 loading="lazy"
                 width={1280}
                 height={1600}
@@ -73,9 +84,9 @@ function ServiceDetailPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white">
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                  <MapPin className="h-3.5 w-3.5" /> Serving Colorado Springs
+                  <MapPin className="h-3.5 w-3.5" /> Serving Colorado
                 </p>
-                <p className="mt-1 font-display text-lg">Proudly representing clients across El Paso & Teller County.</p>
+                <p className="mt-1 font-display text-lg">Proudly representing clients across Colorado.</p>
               </figcaption>
             </figure>
 
