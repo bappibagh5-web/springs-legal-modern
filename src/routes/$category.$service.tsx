@@ -6,6 +6,24 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findService, type ServiceItem } from "@/lib/site";
 import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 import coloradoMountains from "@/assets/colorado-mountains.jpg.asset.json";
+import coloradoGardenGods from "@/assets/colorado-garden-gods.jpg.asset.json";
+import coloradoMaroonBells from "@/assets/colorado-maroon-bells.jpg.asset.json";
+import coloradoRoyalGorge from "@/assets/colorado-royal-gorge.jpg.asset.json";
+import coloradoAspens from "@/assets/colorado-aspens.jpg.asset.json";
+
+const LANDSCAPES = [
+  { src: coloradoGardenGods.url, alt: "Garden of the Gods red rock formations with Pikes Peak", caption: "Garden of the Gods — Colorado Springs" },
+  { src: coloradoMaroonBells.url, alt: "Maroon Bells reflecting in an alpine lake at sunrise", caption: "Maroon Bells — Colorado Rockies" },
+  { src: coloradoRoyalGorge.url, alt: "Royal Gorge canyon with the Arkansas River", caption: "Royal Gorge — Arkansas River" },
+  { src: coloradoAspens.url, alt: "Golden aspen grove with Colorado mountains", caption: "Aspen grove — Colorado high country" },
+  { src: coloradoMountains.url, alt: "Colorado Springs landscape with Pikes Peak", caption: "Pikes Peak region — Colorado" },
+];
+
+function pickLandscape(key: string) {
+  let h = 0;
+  for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0;
+  return LANDSCAPES[h % LANDSCAPES.length];
+}
 
 export const Route = createFileRoute("/$category/$service")({
   head: ({ params }) => {
