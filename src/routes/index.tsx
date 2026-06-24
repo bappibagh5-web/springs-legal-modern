@@ -4,7 +4,7 @@ import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SITE, CATEGORIES } from "@/lib/site";
-import heroAsset from "@/assets/colorado-springs-hero.webp.asset.json";
+import heroAsset from "@/assets/colorado-springs-hero-v2.jpg.asset.json";
 import shimonAsset from "@/assets/shimon-kohn-v2.webp.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
@@ -285,7 +285,7 @@ const TEAM = [
   {
     name: "Shimon Kohn",
     title: "Founding Attorney",
-    bio: "Over 24 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
+    bio: "Over 25 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
     img: shimonAsset.url,
     fit: "cover" as const,
   },

@@ -32,7 +32,7 @@ const MEMBERS: Member[] = [
     title: "Founding Attorney",
     img: shimonAsset.url,
     bio: [
-      "Shimon has been fighting for clients' rights for over 24 years. Previously serving as a Deputy District Attorney in Teller and El Paso Counties, he prosecuted felony, misdemeanor, and traffic violations. Shimon has been admitted to the Colorado Bar since 2000 and the Federal Bar since 2003. He graduated from the Cleveland Marshall College of Law in 1999 with his Juris Doctorate degree.",
+      "Shimon has been fighting for clients' rights for over 25 years — 26 in August. Previously serving as a Deputy District Attorney in Teller and El Paso Counties, he prosecuted felony, misdemeanor, and traffic violations. Shimon has been admitted to the Colorado Bar since 2000 and the Federal Bar since 2003. He graduated from the Cleveland Marshall College of Law in 1999 with his Juris Doctorate degree.",
       "Shimon established The Kohn Law Firm so he could advocate for clients' rights in cases such as first degree assault, murder, financial crimes, domestic violence, and anything in between. He understands that being charged with a crime comes with personal challenges and consequences, and he guides clients through a complex legal system with empathy, advice, and support.",
       "Shimon has been a pillar of the Colorado Springs legal community for over two decades, securing acquittals for clients in cases involving domestic violence, sexual assault, attempted murder, drug charges, and assault. He served as defense counsel on the last death penalty case in Colorado after the moratorium was passed.",
     ],
