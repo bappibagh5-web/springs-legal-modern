@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — The Kohn Law Firm" },
-      { name: "description", content: "Call 1-719-482-8092 or email shimon@kohn.law to reach The Kohn Law Firm in Colorado Springs." },
+      { name: "description", content: "Call 719-328-9555 or email shimon@kohn.law to reach The Kohn Law Firm in Colorado Springs." },
       { property: "og:title", content: "Contact The Kohn Law Firm" },
       { property: "og:description", content: "Reach our Colorado Springs office for a confidential consultation." },
     ],

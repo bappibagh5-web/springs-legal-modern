@@ -1,8 +1,8 @@
 export const SITE = {
   name: "The Kohn Law Firm",
   tagline: "Colorado Springs Criminal Defense & Family Law",
-  phone: "1-719-482-8092",
-  phoneHref: "tel:+17194828092",
+  phone: "719-328-9555",
+  phoneHref: "tel:+17193289555",
   email: "shimon@kohn.law",
   emailHref: "mailto:shimon@kohn.law",
   city: "Colorado Springs, CO",
