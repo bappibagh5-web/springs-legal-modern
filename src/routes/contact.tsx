@@ -27,7 +27,7 @@ function ContactPage() {
 
       <section className="py-20 md:py-28">
         <div className="container-page grid gap-12 md:grid-cols-[1fr_1.4fr]">
-          <div className="space-y-6">
+          <div className="space-y-8">
             <InfoRow icon={Phone} label="Phone" value={SITE.phone} href={SITE.phoneHref} />
             <InfoRow icon={Mail} label="Email" value={SITE.email} href={SITE.emailHref} />
             <InfoRow icon={MapPin} label="Service Area" value={`${SITE.city} & surrounding counties`} />
