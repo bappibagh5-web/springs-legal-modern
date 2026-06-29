@@ -5,7 +5,7 @@ import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs-hero-v2.jpg.asset.json";
-import shimonAsset from "@/assets/shimon-kohn-v2.webp.asset.json";
+import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
 import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
