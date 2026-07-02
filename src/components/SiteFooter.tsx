@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
-import logoAsset from "@/assets/kohn-logo-white.asset.json";
+import logoAsset from "@/assets/klf-logo-color.png.asset.json";
 import { SITE, CATEGORIES } from "@/lib/site";
 
 export function SiteFooter() {
@@ -8,7 +8,9 @@ export function SiteFooter() {
     <footer className="bg-ink text-white/85">
       <div className="container-page grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <img src={logoAsset.url} alt="The Kohn Law Firm" className="h-16 w-auto" />
+          <div className="inline-block rounded-lg bg-white p-3 shadow-card">
+            <img src={logoAsset.url} alt="The Kohn Law Firm" className="h-16 w-auto" />
+          </div>
           <p className="mt-5 text-sm leading-relaxed text-white/70">
             Trusted criminal defense and family law representation serving
             Colorado Springs and the surrounding communities.
