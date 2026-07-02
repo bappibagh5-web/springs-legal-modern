@@ -22,7 +22,7 @@ const STATS = [
   { n: "40+", label: "Combined Years of Experience" },
   { n: "4,300+", label: "Cases Handled" },
   { n: "150+", label: "Jury Trials" },
-  { n: "20+", label: "Years Serving Colorado" },
+  { n: "22+", label: "Years Serving Colorado" },
 ];
 
 function AboutPage() {
