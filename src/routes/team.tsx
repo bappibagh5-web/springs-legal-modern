@@ -67,6 +67,17 @@ const MEMBERS: Member[] = [
       "Outside of work, Macey enjoys reading, spending time with her dogs, and camping.",
     ],
   },
+  {
+    name: "Mia Fisher",
+    title: "Office Manager & Paralegal",
+    img: "",
+    bio: [
+      "Started with the Colorado Springs Public Defender's office in 2012 as an admin. Developed a passion to help uphold everyone's constitutional rights in the judicial system.",
+      "Started with Shimon Kohn's office in 2013 as a paralegal because he held the same values as myself and have been with him since because of his matched dedication and work ethics.",
+      "I am now the office manager/paralegal for the firm.",
+      "I am a foodie and love to cook for family and friends as I believe good food fuels my soul. I love to travel and taste cuisines from all over the globe while reading in between.",
+    ],
+  },
 ];
 
 function TeamPage() {
