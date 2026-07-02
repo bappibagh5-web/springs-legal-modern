@@ -10,7 +10,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — The Kohn Law Firm" },
-      { name: "description", content: "Founded in 2003 by former 4th Judicial District Attorney Shimon Kohn, The Kohn Law Firm is built on ethical service and aggressive advocacy for the Pikes Peak region." },
+      { name: "description", content: "Founded in 2003 by former 4th Judicial Deputy District Attorney Shimon Kohn, The Kohn Law Firm is built on ethical service and aggressive advocacy for the Pikes Peak region." },
       { property: "og:title", content: "About The Kohn Law Firm" },
       { property: "og:description", content: "A Colorado Springs boutique law firm built on ethics, preparation, and trial readiness." },
     ],
@@ -20,8 +20,8 @@ export const Route = createFileRoute("/about")({
 
 const STATS = [
   { n: "40+", label: "Combined Years of Experience" },
-  { n: "100+", label: "Bench / Court Trials" },
-  { n: "50+", label: "Jury Trials" },
+  { n: "4,300+", label: "Cases Handled" },
+  { n: "150+", label: "Jury Trials" },
   { n: "20+", label: "Years Serving Colorado" },
 ];
 
@@ -57,10 +57,11 @@ function AboutPage() {
               Providing top-notch legal representation.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Founded in 2003 by former 4th Judicial District Attorney Shimon
-              Kohn, our firm is built on ethical service and strong advocacy.
-              We give every client personal attention and clear legal guidance.
-              Our goal is to secure the best possible outcome for your case.
+              Founded in 2003 by former 4th Judicial Deputy District Attorney
+              Shimon Kohn, our firm is built on ethical service and strong
+              advocacy. We give every client personal attention and clear legal
+              guidance. Our goal is to secure the best possible outcome for
+              your case.
             </p>
             <ul className="mt-6 space-y-3">
               {[
