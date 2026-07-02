@@ -4,7 +4,7 @@ import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SITE, CATEGORIES } from "@/lib/site";
-import heroAsset from "@/assets/colorado-springs-hero-v2.jpg.asset.json";
+import heroAsset from "@/assets/colorado-springs-pioneers-museum.avif.asset.json";
 import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
@@ -111,8 +111,8 @@ function Hero() {
             className="mt-10 grid max-w-md grid-cols-3 gap-5 border-t border-white/15 pt-7 animate-fade-up"
             style={{ animationDelay: "420ms" }}
           >
-            <Stat n="15+" label="Years experience" />
-            <Stat n="1000+" label="Cases handled" />
+            <Stat n="22+" label="Years experience" />
+            <Stat n="4,300+" label="Cases handled" />
             <Stat n="24/7" label="Case response" />
           </div>
         </div>
@@ -136,7 +136,7 @@ function Hero() {
           </p>
         </div>
         <div className="absolute right-10 top-10 rounded-xl border border-white/20 bg-gold px-5 py-4 text-gold-foreground shadow-elegant">
-          <p className="font-display text-2xl font-bold">15+</p>
+          <p className="font-display text-2xl font-bold">22+</p>
           <p className="text-[10px] font-semibold uppercase tracking-wider">
             Years trial
           </p>
@@ -238,7 +238,7 @@ function AboutSection() {
             height={960}
           />
           <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-crimson p-6 text-white shadow-elegant md:block">
-            <p className="font-display text-3xl">15+</p>
+            <p className="font-display text-3xl">22+</p>
             <p className="mt-1 text-xs uppercase tracking-wide">Years of Trial Experience</p>
           </div>
         </div>

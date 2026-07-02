@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
-import logoAsset from "@/assets/kohn-logo-white.asset.json";
+import logoAsset from "@/assets/klf-logo-color.png.asset.json";
 import { SITE, CATEGORIES, NAV_LINKS } from "@/lib/site";
 import { ActionButton } from "./ActionButton";
 import { cn } from "@/lib/utils";
@@ -50,13 +50,13 @@ export function SiteHeader() {
       </div>
 
       {/* Main bar */}
-      <div className="border-b border-white/10 bg-brand text-white shadow-elegant">
+      <div className="border-b border-border bg-white text-ink shadow-card">
         <div className="container-page flex h-20 items-center justify-between gap-6">
           <Link to="/" className="shrink-0">
             <img
               src={logoAsset.url}
-              alt="The Kohn Law Firm — Criminal Defense"
-              className="h-12 w-auto md:h-14"
+              alt="The Kohn Law Firm — Criminal Defense & Family Law"
+              className="h-14 w-auto md:h-16"
             />
           </Link>
 
@@ -74,8 +74,8 @@ export function SiteHeader() {
                 <button
                   className={cn(
                     "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide transition-colors",
-                    "hover:bg-white/10",
-                    activeMenu === cat.slug && "bg-white/10",
+                    "text-ink/85 hover:bg-brand/5 hover:text-brand",
+                    activeMenu === cat.slug && "bg-brand/5 text-brand",
                   )}
                   onClick={() =>
                     setActiveMenu(activeMenu === cat.slug ? null : cat.slug)
@@ -97,7 +97,7 @@ export function SiteHeader() {
           </div>
 
           <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-white lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink lg:hidden"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
           >
@@ -133,8 +133,8 @@ function NavItem({ to, children }: { to: string; children: React.ReactNode }) {
   return (
     <Link
       to={to}
-      className="rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-      activeProps={{ className: "bg-white/15 text-white" }}
+      className="rounded-md px-3 py-2 text-sm font-medium uppercase tracking-wide text-ink/85 transition-colors hover:bg-brand/5 hover:text-brand"
+      activeProps={{ className: "bg-brand/10 text-brand" }}
       activeOptions={{ exact: to === "/" }}
     >
       {children}

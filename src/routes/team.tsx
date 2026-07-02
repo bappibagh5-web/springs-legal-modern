@@ -67,6 +67,17 @@ const MEMBERS: Member[] = [
       "Outside of work, Macey enjoys reading, spending time with her dogs, and camping.",
     ],
   },
+  {
+    name: "Mia Fisher",
+    title: "Office Manager & Paralegal",
+    img: "",
+    bio: [
+      "Started with the Colorado Springs Public Defender's office in 2012 as an admin. Developed a passion to help uphold everyone's constitutional rights in the judicial system.",
+      "Started with Shimon Kohn's office in 2013 as a paralegal because he held the same values as myself and have been with him since because of his matched dedication and work ethics.",
+      "I am now the office manager/paralegal for the firm.",
+      "I am a foodie and love to cook for family and friends as I believe good food fuels my soul. I love to travel and taste cuisines from all over the globe while reading in between.",
+    ],
+  },
 ];
 
 function TeamPage() {
@@ -118,14 +129,31 @@ function TeamPage() {
                       className="absolute -inset-3 -z-10 rounded-2xl bg-gradient-to-br from-gold/30 via-transparent to-brand/30 blur-2xl"
                     />
                     <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-surface shadow-elegant ring-1 ring-border">
-                      <img
-                        src={m.img}
-                        alt={m.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
-                        width={680}
-                        height={850}
-                      />
+                      {m.img ? (
+                        <img
+                          src={m.img}
+                          alt={m.name}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                          width={680}
+                          height={850}
+                        />
+                      ) : (
+                        <div
+                          aria-label={`${m.name} portrait placeholder`}
+                          className="flex h-full w-full items-center justify-center bg-gradient-to-br from-muted to-surface text-muted-foreground"
+                        >
+                          <svg
+                            viewBox="0 0 100 120"
+                            className="h-2/3 w-2/3 text-border"
+                            fill="currentColor"
+                            aria-hidden
+                          >
+                            <circle cx="50" cy="40" r="20" />
+                            <path d="M15 115 C15 85, 35 72, 50 72 C65 72, 85 85, 85 115 Z" />
+                          </svg>
+                        </div>
+                      )}
                     </div>
                     <span className="absolute -bottom-3 left-6 h-1 w-16 bg-gold" />
                   </div>

@@ -10,8 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import favicon32 from "@/assets/favicon-32x32.png.asset.json";
-import appleTouchIcon from "@/assets/apple-touch-icon.png.asset.json";
+import favicon32 from "@/assets/klf-icon.png.asset.json";
+import appleTouchIcon from "@/assets/klf-icon.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
