@@ -62,10 +62,9 @@ const MEMBERS: Member[] = [
     title: "Office Manager & Criminal Defense Paralegal",
     img: "",
     bio: [
-      "Started with the Colorado Springs Public Defender's office in 2012 as an admin. Developed a passion to help uphold everyone's constitutional rights in the judicial system.",
-      "Started with Shimon Kohn's office in 2013 as a paralegal because he held the same values as myself and have been with him since because of his matched dedication and work ethics.",
-      "I am now the office manager/paralegal for the firm.",
-      "I am a foodie and love to cook for family and friends as I believe good food fuels my soul. I love to travel and taste cuisines from all over the globe while reading in between.",
+      "Mia started her journey in the criminal defense field with the Colorado Springs Public Defender's office in 2012. It was there that she developed a passion for helping those facing the most difficult situations of their lives and for upholding everyone's constitutional rights within the judicial system.",
+      "Mia joined The Kohn Law Firm in 2013. In the 13+ years with the firm, the team continues to work with the same dedication and shared values to help balance the scales of justice for every client who walks through the door.",
+      "Mia is a self-proclaimed foodie who loves to cook and share her dishes with those closest to her to help feed their souls. She also enjoys traveling the globe to taste new cuisines, with a good book always close at hand.",
     ],
   },
   {
