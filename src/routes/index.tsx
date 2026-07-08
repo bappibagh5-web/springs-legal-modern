@@ -135,7 +135,6 @@ function Hero() {
             Client rated
           </p>
         </div>
-        </div>
       </div>
 
       {/* Mobile image strip (below text) */}
