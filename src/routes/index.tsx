@@ -111,8 +111,8 @@ function Hero() {
             className="mt-10 grid max-w-md grid-cols-3 gap-5 border-t border-white/15 pt-7 animate-fade-up"
             style={{ animationDelay: "420ms" }}
           >
-            <Stat n="22+" label="Years experience" />
-            <Stat n="4,300+" label="Cases handled" />
+            <Stat n="25+" label="Years experience" />
+            <Stat n="150+" label="Jury trials" />
             <Stat n="24/7" label="Case response" />
           </div>
         </div>
@@ -133,12 +133,6 @@ function Hero() {
           <p className="font-display text-2xl font-bold text-brand">A+</p>
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             Client rated
-          </p>
-        </div>
-        <div className="absolute right-10 top-10 rounded-xl border border-white/20 bg-gold px-5 py-4 text-gold-foreground shadow-elegant">
-          <p className="font-display text-2xl font-bold">22+</p>
-          <p className="text-[10px] font-semibold uppercase tracking-wider">
-            Years trial
           </p>
         </div>
       </div>
