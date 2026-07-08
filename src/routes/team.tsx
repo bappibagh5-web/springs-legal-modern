@@ -58,8 +58,29 @@ const MEMBERS: Member[] = [
     ],
   },
   {
-    name: "Macey Jardee",
-    title: "Paralegal",
+    name: "Mia",
+    title: "Office Manager & Criminal Defense Paralegal",
+    img: "",
+    bio: [
+      "Started with the Colorado Springs Public Defender's office in 2012 as an admin. Developed a passion to help uphold everyone's constitutional rights in the judicial system.",
+      "Started with Shimon Kohn's office in 2013 as a paralegal because he held the same values as myself and have been with him since because of his matched dedication and work ethics.",
+      "I am now the office manager/paralegal for the firm.",
+      "I am a foodie and love to cook for family and friends as I believe good food fuels my soul. I love to travel and taste cuisines from all over the globe while reading in between.",
+    ],
+  },
+  {
+    name: "Victoria",
+    title: "Senior Family Law Paralegal",
+    img: "",
+    bio: [
+      "Victoria is a Colorado Springs native and 2012 graduate of Widefield High School. While working in administration at a very large Colorado law firm, Victoria became an expert in helping clients navigate the legal process and assisting attorneys with their day-to-day tasks. After gaining four years of valuable insight into the legal field, she decided to make the shift from administration to becoming a family law paralegal in 2023.",
+      "Now in her second year, Victoria enjoys the challenge of drafting complex legal documents, conducting extensive research in family law cases involving military divorce and grandparents' rights, and ensuring that clients' delicate legal matters are handled efficiently. Whether you are ending a marriage or seeking more time with your child, Victoria is here to provide tireless support and unmatched customer service as The Kohn Law Firm works toward your best possible outcome.",
+      "Victoria enjoys spending time with her family in her spare time.",
+    ],
+  },
+  {
+    name: "Macey",
+    title: "Family Law Paralegal",
     img: maceyAsset.url,
     bio: [
       "Macey is a dedicated paralegal at The Kohn Law Firm, where she provides critical support to clients at every stage of their case. She assists our family law attorneys with case preparation, file management, calendaring all case deadlines, and every aspect of the litigation process.",
@@ -68,15 +89,10 @@ const MEMBERS: Member[] = [
     ],
   },
   {
-    name: "Mia Fisher",
-    title: "Office Manager & Paralegal",
+    name: "Ali",
+    title: "Paralegal",
     img: "",
-    bio: [
-      "Started with the Colorado Springs Public Defender's office in 2012 as an admin. Developed a passion to help uphold everyone's constitutional rights in the judicial system.",
-      "Started with Shimon Kohn's office in 2013 as a paralegal because he held the same values as myself and have been with him since because of his matched dedication and work ethics.",
-      "I am now the office manager/paralegal for the firm.",
-      "I am a foodie and love to cook for family and friends as I believe good food fuels my soul. I love to travel and taste cuisines from all over the globe while reading in between.",
-    ],
+    bio: [],
   },
 ];
 
