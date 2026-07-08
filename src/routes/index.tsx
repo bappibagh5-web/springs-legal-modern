@@ -111,8 +111,8 @@ function Hero() {
             className="mt-10 grid max-w-md grid-cols-3 gap-5 border-t border-white/15 pt-7 animate-fade-up"
             style={{ animationDelay: "420ms" }}
           >
-            <Stat n="22+" label="Years experience" />
-            <Stat n="4,300+" label="Cases handled" />
+            <Stat n="25+" label="Years experience" />
+            <Stat n="150+" label="Jury trials" />
             <Stat n="24/7" label="Case response" />
           </div>
         </div>
