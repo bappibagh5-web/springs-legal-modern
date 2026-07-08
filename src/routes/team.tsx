@@ -91,7 +91,10 @@ const MEMBERS: Member[] = [
     name: "Ali",
     title: "Paralegal",
     img: "",
-    bio: [],
+    bio: [
+      "Ali is a paralegal who is passionate about helping clients navigate the legal process within the firm with professionalism and compassion. She assists with case preparation and client communication, and is committed to providing responsive, detail-oriented support from start to finish.",
+      "Outside of work, Ali enjoys reading and spending time outside.",
+    ],
   },
 ];
 
