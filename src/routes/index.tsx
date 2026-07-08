@@ -135,11 +135,6 @@ function Hero() {
             Client rated
           </p>
         </div>
-        <div className="absolute right-10 top-10 rounded-xl border border-white/20 bg-gold px-5 py-4 text-gold-foreground shadow-elegant">
-          <p className="font-display text-2xl font-bold">22+</p>
-          <p className="text-[10px] font-semibold uppercase tracking-wider">
-            Years trial
-          </p>
         </div>
       </div>
 
