@@ -232,7 +232,7 @@ function AboutSection() {
             height={960}
           />
           <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-crimson p-6 text-white shadow-elegant md:block">
-            <p className="font-display text-3xl">22+</p>
+            <p className="font-display text-3xl">25+</p>
             <p className="mt-1 text-xs uppercase tracking-wide">Years of Trial Experience</p>
           </div>
         </div>
