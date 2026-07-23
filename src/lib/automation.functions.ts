@@ -20,6 +20,8 @@ export type AutomationRun = {
   trigger_type: "manual" | "scheduled";
   error_message: string | null;
   created_at: string;
+  duration_seconds: number | null;
+  word_count: number | null;
   post: { id: string; title: string; slug: string; status: string } | null;
 };
 
