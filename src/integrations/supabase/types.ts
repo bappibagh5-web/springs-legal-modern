@@ -74,6 +74,53 @@ export type Database = {
         }
         Relationships: []
       }
+      topics: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          generated_post_id: string | null
+          id: string
+          notes: string | null
+          priority: number
+          scheduled_at: string
+          status: Database["public"]["Enums"]["topic_status"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          generated_post_id?: string | null
+          id?: string
+          notes?: string | null
+          priority?: number
+          scheduled_at: string
+          status?: Database["public"]["Enums"]["topic_status"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          generated_post_id?: string | null
+          id?: string
+          notes?: string | null
+          priority?: number
+          scheduled_at?: string
+          status?: Database["public"]["Enums"]["topic_status"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topics_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -89,6 +136,7 @@ export type Database = {
     }
     Enums: {
       app_role: "super_admin" | "admin"
+      topic_status: "pending" | "generated"
       user_status: "active" | "inactive"
     }
     CompositeTypes: {
@@ -218,6 +266,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["super_admin", "admin"],
+      topic_status: ["pending", "generated"],
       user_status: ["active", "inactive"],
     },
   },
