@@ -16,7 +16,7 @@ import {
 import { listPosts, deletePost, bulkDeletePosts, type PostRow } from "@/lib/posts.functions";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/admin/posts")({
+export const Route = createFileRoute("/admin/posts/")({
   ssr: false,
   component: PostsListPage,
 });
