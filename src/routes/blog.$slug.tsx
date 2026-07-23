@@ -44,6 +44,9 @@ export const Route = createFileRoute("/blog/$slug")({
             ]
           : []),
       ],
+      scripts: p.schema_jsonld
+        ? [{ type: "application/ld+json", children: JSON.stringify(p.schema_jsonld) }]
+        : [],
     };
   },
   component: BlogPostPage,
