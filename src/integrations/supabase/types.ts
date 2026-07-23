@@ -164,6 +164,51 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          best_time_to_reach: string | null
+          case_type: string | null
+          created_at: string
+          email: string
+          email_sent: boolean
+          id: string
+          message: string | null
+          name: string
+          phone: string | null
+          source: string
+          status: Database["public"]["Enums"]["lead_status"]
+          updated_at: string
+        }
+        Insert: {
+          best_time_to_reach?: string | null
+          case_type?: string | null
+          created_at?: string
+          email: string
+          email_sent?: boolean
+          id?: string
+          message?: string | null
+          name: string
+          phone?: string | null
+          source?: string
+          status?: Database["public"]["Enums"]["lead_status"]
+          updated_at?: string
+        }
+        Update: {
+          best_time_to_reach?: string | null
+          case_type?: string | null
+          created_at?: string
+          email?: string
+          email_sent?: boolean
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string | null
+          source?: string
+          status?: Database["public"]["Enums"]["lead_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       posts: {
         Row: {
           body: string
@@ -396,6 +441,7 @@ export type Database = {
       app_role: "super_admin" | "admin"
       automation_run_status: "success" | "failed"
       automation_trigger_type: "manual" | "scheduled"
+      lead_status: "new" | "read" | "replied" | "archived"
       post_source: "manual" | "auto_generated"
       post_status: "draft" | "published" | "scheduled"
       topic_status: "pending" | "generated"
@@ -530,6 +576,7 @@ export const Constants = {
       app_role: ["super_admin", "admin"],
       automation_run_status: ["success", "failed"],
       automation_trigger_type: ["manual", "scheduled"],
+      lead_status: ["new", "read", "replied", "archived"],
       post_source: ["manual", "auto_generated"],
       post_status: ["draft", "published", "scheduled"],
       topic_status: ["pending", "generated"],
