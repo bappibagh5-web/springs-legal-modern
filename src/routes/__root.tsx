@@ -132,6 +132,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    let cancelled = false;
+    void import("@/lib/analytics").then((m) => {
+      if (cancelled) return;
+      m.installAnalytics();
+      m.trackPageview();
+      const unsub = router.subscribe("onResolved", () => m.trackPageview());
+      (window as unknown as { __klfAnalyticsUnsub?: () => void }).__klfAnalyticsUnsub = unsub;
+    });
+    return () => {
+      cancelled = true;
+      const w = window as unknown as { __klfAnalyticsUnsub?: () => void };
+      w.__klfAnalyticsUnsub?.();
+    };
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -140,3 +157,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
