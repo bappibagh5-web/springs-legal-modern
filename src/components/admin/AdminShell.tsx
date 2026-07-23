@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import {
-  LayoutDashboard, FileText, FolderTree, Hash, Bot, Share2, Code2,
+  LayoutDashboard, FileText, FolderTree, Hash, Bot, Code2,
   BarChart3, Inbox, Users, Settings, LogOut, ShieldCheck, Loader2,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -23,7 +23,7 @@ const NAV = [
   { to: "/admin/categories", label: "Categories", icon: FolderTree },
   { to: "/admin/topics", label: "Topics", icon: Hash },
   { to: "/admin/blog-automation", label: "Blog Automation", icon: Bot },
-  { to: "/admin/social-automation", label: "Social Automation", icon: Share2 },
+  
   { to: "/admin/seo-schema", label: "SEO Schema", icon: Code2 },
   { to: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/admin/leads", label: "Leads", icon: Inbox },

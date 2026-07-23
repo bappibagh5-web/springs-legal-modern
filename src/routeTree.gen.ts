@@ -19,7 +19,6 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as CategoryIndexRouteImport } from './routes/$category.index'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
-import { Route as AdminSocialAutomationRouteImport } from './routes/admin.social-automation'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminSeoSchemaRouteImport } from './routes/admin.seo-schema'
 import { Route as AdminPostsRouteImport } from './routes/admin.posts'
@@ -79,11 +78,6 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
 const AdminTopicsRoute = AdminTopicsRouteImport.update({
   id: '/topics',
   path: '/topics',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSocialAutomationRoute = AdminSocialAutomationRouteImport.update({
-  id: '/social-automation',
-  path: '/social-automation',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminSettingsRoute = AdminSettingsRouteImport.update({
@@ -154,7 +148,6 @@ export interface FileRoutesByFullPath {
   '/admin/posts': typeof AdminPostsRoute
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/social-automation': typeof AdminSocialAutomationRoute
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/$category/': typeof CategoryIndexRoute
@@ -176,7 +169,6 @@ export interface FileRoutesByTo {
   '/admin/posts': typeof AdminPostsRoute
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/social-automation': typeof AdminSocialAutomationRoute
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/$category': typeof CategoryIndexRoute
@@ -200,7 +192,6 @@ export interface FileRoutesById {
   '/admin/posts': typeof AdminPostsRoute
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/social-automation': typeof AdminSocialAutomationRoute
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/$category/': typeof CategoryIndexRoute
@@ -225,7 +216,6 @@ export interface FileRouteTypes {
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
-    | '/admin/social-automation'
     | '/admin/topics'
     | '/admin/users'
     | '/$category/'
@@ -247,7 +237,6 @@ export interface FileRouteTypes {
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
-    | '/admin/social-automation'
     | '/admin/topics'
     | '/admin/users'
     | '/$category'
@@ -270,7 +259,6 @@ export interface FileRouteTypes {
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
-    | '/admin/social-automation'
     | '/admin/topics'
     | '/admin/users'
     | '/$category/'
@@ -360,13 +348,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTopicsRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/admin/social-automation': {
-      id: '/admin/social-automation'
-      path: '/social-automation'
-      fullPath: '/admin/social-automation'
-      preLoaderRoute: typeof AdminSocialAutomationRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/admin/settings': {
       id: '/admin/settings'
       path: '/settings'
@@ -450,7 +431,6 @@ interface AdminRouteChildren {
   AdminPostsRoute: typeof AdminPostsRoute
   AdminSeoSchemaRoute: typeof AdminSeoSchemaRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
-  AdminSocialAutomationRoute: typeof AdminSocialAutomationRoute
   AdminTopicsRoute: typeof AdminTopicsRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -466,7 +446,6 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminPostsRoute: AdminPostsRoute,
   AdminSeoSchemaRoute: AdminSeoSchemaRoute,
   AdminSettingsRoute: AdminSettingsRoute,
-  AdminSocialAutomationRoute: AdminSocialAutomationRoute,
   AdminTopicsRoute: AdminTopicsRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
