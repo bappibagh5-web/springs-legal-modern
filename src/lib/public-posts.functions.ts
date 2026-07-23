@@ -27,6 +27,7 @@ export type PublicPostFull = PublicPostCard & {
   tags: string[];
   meta_description: string | null;
   views: number;
+  schema_jsonld: any | null;
 };
 
 async function signIfPath(path: string | null): Promise<string | null> {
