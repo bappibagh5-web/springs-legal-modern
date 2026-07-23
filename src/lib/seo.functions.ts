@@ -341,8 +341,39 @@ export const updateGlobalSchema = createServerFn({ method: "POST" })
       const { error } = await supabaseAdmin.from("global_schema").insert(data as any);
       if (error) throw new Error(error.message);
     }
+    // Sync auto-managed JSON-LD snippet for Code Manager visibility
+    try {
+      const { syncSeoSchemaSnippet } = await import("@/lib/settings.functions");
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": data.business_type || "LocalBusiness",
+            name: data.business_name,
+            url: data.website_url || undefined,
+            telephone: data.phone || undefined,
+            email: data.email || undefined,
+            address: data.address_street ? {
+              "@type": "PostalAddress",
+              streetAddress: data.address_street,
+              addressLocality: data.address_city,
+              addressRegion: data.address_region,
+              postalCode: data.address_postal_code,
+              addressCountry: data.address_country,
+            } : undefined,
+            areaServed: data.service_area,
+            description: data.organization_description || undefined,
+            logo: data.logo_url || undefined,
+            sameAs: data.social_links,
+          },
+          { "@type": "WebSite", name: data.business_name, url: data.website_url || undefined },
+        ],
+      };
+      await syncSeoSchemaSnippet(jsonLd);
+    } catch { /* non-fatal */ }
     return { ok: true };
   });
+
 
 export const runSchemaAudit = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
