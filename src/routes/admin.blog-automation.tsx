@@ -89,18 +89,27 @@ function BlogAutomationPage() {
   const [topics, setTopics] = useState<TopicRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [running, setRunning] = useState(false);
-  const [nextScheduled, setNextScheduled] = useState<Date>(() => computeNextScheduled());
+  const [settings, setSettings] = useState<ScheduleSettings>({
+    frequency: "daily", time: "09:00", timezone: "MST", postsPerRun: 1,
+  });
+  const [hour, minute] = settings.time.split(":").map((n) => parseInt(n) || 0);
+  const [nextScheduled, setNextScheduled] = useState<Date>(() => computeNextScheduled(9, 0, "daily"));
 
   const fetchRuns = useServerFn(listAutomationRuns);
   const fetchTopics = useServerFn(listTopics);
   const runNow = useServerFn(runAutomationNow);
+  const fetchSchedule = useServerFn(getScheduleSettings);
 
   async function refresh() {
     setLoading(true);
     try {
-      const [r, t] = await Promise.all([fetchRuns(), fetchTopics()]);
+      const [r, t, s] = await Promise.all([fetchRuns(), fetchTopics(), fetchSchedule()]);
       setRuns(r as AutomationRun[]);
       setTopics(t as TopicRow[]);
+      const sched = s as ScheduleSettings;
+      setSettings(sched);
+      const [h, m] = sched.time.split(":").map((n) => parseInt(n) || 0);
+      setNextScheduled(computeNextScheduled(h, m, sched.frequency));
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Failed to load automation data");
     } finally {
@@ -108,6 +117,7 @@ function BlogAutomationPage() {
     }
   }
   useEffect(() => { refresh(); }, []);
+
 
   const pendingTopics = useMemo(
     () => topics
