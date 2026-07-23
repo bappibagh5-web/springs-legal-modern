@@ -29,6 +29,7 @@ import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as AdminBlogAutomationRouteImport } from './routes/admin.blog-automation'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as CategoryServiceRouteImport } from './routes/$category.$service'
+import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
 import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
 import { Route as AdminPostsIdEditRouteImport } from './routes/admin.posts.$id.edit'
 
@@ -132,6 +133,11 @@ const CategoryServiceRoute = CategoryServiceRouteImport.update({
   path: '/$category/$service',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminPostsRoute,
+} as any)
 const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
   id: '/new',
   path: '/new',
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/$category/': typeof CategoryIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/posts/': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
 }
 export interface FileRoutesByTo {
@@ -180,7 +187,6 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/topics': typeof AdminTopicsRoute
@@ -188,6 +194,7 @@ export interface FileRoutesByTo {
   '/$category': typeof CategoryIndexRoute
   '/admin': typeof AdminIndexRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/posts': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
 }
 export interface FileRoutesById {
@@ -213,6 +220,7 @@ export interface FileRoutesById {
   '/$category/': typeof CategoryIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/posts/': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
 }
 export interface FileRouteTypes {
@@ -239,6 +247,7 @@ export interface FileRouteTypes {
     | '/$category/'
     | '/admin/'
     | '/admin/posts/new'
+    | '/admin/posts/'
     | '/admin/posts/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -254,7 +263,6 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
-    | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
     | '/admin/topics'
@@ -262,6 +270,7 @@ export interface FileRouteTypes {
     | '/$category'
     | '/admin'
     | '/admin/posts/new'
+    | '/admin/posts'
     | '/admin/posts/$id/edit'
   id:
     | '__root__'
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/$category/'
     | '/admin/'
     | '/admin/posts/new'
+    | '/admin/posts/'
     | '/admin/posts/$id/edit'
   fileRoutesById: FileRoutesById
 }
@@ -442,6 +452,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoryServiceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/posts/': {
+      id: '/admin/posts/'
+      path: '/'
+      fullPath: '/admin/posts/'
+      preLoaderRoute: typeof AdminPostsIndexRouteImport
+      parentRoute: typeof AdminPostsRoute
+    }
     '/admin/posts/new': {
       id: '/admin/posts/new'
       path: '/new'
@@ -461,11 +478,13 @@ declare module '@tanstack/react-router' {
 
 interface AdminPostsRouteChildren {
   AdminPostsNewRoute: typeof AdminPostsNewRoute
+  AdminPostsIndexRoute: typeof AdminPostsIndexRoute
   AdminPostsIdEditRoute: typeof AdminPostsIdEditRoute
 }
 
 const AdminPostsRouteChildren: AdminPostsRouteChildren = {
   AdminPostsNewRoute: AdminPostsNewRoute,
+  AdminPostsIndexRoute: AdminPostsIndexRoute,
   AdminPostsIdEditRoute: AdminPostsIdEditRoute,
 }
 
