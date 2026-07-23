@@ -254,9 +254,9 @@ Guidelines:
 Return the fields exactly as specified.`;
 
     try {
-      const { experimental_output: output } = await generateText({
+      const { output } = await generateText({
         model: gateway("google/gemini-3.6-flash"),
-        experimental_output: Output.object({
+        output: Output.object({
           schema: z.object({
             title: z.string(),
             excerpt: z.string(),
