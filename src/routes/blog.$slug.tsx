@@ -117,7 +117,8 @@ function BlogPostPage() {
 
   useEffect(() => {
     setShareUrl(window.location.href);
-  }, [slug]);
+    window.trackEvent?.("blog_post_read", "engagement", post.title);
+  }, [slug, post.title]);
 
   async function handleCopy() {
     try {
