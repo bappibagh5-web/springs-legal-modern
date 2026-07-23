@@ -14,6 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          browser: string | null
+          category: string | null
+          created_at: string
+          device_type: string | null
+          duration_seconds: number | null
+          event_type: string
+          id: string
+          label: string | null
+          page_path: string | null
+          referrer: string | null
+          session_id: string | null
+          traffic_source: string | null
+          utm_campaign: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          visitor_id: string | null
+        }
+        Insert: {
+          browser?: string | null
+          category?: string | null
+          created_at?: string
+          device_type?: string | null
+          duration_seconds?: number | null
+          event_type: string
+          id?: string
+          label?: string | null
+          page_path?: string | null
+          referrer?: string | null
+          session_id?: string | null
+          traffic_source?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          visitor_id?: string | null
+        }
+        Update: {
+          browser?: string | null
+          category?: string | null
+          created_at?: string
+          device_type?: string | null
+          duration_seconds?: number | null
+          event_type?: string
+          id?: string
+          label?: string | null
+          page_path?: string | null
+          referrer?: string | null
+          session_id?: string | null
+          traffic_source?: string | null
+          utm_campaign?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          visitor_id?: string | null
+        }
+        Relationships: []
+      }
       automation_runs: {
         Row: {
           created_at: string
