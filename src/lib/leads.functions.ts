@@ -48,23 +48,51 @@ const submitSchema = z.object({
 async function tryNotifyAdmin(lead: {
   id: string; name: string; email: string; phone: string | null;
   case_type: string | null; message: string | null; best_time_to_reach: string | null;
+  source?: string;
 }): Promise<boolean> {
-  const apiKey = process.env.LOVABLE_API_KEY;
-  if (!apiKey) return false;
   try {
+    const { sendEmail } = await import("@/lib/settings.functions");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: gs } = await supabaseAdmin
-      .from("global_schema").select("email, business_name").limit(1).maybeSingle();
-    const to = gs?.email;
-    if (!to) return false;
-    // Best-effort: use Lovable AI Gateway is not an email sender. We treat "no provider configured" as no-op.
-    // Reserved hook for future email integration; return false silently.
-    void lead; void to;
-    return false;
+    // Prefer admin notification email from settings; fall back to global_schema email.
+    const { data: setting } = await supabaseAdmin
+      .from("site_settings").select("value").eq("key", "email").maybeSingle();
+    let toList: string[] = [];
+    const adminField = (setting?.value as any)?.general?.adminNotificationEmail as string | undefined;
+    if (adminField) toList = adminField.split(",").map((s) => s.trim()).filter(Boolean);
+    if (toList.length === 0) {
+      const { data: gs } = await supabaseAdmin
+        .from("global_schema").select("email").limit(1).maybeSingle();
+      if ((gs as any)?.email) toList = [(gs as any).email];
+    }
+    if (toList.length === 0) return false;
+
+    const html = `<div style="font-family:system-ui;padding:24px;max-width:600px">
+      <h2 style="color:#004AAD;margin:0 0 12px">New ${lead.source === "contact_form" ? "Contact" : "Consultation"} Request</h2>
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <tr><td style="padding:6px 8px;color:#666">Name</td><td style="padding:6px 8px"><b>${escapeHtml(lead.name)}</b></td></tr>
+        <tr><td style="padding:6px 8px;color:#666">Email</td><td style="padding:6px 8px">${escapeHtml(lead.email)}</td></tr>
+        <tr><td style="padding:6px 8px;color:#666">Phone</td><td style="padding:6px 8px">${escapeHtml(lead.phone || "—")}</td></tr>
+        <tr><td style="padding:6px 8px;color:#666">Case Type</td><td style="padding:6px 8px">${escapeHtml(lead.case_type || "—")}</td></tr>
+        <tr><td style="padding:6px 8px;color:#666">Best Time</td><td style="padding:6px 8px">${escapeHtml(lead.best_time_to_reach || "—")}</td></tr>
+      </table>
+      <div style="margin-top:16px;padding:12px;background:#f5f7fb;border-radius:8px;white-space:pre-wrap">${escapeHtml(lead.message || "")}</div>
+    </div>`;
+    const res = await sendEmail({
+      to: toList,
+      subject: `New ${lead.source === "contact_form" ? "contact" : "consultation"} request — ${lead.name}`,
+      html,
+      text: `New request from ${lead.name} <${lead.email}>${lead.phone ? " · " + lead.phone : ""}\nCase: ${lead.case_type || "—"}\n\n${lead.message || ""}`,
+    });
+    return res.ok;
   } catch {
     return false;
   }
 }
+
+function escapeHtml(s: string): string {
+  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
+}
+
 
 export const submitConsultationLead = createServerFn({ method: "POST" })
   .inputValidator((d: unknown) => submitSchema.parse(d))
@@ -83,7 +111,7 @@ export const submitConsultationLead = createServerFn({ method: "POST" })
         status: "new",
         email_sent: false,
       })
-      .select("id, name, email, phone, case_type, message, best_time_to_reach")
+      .select("id, name, email, phone, case_type, message, best_time_to_reach, source")
       .single();
     if (error) throw new Error(error.message);
 

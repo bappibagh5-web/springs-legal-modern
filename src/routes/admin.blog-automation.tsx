@@ -9,6 +9,7 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { Button } from "@/components/ui/button";
 import { listAutomationRuns, runAutomationNow, type AutomationRun } from "@/lib/automation.functions";
 import { listTopics, type TopicRow } from "@/lib/topics.functions";
+import { getScheduleSettings, type ScheduleSettings } from "@/lib/settings.functions";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin/blog-automation")({
@@ -16,16 +17,16 @@ export const Route = createFileRoute("/admin/blog-automation")({
   component: BlogAutomationPage,
 });
 
-// Placeholder settings until Settings module is built.
-const SETTINGS = {
+const DEFAULT_SETTINGS = {
   frequency: "Daily",
-  time: "09:00 EST",
+  time: "09:00 MST",
   postsPerRun: 1,
   autoPublish: false,
   model: "google/gemini-3.6-flash",
   hour: 9,
   minute: 0,
 };
+
 
 function fmtDateTime(iso: string | null) {
   if (!iso) return "—";
@@ -40,12 +41,15 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-function computeNextScheduled(): Date {
+function computeNextScheduled(hour: number, minute: number, frequency: string): Date {
   const next = new Date();
-  next.setHours(SETTINGS.hour, SETTINGS.minute, 0, 0);
-  if (next.getTime() <= Date.now()) next.setDate(next.getDate() + 1);
+  next.setHours(hour, minute, 0, 0);
+  if (next.getTime() <= Date.now()) {
+    next.setDate(next.getDate() + (frequency === "weekly" ? 7 : 1));
+  }
   return next;
 }
+
 
 function StatCard({ icon: Icon, iconBg, label, value, subtext }: {
   icon: any; iconBg: string; label: string; value: string; subtext: string;
@@ -85,18 +89,27 @@ function BlogAutomationPage() {
   const [topics, setTopics] = useState<TopicRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [running, setRunning] = useState(false);
-  const [nextScheduled, setNextScheduled] = useState<Date>(() => computeNextScheduled());
+  const [settings, setSettings] = useState<ScheduleSettings>({
+    frequency: "daily", time: "09:00", timezone: "MST", postsPerRun: 1,
+  });
+  const [hour, minute] = settings.time.split(":").map((n) => parseInt(n) || 0);
+  const [nextScheduled, setNextScheduled] = useState<Date>(() => computeNextScheduled(9, 0, "daily"));
 
   const fetchRuns = useServerFn(listAutomationRuns);
   const fetchTopics = useServerFn(listTopics);
   const runNow = useServerFn(runAutomationNow);
+  const fetchSchedule = useServerFn(getScheduleSettings);
 
   async function refresh() {
     setLoading(true);
     try {
-      const [r, t] = await Promise.all([fetchRuns(), fetchTopics()]);
+      const [r, t, s] = await Promise.all([fetchRuns(), fetchTopics(), fetchSchedule()]);
       setRuns(r as AutomationRun[]);
       setTopics(t as TopicRow[]);
+      const sched = s as ScheduleSettings;
+      setSettings(sched);
+      const [h, m] = sched.time.split(":").map((n) => parseInt(n) || 0);
+      setNextScheduled(computeNextScheduled(h, m, sched.frequency));
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Failed to load automation data");
     } finally {
@@ -104,6 +117,7 @@ function BlogAutomationPage() {
     }
   }
   useEffect(() => { refresh(); }, []);
+
 
   const pendingTopics = useMemo(
     () => topics
@@ -177,7 +191,7 @@ function BlogAutomationPage() {
   }
 
   function handleRecalculate() {
-    const next = computeNextScheduled();
+    const next = computeNextScheduled(hour, minute, settings.frequency);
     setNextScheduled(next);
     toast.success(`Next run recalculated: ${fmtDateTime(next.toISOString())}`);
   }
@@ -239,7 +253,7 @@ function BlogAutomationPage() {
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
               <h3 className="text-base font-semibold text-white">14-Day Schedule</h3>
               <div className="text-xs text-white/50">
-                {SETTINGS.frequency.toLowerCase()} · {SETTINGS.time} · {SETTINGS.postsPerRun}/run
+                {settings.frequency} · {settings.time} {settings.timezone} · {settings.postsPerRun}/run
               </div>
             </div>
             <div className="grid grid-cols-7 gap-2">
@@ -398,11 +412,10 @@ function BlogAutomationPage() {
             </div>
             <dl className="space-y-2 text-sm">
               {[
-                ["Frequency", SETTINGS.frequency],
-                ["Schedule time", SETTINGS.time],
-                ["Posts per run", String(SETTINGS.postsPerRun)],
-                ["Auto-publish", SETTINGS.autoPublish ? "Yes" : "No"],
-                ["AI model", SETTINGS.model],
+                ["Frequency", settings.frequency],
+                ["Schedule time", `${settings.time} ${settings.timezone}`],
+                ["Posts per run", String(settings.postsPerRun)],
+                ["AI model", DEFAULT_SETTINGS.model],
               ].map(([k, v]) => (
                 <div key={k} className="flex items-center justify-between gap-3">
                   <dt className="text-white/50">{k}</dt>
@@ -411,7 +424,7 @@ function BlogAutomationPage() {
               ))}
             </dl>
             <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/40">
-              Placeholder defaults — Settings module not built yet.
+              Live settings from the Settings module.
             </div>
             <Link
               to="/admin/settings"

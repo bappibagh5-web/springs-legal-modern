@@ -155,6 +155,48 @@ export type Database = {
         }
         Relationships: []
       }
+      code_snippets: {
+        Row: {
+          active: boolean
+          code: string
+          created_at: string
+          description: string | null
+          id: string
+          is_system_managed: boolean
+          load_on: string
+          location: Database["public"]["Enums"]["snippet_location"]
+          name: string
+          priority: number
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          code?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_system_managed?: boolean
+          load_on?: string
+          location?: Database["public"]["Enums"]["snippet_location"]
+          name: string
+          priority?: number
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          code?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_system_managed?: boolean
+          load_on?: string
+          location?: Database["public"]["Enums"]["snippet_location"]
+          name?: string
+          priority?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       global_schema: {
         Row: {
           address_city: string | null
@@ -427,6 +469,30 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          category: string
+          id: string
+          key: string
+          updated_at: string
+          value: Json
+        }
+        Insert: {
+          category: string
+          id?: string
+          key: string
+          updated_at?: string
+          value?: Json
+        }
+        Update: {
+          category?: string
+          id?: string
+          key?: string
+          updated_at?: string
+          value?: Json
+        }
+        Relationships: []
+      }
       topics: {
         Row: {
           category_id: string | null
@@ -493,6 +559,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_admin_user: { Args: never; Returns: boolean }
     }
     Enums: {
       app_role: "super_admin" | "admin"
@@ -501,6 +568,7 @@ export type Database = {
       lead_status: "new" | "read" | "replied" | "archived"
       post_source: "manual" | "auto_generated"
       post_status: "draft" | "published" | "scheduled"
+      snippet_location: "head" | "body_start" | "body_end"
       topic_status: "pending" | "generated"
       user_status: "active" | "inactive"
     }
@@ -636,6 +704,7 @@ export const Constants = {
       lead_status: ["new", "read", "replied", "archived"],
       post_source: ["manual", "auto_generated"],
       post_status: ["draft", "published", "scheduled"],
+      snippet_location: ["head", "body_start", "body_end"],
       topic_status: ["pending", "generated"],
       user_status: ["active", "inactive"],
     },

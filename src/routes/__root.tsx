@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import favicon32 from "@/assets/klf-icon.png.asset.json";
 import appleTouchIcon from "@/assets/klf-icon.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CodeSnippetsInjector } from "@/components/CodeSnippetsInjector";
 
 function NotFoundComponent() {
   return (
@@ -154,7 +155,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <CodeSnippetsInjector />
     </QueryClientProvider>
   );
 }
+
 
