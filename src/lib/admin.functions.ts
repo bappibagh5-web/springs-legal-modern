@@ -41,6 +41,50 @@ export const getMyProfile = createServerFn({ method: "GET" })
     return data;
   });
 
+export type DashboardStats = {
+  posts: { total: number; published: number; drafts: number; scheduled: number };
+  topicsPending: number;
+  totalViews: number;
+  categories: number;
+  team: { total: number; admins: number; superAdmins: number };
+};
+
+export const getDashboardStats = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }): Promise<DashboardStats> => {
+    await assertCallerRole(context.userId, ["super_admin", "admin"]);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const [postsRes, topicsRes, catsRes, profRes] = await Promise.all([
+      supabaseAdmin.from("posts").select("status, views"),
+      supabaseAdmin.from("topics").select("id", { count: "exact", head: true }).eq("status", "pending"),
+      supabaseAdmin.from("categories").select("id", { count: "exact", head: true }),
+      supabaseAdmin.from("profiles").select("role, status"),
+    ]);
+    if (postsRes.error) throw new Error(postsRes.error.message);
+    if (topicsRes.error) throw new Error(topicsRes.error.message);
+    if (catsRes.error) throw new Error(catsRes.error.message);
+    if (profRes.error) throw new Error(profRes.error.message);
+
+    const posts = postsRes.data ?? [];
+    const profiles = (profRes.data ?? []).filter((p: any) => p.status === "active");
+    return {
+      posts: {
+        total: posts.length,
+        published: posts.filter((p: any) => p.status === "published").length,
+        drafts: posts.filter((p: any) => p.status === "draft").length,
+        scheduled: posts.filter((p: any) => p.status === "scheduled").length,
+      },
+      topicsPending: topicsRes.count ?? 0,
+      totalViews: posts.reduce((s: number, p: any) => s + (p.views ?? 0), 0),
+      categories: catsRes.count ?? 0,
+      team: {
+        total: profiles.length,
+        admins: profiles.filter((p: any) => p.role === "admin").length,
+        superAdmins: profiles.filter((p: any) => p.role === "super_admin").length,
+      },
+    };
+  });
+
 export const touchLastLogin = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
