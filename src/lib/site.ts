@@ -129,6 +129,7 @@ export const CATEGORIES: ServiceCategory[] = [
 export const NAV_LINKS = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
+  { label: "Blog", to: "/blog" },
   { label: "Team", to: "/team" },
   { label: "Contact", to: "/contact" },
 ] as const;
