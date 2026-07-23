@@ -149,6 +149,8 @@ Guidelines:
         status: "failed",
         trigger_type: "manual",
         error_message: msg,
+        duration_seconds: durationSeconds,
+        word_count: wordCount,
       });
       throw new Error(msg);
     }
