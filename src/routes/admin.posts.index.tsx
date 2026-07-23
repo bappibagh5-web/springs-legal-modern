@@ -37,7 +37,7 @@ function PostsListPage() {
   const [rows, setRows] = useState<PostRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
-  const [status, setStatus] = useState<"all" | "draft" | "published">("all");
+  const [status, setStatus] = useState<"all" | "draft" | "published" | "scheduled">("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [deleteTarget, setDeleteTarget] = useState<PostRow | null>(null);
   const [bulkOpen, setBulkOpen] = useState(false);
