@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import {
-  LayoutDashboard, FileText, FolderTree, Hash, Bot, Share2, Code2,
+  LayoutDashboard, FileText, FolderTree, Hash, Bot, Code2,
   BarChart3, Inbox, Users, Settings, LogOut, ShieldCheck, Loader2,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
