@@ -79,7 +79,7 @@ export const submitConsultationLead = createServerFn({ method: "POST" })
         case_type: data.case_type || null,
         message: data.message || null,
         best_time_to_reach: data.best_time_to_reach || null,
-        source: "consultation_form",
+        source: data.source ?? "consultation_form",
         status: "new",
         email_sent: false,
       })
