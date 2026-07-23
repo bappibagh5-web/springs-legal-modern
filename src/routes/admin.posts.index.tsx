@@ -145,6 +145,7 @@ function PostsListPage() {
           <SelectContent className="bg-[#111a2e] border-white/10 text-white">
             <SelectItem value="all">All Statuses</SelectItem>
             <SelectItem value="published">Published</SelectItem>
+            <SelectItem value="scheduled">Scheduled</SelectItem>
             <SelectItem value="draft">Draft</SelectItem>
           </SelectContent>
         </Select>
