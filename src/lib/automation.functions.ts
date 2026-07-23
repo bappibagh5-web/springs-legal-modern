@@ -168,6 +168,8 @@ Guidelines:
       topic_title: topic.title,
       status: "success",
       trigger_type: "manual",
+      duration_seconds: durationSeconds,
+      word_count: wordCount,
     });
 
     return { ok: true, postId, title: generated.title };
