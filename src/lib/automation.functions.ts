@@ -71,6 +71,7 @@ export const runAutomationNow = createServerFn({ method: "POST" })
     if (!key) throw new Error("Missing LOVABLE_API_KEY");
 
     let generated: { title: string; excerpt: string; meta_description: string; body: string };
+    const startedAt = Date.now();
     try {
       const { generateText, Output } = await import("ai");
       const { createLovableAiGatewayProvider } = await import("@/lib/ai-gateway.server");
@@ -110,9 +111,12 @@ Guidelines:
         status: "failed",
         trigger_type: "manual",
         error_message: msg,
+        duration_seconds: Math.round((Date.now() - startedAt) / 1000),
       });
       throw new Error(`AI generation failed: ${msg}`);
     }
+    const durationSeconds = Math.round((Date.now() - startedAt) / 1000);
+    const wordCount = generated.body.replace(/[#*_>`~\-]/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
 
     // Create post as draft with unique slug
     let slug = slugify(generated.title);
