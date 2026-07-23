@@ -77,7 +77,7 @@ export function computeSeoScore(input: {
   return { score, checks };
 }
 
-function buildBlogPostingSchema(p: any, business: any): Record<string, unknown> {
+function buildBlogPostingSchema(p: any, business: any): any {
   const url = `${SITE_URL}/blog/${p.slug}`;
   const image = p.og_image_url || (p.featured_image_url && /^https?:/i.test(p.featured_image_url) ? p.featured_image_url : null);
   return {
