@@ -29,6 +29,8 @@ import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as AdminBlogAutomationRouteImport } from './routes/admin.blog-automation'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as CategoryServiceRouteImport } from './routes/$category.$service'
+import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
+import { Route as AdminPostsIdEditRouteImport } from './routes/admin.posts.$id.edit'
 
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
@@ -130,6 +132,16 @@ const CategoryServiceRoute = CategoryServiceRouteImport.update({
   path: '/$category/$service',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => AdminPostsRoute,
+} as any)
+const AdminPostsIdEditRoute = AdminPostsIdEditRouteImport.update({
+  id: '/$id/edit',
+  path: '/$id/edit',
+  getParentRoute: () => AdminPostsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,13 +157,15 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/posts': typeof AdminPostsRoute
+  '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/$category/': typeof CategoryIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -166,13 +180,15 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/posts': typeof AdminPostsRoute
+  '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/$category': typeof CategoryIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -189,13 +205,15 @@ export interface FileRoutesById {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/posts': typeof AdminPostsRoute
+  '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/$category/': typeof CategoryIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -220,6 +238,8 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/$category/'
     | '/admin/'
+    | '/admin/posts/new'
+    | '/admin/posts/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -241,6 +261,8 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/$category'
     | '/admin'
+    | '/admin/posts/new'
+    | '/admin/posts/$id/edit'
   id:
     | '__root__'
     | '/'
@@ -263,6 +285,8 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/$category/'
     | '/admin/'
+    | '/admin/posts/new'
+    | '/admin/posts/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -418,8 +442,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoryServiceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/posts/new': {
+      id: '/admin/posts/new'
+      path: '/new'
+      fullPath: '/admin/posts/new'
+      preLoaderRoute: typeof AdminPostsNewRouteImport
+      parentRoute: typeof AdminPostsRoute
+    }
+    '/admin/posts/$id/edit': {
+      id: '/admin/posts/$id/edit'
+      path: '/$id/edit'
+      fullPath: '/admin/posts/$id/edit'
+      preLoaderRoute: typeof AdminPostsIdEditRouteImport
+      parentRoute: typeof AdminPostsRoute
+    }
   }
 }
+
+interface AdminPostsRouteChildren {
+  AdminPostsNewRoute: typeof AdminPostsNewRoute
+  AdminPostsIdEditRoute: typeof AdminPostsIdEditRoute
+}
+
+const AdminPostsRouteChildren: AdminPostsRouteChildren = {
+  AdminPostsNewRoute: AdminPostsNewRoute,
+  AdminPostsIdEditRoute: AdminPostsIdEditRoute,
+}
+
+const AdminPostsRouteWithChildren = AdminPostsRoute._addFileChildren(
+  AdminPostsRouteChildren,
+)
 
 interface AdminRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
@@ -428,7 +480,7 @@ interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
   AdminLoginRoute: typeof AdminLoginRoute
-  AdminPostsRoute: typeof AdminPostsRoute
+  AdminPostsRoute: typeof AdminPostsRouteWithChildren
   AdminSeoSchemaRoute: typeof AdminSeoSchemaRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminTopicsRoute: typeof AdminTopicsRoute
@@ -443,7 +495,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLeadsRoute: AdminLeadsRoute,
   AdminLoginRoute: AdminLoginRoute,
-  AdminPostsRoute: AdminPostsRoute,
+  AdminPostsRoute: AdminPostsRouteWithChildren,
   AdminSeoSchemaRoute: AdminSeoSchemaRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminTopicsRoute: AdminTopicsRoute,
