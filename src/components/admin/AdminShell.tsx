@@ -26,7 +26,7 @@ const NAV = [
   
   { to: "/admin/seo-schema", label: "SEO Schema", icon: Code2 },
   { to: "/admin/analytics", label: "Analytics", icon: BarChart3 },
-  { to: "/admin/leads", label: "Leads", icon: Inbox },
+  { to: "/admin/leads", label: "Contacts", icon: Inbox },
   { to: "/admin/users", label: "Users", icon: Users },
   { to: "/admin/settings", label: "Settings", icon: Settings },
 ] as const;
