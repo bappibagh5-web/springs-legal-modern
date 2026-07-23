@@ -27,6 +27,7 @@ export type PublicPostFull = PublicPostCard & {
   tags: string[];
   meta_description: string | null;
   views: number;
+  schema_jsonld: any | null;
 };
 
 async function signIfPath(path: string | null): Promise<string | null> {
@@ -98,6 +99,7 @@ export const getPublicPost = createServerFn({ method: "GET" })
       tags: Array.isArray((row as any).tags) ? (row as any).tags : [],
       meta_description: (row as any).meta_description ?? null,
       views: (row as any).views ?? 0,
+      schema_jsonld: (row as any).schema_jsonld ?? null,
     };
 
     // Fire-and-forget view increment (server-side, bypassing RLS via admin).
