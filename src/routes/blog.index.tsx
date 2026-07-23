@@ -13,7 +13,7 @@ const blogQueryOptions = queryOptions({
   queryFn: () => listPublicPosts(),
 });
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Blog — Legal Insights | The Kohn Law Firm" },
