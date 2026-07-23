@@ -20,6 +20,8 @@ export type AutomationRun = {
   trigger_type: "manual" | "scheduled";
   error_message: string | null;
   created_at: string;
+  duration_seconds: number | null;
+  word_count: number | null;
   post: { id: string; title: string; slug: string; status: string } | null;
 };
 
@@ -69,6 +71,7 @@ export const runAutomationNow = createServerFn({ method: "POST" })
     if (!key) throw new Error("Missing LOVABLE_API_KEY");
 
     let generated: { title: string; excerpt: string; meta_description: string; body: string };
+    const startedAt = Date.now();
     try {
       const { generateText, Output } = await import("ai");
       const { createLovableAiGatewayProvider } = await import("@/lib/ai-gateway.server");
@@ -108,9 +111,12 @@ Guidelines:
         status: "failed",
         trigger_type: "manual",
         error_message: msg,
+        duration_seconds: Math.round((Date.now() - startedAt) / 1000),
       });
       throw new Error(`AI generation failed: ${msg}`);
     }
+    const durationSeconds = Math.round((Date.now() - startedAt) / 1000);
+    const wordCount = generated.body.replace(/[#*_>`~\-]/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
 
     // Create post as draft with unique slug
     let slug = slugify(generated.title);
@@ -143,6 +149,8 @@ Guidelines:
         status: "failed",
         trigger_type: "manual",
         error_message: msg,
+        duration_seconds: durationSeconds,
+        word_count: wordCount,
       });
       throw new Error(msg);
     }
@@ -160,6 +168,8 @@ Guidelines:
       topic_title: topic.title,
       status: "success",
       trigger_type: "manual",
+      duration_seconds: durationSeconds,
+      word_count: wordCount,
     });
 
     return { ok: true, postId, title: generated.title };

@@ -1,0 +1,1 @@
+ALTER TABLE public.automation_runs ADD COLUMN IF NOT EXISTS duration_seconds integer, ADD COLUMN IF NOT EXISTS word_count integer;
