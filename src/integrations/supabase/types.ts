@@ -44,6 +44,68 @@ export type Database = {
         }
         Relationships: []
       }
+      posts: {
+        Row: {
+          body: string
+          category_id: string | null
+          created_at: string
+          featured_image_url: string | null
+          id: string
+          meta_description: string | null
+          published_at: string | null
+          read_time_minutes: number
+          scheduled_at: string | null
+          slug: string
+          source: Database["public"]["Enums"]["post_source"]
+          status: Database["public"]["Enums"]["post_status"]
+          title: string
+          updated_at: string
+          views: number
+        }
+        Insert: {
+          body?: string
+          category_id?: string | null
+          created_at?: string
+          featured_image_url?: string | null
+          id?: string
+          meta_description?: string | null
+          published_at?: string | null
+          read_time_minutes?: number
+          scheduled_at?: string | null
+          slug: string
+          source?: Database["public"]["Enums"]["post_source"]
+          status?: Database["public"]["Enums"]["post_status"]
+          title: string
+          updated_at?: string
+          views?: number
+        }
+        Update: {
+          body?: string
+          category_id?: string | null
+          created_at?: string
+          featured_image_url?: string | null
+          id?: string
+          meta_description?: string | null
+          published_at?: string | null
+          read_time_minutes?: number
+          scheduled_at?: string | null
+          slug?: string
+          source?: Database["public"]["Enums"]["post_source"]
+          status?: Database["public"]["Enums"]["post_status"]
+          title?: string
+          updated_at?: string
+          views?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
@@ -119,6 +181,13 @@ export type Database = {
             referencedRelation: "categories"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "topics_generated_post_id_fkey"
+            columns: ["generated_post_id"]
+            isOneToOne: false
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
         ]
       }
     }
@@ -136,6 +205,8 @@ export type Database = {
     }
     Enums: {
       app_role: "super_admin" | "admin"
+      post_source: "manual" | "auto_generated"
+      post_status: "draft" | "published"
       topic_status: "pending" | "generated"
       user_status: "active" | "inactive"
     }
@@ -266,6 +337,8 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["super_admin", "admin"],
+      post_source: ["manual", "auto_generated"],
+      post_status: ["draft", "published"],
       topic_status: ["pending", "generated"],
       user_status: ["active", "inactive"],
     },
