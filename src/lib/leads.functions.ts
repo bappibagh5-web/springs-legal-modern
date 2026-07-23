@@ -42,6 +42,7 @@ const submitSchema = z.object({
   case_type: z.string().trim().max(200).optional().nullable(),
   message: z.string().trim().max(5000).optional().nullable(),
   best_time_to_reach: z.string().trim().max(200).optional().nullable(),
+  source: z.enum(["consultation_form", "contact_form"]).optional(),
 });
 
 async function tryNotifyAdmin(lead: {
