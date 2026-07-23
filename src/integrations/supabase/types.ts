@@ -17,6 +17,7 @@ export type Database = {
       automation_runs: {
         Row: {
           created_at: string
+          duration_seconds: number | null
           error_message: string | null
           id: string
           post_id: string | null
@@ -24,9 +25,11 @@ export type Database = {
           topic_id: string | null
           topic_title: string | null
           trigger_type: Database["public"]["Enums"]["automation_trigger_type"]
+          word_count: number | null
         }
         Insert: {
           created_at?: string
+          duration_seconds?: number | null
           error_message?: string | null
           id?: string
           post_id?: string | null
@@ -34,9 +37,11 @@ export type Database = {
           topic_id?: string | null
           topic_title?: string | null
           trigger_type?: Database["public"]["Enums"]["automation_trigger_type"]
+          word_count?: number | null
         }
         Update: {
           created_at?: string
+          duration_seconds?: number | null
           error_message?: string | null
           id?: string
           post_id?: string | null
@@ -44,6 +49,7 @@ export type Database = {
           topic_id?: string | null
           topic_title?: string | null
           trigger_type?: Database["public"]["Enums"]["automation_trigger_type"]
+          word_count?: number | null
         }
         Relationships: [
           {
