@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      automation_runs: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          id: string
+          post_id: string | null
+          status: Database["public"]["Enums"]["automation_run_status"]
+          topic_id: string | null
+          topic_title: string | null
+          trigger_type: Database["public"]["Enums"]["automation_trigger_type"]
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          post_id?: string | null
+          status: Database["public"]["Enums"]["automation_run_status"]
+          topic_id?: string | null
+          topic_title?: string | null
+          trigger_type?: Database["public"]["Enums"]["automation_trigger_type"]
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          post_id?: string | null
+          status?: Database["public"]["Enums"]["automation_run_status"]
+          topic_id?: string | null
+          topic_title?: string | null
+          trigger_type?: Database["public"]["Enums"]["automation_trigger_type"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "automation_runs_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "automation_runs_topic_id_fkey"
+            columns: ["topic_id"]
+            isOneToOne: false
+            referencedRelation: "topics"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       categories: {
         Row: {
           color: string
@@ -214,6 +262,8 @@ export type Database = {
     }
     Enums: {
       app_role: "super_admin" | "admin"
+      automation_run_status: "success" | "failed"
+      automation_trigger_type: "manual" | "scheduled"
       post_source: "manual" | "auto_generated"
       post_status: "draft" | "published" | "scheduled"
       topic_status: "pending" | "generated"
@@ -346,6 +396,8 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["super_admin", "admin"],
+      automation_run_status: ["success", "failed"],
+      automation_trigger_type: ["manual", "scheduled"],
       post_source: ["manual", "auto_generated"],
       post_status: ["draft", "published", "scheduled"],
       topic_status: ["pending", "generated"],
