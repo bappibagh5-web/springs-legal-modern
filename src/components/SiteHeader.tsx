@@ -87,6 +87,7 @@ export function SiteHeader() {
               </div>
             ))}
             <NavItem to="/team">Team</NavItem>
+            <NavItem to="/blog">Blog</NavItem>
             <NavItem to="/contact">Contact</NavItem>
           </nav>
 
