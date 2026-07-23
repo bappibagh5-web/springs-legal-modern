@@ -9,6 +9,7 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { Button } from "@/components/ui/button";
 import { listAutomationRuns, runAutomationNow, type AutomationRun } from "@/lib/automation.functions";
 import { listTopics, type TopicRow } from "@/lib/topics.functions";
+import { getScheduleSettings, type ScheduleSettings } from "@/lib/settings.functions";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin/blog-automation")({
@@ -16,16 +17,16 @@ export const Route = createFileRoute("/admin/blog-automation")({
   component: BlogAutomationPage,
 });
 
-// Placeholder settings until Settings module is built.
-const SETTINGS = {
+const DEFAULT_SETTINGS = {
   frequency: "Daily",
-  time: "09:00 EST",
+  time: "09:00 MST",
   postsPerRun: 1,
   autoPublish: false,
   model: "google/gemini-3.6-flash",
   hour: 9,
   minute: 0,
 };
+
 
 function fmtDateTime(iso: string | null) {
   if (!iso) return "—";
