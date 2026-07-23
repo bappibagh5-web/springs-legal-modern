@@ -45,6 +45,8 @@ function ContactPage() {
     setSubmitting(true);
     try {
       await submit({ data: payload });
+      window.trackEvent?.("lead_generated", "conversion", "contact_form");
+      window.trackEvent?.("form_submit", "conversion", "contact_form");
       setDone(true);
       form.reset();
     } catch (err) {
