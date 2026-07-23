@@ -49,6 +49,8 @@ export type Database = {
           body: string
           category_id: string | null
           created_at: string
+          excerpt: string | null
+          featured: boolean
           featured_image_url: string | null
           id: string
           meta_description: string | null
@@ -58,6 +60,7 @@ export type Database = {
           slug: string
           source: Database["public"]["Enums"]["post_source"]
           status: Database["public"]["Enums"]["post_status"]
+          tags: string[]
           title: string
           updated_at: string
           views: number
@@ -66,6 +69,8 @@ export type Database = {
           body?: string
           category_id?: string | null
           created_at?: string
+          excerpt?: string | null
+          featured?: boolean
           featured_image_url?: string | null
           id?: string
           meta_description?: string | null
@@ -75,6 +80,7 @@ export type Database = {
           slug: string
           source?: Database["public"]["Enums"]["post_source"]
           status?: Database["public"]["Enums"]["post_status"]
+          tags?: string[]
           title: string
           updated_at?: string
           views?: number
@@ -83,6 +89,8 @@ export type Database = {
           body?: string
           category_id?: string | null
           created_at?: string
+          excerpt?: string | null
+          featured?: boolean
           featured_image_url?: string | null
           id?: string
           meta_description?: string | null
@@ -92,6 +100,7 @@ export type Database = {
           slug?: string
           source?: Database["public"]["Enums"]["post_source"]
           status?: Database["public"]["Enums"]["post_status"]
+          tags?: string[]
           title?: string
           updated_at?: string
           views?: number
@@ -206,7 +215,7 @@ export type Database = {
     Enums: {
       app_role: "super_admin" | "admin"
       post_source: "manual" | "auto_generated"
-      post_status: "draft" | "published"
+      post_status: "draft" | "published" | "scheduled"
       topic_status: "pending" | "generated"
       user_status: "active" | "inactive"
     }
@@ -338,7 +347,7 @@ export const Constants = {
     Enums: {
       app_role: ["super_admin", "admin"],
       post_source: ["manual", "auto_generated"],
-      post_status: ["draft", "published"],
+      post_status: ["draft", "published", "scheduled"],
       topic_status: ["pending", "generated"],
       user_status: ["active", "inactive"],
     },

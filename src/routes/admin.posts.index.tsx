@@ -37,7 +37,7 @@ function PostsListPage() {
   const [rows, setRows] = useState<PostRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
-  const [status, setStatus] = useState<"all" | "draft" | "published">("all");
+  const [status, setStatus] = useState<"all" | "draft" | "published" | "scheduled">("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [deleteTarget, setDeleteTarget] = useState<PostRow | null>(null);
   const [bulkOpen, setBulkOpen] = useState(false);
@@ -145,6 +145,7 @@ function PostsListPage() {
           <SelectContent className="bg-[#111a2e] border-white/10 text-white">
             <SelectItem value="all">All Statuses</SelectItem>
             <SelectItem value="published">Published</SelectItem>
+            <SelectItem value="scheduled">Scheduled</SelectItem>
             <SelectItem value="draft">Draft</SelectItem>
           </SelectContent>
         </Select>
@@ -238,6 +239,10 @@ function PostsListPage() {
                     {p.status === "published" ? (
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-500/15 text-green-400 border border-green-500/30">
                         Published
+                      </span>
+                    ) : p.status === "scheduled" ? (
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[color:var(--gold)]/15 text-[color:var(--gold)] border border-[color:var(--gold)]/30">
+                        Scheduled
                       </span>
                     ) : (
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-white/10 text-white/70 border border-white/15">
