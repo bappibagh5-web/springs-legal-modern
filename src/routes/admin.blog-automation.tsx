@@ -191,7 +191,7 @@ function BlogAutomationPage() {
   }
 
   function handleRecalculate() {
-    const next = computeNextScheduled();
+    const next = computeNextScheduled(hour, minute, settings.frequency);
     setNextScheduled(next);
     toast.success(`Next run recalculated: ${fmtDateTime(next.toISOString())}`);
   }
@@ -253,7 +253,7 @@ function BlogAutomationPage() {
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
               <h3 className="text-base font-semibold text-white">14-Day Schedule</h3>
               <div className="text-xs text-white/50">
-                {SETTINGS.frequency.toLowerCase()} · {SETTINGS.time} · {SETTINGS.postsPerRun}/run
+                {settings.frequency} · {settings.time} {settings.timezone} · {settings.postsPerRun}/run
               </div>
             </div>
             <div className="grid grid-cols-7 gap-2">
@@ -412,11 +412,10 @@ function BlogAutomationPage() {
             </div>
             <dl className="space-y-2 text-sm">
               {[
-                ["Frequency", SETTINGS.frequency],
-                ["Schedule time", SETTINGS.time],
-                ["Posts per run", String(SETTINGS.postsPerRun)],
-                ["Auto-publish", SETTINGS.autoPublish ? "Yes" : "No"],
-                ["AI model", SETTINGS.model],
+                ["Frequency", settings.frequency],
+                ["Schedule time", `${settings.time} ${settings.timezone}`],
+                ["Posts per run", String(settings.postsPerRun)],
+                ["AI model", DEFAULT_SETTINGS.model],
               ].map(([k, v]) => (
                 <div key={k} className="flex items-center justify-between gap-3">
                   <dt className="text-white/50">{k}</dt>
@@ -425,7 +424,7 @@ function BlogAutomationPage() {
               ))}
             </dl>
             <div className="mt-3 pt-3 border-t border-white/10 text-xs text-white/40">
-              Placeholder defaults — Settings module not built yet.
+              Live settings from the Settings module.
             </div>
             <Link
               to="/admin/settings"
