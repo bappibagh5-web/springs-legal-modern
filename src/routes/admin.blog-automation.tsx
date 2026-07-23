@@ -41,12 +41,15 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-function computeNextScheduled(): Date {
+function computeNextScheduled(hour: number, minute: number, frequency: string): Date {
   const next = new Date();
-  next.setHours(SETTINGS.hour, SETTINGS.minute, 0, 0);
-  if (next.getTime() <= Date.now()) next.setDate(next.getDate() + 1);
+  next.setHours(hour, minute, 0, 0);
+  if (next.getTime() <= Date.now()) {
+    next.setDate(next.getDate() + (frequency === "weekly" ? 7 : 1));
+  }
   return next;
 }
+
 
 function StatCard({ icon: Icon, iconBg, label, value, subtext }: {
   icon: any; iconBg: string; label: string; value: string; subtext: string;
