@@ -150,11 +150,6 @@ async function flushPageDuration() {
   try {
     const url = `${import.meta.env.VITE_SUPABASE_URL}/rest/v1/analytics_events`;
     const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
-    if (navigator.sendBeacon) {
-      const blob = new Blob([body], { type: "application/json" });
-      // sendBeacon can't set headers; fall back to fetch keepalive with headers
-      void blob;
-    }
     await fetch(url, {
       method: "POST",
       headers: {
