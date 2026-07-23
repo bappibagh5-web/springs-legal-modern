@@ -23,7 +23,7 @@ const NAV = [
   { to: "/admin/categories", label: "Categories", icon: FolderTree },
   { to: "/admin/topics", label: "Topics", icon: Hash },
   { to: "/admin/blog-automation", label: "Blog Automation", icon: Bot },
-  { to: "/admin/social-automation", label: "Social Automation", icon: Share2 },
+  
   { to: "/admin/seo-schema", label: "SEO Schema", icon: Code2 },
   { to: "/admin/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/admin/leads", label: "Leads", icon: Inbox },
