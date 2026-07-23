@@ -12,9 +12,23 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsultationRouteImport } from './routes/consultation'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as CategoryIndexRouteImport } from './routes/$category.index'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
+import { Route as AdminSocialAutomationRouteImport } from './routes/admin.social-automation'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminSeoSchemaRouteImport } from './routes/admin.seo-schema'
+import { Route as AdminPostsRouteImport } from './routes/admin.posts'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
+import { Route as AdminBlogAutomationRouteImport } from './routes/admin.blog-automation'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as CategoryServiceRouteImport } from './routes/$category.$service'
 
 const TeamRoute = TeamRouteImport.update({
@@ -32,6 +46,11 @@ const ConsultationRoute = ConsultationRouteImport.update({
   path: '/consultation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -42,10 +61,75 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const CategoryIndexRoute = CategoryIndexRouteImport.update({
   id: '/$category/',
   path: '/$category/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTopicsRoute = AdminTopicsRouteImport.update({
+  id: '/topics',
+  path: '/topics',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSocialAutomationRoute = AdminSocialAutomationRouteImport.update({
+  id: '/social-automation',
+  path: '/social-automation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSeoSchemaRoute = AdminSeoSchemaRouteImport.update({
+  id: '/seo-schema',
+  path: '/seo-schema',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPostsRoute = AdminPostsRouteImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBlogAutomationRoute = AdminBlogAutomationRouteImport.update({
+  id: '/blog-automation',
+  path: '/blog-automation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => AdminRoute,
 } as any)
 const CategoryServiceRoute = CategoryServiceRouteImport.update({
   id: '/$category/$service',
@@ -56,11 +140,25 @@ const CategoryServiceRoute = CategoryServiceRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/team': typeof TeamRoute
   '/$category/$service': typeof CategoryServiceRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/blog-automation': typeof AdminBlogAutomationRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/leads': typeof AdminLeadsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/posts': typeof AdminPostsRoute
+  '/admin/seo-schema': typeof AdminSeoSchemaRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/social-automation': typeof AdminSocialAutomationRoute
+  '/admin/topics': typeof AdminTopicsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/$category/': typeof CategoryIndexRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,28 +167,69 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/team': typeof TeamRoute
   '/$category/$service': typeof CategoryServiceRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/blog-automation': typeof AdminBlogAutomationRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/leads': typeof AdminLeadsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/posts': typeof AdminPostsRoute
+  '/admin/seo-schema': typeof AdminSeoSchemaRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/social-automation': typeof AdminSocialAutomationRoute
+  '/admin/topics': typeof AdminTopicsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/$category': typeof CategoryIndexRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/team': typeof TeamRoute
   '/$category/$service': typeof CategoryServiceRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
+  '/admin/blog-automation': typeof AdminBlogAutomationRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/leads': typeof AdminLeadsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/posts': typeof AdminPostsRoute
+  '/admin/seo-schema': typeof AdminSeoSchemaRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/social-automation': typeof AdminSocialAutomationRoute
+  '/admin/topics': typeof AdminTopicsRoute
+  '/admin/users': typeof AdminUsersRoute
   '/$category/': typeof CategoryIndexRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/consultation'
     | '/contact'
     | '/team'
     | '/$category/$service'
+    | '/admin/analytics'
+    | '/admin/blog-automation'
+    | '/admin/categories'
+    | '/admin/dashboard'
+    | '/admin/leads'
+    | '/admin/login'
+    | '/admin/posts'
+    | '/admin/seo-schema'
+    | '/admin/settings'
+    | '/admin/social-automation'
+    | '/admin/topics'
+    | '/admin/users'
     | '/$category/'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -99,21 +238,49 @@ export interface FileRouteTypes {
     | '/contact'
     | '/team'
     | '/$category/$service'
+    | '/admin/analytics'
+    | '/admin/blog-automation'
+    | '/admin/categories'
+    | '/admin/dashboard'
+    | '/admin/leads'
+    | '/admin/login'
+    | '/admin/posts'
+    | '/admin/seo-schema'
+    | '/admin/settings'
+    | '/admin/social-automation'
+    | '/admin/topics'
+    | '/admin/users'
     | '/$category'
+    | '/admin'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/consultation'
     | '/contact'
     | '/team'
     | '/$category/$service'
+    | '/admin/analytics'
+    | '/admin/blog-automation'
+    | '/admin/categories'
+    | '/admin/dashboard'
+    | '/admin/leads'
+    | '/admin/login'
+    | '/admin/posts'
+    | '/admin/seo-schema'
+    | '/admin/settings'
+    | '/admin/social-automation'
+    | '/admin/topics'
+    | '/admin/users'
     | '/$category/'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ConsultationRoute: typeof ConsultationRoute
   ContactRoute: typeof ContactRoute
   TeamRoute: typeof TeamRoute
@@ -144,6 +311,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsultationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -158,12 +332,103 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/$category/': {
       id: '/$category/'
       path: '/$category'
       fullPath: '/$category/'
       preLoaderRoute: typeof CategoryIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/topics': {
+      id: '/admin/topics'
+      path: '/topics'
+      fullPath: '/admin/topics'
+      preLoaderRoute: typeof AdminTopicsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/social-automation': {
+      id: '/admin/social-automation'
+      path: '/social-automation'
+      fullPath: '/admin/social-automation'
+      preLoaderRoute: typeof AdminSocialAutomationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/seo-schema': {
+      id: '/admin/seo-schema'
+      path: '/seo-schema'
+      fullPath: '/admin/seo-schema'
+      preLoaderRoute: typeof AdminSeoSchemaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/posts': {
+      id: '/admin/posts'
+      path: '/posts'
+      fullPath: '/admin/posts'
+      preLoaderRoute: typeof AdminPostsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/categories': {
+      id: '/admin/categories'
+      path: '/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AdminCategoriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/blog-automation': {
+      id: '/admin/blog-automation'
+      path: '/blog-automation'
+      fullPath: '/admin/blog-automation'
+      preLoaderRoute: typeof AdminBlogAutomationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/$category/$service': {
       id: '/$category/$service'
@@ -175,9 +440,44 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
+  AdminBlogAutomationRoute: typeof AdminBlogAutomationRoute
+  AdminCategoriesRoute: typeof AdminCategoriesRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminLeadsRoute: typeof AdminLeadsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminPostsRoute: typeof AdminPostsRoute
+  AdminSeoSchemaRoute: typeof AdminSeoSchemaRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminSocialAutomationRoute: typeof AdminSocialAutomationRoute
+  AdminTopicsRoute: typeof AdminTopicsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
+  AdminBlogAutomationRoute: AdminBlogAutomationRoute,
+  AdminCategoriesRoute: AdminCategoriesRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminLeadsRoute: AdminLeadsRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminPostsRoute: AdminPostsRoute,
+  AdminSeoSchemaRoute: AdminSeoSchemaRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminSocialAutomationRoute: AdminSocialAutomationRoute,
+  AdminTopicsRoute: AdminTopicsRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   ConsultationRoute: ConsultationRoute,
   ContactRoute: ContactRoute,
   TeamRoute: TeamRoute,
