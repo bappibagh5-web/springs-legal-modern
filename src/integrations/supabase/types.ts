@@ -98,19 +98,93 @@ export type Database = {
         }
         Relationships: []
       }
+      global_schema: {
+        Row: {
+          address_city: string | null
+          address_country: string | null
+          address_postal_code: string | null
+          address_region: string | null
+          address_street: string | null
+          business_name: string
+          business_type: string
+          created_at: string
+          email: string | null
+          hours: Json
+          id: string
+          logo_url: string | null
+          organization_description: string | null
+          phone: string | null
+          practice_areas: string[]
+          service_area: string[]
+          social_links: Json
+          updated_at: string
+          website_url: string | null
+        }
+        Insert: {
+          address_city?: string | null
+          address_country?: string | null
+          address_postal_code?: string | null
+          address_region?: string | null
+          address_street?: string | null
+          business_name?: string
+          business_type?: string
+          created_at?: string
+          email?: string | null
+          hours?: Json
+          id?: string
+          logo_url?: string | null
+          organization_description?: string | null
+          phone?: string | null
+          practice_areas?: string[]
+          service_area?: string[]
+          social_links?: Json
+          updated_at?: string
+          website_url?: string | null
+        }
+        Update: {
+          address_city?: string | null
+          address_country?: string | null
+          address_postal_code?: string | null
+          address_region?: string | null
+          address_street?: string | null
+          business_name?: string
+          business_type?: string
+          created_at?: string
+          email?: string | null
+          hours?: Json
+          id?: string
+          logo_url?: string | null
+          organization_description?: string | null
+          phone?: string | null
+          practice_areas?: string[]
+          service_area?: string[]
+          social_links?: Json
+          updated_at?: string
+          website_url?: string | null
+        }
+        Relationships: []
+      }
       posts: {
         Row: {
           body: string
+          canonical_url: string | null
           category_id: string | null
           created_at: string
           excerpt: string | null
           featured: boolean
           featured_image_url: string | null
+          focus_keyword: string | null
           id: string
           meta_description: string | null
+          og_image_url: string | null
           published_at: string | null
           read_time_minutes: number
           scheduled_at: string | null
+          schema_generated: boolean
+          schema_jsonld: Json | null
+          seo_score: number
+          seo_tags: string[]
+          seo_title: string | null
           slug: string
           source: Database["public"]["Enums"]["post_source"]
           status: Database["public"]["Enums"]["post_status"]
@@ -121,16 +195,24 @@ export type Database = {
         }
         Insert: {
           body?: string
+          canonical_url?: string | null
           category_id?: string | null
           created_at?: string
           excerpt?: string | null
           featured?: boolean
           featured_image_url?: string | null
+          focus_keyword?: string | null
           id?: string
           meta_description?: string | null
+          og_image_url?: string | null
           published_at?: string | null
           read_time_minutes?: number
           scheduled_at?: string | null
+          schema_generated?: boolean
+          schema_jsonld?: Json | null
+          seo_score?: number
+          seo_tags?: string[]
+          seo_title?: string | null
           slug: string
           source?: Database["public"]["Enums"]["post_source"]
           status?: Database["public"]["Enums"]["post_status"]
@@ -141,16 +223,24 @@ export type Database = {
         }
         Update: {
           body?: string
+          canonical_url?: string | null
           category_id?: string | null
           created_at?: string
           excerpt?: string | null
           featured?: boolean
           featured_image_url?: string | null
+          focus_keyword?: string | null
           id?: string
           meta_description?: string | null
+          og_image_url?: string | null
           published_at?: string | null
           read_time_minutes?: number
           scheduled_at?: string | null
+          schema_generated?: boolean
+          schema_jsonld?: Json | null
+          seo_score?: number
+          seo_tags?: string[]
+          seo_title?: string | null
           slug?: string
           source?: Database["public"]["Enums"]["post_source"]
           status?: Database["public"]["Enums"]["post_status"]
@@ -168,6 +258,42 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      practice_area_seo: {
+        Row: {
+          created_at: string
+          id: string
+          meta_description: string | null
+          og_tags_complete: boolean
+          page_name: string
+          schema_active: boolean
+          title_tag: string | null
+          updated_at: string
+          url_path: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          meta_description?: string | null
+          og_tags_complete?: boolean
+          page_name: string
+          schema_active?: boolean
+          title_tag?: string | null
+          updated_at?: string
+          url_path: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          meta_description?: string | null
+          og_tags_complete?: boolean
+          page_name?: string
+          schema_active?: boolean
+          title_tag?: string | null
+          updated_at?: string
+          url_path?: string
+        }
+        Relationships: []
       }
       profiles: {
         Row: {
