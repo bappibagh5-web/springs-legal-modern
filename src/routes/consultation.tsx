@@ -44,6 +44,8 @@ function ConsultationPage() {
     setSubmitting(true);
     try {
       await submit({ data: payload });
+      window.trackEvent?.("lead_generated", "conversion", "consultation_form");
+      window.trackEvent?.("form_submit", "conversion", "consultation_form");
       setDone(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong. Please try again or call us directly.");

@@ -41,15 +41,22 @@ export function ActionButton({
     sizes[size],
     className,
   );
+  const label = typeof children === "string" ? children : "cta";
+  const onClickTrack = () => {
+    if (typeof window !== "undefined") {
+      const isPhone = href?.startsWith("tel:");
+      window.trackEvent?.(isPhone ? "book_call_click" : "cta_click", "conversion", label);
+    }
+  };
   if (href) {
     return (
-      <a href={href} className={cls}>
+      <a href={href} className={cls} onClick={onClickTrack}>
         {children}
       </a>
     );
   }
   return (
-    <Link to={to ?? "/consultation"} className={cls}>
+    <Link to={to ?? "/consultation"} className={cls} onClick={onClickTrack}>
       {children}
     </Link>
   );
