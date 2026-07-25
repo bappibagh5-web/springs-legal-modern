@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeamRouteImport } from './routes/team'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConsultationRouteImport } from './routes/consultation'
 import { Route as BlogRouteImport } from './routes/blog'
@@ -39,6 +40,11 @@ import { Route as AdminPostsIdEditRouteImport } from './routes/admin.posts.$id.e
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -174,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRouteWithChildren
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/$category/$service': typeof CategoryServiceRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/$category/$service': typeof CategoryServiceRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRouteWithChildren
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/$category/$service': typeof CategoryServiceRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/consultation'
     | '/contact'
+    | '/sitemap.xml'
     | '/team'
     | '/$category/$service'
     | '/admin/analytics'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/consultation'
     | '/contact'
+    | '/sitemap.xml'
     | '/team'
     | '/$category/$service'
     | '/admin/analytics'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/consultation'
     | '/contact'
+    | '/sitemap.xml'
     | '/team'
     | '/$category/$service'
     | '/admin/analytics'
@@ -340,6 +352,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRouteWithChildren
   ConsultationRoute: typeof ConsultationRoute
   ContactRoute: typeof ContactRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
   CategoryServiceRoute: typeof CategoryServiceRoute
   CategoryIndexRoute: typeof CategoryIndexRoute
@@ -352,6 +365,13 @@ declare module '@tanstack/react-router' {
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -599,6 +619,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRouteWithChildren,
   ConsultationRoute: ConsultationRoute,
   ContactRoute: ContactRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
   CategoryServiceRoute: CategoryServiceRoute,
   CategoryIndexRoute: CategoryIndexRoute,
@@ -606,13 +627,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
