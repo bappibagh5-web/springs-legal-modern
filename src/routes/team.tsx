@@ -4,14 +4,14 @@ import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
 import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
-import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
+
 import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
       { title: "Our Team — The Kohn Law Firm" },
-      { name: "description", content: "Meet the attorneys and staff of The Kohn Law Firm in Colorado Springs — Shimon Kohn, Erica Bertini, Jerome Aquino, and Macey Jardee." },
+      { name: "description", content: "Meet the attorneys and staff of The Kohn Law Firm in Colorado Springs — Shimon Kohn, Erica Bertini, and our paralegal team." },
       { property: "og:title", content: "Our Legal Team — The Kohn Law Firm" },
       { property: "og:description", content: "Colorado Springs attorneys ready to defend your case." },
     ],
@@ -45,16 +45,6 @@ const MEMBERS: Member[] = [
       "With over 15 years of experience, Erica L. Bertini guides clients through the maze of family law, providing support during what can be one of the most challenging periods in their lives. With a focus on family law cases intersecting with criminal court, Erica is relentless in her advocacy, whether in the courtroom or at the negotiation table.",
       "As a former Deputy District Attorney in Colorado and Illinois, Erica brings a wealth of knowledge in criminal law — from felonies and misdemeanors to juvenile delinquency and abuse and neglect cases. Her extensive courtroom experience has honed her skills as a persuasive advocate.",
       "Drawing from her background in accounting and finance, Erica adeptly handles intricate financial aspects often involved in family law cases. She prioritizes clear communication and unwavering support so clients never feel alone during the process.",
-    ],
-  },
-  {
-    name: "Jerome Aquino",
-    title: "Attorney – Family Law",
-    img: jeromeAsset.url,
-    bio: [
-      "As a long-time resident of Colorado Springs, Jerome understands what it takes to advocate for his clients in the arena of family law. Jerome has been an attorney for more than 16 years. He graduated magna cum laude from Drexel University Kline School of Law in Philadelphia, where he was also president of the Moot Court Board.",
-      "Jerome started his career as a personal injury attorney and then a civil defense attorney before transitioning to family law. He has managed cases both in litigation and non-litigation, both state and federal, and from intake to resolution — through settlement, mediation, arbitration, trial, or appeal.",
-      "Jerome takes pride in being a compassionate yet aggressive advocate for his clients. As an immigrant from the Philippines, Jerome speaks Filipino (Tagalog) fluently. When he's not working hard for his clients, he enjoys spending time with his wife and two children.",
     ],
   },
   {

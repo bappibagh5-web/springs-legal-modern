@@ -7,7 +7,7 @@ import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs-pioneers-museum.avif.asset.json";
 import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
-import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
+import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
@@ -291,10 +291,10 @@ const TEAM = [
     fit: "cover" as const,
   },
   {
-    name: "Jerome Aquino",
-    title: "Attorney – Family Law",
-    bio: "Long-time Colorado Springs resident with 16+ years of trial experience, advocating for clients through divorce, parenting time, and support matters.",
-    img: jeromeAsset.url,
+    name: "Macey",
+    title: "Family Law Paralegal",
+    bio: "Supports clients at every stage of their case — assisting our family law attorneys with case preparation, file management, deadlines, and the litigation process.",
+    img: maceyAsset.url,
     fit: "cover" as const,
   },
 ];
