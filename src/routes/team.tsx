@@ -48,16 +48,6 @@ const MEMBERS: Member[] = [
     ],
   },
   {
-    name: "Jerome Aquino",
-    title: "Attorney – Family Law",
-    img: jeromeAsset.url,
-    bio: [
-      "As a long-time resident of Colorado Springs, Jerome understands what it takes to advocate for his clients in the arena of family law. Jerome has been an attorney for more than 16 years. He graduated magna cum laude from Drexel University Kline School of Law in Philadelphia, where he was also president of the Moot Court Board.",
-      "Jerome started his career as a personal injury attorney and then a civil defense attorney before transitioning to family law. He has managed cases both in litigation and non-litigation, both state and federal, and from intake to resolution — through settlement, mediation, arbitration, trial, or appeal.",
-      "Jerome takes pride in being a compassionate yet aggressive advocate for his clients. As an immigrant from the Philippines, Jerome speaks Filipino (Tagalog) fluently. When he's not working hard for his clients, he enjoys spending time with his wife and two children.",
-    ],
-  },
-  {
     name: "Mia",
     title: "Office Manager & Criminal Defense Paralegal",
     img: "",
