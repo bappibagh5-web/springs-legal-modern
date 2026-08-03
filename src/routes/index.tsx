@@ -7,7 +7,7 @@ import { SITE, CATEGORIES } from "@/lib/site";
 import heroAsset from "@/assets/colorado-springs-pioneers-museum.avif.asset.json";
 import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
-import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
+import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
