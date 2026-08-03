@@ -291,10 +291,10 @@ const TEAM = [
     fit: "cover" as const,
   },
   {
-    name: "Jerome Aquino",
-    title: "Attorney – Family Law",
-    bio: "Long-time Colorado Springs resident with 16+ years of trial experience, advocating for clients through divorce, parenting time, and support matters.",
-    img: jeromeAsset.url,
+    name: "Macey",
+    title: "Family Law Paralegal",
+    bio: "Supports clients at every stage of their case — assisting our family law attorneys with case preparation, file management, deadlines, and the litigation process.",
+    img: maceyAsset.url,
     fit: "cover" as const,
   },
 ];
