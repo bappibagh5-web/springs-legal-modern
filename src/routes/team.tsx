@@ -4,7 +4,7 @@ import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
 import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
-import jeromeAsset from "@/assets/jerome-aquino.jpg.asset.json";
+
 import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 
 export const Route = createFileRoute("/team")({
