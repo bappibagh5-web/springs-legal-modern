@@ -11,7 +11,7 @@ export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
       { title: "Our Team — The Kohn Law Firm" },
-      { name: "description", content: "Meet the attorneys and staff of The Kohn Law Firm in Colorado Springs — Shimon Kohn, Erica Bertini, Jerome Aquino, and Macey Jardee." },
+      { name: "description", content: "Meet the attorneys and staff of The Kohn Law Firm in Colorado Springs — Shimon Kohn, Erica Bertini, and our paralegal team." },
       { property: "og:title", content: "Our Legal Team — The Kohn Law Firm" },
       { property: "og:description", content: "Colorado Springs attorneys ready to defend your case." },
     ],
