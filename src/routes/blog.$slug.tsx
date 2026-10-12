@@ -63,7 +63,7 @@ export const Route = createFileRoute("/blog/$slug")({
   ),
 });
 
-function PostNotFound() {
+export function PostNotFound() {
   return (
     <PageShell>
       <div className="container-page py-24 text-center">
