@@ -1,49 +1,8 @@
 import { Quote, Star } from "lucide-react";
+import { useCms, CmsSection } from "@/lib/cms/context";
+import type { Testimonial } from "@/lib/cms/testimonials-data";
 
-type Testimonial = {
-  quote: string;
-  author: string;
-  context: string;
-};
 
-const TESTIMONIALS: Testimonial[] = [
-  {
-    quote:
-      "Erica was exactly what I needed at one of the most difficult times in my life. As a divorce attorney, she was always prepared, provided invaluable expertise in all the legal grey areas I never knew existed, and made sure to communicate both with me and on my behalf.",
-    author: "Former Client",
-    context: "Family Law",
-  },
-  {
-    quote:
-      "It is no exaggeration to say that Mr. Kohn saved my life. There were several setbacks and it took over a year but he was able to make sure that I was a free man. I could not recommend him more.",
-    author: "Adian",
-    context: "Criminal Defense",
-  },
-  {
-    quote:
-      "This law firm was there for me through my worst of times. I was diagnosed with cancer and going through divorce — Erica and the team were every step ahead. I am grateful they represented me.",
-    author: "Jesse",
-    context: "Family Law Case",
-  },
-  {
-    quote:
-      "I highly recommend the Kohn Law Firm. Shimon is an amazing attorney and guided me through every step of my case. He was extremely professional, knowledgeable, and continuously put my mind at ease.",
-    author: "Shari",
-    context: "Protection Order",
-  },
-  {
-    quote:
-      "Shimon is a no BS, no nonsense attorney who has earned the respect of everyone in his profession. He outlined what my expectations should be, then exceeded them. Case dismissed.",
-    author: "Matt",
-    context: "Criminal Defense",
-  },
-  {
-    quote:
-      "When I needed legal representation during one of the most difficult times in my life, Kohn Law Firm exceeded every expectation. Their team remained responsive, professional, and truly committed to my case.",
-    author: "Sean H.",
-    context: "Criminal Defense",
-  },
-];
 
 type Props = {
   variant?: "light" | "surface";
@@ -51,25 +10,27 @@ type Props = {
 };
 
 export function TestimonialsSection({ variant = "light", limit = 3 }: Props) {
-  const items = TESTIMONIALS.slice(0, limit);
+  const g = useCms("global");
+  const items = g.list<Testimonial>("testimonials.items").slice(0, limit);
   const bg = variant === "surface" ? "bg-surface" : "bg-background";
 
   return (
+    <CmsSection page="global" id="testimonials">
     <section className={`${bg} py-20 md:py-28`}>
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-            Testimonials
+            {g.text("testimonials.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            What our clients are saying.
+            {g.text("testimonials.heading")}
           </h2>
           <div className="mt-4 flex items-center justify-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="h-5 w-5 fill-gold text-gold" />
             ))}
             <span className="ml-2 text-sm font-semibold text-ink">
-              Excellent · 139+ Google reviews
+              {g.text("testimonials.rating")}
             </span>
           </div>
         </div>
@@ -107,5 +68,6 @@ export function TestimonialsSection({ variant = "light", limit = 3 }: Props) {
         </p>
       </div>
     </section>
+    </CmsSection>
   );
 }

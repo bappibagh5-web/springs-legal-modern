@@ -9,7 +9,7 @@ import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { getPublicPost, type PublicPostCard } from "@/lib/public-posts.functions";
-import { SITE } from "@/lib/site";
+import { useSiteInfo } from "@/lib/cms/context";
 
 const postQueryOptions = (slug: string) =>
   queryOptions({
@@ -107,6 +107,7 @@ function extractHeadings(md: string): Heading[] {
 }
 
 function BlogPostPage() {
+  const SITE = useSiteInfo();
   const { slug } = Route.useParams();
   const { data } = useSuspenseQuery(postQueryOptions(slug));
   if (!data) return <PostNotFound />;

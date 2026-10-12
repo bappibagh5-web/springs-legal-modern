@@ -14,6 +14,7 @@ import favicon32 from "@/assets/klf-icon.png.asset.json";
 import appleTouchIcon from "@/assets/klf-icon.png.asset.json";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CodeSnippetsInjector } from "@/components/CodeSnippetsInjector";
+import { CmsProvider, cmsPublishedQuery, isPreviewWindow } from "@/lib/cms/context";
 
 function NotFoundComponent() {
   return (
@@ -76,19 +77,19 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: ({ context }) => context.queryClient.ensureQueryData(cmsPublishedQuery),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
+      { title: "The Kohn Law Firm — Colorado Springs" },
       { name: "description", content: "A modern law firm website for Kohn Law Firm, featuring clear service navigation and consultation booking." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
+      { name: "author", content: "The Kohn Law Firm" },
+      { property: "og:title", content: "The Kohn Law Firm — Colorado Springs" },
       { property: "og:description", content: "A modern law firm website for Kohn Law Firm, featuring clear service navigation and consultation booking." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
+      { name: "twitter:title", content: "The Kohn Law Firm — Colorado Springs" },
       { name: "twitter:description", content: "A modern law firm website for Kohn Law Firm, featuring clear service navigation and consultation booking." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d73ba3e9-b91b-48dc-baf0-4c4c8621ee23/id-preview-cca180a6--4fcb13c5-a5c6-4eb1-a8bc-9f6365cdf35a.lovable.app-1782200319393.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d73ba3e9-b91b-48dc-baf0-4c4c8621ee23/id-preview-cca180a6--4fcb13c5-a5c6-4eb1-a8bc-9f6365cdf35a.lovable.app-1782200319393.png" },
@@ -134,9 +135,11 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const published = Route.useLoaderData();
 
   useEffect(() => {
     let cancelled = false;
+    if (isPreviewWindow()) return;
     void import("@/lib/analytics").then((m) => {
       if (cancelled) return;
       m.installAnalytics();
@@ -154,7 +157,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <CmsProvider published={published ?? {}}>
+        <Outlet />
+      </CmsProvider>
       <CodeSnippetsInjector />
     </QueryClientProvider>
   );

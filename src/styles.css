@@ -187,3 +187,9 @@
 @utility animate-shine {
   animation: shine 3.5s ease-in-out infinite;
 }
+
+/* CMS editable regions (no layout impact) */
+.cms-section { display: contents; }
+.cms-preview .cms-section > * { cursor: pointer; }
+.cms-preview .cms-section:hover > * { outline: 2px dashed var(--gold); outline-offset: -2px; }
+.cms-preview .cms-section[data-selected="true"] > * { outline: 3px solid var(--gold); outline-offset: -3px; }

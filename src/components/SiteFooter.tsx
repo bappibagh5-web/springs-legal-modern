@@ -1,10 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
 import logoAsset from "@/assets/klf-logo-color.png.asset.json";
-import { SITE, CATEGORIES } from "@/lib/site";
+import { CATEGORIES } from "@/lib/site";
+import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
 
 export function SiteFooter() {
+  const SITE = useSiteInfo();
+  const g = useCms("global");
   return (
+    <CmsSection page="global" id="footer">
     <footer className="bg-ink text-white/85">
       <div className="container-page grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div>
@@ -12,8 +16,7 @@ export function SiteFooter() {
             <img src={logoAsset.url} alt="The Kohn Law Firm" className="h-16 w-auto" />
           </div>
           <p className="mt-5 text-sm leading-relaxed text-white/70">
-            Trusted criminal defense and family law representation serving
-            Colorado Springs and the surrounding communities.
+            {g.text("footer.description")}
           </p>
         </div>
 
@@ -81,11 +84,12 @@ export function SiteFooter() {
         <div className="container-page flex flex-col items-center justify-between gap-3 py-5 text-xs text-white/60 md:flex-row">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <p>
-            Attorney advertising. Prior results do not guarantee a similar outcome.
+            {g.text("footer.disclaimer")}
           </p>
         </div>
       </div>
     </footer>
+    </CmsSection>
   );
 }
 

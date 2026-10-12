@@ -3,7 +3,7 @@ import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import {
   LayoutDashboard, FileText, FolderTree, Hash, Bot, Code2,
-  BarChart3, Inbox, Users, Settings, LogOut, ShieldCheck, Loader2,
+  BarChart3, Inbox, Users, Settings, LogOut, ShieldCheck, Loader2, PenSquare, Images,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { getMyProfile } from "@/lib/admin.functions";
@@ -19,6 +19,8 @@ export type AdminProfile = {
 
 const NAV = [
   { to: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/admin/content", label: "Content Editor", icon: PenSquare },
+  { to: "/admin/media", label: "Media Library", icon: Images },
   { to: "/admin/posts", label: "Posts", icon: FileText },
   { to: "/admin/categories", label: "Categories", icon: FolderTree },
   { to: "/admin/topics", label: "Topics", icon: Hash },
@@ -35,7 +37,15 @@ export function AdminShell({
   title,
   children,
   onProfile,
-}: { title: string; children: ReactNode; onProfile?: (p: AdminProfile) => void }) {
+  actions,
+  flush,
+}: {
+  title: string;
+  children: ReactNode;
+  onProfile?: (p: AdminProfile) => void;
+  actions?: ReactNode;
+  flush?: boolean;
+}) {
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [profile, setProfile] = useState<AdminProfile | null>(null);
@@ -85,12 +95,12 @@ export function AdminShell({
 
   return (
     <div className="min-h-screen bg-[#0b1220] text-white flex">
-      <aside className="w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex flex-col">
-        <div className="h-16 flex items-center gap-2 px-5 border-b border-white/10">
+      <aside className="w-16 md:w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex flex-col">
+        <div className="h-16 flex items-center gap-2 px-4 md:px-5 border-b border-white/10">
           <div className="h-8 w-8 rounded bg-[color:var(--brand)] flex items-center justify-center">
             <ShieldCheck className="h-4 w-4" />
           </div>
-          <div>
+          <div className="hidden md:block">
             <div className="text-sm font-semibold leading-tight">Kohn Law Firm</div>
             <div className="text-[10px] uppercase tracking-wider text-white/40">Admin Panel</div>
           </div>
@@ -99,12 +109,12 @@ export function AdminShell({
           {NAV.map(({ to, label, icon: Icon }) => {
             const active = pathname === to || pathname.startsWith(to + "/");
             return (
-              <Link key={to} to={to}
+              <Link key={to} to={to} title={label}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                   active ? "bg-[color:var(--brand)] text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}>
-                <Icon className="h-4 w-4" />
-                {label}
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="hidden md:inline">{label}</span>
               </Link>
             );
           })}
@@ -114,7 +124,7 @@ export function AdminShell({
             <div className="h-8 w-8 rounded-full bg-[color:var(--gold)] text-[color:var(--ink)] flex items-center justify-center text-sm font-semibold">
               {profile.full_name.charAt(0).toUpperCase() || "A"}
             </div>
-            <div className="min-w-0 flex-1">
+            <div className="hidden md:block min-w-0 flex-1">
               <div className="text-sm font-medium truncate">{profile.full_name}</div>
               <div className="text-[10px] uppercase text-white/40 truncate">
                 {profile.role === "super_admin" ? "Super Admin" : "Admin"}
@@ -123,15 +133,16 @@ export function AdminShell({
           </div>
           <Button onClick={signOut} variant="ghost" size="sm"
             className="w-full justify-start text-white/70 hover:text-white hover:bg-white/5">
-            <LogOut className="h-4 w-4 mr-2" /> Sign out
+            <LogOut className="h-4 w-4 md:mr-2" /> <span className="hidden md:inline">Sign out</span>
           </Button>
         </div>
       </aside>
-      <main className="flex-1 min-w-0 flex flex-col">
-        <header className="h-16 border-b border-white/10 flex items-center px-6 bg-[#0a1122]">
-          <h1 className="text-lg font-semibold">{title}</h1>
+      <main className="flex-1 min-w-0 flex flex-col h-screen">
+        <header className="min-h-16 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 px-6 py-3 bg-[#0a1122]">
+          <h1 className="text-lg font-semibold truncate">{title}</h1>
+          {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
         </header>
-        <div className="flex-1 overflow-y-auto p-6">{children}</div>
+        <div className={flush ? "flex-1 min-h-0 overflow-hidden" : "flex-1 overflow-y-auto p-6"}>{children}</div>
       </main>
     </div>
   );

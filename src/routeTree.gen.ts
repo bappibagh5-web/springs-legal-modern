@@ -26,15 +26,20 @@ import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminSeoSchemaRouteImport } from './routes/admin.seo-schema'
 import { Route as AdminPostsRouteImport } from './routes/admin.posts'
+import { Route as AdminMediaRouteImport } from './routes/admin.media'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
 import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as AdminBlogAutomationRouteImport } from './routes/admin.blog-automation'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as CategoryServiceRouteImport } from './routes/$category.$service'
 import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
+import { Route as AdminContentIndexRouteImport } from './routes/admin.content.index'
 import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
+import { Route as AdminContentPageKeyRouteImport } from './routes/admin.content.$pageKey'
+import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media.$'
 import { Route as AdminPostsIdEditRouteImport } from './routes/admin.posts.$id.edit'
 
 const TeamRoute = TeamRouteImport.update({
@@ -122,6 +127,11 @@ const AdminPostsRoute = AdminPostsRouteImport.update({
   path: '/posts',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -135,6 +145,11 @@ const AdminLeadsRoute = AdminLeadsRouteImport.update({
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
@@ -162,10 +177,25 @@ const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminPostsRoute,
 } as any)
+const AdminContentIndexRoute = AdminContentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminContentRoute,
+} as any)
 const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
   id: '/new',
   path: '/new',
   getParentRoute: () => AdminPostsRoute,
+} as any)
+const AdminContentPageKeyRoute = AdminContentPageKeyRouteImport.update({
+  id: '/$pageKey',
+  path: '/$pageKey',
+  getParentRoute: () => AdminContentRoute,
+} as any)
+const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
+  id: '/api/public/media/$',
+  path: '/api/public/media/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminPostsIdEditRoute = AdminPostsIdEditRouteImport.update({
   id: '/$id/edit',
@@ -186,9 +216,11 @@ export interface FileRoutesByFullPath {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/blog-automation': typeof AdminBlogAutomationRoute
   '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/content': typeof AdminContentRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -198,9 +230,12 @@ export interface FileRoutesByFullPath {
   '/$category/': typeof CategoryIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/admin/content/$pageKey': typeof AdminContentPageKeyRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/content/': typeof AdminContentIndexRoute
   '/admin/posts/': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -216,6 +251,7 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/topics': typeof AdminTopicsRoute
@@ -224,9 +260,12 @@ export interface FileRoutesByTo {
   '/$category': typeof CategoryIndexRoute
   '/admin': typeof AdminIndexRoute
   '/blog': typeof BlogIndexRoute
+  '/admin/content/$pageKey': typeof AdminContentPageKeyRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/content': typeof AdminContentIndexRoute
   '/admin/posts': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -242,9 +281,11 @@ export interface FileRoutesById {
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/blog-automation': typeof AdminBlogAutomationRoute
   '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/content': typeof AdminContentRouteWithChildren
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -254,9 +295,12 @@ export interface FileRoutesById {
   '/$category/': typeof CategoryIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/admin/content/$pageKey': typeof AdminContentPageKeyRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
+  '/admin/content/': typeof AdminContentIndexRoute
   '/admin/posts/': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -273,9 +317,11 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/blog-automation'
     | '/admin/categories'
+    | '/admin/content'
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
+    | '/admin/media'
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
@@ -285,9 +331,12 @@ export interface FileRouteTypes {
     | '/$category/'
     | '/admin/'
     | '/blog/'
+    | '/admin/content/$pageKey'
     | '/admin/posts/new'
+    | '/admin/content/'
     | '/admin/posts/'
     | '/admin/posts/$id/edit'
+    | '/api/public/media/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -303,6 +352,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
+    | '/admin/media'
     | '/admin/seo-schema'
     | '/admin/settings'
     | '/admin/topics'
@@ -311,9 +361,12 @@ export interface FileRouteTypes {
     | '/$category'
     | '/admin'
     | '/blog'
+    | '/admin/content/$pageKey'
     | '/admin/posts/new'
+    | '/admin/content'
     | '/admin/posts'
     | '/admin/posts/$id/edit'
+    | '/api/public/media/$'
   id:
     | '__root__'
     | '/'
@@ -328,9 +381,11 @@ export interface FileRouteTypes {
     | '/admin/analytics'
     | '/admin/blog-automation'
     | '/admin/categories'
+    | '/admin/content'
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
+    | '/admin/media'
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
@@ -340,9 +395,12 @@ export interface FileRouteTypes {
     | '/$category/'
     | '/admin/'
     | '/blog/'
+    | '/admin/content/$pageKey'
     | '/admin/posts/new'
+    | '/admin/content/'
     | '/admin/posts/'
     | '/admin/posts/$id/edit'
+    | '/api/public/media/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -356,6 +414,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   CategoryServiceRoute: typeof CategoryServiceRoute
   CategoryIndexRoute: typeof CategoryIndexRoute
+  ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -479,6 +538,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/login'
@@ -498,6 +564,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/categories': {
@@ -535,12 +608,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsIndexRouteImport
       parentRoute: typeof AdminPostsRoute
     }
+    '/admin/content/': {
+      id: '/admin/content/'
+      path: '/'
+      fullPath: '/admin/content/'
+      preLoaderRoute: typeof AdminContentIndexRouteImport
+      parentRoute: typeof AdminContentRoute
+    }
     '/admin/posts/new': {
       id: '/admin/posts/new'
       path: '/new'
       fullPath: '/admin/posts/new'
       preLoaderRoute: typeof AdminPostsNewRouteImport
       parentRoute: typeof AdminPostsRoute
+    }
+    '/admin/content/$pageKey': {
+      id: '/admin/content/$pageKey'
+      path: '/$pageKey'
+      fullPath: '/admin/content/$pageKey'
+      preLoaderRoute: typeof AdminContentPageKeyRouteImport
+      parentRoute: typeof AdminContentRoute
+    }
+    '/api/public/media/$': {
+      id: '/api/public/media/$'
+      path: '/api/public/media/$'
+      fullPath: '/api/public/media/$'
+      preLoaderRoute: typeof ApiPublicMediaSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/posts/$id/edit': {
       id: '/admin/posts/$id/edit'
@@ -551,6 +645,20 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AdminContentRouteChildren {
+  AdminContentPageKeyRoute: typeof AdminContentPageKeyRoute
+  AdminContentIndexRoute: typeof AdminContentIndexRoute
+}
+
+const AdminContentRouteChildren: AdminContentRouteChildren = {
+  AdminContentPageKeyRoute: AdminContentPageKeyRoute,
+  AdminContentIndexRoute: AdminContentIndexRoute,
+}
+
+const AdminContentRouteWithChildren = AdminContentRoute._addFileChildren(
+  AdminContentRouteChildren,
+)
 
 interface AdminPostsRouteChildren {
   AdminPostsNewRoute: typeof AdminPostsNewRoute
@@ -572,9 +680,11 @@ interface AdminRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminBlogAutomationRoute: typeof AdminBlogAutomationRoute
   AdminCategoriesRoute: typeof AdminCategoriesRoute
+  AdminContentRoute: typeof AdminContentRouteWithChildren
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminMediaRoute: typeof AdminMediaRoute
   AdminPostsRoute: typeof AdminPostsRouteWithChildren
   AdminSeoSchemaRoute: typeof AdminSeoSchemaRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
@@ -587,9 +697,11 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminBlogAutomationRoute: AdminBlogAutomationRoute,
   AdminCategoriesRoute: AdminCategoriesRoute,
+  AdminContentRoute: AdminContentRouteWithChildren,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLeadsRoute: AdminLeadsRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminMediaRoute: AdminMediaRoute,
   AdminPostsRoute: AdminPostsRouteWithChildren,
   AdminSeoSchemaRoute: AdminSeoSchemaRoute,
   AdminSettingsRoute: AdminSettingsRoute,
@@ -623,7 +735,18 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   CategoryServiceRoute: CategoryServiceRoute,
   CategoryIndexRoute: CategoryIndexRoute,
+  ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

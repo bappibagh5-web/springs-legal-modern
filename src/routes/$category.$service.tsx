@@ -1,9 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findService, type ServiceItem } from "@/lib/site";
+import { cmsHead } from "@/lib/cms/seo";
+import { CmsHero } from "@/components/CmsHero";
+import { useCms, CmsSection } from "@/lib/cms/context";
+import { serviceKey, paragraphs } from "@/lib/cms/registry";
 import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
 
 /* Colorado & Colorado Springs landscapes — one unique image per service page */
@@ -45,17 +48,10 @@ const SERVICE_IMAGES: Record<string, { url: string; alt: string }> = {
 };
 
 export const Route = createFileRoute("/$category/$service")({
-  head: ({ params }) => {
+  head: ({ params, matches }) => {
     const { category, item } = findService(params.category, params.service);
     const title = item ? `${item.title} — ${category?.title} | The Kohn Law Firm` : "Service";
-    return {
-      meta: [
-        { title },
-        { name: "description", content: item?.blurb ?? "" },
-        { property: "og:title", content: title },
-        { property: "og:description", content: item?.blurb ?? "" },
-      ],
-    };
+    return cmsHead(matches, serviceKey(params.category, params.service), { title, description: item?.blurb ?? "" });
   },
   loader: ({ params }) => {
     const { category, item } = findService(params.category, params.service);
@@ -68,28 +64,34 @@ export const Route = createFileRoute("/$category/$service")({
 function ServiceDetailPage() {
   const { category, item } = Route.useLoaderData();
   const related = category.items.filter((i: ServiceItem) => i.slug !== item.slug).slice(0, 3);
+  const pageKey = serviceKey(category.slug, item.slug);
+  const cms = useCms(pageKey);
+  const expect = cms.list<{ text: string }>("expect.items").map((x) => x.text).filter(Boolean);
   const image = SERVICE_IMAGES[item.slug] ?? { url: coloradoMountains.url, alt: "Colorado landscape" };
 
   return (
     <PageShell>
-      <ServiceHero eyebrow={category.title} title={item.title} subtitle={item.blurb} />
+      <CmsHero page={pageKey} />
 
       <section className="py-20">
         <div className="container-page grid gap-12 md:grid-cols-[1.4fr_1fr] md:items-start">
+          <CmsSection page={pageKey} id="overview">
           <article className="space-y-5 text-base leading-relaxed text-foreground">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Overview</p>
-            <h2 className="font-display text-3xl text-ink md:text-4xl">{item.title} in Colorado Springs</h2>
-            {item.body.map((p: string, i: number) => (
+            <h2 className="font-display text-3xl text-ink md:text-4xl">{cms.text("overview.heading")}</h2>
+            {paragraphs(cms.text("overview.body")).map((p: string, i: number) => (
               <p key={i} className="text-muted-foreground">{p}</p>
             ))}
           </article>
+          </CmsSection>
 
           <aside className="space-y-6 md:sticky md:top-24">
-            {item.whatToExpect && item.whatToExpect.length > 0 && (
+            {expect.length > 0 && (
+              <CmsSection page={pageKey} id="expect">
               <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">What to expect</p>
                 <ul className="mt-4 space-y-3">
-                  {item.whatToExpect.map((w: string) => (
+                  {expect.map((w: string) => (
                     <li key={w} className="flex items-start gap-3 text-sm">
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
                       <span>{w}</span>
@@ -97,6 +99,7 @@ function ServiceDetailPage() {
                   ))}
                 </ul>
               </div>
+              </CmsSection>
             )}
 
             <figure className="relative overflow-hidden rounded-xl shadow-elegant">
