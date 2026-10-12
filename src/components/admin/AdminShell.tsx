@@ -3,7 +3,7 @@ import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import {
   LayoutDashboard, FileText, FolderTree, Hash, Bot, Code2,
-  BarChart3, Inbox, Users, Settings, LogOut, ShieldCheck, Loader2,
+  BarChart3, Inbox, Users, Settings, LogOut, ShieldCheck, Loader2, PenSquare, Images,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { getMyProfile } from "@/lib/admin.functions";
@@ -19,6 +19,8 @@ export type AdminProfile = {
 
 const NAV = [
   { to: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/admin/content", label: "Content Editor", icon: PenSquare },
+  { to: "/admin/media", label: "Media Library", icon: Images },
   { to: "/admin/posts", label: "Posts", icon: FileText },
   { to: "/admin/categories", label: "Categories", icon: FolderTree },
   { to: "/admin/topics", label: "Topics", icon: Hash },
@@ -35,7 +37,15 @@ export function AdminShell({
   title,
   children,
   onProfile,
-}: { title: string; children: ReactNode; onProfile?: (p: AdminProfile) => void }) {
+  actions,
+  flush,
+}: {
+  title: string;
+  children: ReactNode;
+  onProfile?: (p: AdminProfile) => void;
+  actions?: ReactNode;
+  flush?: boolean;
+}) {
   const navigate = useNavigate();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [profile, setProfile] = useState<AdminProfile | null>(null);
@@ -85,7 +95,7 @@ export function AdminShell({
 
   return (
     <div className="min-h-screen bg-[#0b1220] text-white flex">
-      <aside className="w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex flex-col">
+      <aside className="hidden md:flex w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex-col">
         <div className="h-16 flex items-center gap-2 px-5 border-b border-white/10">
           <div className="h-8 w-8 rounded bg-[color:var(--brand)] flex items-center justify-center">
             <ShieldCheck className="h-4 w-4" />
@@ -127,11 +137,12 @@ export function AdminShell({
           </Button>
         </div>
       </aside>
-      <main className="flex-1 min-w-0 flex flex-col">
-        <header className="h-16 border-b border-white/10 flex items-center px-6 bg-[#0a1122]">
-          <h1 className="text-lg font-semibold">{title}</h1>
+      <main className="flex-1 min-w-0 flex flex-col h-screen">
+        <header className="min-h-16 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 px-6 py-3 bg-[#0a1122]">
+          <h1 className="text-lg font-semibold truncate">{title}</h1>
+          {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
         </header>
-        <div className="flex-1 overflow-y-auto p-6">{children}</div>
+        <div className={flush ? "flex-1 min-h-0 overflow-hidden" : "flex-1 overflow-y-auto p-6"}>{children}</div>
       </main>
     </div>
   );

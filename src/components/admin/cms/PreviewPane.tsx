@@ -107,7 +107,6 @@ export function PreviewPane({
             ref={frame}
             src={src}
             title="Draft preview"
-            onLoad={() => setReady(false)}
             style={{
               width: devW,
               height: `${100 / scale}%`,
