@@ -1,23 +1,22 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import { ServiceHero } from "@/components/ServiceHero";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { findCategory, type ServiceItem } from "@/lib/site";
+import { cmsHead } from "@/lib/cms/seo";
+import { CmsHero } from "@/components/CmsHero";
+import { useCms, CmsSection } from "@/lib/cms/context";
+import { categoryKey } from "@/lib/cms/registry";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/$category/")({
-  head: ({ params }) => {
+  head: ({ params, matches }) => {
     const cat = findCategory(params.category);
     const title = cat ? `${cat.title} — The Kohn Law Firm` : "Practice Area";
-    return {
-      meta: [
-        { title },
-        { name: "description", content: cat?.short ?? "Practice area at The Kohn Law Firm." },
-        { property: "og:title", content: title },
-        { property: "og:description", content: cat?.short ?? "" },
-      ],
-    };
+    return cmsHead(matches, categoryKey(params.category), {
+      title,
+      description: cat?.short ?? "Practice area at The Kohn Law Firm.",
+    });
   },
   loader: ({ params }) => {
     const cat = findCategory(params.category);
@@ -29,20 +28,20 @@ export const Route = createFileRoute("/$category/")({
 
 function CategoryPage() {
   const { category } = Route.useLoaderData();
+  const pageKey = categoryKey(category.slug);
+  const cms = useCms(pageKey);
   return (
     <PageShell>
-      <ServiceHero
-        eyebrow="Practice Area"
-        title={category.title}
-        subtitle={category.short}
-      />
+      <CmsHero page={pageKey} />
 
       <section className="py-20 md:py-24">
         <div className="container-page grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-start">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Overview</p>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">{category.title} in Colorado</h2>
-            <p className="mt-5 text-muted-foreground">{category.intro}</p>
+            <CmsSection page={pageKey} id="overview">
+              <p className="mt-5 text-muted-foreground">{cms.text("overview.intro")}</p>
+            </CmsSection>
           </div>
           <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Services</p>
