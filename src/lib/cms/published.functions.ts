@@ -2,7 +2,8 @@ import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 
-export type PublishedMap = Record<string, Record<string, unknown>>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PublishedMap = Record<string, Record<string, any>>;
 
 /** Public, read-only: returns only PUBLISHED content (drafts live in a separate admin-only table). */
 export const getPublishedContent = createServerFn({ method: "GET" }).handler(async (): Promise<PublishedMap> => {
