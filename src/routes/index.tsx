@@ -3,12 +3,10 @@ import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { SITE, CATEGORIES } from "@/lib/site";
-import heroAsset from "@/assets/colorado-springs-pioneers-museum.avif.asset.json";
-import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
-import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
-import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
-import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
+import { CATEGORIES } from "@/lib/site";
+import { useCms, useSiteInfo, CmsSection } from "@/lib/cms/context";
+import { cmsHead } from "@/lib/cms/seo";
+import { paragraphs, type ImageValue } from "@/lib/cms/registry";
 import scalesImg from "@/assets/scales-justice.jpg";
 import familyImg from "@/assets/family-hands.jpg";
 import courthouseImg from "@/assets/courthouse.jpg";
@@ -16,26 +14,26 @@ import { Phone, Shield, Scale, Users, CheckCircle2, ChevronDown } from "lucide-r
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "The Kohn Law Firm — Colorado Springs Criminal Defense Attorney" },
-      { name: "description", content: "Colorado Springs criminal defense, family law, and protection-order representation. Schedule a confidential consultation with attorney Shimon Kohn." },
-      { property: "og:title", content: "The Kohn Law Firm — Colorado Springs Criminal Defense" },
-      { property: "og:description", content: "Trusted defense counsel for Colorado Springs and El Paso County." },
-    ],
-  }),
+  head: ({ matches }) =>
+    cmsHead(matches, "home", {
+      title: "The Kohn Law Firm — Colorado Springs Criminal Defense Attorney",
+      description:
+        "Colorado Springs criminal defense, family law, and protection-order representation. Schedule a confidential consultation with attorney Shimon Kohn.",
+      ogTitle: "The Kohn Law Firm — Colorado Springs Criminal Defense",
+      ogDescription: "Trusted defense counsel for Colorado Springs and El Paso County.",
+    }),
   component: HomePage,
 });
 
 function HomePage() {
   return (
     <PageShell>
-      <Hero />
-      <ServicesSection />
-      <AboutSection />
-      <TeamPreview />
-      <FAQSection />
-      <WhoWeAre />
+      <CmsSection page="home" id="hero"><Hero /></CmsSection>
+      <CmsSection page="home" id="services"><ServicesSection /></CmsSection>
+      <CmsSection page="home" id="about"><AboutSection /></CmsSection>
+      <CmsSection page="home" id="team"><TeamPreview /></CmsSection>
+      <CmsSection page="home" id="faq"><FAQSection /></CmsSection>
+      <CmsSection page="home" id="whoWeAre"><WhoWeAre /></CmsSection>
       <TestimonialsSection />
       <CTASection />
     </PageShell>
@@ -43,6 +41,10 @@ function HomePage() {
 }
 
 function Hero() {
+  const c = useCms("home");
+  const SITE = useSiteInfo();
+  const heroImg = c.image("hero.image");
+  const stats = c.list<{ n: string; label: string }>("hero.stats");
   return (
     <section className="relative isolate min-h-[600px] overflow-hidden bg-ink text-white md:min-h-[680px] lg:grid lg:min-h-[760px] lg:grid-cols-2">
       {/* ── LEFT: clean text half ── */}
@@ -63,18 +65,18 @@ function Hero() {
               <span className="absolute inline-flex h-full w-full rounded-full bg-gold animate-pulse-ring" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
             </span>
-            Colorado Springs · Trusted Trial Counsel
+            {c.text("hero.badge")}
           </div>
 
           <h1
             className="mt-6 font-display text-4xl font-black leading-[1.05] tracking-tight md:text-5xl lg:text-[3.4rem] xl:text-6xl animate-fade-up"
             style={{ animationDelay: "100ms" }}
           >
-            We Help You Solve{" "}
+            {c.text("hero.titleLine1")}{" "}
             <span className="block">
-              Your Legal{" "}
+              {c.text("hero.titleLine2")}{" "}
               <span className="bg-gradient-to-r from-gold via-[#ffd773] to-gold bg-clip-text text-transparent">
-                Challenges
+                {c.text("hero.titleHighlight")}
               </span>
             </span>
           </h1>
@@ -83,10 +85,7 @@ function Hero() {
             className="mt-6 max-w-md text-base leading-relaxed text-white/80 md:text-lg animate-fade-up"
             style={{ animationDelay: "220ms" }}
           >
-            Kohn Law Firm provides focused and aggressive legal representation in
-            criminal defense and family law cases. With decades of combined
-            experience, our attorneys protect your rights and guide you through
-            the legal process with clarity and care.
+            {c.text("hero.subtitle")}
           </p>
 
           <div
@@ -94,7 +93,7 @@ function Hero() {
             style={{ animationDelay: "320ms" }}
           >
             <ActionButton variant="gold" size="lg" to="/consultation">
-              Schedule a Consultation
+              {c.text("hero.ctaLabel")}
             </ActionButton>
             <a
               href={SITE.phoneHref}
@@ -111,9 +110,9 @@ function Hero() {
             className="mt-10 grid max-w-md grid-cols-3 gap-5 border-t border-white/15 pt-7 animate-fade-up"
             style={{ animationDelay: "420ms" }}
           >
-            <Stat n="25+" label="Years experience" />
-            <Stat n="150+" label="Jury trials" />
-            <Stat n="24/7" label="Case response" />
+            {stats.map((st, i) => (
+              <Stat key={i} n={st.n} label={st.label} />
+            ))}
           </div>
         </div>
       </div>
@@ -121,8 +120,8 @@ function Hero() {
       {/* ── RIGHT: image half ── */}
       <div className="relative hidden h-full lg:block">
         <img
-          src={heroAsset.url}
-          alt="Downtown Colorado Springs with the Rocky Mountains"
+          src={heroImg.url}
+          alt={heroImg.alt}
           className="absolute inset-0 h-full w-full object-cover"
           width={1920}
           height={1280}
@@ -130,9 +129,9 @@ function Hero() {
 
         {/* floating badges */}
         <div className="absolute bottom-10 left-10 rounded-xl border border-white/20 bg-white/95 px-5 py-4 text-ink shadow-elegant backdrop-blur">
-          <p className="font-display text-2xl font-bold text-brand">A+</p>
+          <p className="font-display text-2xl font-bold text-brand">{c.text("hero.ratingValue")}</p>
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-            Client rated
+            {c.text("hero.ratingLabel")}
           </p>
         </div>
       </div>
@@ -140,8 +139,8 @@ function Hero() {
       {/* Mobile image strip (below text) */}
       <div className="relative h-64 lg:hidden">
         <img
-          src={heroAsset.url}
-          alt="Downtown Colorado Springs with the Rocky Mountains"
+          src={heroImg.url}
+          alt={heroImg.alt}
           className="h-full w-full object-cover"
           width={1920}
           height={1280}
@@ -164,6 +163,7 @@ function Stat({ n, label }: { n: string; label: string }) {
 }
 
 function ServicesSection() {
+  const c = useCms("home");
   const icons = [Shield, Scale, Users];
   const images = [courthouseImg, familyImg, scalesImg];
   return (
@@ -171,13 +171,13 @@ function ServicesSection() {
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-            Practice Areas
+            {c.text("services.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            Focused, full-service representation
+            {c.text("services.heading")}
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Three core practice areas, one standard of preparation.
+            {c.text("services.intro")}
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -219,43 +219,38 @@ function ServicesSection() {
 }
 
 function AboutSection() {
+  const c = useCms("home");
+  const aboutImg = c.image("about.image");
   return (
     <section className="bg-surface py-20 md:py-28">
       <div className="container-page grid gap-12 md:grid-cols-2 md:items-center">
         <div className="relative">
           <img
-            src={aboutFirmImg.url}
-            alt="Modern courthouse exterior in Colorado"
+            src={aboutImg.url}
+            alt={aboutImg.alt}
             loading="lazy"
             className="aspect-[4/3] w-full rounded-xl object-cover shadow-elegant"
             width={1280}
             height={960}
           />
           <div className="absolute -bottom-6 -right-6 hidden rounded-xl bg-crimson p-6 text-white shadow-elegant md:block">
-            <p className="font-display text-3xl">25+</p>
-            <p className="mt-1 text-xs uppercase tracking-wide">Years of Trial Experience</p>
+            <p className="font-display text-3xl">{c.text("about.badgeNumber")}</p>
+            <p className="mt-1 text-xs uppercase tracking-wide">{c.text("about.badgeLabel")}</p>
           </div>
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-            About the Firm
+            {c.text("about.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            A boutique practice built around the client.
+            {c.text("about.heading")}
           </h2>
           <p className="mt-5 text-muted-foreground">
-            The Kohn Law Firm was founded on a simple idea: people facing serious
-            legal trouble deserve direct access to their attorney. Not an associate,
-            not a paralegal — the lawyer handling their case.
+            {c.text("about.body")}
           </p>
           <ul className="mt-6 space-y-3">
-            {[
-              "Direct, attorney-led communication on every case",
-              "Trial-ready preparation from day one",
-              "Strategic, candid counsel — not false promises",
-              "Decades of combined courtroom experience",
-            ].map((p) => (
-              <li key={p} className="flex items-start gap-3 text-sm">
+            {c.list<{ text: string }>("about.bullets").map(({ text: p }, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
                 <span>{p}</span>
               </li>
@@ -266,7 +261,7 @@ function AboutSection() {
               to="/about"
               className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson"
             >
-              More about the firm →
+              {c.text("about.linkLabel")}
             </Link>
           </div>
         </div>
@@ -275,58 +270,37 @@ function AboutSection() {
   );
 }
 
-const TEAM = [
-  {
-    name: "Shimon Kohn",
-    title: "Founding Attorney",
-    bio: "Over 25 years fighting for clients' rights — former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
-    img: shimonAsset.url,
-    fit: "cover" as const,
-  },
-  {
-    name: "Erica Bertini",
-    title: "Managing Attorney – Family Law",
-    bio: "15+ years guiding clients through family law matters that intersect with criminal court, with a background as a Deputy District Attorney in Colorado and Illinois.",
-    img: ericaAsset.url,
-    fit: "cover" as const,
-  },
-  {
-    name: "Macey",
-    title: "Family Law Paralegal",
-    bio: "Supports clients at every stage of their case — assisting our family law attorneys with case preparation, file management, deadlines, and the litigation process.",
-    img: maceyAsset.url,
-    fit: "cover" as const,
-  },
-];
 
 function TeamPreview() {
+  const c = useCms("home");
+  const TEAM = c.list<{ name: string; title: string; bio: string; image: ImageValue }>("team.members");
   return (
     <section className="py-20 md:py-28">
       <div className="container-page">
         <div className="flex flex-col items-end justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-xl">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-              Our Legal Team
+              {c.text("team.eyebrow")}
             </p>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-              Counsel you can call by name.
+              {c.text("team.heading")}
             </h2>
           </div>
           <Link to="/team" className="text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson">
-            Meet the team →
+            {c.text("team.linkLabel")}
           </Link>
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {TEAM.map((m) => (
+          {TEAM.map((m, i) => (
             <article
-              key={m.name}
+              key={i}
               className="group relative overflow-hidden rounded-xl border border-border bg-card shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
             >
               <div className="relative h-80 overflow-hidden bg-surface">
                 <img
-                  src={m.img}
-                  alt={m.name}
+                  src={m.image?.url}
+                  alt={m.image?.alt || m.name}
                   loading="lazy"
                   className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   width={1024}
@@ -350,44 +324,28 @@ function TeamPreview() {
   );
 }
 
-const FAQS = [
-  {
-    q: "What should I do if I've been arrested in Colorado Springs?",
-    a: "Invoke your right to remain silent and ask for an attorney. Do not discuss the facts of the case with officers, cellmates, or over recorded jail calls. Call our office as soon as you can safely do so.",
-  },
-  {
-    q: "How quickly can I speak with an attorney?",
-    a: "We answer the phone around the clock for criminal matters. For non-emergency family-law questions, we typically schedule a consultation within one to three business days.",
-  },
-  {
-    q: "Do you handle cases outside El Paso County?",
-    a: "Yes. We regularly appear in Pueblo, Teller, Fremont, and Douglas counties, and we accept select matters elsewhere in Colorado.",
-  },
-  {
-    q: "How much will my case cost?",
-    a: "Fees depend on the charge, court, and projected work. We discuss fee structure openly during the initial consultation so you can make an informed decision.",
-  },
-];
 
 function FAQSection() {
+  const c = useCms("home");
+  const FAQS = c.list<{ q: string; a: string }>("faq.items");
   const [open, setOpen] = useState(0);
   return (
     <section className="bg-surface py-20 md:py-28">
       <div className="container-page grid gap-12 md:grid-cols-[1fr_2fr]">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-            Frequently Asked
+            {c.text("faq.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            Questions we hear most often.
+            {c.text("faq.heading")}
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Don't see your question? Reach out — most calls are answered the same day.
+            {c.text("faq.intro")}
           </p>
         </div>
         <ul className="divide-y divide-border rounded-xl border border-border bg-card">
           {FAQS.map((f, i) => (
-            <li key={f.q}>
+            <li key={i}>
               <button
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                 onClick={() => setOpen(open === i ? -1 : i)}
@@ -411,6 +369,7 @@ function FAQSection() {
 }
 
 function WhoWeAre() {
+  const c = useCms("home");
   return (
     <section className="relative isolate overflow-hidden bg-ink py-20 text-white md:py-28">
       <img src={scalesImg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-20" loading="lazy" />
@@ -418,23 +377,16 @@ function WhoWeAre() {
       <div className="container-page relative grid gap-12 md:grid-cols-2 md:items-center">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
-            Who We Are
+            {c.text("whoWeAre.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl md:text-4xl">
-            Lawyers who treat their clients like neighbors — because in Colorado Springs, they are.
+            {c.text("whoWeAre.heading")}
           </h2>
         </div>
         <div className="space-y-4 text-white/85">
-          <p>
-            The Kohn Law Firm is a Colorado Springs practice rooted in this community.
-            We know the courts, the prosecutors, and the judges. More importantly, we
-            know the people who walk through our doors are usually facing the worst
-            week of their lives.
-          </p>
-          <p>
-            Our standard is simple: answer the phone, prepare the case, and tell the
-            truth — even when the truth is hard.
-          </p>
+          {paragraphs(c.text("whoWeAre.body")).map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
         </div>
       </div>
     </section>
