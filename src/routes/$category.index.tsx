@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { findCategory, type ServiceItem } from "@/lib/site";
+import { findCategory, type ServiceItem, type ServiceCategory } from "@/lib/site";
 import { cmsHead } from "@/lib/cms/seo";
 import { CmsHero } from "@/components/CmsHero";
 import { useCms, CmsSection } from "@/lib/cms/context";
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/$category/")({
 });
 
 function CategoryPage() {
-  const { category } = Route.useLoaderData();
+  const { category } = Route.useLoaderData() as unknown as { category: ServiceCategory };
   const pageKey = categoryKey(category.slug);
   const cms = useCms(pageKey);
   return (
