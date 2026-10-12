@@ -26,6 +26,7 @@ import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminSeoSchemaRouteImport } from './routes/admin.seo-schema'
 import { Route as AdminPostsRouteImport } from './routes/admin.posts'
+import { Route as AdminMediaRouteImport } from './routes/admin.media'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
@@ -126,6 +127,11 @@ const AdminPostsRoute = AdminPostsRouteImport.update({
   path: '/posts',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -214,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -244,6 +251,7 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/topics': typeof AdminTopicsRoute
@@ -277,6 +285,7 @@ export interface FileRoutesById {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/media': typeof AdminMediaRoute
   '/admin/posts': typeof AdminPostsRouteWithChildren
   '/admin/seo-schema': typeof AdminSeoSchemaRoute
   '/admin/settings': typeof AdminSettingsRoute
@@ -312,6 +321,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
+    | '/admin/media'
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
@@ -342,6 +352,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
+    | '/admin/media'
     | '/admin/seo-schema'
     | '/admin/settings'
     | '/admin/topics'
@@ -374,6 +385,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/leads'
     | '/admin/login'
+    | '/admin/media'
     | '/admin/posts'
     | '/admin/seo-schema'
     | '/admin/settings'
@@ -526,6 +538,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/login'
@@ -665,6 +684,7 @@ interface AdminRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminMediaRoute: typeof AdminMediaRoute
   AdminPostsRoute: typeof AdminPostsRouteWithChildren
   AdminSeoSchemaRoute: typeof AdminSeoSchemaRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
@@ -681,6 +701,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLeadsRoute: AdminLeadsRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminMediaRoute: AdminMediaRoute,
   AdminPostsRoute: AdminPostsRouteWithChildren,
   AdminSeoSchemaRoute: AdminSeoSchemaRoute,
   AdminSettingsRoute: AdminSettingsRoute,
