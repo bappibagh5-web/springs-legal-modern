@@ -95,7 +95,7 @@ export function AdminShell({
 
   return (
     <div className="min-h-screen bg-[#0b1220] text-white flex">
-      <aside className="hidden md:flex w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex-col">
+      <aside className="w-16 md:w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex flex-col">
         <div className="h-16 flex items-center gap-2 px-5 border-b border-white/10">
           <div className="h-8 w-8 rounded bg-[color:var(--brand)] flex items-center justify-center">
             <ShieldCheck className="h-4 w-4" />
