@@ -96,11 +96,11 @@ export function AdminShell({
   return (
     <div className="min-h-screen bg-[#0b1220] text-white flex">
       <aside className="w-16 md:w-64 shrink-0 border-r border-white/10 bg-[#0a1122] flex flex-col">
-        <div className="h-16 flex items-center gap-2 px-5 border-b border-white/10">
+        <div className="h-16 flex items-center gap-2 px-4 md:px-5 border-b border-white/10">
           <div className="h-8 w-8 rounded bg-[color:var(--brand)] flex items-center justify-center">
             <ShieldCheck className="h-4 w-4" />
           </div>
-          <div>
+          <div className="hidden md:block">
             <div className="text-sm font-semibold leading-tight">Kohn Law Firm</div>
             <div className="text-[10px] uppercase tracking-wider text-white/40">Admin Panel</div>
           </div>
@@ -109,12 +109,12 @@ export function AdminShell({
           {NAV.map(({ to, label, icon: Icon }) => {
             const active = pathname === to || pathname.startsWith(to + "/");
             return (
-              <Link key={to} to={to}
+              <Link key={to} to={to} title={label}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                   active ? "bg-[color:var(--brand)] text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
                 }`}>
-                <Icon className="h-4 w-4" />
-                {label}
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="hidden md:inline">{label}</span>
               </Link>
             );
           })}
