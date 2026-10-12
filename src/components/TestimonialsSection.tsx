@@ -1,4 +1,6 @@
 import { Quote, Star } from "lucide-react";
+import { useCms, CmsSection } from "@/lib/cms/context";
+import type { Testimonial } from "@/lib/cms/testimonials-data";
 
 
 
@@ -8,25 +10,27 @@ type Props = {
 };
 
 export function TestimonialsSection({ variant = "light", limit = 3 }: Props) {
-  const items = TESTIMONIALS.slice(0, limit);
+  const g = useCms("global");
+  const items = g.list<Testimonial>("testimonials.items").slice(0, limit);
   const bg = variant === "surface" ? "bg-surface" : "bg-background";
 
   return (
+    <CmsSection page="global" id="testimonials">
     <section className={`${bg} py-20 md:py-28`}>
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-            Testimonials
+            {g.text("testimonials.eyebrow")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            What our clients are saying.
+            {g.text("testimonials.heading")}
           </h2>
           <div className="mt-4 flex items-center justify-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="h-5 w-5 fill-gold text-gold" />
             ))}
             <span className="ml-2 text-sm font-semibold text-ink">
-              Excellent · 139+ Google reviews
+              {g.text("testimonials.rating")}
             </span>
           </div>
         </div>
@@ -64,5 +68,6 @@ export function TestimonialsSection({ variant = "light", limit = 3 }: Props) {
         </p>
       </div>
     </section>
+    </CmsSection>
   );
 }

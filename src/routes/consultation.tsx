@@ -6,6 +6,8 @@ import { ServiceHero } from "@/components/ServiceHero";
 import { CATEGORIES, SITE } from "@/lib/site";
 import { Phone, Mail, Shield, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
+import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
+import { cmsHead } from "@/lib/cms/seo";
 
 export const Route = createFileRoute("/consultation")({
   head: () => ({
@@ -20,6 +22,7 @@ export const Route = createFileRoute("/consultation")({
 });
 
 function ConsultationPage() {
+  const SITE = useSiteInfo();
   const submit = useServerFn(submitConsultationLead);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);

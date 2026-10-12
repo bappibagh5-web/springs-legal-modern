@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import logoAsset from "@/assets/klf-logo-color.png.asset.json";
-import { SITE, CATEGORIES, NAV_LINKS } from "@/lib/site";
+import { CATEGORIES, NAV_LINKS } from "@/lib/site";
+import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
 import { ActionButton } from "./ActionButton";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
+  const SITE = useSiteInfo();
+  const g = useCms("global");
   const [open, setOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const closeTimer = useRef<number | null>(null);
@@ -30,7 +33,7 @@ export function SiteHeader() {
       <div className="hidden bg-ink text-white/85 md:block">
         <div className="container-page flex h-9 items-center justify-between text-xs">
           <span className="tracking-wide uppercase text-white/60">
-            Colorado Springs · Trusted Defense Counsel
+            {g.text("header.tagline")}
           </span>
           <div className="flex items-center gap-5">
             <a
@@ -93,7 +96,7 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <ActionButton variant="gold" size="sm">
-              Schedule Consultation
+              {g.text("header.ctaLabel")}
             </ActionButton>
           </div>
 
@@ -193,6 +196,8 @@ function MegaMenuPanel({
 }
 
 function MobileDrawer({ onClose }: { onClose: () => void }) {
+  const SITE = useSiteInfo();
+  const g = useCms("global");
   const [openCat, setOpenCat] = useState<string | null>(null);
   return (
     <div className="fixed inset-0 z-[100] lg:hidden">
@@ -278,7 +283,7 @@ function MobileDrawer({ onClose }: { onClose: () => void }) {
             <Mail className="h-4 w-4 text-gold" /> {SITE.email}
           </a>
           <ActionButton variant="gold" size="md" className="w-full">
-            Schedule Consultation
+            {g.text("header.ctaLabel")}
           </ActionButton>
         </div>
       </div>

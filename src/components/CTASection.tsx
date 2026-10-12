@@ -1,15 +1,14 @@
 import { ActionButton } from "./ActionButton";
 import { Phone } from "lucide-react";
-import { SITE } from "@/lib/site";
+import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
 
-export function CTASection({
-  title = "Your defense starts with a conversation.",
-  body = "Speak directly with attorney Shimon Kohn about your case. Consultations are confidential and judgment-free.",
-}: {
-  title?: string;
-  body?: string;
-}) {
+export function CTASection(props: { title?: string; body?: string }) {
+  const SITE = useSiteInfo();
+  const g = useCms("global");
+  const title = props.title ?? g.text("cta.title");
+  const body = props.body ?? g.text("cta.body");
   return (
+    <CmsSection page="global" id="cta">
     <section className="relative overflow-hidden bg-brand text-white">
       <div
         aria-hidden
@@ -26,7 +25,7 @@ export function CTASection({
         </div>
         <div className="flex flex-col gap-3 md:items-end">
           <ActionButton variant="gold" size="lg">
-            Schedule a Consultation
+            {g.text("cta.buttonLabel")}
           </ActionButton>
           <a
             href={SITE.phoneHref}
@@ -37,5 +36,6 @@ export function CTASection({
         </div>
       </div>
     </section>
+    </CmsSection>
   );
 }

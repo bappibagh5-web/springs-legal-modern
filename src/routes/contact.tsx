@@ -3,9 +3,10 @@ import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/PageShell";
 import { ServiceHero } from "@/components/ServiceHero";
-import { SITE } from "@/lib/site";
 import { Phone, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
+import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
+import { cmsHead } from "@/lib/cms/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 function ContactPage() {
+  const SITE = useSiteInfo();
   const submit = useServerFn(submitConsultationLead);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
