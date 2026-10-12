@@ -35,6 +35,7 @@ import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
 import { Route as CategoryServiceRouteImport } from './routes/$category.$service'
 import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
 import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
+import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media.$'
 import { Route as AdminPostsIdEditRouteImport } from './routes/admin.posts.$id.edit'
 
 const TeamRoute = TeamRouteImport.update({
@@ -167,6 +168,11 @@ const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
   path: '/new',
   getParentRoute: () => AdminPostsRoute,
 } as any)
+const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
+  id: '/api/public/media/$',
+  path: '/api/public/media/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPostsIdEditRoute = AdminPostsIdEditRouteImport.update({
   id: '/$id/edit',
   path: '/$id/edit',
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/posts/': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -227,6 +234,7 @@ export interface FileRoutesByTo {
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/posts': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -257,6 +265,7 @@ export interface FileRoutesById {
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/posts/': typeof AdminPostsIndexRoute
   '/admin/posts/$id/edit': typeof AdminPostsIdEditRoute
+  '/api/public/media/$': typeof ApiPublicMediaSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -288,6 +297,7 @@ export interface FileRouteTypes {
     | '/admin/posts/new'
     | '/admin/posts/'
     | '/admin/posts/$id/edit'
+    | '/api/public/media/$'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -314,6 +324,7 @@ export interface FileRouteTypes {
     | '/admin/posts/new'
     | '/admin/posts'
     | '/admin/posts/$id/edit'
+    | '/api/public/media/$'
   id:
     | '__root__'
     | '/'
@@ -343,6 +354,7 @@ export interface FileRouteTypes {
     | '/admin/posts/new'
     | '/admin/posts/'
     | '/admin/posts/$id/edit'
+    | '/api/public/media/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -356,6 +368,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   CategoryServiceRoute: typeof CategoryServiceRoute
   CategoryIndexRoute: typeof CategoryIndexRoute
+  ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -542,6 +555,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsNewRouteImport
       parentRoute: typeof AdminPostsRoute
     }
+    '/api/public/media/$': {
+      id: '/api/public/media/$'
+      path: '/api/public/media/$'
+      fullPath: '/api/public/media/$'
+      preLoaderRoute: typeof ApiPublicMediaSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/posts/$id/edit': {
       id: '/admin/posts/$id/edit'
       path: '/$id/edit'
@@ -623,6 +643,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   CategoryServiceRoute: CategoryServiceRoute,
   CategoryIndexRoute: CategoryIndexRoute,
+  ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
