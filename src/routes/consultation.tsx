@@ -6,7 +6,7 @@ import { CmsHero } from "@/components/CmsHero";
 import { CATEGORIES } from "@/lib/site";
 import { Phone, Mail, Shield, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
-import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
+import { useSiteInfo } from "@/lib/cms/context";
 import { cmsHead } from "@/lib/cms/seo";
 
 export const Route = createFileRoute("/consultation")({

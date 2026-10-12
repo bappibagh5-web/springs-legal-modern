@@ -5,7 +5,7 @@ import { PageShell } from "@/components/PageShell";
 import { CmsHero } from "@/components/CmsHero";
 import { Phone, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
-import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
+import { useSiteInfo, useCms } from "@/lib/cms/context";
 import { cmsHead } from "@/lib/cms/seo";
 
 export const Route = createFileRoute("/contact")({
@@ -15,6 +15,7 @@ export const Route = createFileRoute("/contact")({
 
 function ContactPage() {
   const SITE = useSiteInfo();
+  const cms = useCms("contact");
   const submit = useServerFn(submitConsultationLead);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -61,7 +62,7 @@ function ContactPage() {
             <InfoRow icon={Phone} label="Phone" value={SITE.phone} href={SITE.phoneHref} />
             <InfoRow icon={Mail} label="Email" value={SITE.email} href={SITE.emailHref} />
             <InfoRow icon={MapPin} label="Service Area" value={`${SITE.city} & surrounding counties`} />
-            <InfoRow icon={Clock} label="Availability" value="24/7 for active criminal matters" />
+            <InfoRow icon={Clock} label="Availability" value={cms.text("info.availability")} />
           </div>
 
           {done ? (

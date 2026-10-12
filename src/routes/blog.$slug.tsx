@@ -9,8 +9,7 @@ import { PageShell } from "@/components/PageShell";
 import { ActionButton } from "@/components/ActionButton";
 import { CTASection } from "@/components/CTASection";
 import { getPublicPost, type PublicPostCard } from "@/lib/public-posts.functions";
-import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
-import { cmsHead } from "@/lib/cms/seo";
+import { useSiteInfo } from "@/lib/cms/context";
 
 const postQueryOptions = (slug: string) =>
   queryOptions({
