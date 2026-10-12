@@ -11,7 +11,7 @@ import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 import aboutFirmImg from "@/assets/courthouse-modern.webp.asset.json";
 import courthouseImg from "@/assets/courthouse.jpg";
-import { TESTIMONIALS } from "@/components/TestimonialsSection";
+import { TESTIMONIALS } from "@/lib/cms/testimonials-data";
 
 export type ImageValue = { url: string; alt: string };
 export type FieldType = "text" | "textarea" | "image" | "url" | "list" | "toggle";
