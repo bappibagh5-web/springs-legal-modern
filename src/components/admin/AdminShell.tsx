@@ -124,7 +124,7 @@ export function AdminShell({
             <div className="h-8 w-8 rounded-full bg-[color:var(--gold)] text-[color:var(--ink)] flex items-center justify-center text-sm font-semibold">
               {profile.full_name.charAt(0).toUpperCase() || "A"}
             </div>
-            <div className="min-w-0 flex-1">
+            <div className="hidden md:block min-w-0 flex-1">
               <div className="text-sm font-medium truncate">{profile.full_name}</div>
               <div className="text-[10px] uppercase text-white/40 truncate">
                 {profile.role === "super_admin" ? "Super Admin" : "Admin"}
@@ -133,7 +133,7 @@ export function AdminShell({
           </div>
           <Button onClick={signOut} variant="ghost" size="sm"
             className="w-full justify-start text-white/70 hover:text-white hover:bg-white/5">
-            <LogOut className="h-4 w-4 mr-2" /> Sign out
+            <LogOut className="h-4 w-4 md:mr-2" /> <span className="hidden md:inline">Sign out</span>
           </Button>
         </div>
       </aside>
