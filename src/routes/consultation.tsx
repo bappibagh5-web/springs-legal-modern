@@ -2,22 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { PageShell } from "@/components/PageShell";
-import { ServiceHero } from "@/components/ServiceHero";
-import { CATEGORIES, SITE } from "@/lib/site";
+import { CmsHero } from "@/components/CmsHero";
+import { CATEGORIES } from "@/lib/site";
 import { Phone, Mail, Shield, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
 import { useSiteInfo, useCms, CmsSection } from "@/lib/cms/context";
 import { cmsHead } from "@/lib/cms/seo";
 
 export const Route = createFileRoute("/consultation")({
-  head: () => ({
-    meta: [
-      { title: "Schedule a Consultation — The Kohn Law Firm" },
-      { name: "description", content: "Request a confidential consultation with The Kohn Law Firm in Colorado Springs." },
-      { property: "og:title", content: "Schedule a Consultation" },
-      { property: "og:description", content: "Confidential case review with attorney Shimon Kohn." },
-    ],
-  }),
+  head: ({ matches }) => cmsHead(matches, "consultation", { title: "Schedule a Consultation — The Kohn Law Firm", description: "Request a confidential consultation with The Kohn Law Firm in Colorado Springs.", ogTitle: "Schedule a Consultation", ogDescription: "Confidential case review with attorney Shimon Kohn." }),
   component: ConsultationPage,
 });
 
@@ -59,11 +52,7 @@ function ConsultationPage() {
 
   return (
     <PageShell>
-      <ServiceHero
-        eyebrow="Confidential Intake"
-        title="Schedule a consultation."
-        subtitle="Tell us a little about your situation. We will reach out promptly to set a time."
-      />
+      <CmsHero page="consultation" />
 
       <section className="py-20">
         <div className="container-page grid gap-12 md:grid-cols-[1fr_1.4fr]">

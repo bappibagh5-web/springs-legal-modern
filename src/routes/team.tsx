@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import { ServiceHero } from "@/components/ServiceHero";
+import { CmsHero } from "@/components/CmsHero";
+import { cmsHead } from "@/lib/cms/seo";
 import { CTASection } from "@/components/CTASection";
 import shimonAsset from "@/assets/shimon-kohn-v3.jpg.asset.json";
 import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
@@ -8,14 +9,7 @@ import ericaAsset from "@/assets/erica-bertini.jpg.asset.json";
 import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 
 export const Route = createFileRoute("/team")({
-  head: () => ({
-    meta: [
-      { title: "Our Team — The Kohn Law Firm" },
-      { name: "description", content: "Meet the attorneys and staff of The Kohn Law Firm in Colorado Springs — Shimon Kohn, Erica Bertini, and our paralegal team." },
-      { property: "og:title", content: "Our Legal Team — The Kohn Law Firm" },
-      { property: "og:description", content: "Colorado Springs attorneys ready to defend your case." },
-    ],
-  }),
+  head: ({ matches }) => cmsHead(matches, "team", { title: "Our Team — The Kohn Law Firm", description: "Meet the attorneys and staff of The Kohn Law Firm in Colorado Springs — Shimon Kohn, Erica Bertini, and our paralegal team.", ogTitle: "Our Legal Team — The Kohn Law Firm", ogDescription: "Colorado Springs attorneys ready to defend your case." }),
   component: TeamPage,
 });
 
@@ -93,11 +87,7 @@ function TeamPage() {
 
   return (
     <PageShell>
-      <ServiceHero
-        eyebrow="Our Legal Team"
-        title="The attorneys behind every case."
-        subtitle="At Kohn Law Firm, our attorneys and staff combine proven legal experience with detailed case preparation and ethical advocacy. We approach every case with professionalism, focus, and a commitment to delivering results our clients can trust."
-      />
+      <CmsHero page="team" />
 
       <section className="py-20 md:py-24">
         <div className="container-page">

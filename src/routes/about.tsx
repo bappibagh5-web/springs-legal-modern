@@ -1,20 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import { ServiceHero } from "@/components/ServiceHero";
+import { CmsHero } from "@/components/CmsHero";
+import { cmsHead } from "@/lib/cms/seo";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import buildingImg from "@/assets/kohn-firm-building.webp.asset.json";
 import { CheckCircle2, Scale, Gavel, ShieldCheck, BookOpen } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — The Kohn Law Firm" },
-      { name: "description", content: "Founded in 2003 by former 4th Judicial Deputy District Attorney Shimon Kohn, The Kohn Law Firm is built on ethical service and aggressive advocacy for the Pikes Peak region." },
-      { property: "og:title", content: "About The Kohn Law Firm" },
-      { property: "og:description", content: "A Colorado Springs boutique law firm built on ethics, preparation, and trial readiness." },
-    ],
-  }),
+  head: ({ matches }) => cmsHead(matches, "about", { title: "About — The Kohn Law Firm", description: "Founded in 2003 by former 4th Judicial Deputy District Attorney Shimon Kohn, The Kohn Law Firm is built on ethical service and aggressive advocacy for the Pikes Peak region.", ogTitle: "About The Kohn Law Firm", ogDescription: "A Colorado Springs boutique law firm built on ethics, preparation, and trial readiness." }),
   component: AboutPage,
 });
 
@@ -28,11 +22,7 @@ const STATS = [
 function AboutPage() {
   return (
     <PageShell>
-      <ServiceHero
-        eyebrow="About Us"
-        title="Providing top-notch legal representation."
-        subtitle="Kohn Law Firm is dedicated to protecting your rights with ethical and aggressive legal representation. We guide clients through criminal defense and family law matters with clarity, care, and decades of combined experience."
-      />
+      <CmsHero page="about" />
 
       {/* Story + building photo */}
       <section className="py-20 md:py-28">
