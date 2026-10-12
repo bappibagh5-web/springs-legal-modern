@@ -54,7 +54,7 @@ export const Route = createFileRoute("/blog/$slug")({
   errorComponent: ({ error }) => (
     <PageShell>
       <div className="container-page py-24 text-center">
-        <p className="text-destructive">{error.message}</p>
+        <p className="text-destructive">{error instanceof Error ? error.message : "Something went wrong."}</p>
         <Link to="/blog" className="mt-4 inline-block text-sm font-semibold text-brand hover:text-crimson">
           ← Back to blog
         </Link>

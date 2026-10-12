@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { CTASection } from "@/components/CTASection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { findService, type ServiceItem } from "@/lib/site";
+import { findService, type ServiceItem, type ServiceCategory } from "@/lib/site";
 import { cmsHead } from "@/lib/cms/seo";
 import { CmsHero } from "@/components/CmsHero";
 import { useCms, CmsSection } from "@/lib/cms/context";
@@ -62,7 +62,7 @@ export const Route = createFileRoute("/$category/$service")({
 });
 
 function ServiceDetailPage() {
-  const { category, item } = Route.useLoaderData();
+  const { category, item } = Route.useLoaderData() as unknown as { category: ServiceCategory; item: ServiceItem };
   const related = category.items.filter((i: ServiceItem) => i.slug !== item.slug).slice(0, 3);
   const pageKey = serviceKey(category.slug, item.slug);
   const cms = useCms(pageKey);

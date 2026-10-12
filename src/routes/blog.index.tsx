@@ -29,7 +29,7 @@ export const Route = createFileRoute("/blog/")({
   errorComponent: ({ error }) => (
     <PageShell>
       <div className="container-page py-24 text-center">
-        <p className="text-destructive">{error.message}</p>
+        <p className="text-destructive">{error instanceof Error ? error.message : "Something went wrong."}</p>
       </div>
     </PageShell>
   ),

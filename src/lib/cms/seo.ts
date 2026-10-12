@@ -29,7 +29,7 @@ export function cmsHead(
   const canonical = v("seo.canonical");
   const noindex = has("seo.noindex") && content?.["seo.noindex"] === true;
 
-  const meta: Array<Record<string, string>> = [
+  const meta: Array<{ title: string } | { name: string; content: string } | { property: string; content: string }> = [
     { title },
     { name: "description", content: description },
     { property: "og:title", content: ogTitle },
