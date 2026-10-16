@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { absoluteUrl, ATTORNEYS, PRACTICE_AREAS, PAGE_UPDATED, type PagePath } from "@/site/site";
-import { POSTS } from "@/site/posts";
+import { ARTICLES, POSTS } from "@/site/posts";
 
 /**
  * Sitemap on the canonical host, built from the page registry in src/site/site.ts
- * (PAGE_UPDATED, ATTORNEYS, PRACTICE_AREAS) and the posts in src/site/posts.ts.
+ * (PAGE_UPDATED, ATTORNEYS, PRACTICE_AREAS) and the posts and articles in src/site/posts.ts.
  * lastmod is each page's content date, so it changes only when content changes.
  * Adding a page: create its route file and add its path and date to PAGE_UPDATED.
  */
@@ -13,7 +13,10 @@ type Entry = { path: string; lastmod?: string };
 
 function entries(): Entry[] {
   const page = (path: PagePath): Entry => ({ path, lastmod: PAGE_UPDATED[path] });
-  const newestPost = POSTS.map((p) => p.dateModified)
+  const newestPost = [
+    ...POSTS.map((p) => p.dateModified),
+    ...ARTICLES.map((a) => PAGE_UPDATED[a.path]),
+  ]
     .sort()
     .at(-1);
   const list: Entry[] = [
@@ -29,6 +32,7 @@ function entries(): Entry[] {
     list.push(page(area.path));
     for (const s of area.services) list.push(page(s.path));
   }
+  for (const a of ARTICLES) list.push(page(a.path));
   for (const p of POSTS) list.push({ path: `/blog/${p.slug}`, lastmod: p.dateModified });
   return list;
 }

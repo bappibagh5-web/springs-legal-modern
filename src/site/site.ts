@@ -40,7 +40,12 @@ export type ServiceContent = {
   /** "What to expect" checklist in the sidebar. */
   expect: string[];
   image: { url: string; alt: string };
+  /** Optional closing paragraph linking to a related guide. */
+  seeAlso?: SeeAlso;
 };
+
+/** A short paragraph that ends with a link to a related page. */
+export type SeeAlso = { text: string; label: string; to: string };
 
 /* ───────────── Firm facts ───────────── */
 
@@ -250,6 +255,12 @@ export const PRACTICE_AREAS = [
         title: "Allocation of Parental Responsibilities",
         summary: "Decision-making and parenting time, with or without a divorce.",
       },
+      {
+        slug: "protection-orders-and-custody",
+        path: "/family-law/protection-orders-and-custody",
+        title: "Protection Orders & Custody",
+        summary: "How protection orders affect parenting time and decision-making.",
+      },
     ],
   },
   {
@@ -323,9 +334,12 @@ export const PAGE_UPDATED = {
   "/family-law/adoption": UPDATED,
   "/family-law/child-support": UPDATED,
   "/family-law/allocation-of-parental-responsibilities": UPDATED,
+  "/family-law/protection-orders-and-custody": "2026-10-16",
   "/protection-orders": UPDATED,
   "/protection-orders/permanent-protection-order": UPDATED,
   "/protection-orders/temporary-protection-order": UPDATED,
+  "/blog/domestic-violence-charge-and-custody-colorado": "2026-10-16",
+  "/blog/protection-order-against-me-see-my-kids-colorado": "2026-10-16",
 } as const;
 
 export type PagePath = keyof typeof PAGE_UPDATED;

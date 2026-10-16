@@ -292,7 +292,10 @@ function PostCard({ post }: { post: PublicPostCard }) {
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-brand/5 text-brand/40 font-display text-4xl">
+          <div
+            aria-hidden
+            className="flex h-full w-full items-center justify-center bg-brand/5 text-brand/60 font-display text-4xl"
+          >
             KLF
           </div>
         )}

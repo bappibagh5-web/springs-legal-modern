@@ -36,6 +36,11 @@ const content = {
     },
   ],
   expect: [],
+  seeAlso: {
+    text: "A domestic violence charge can also affect a custody case, through the protection order and through the family court's own findings.",
+    label: "Will a domestic violence charge affect my custody case?",
+    to: "/blog/domestic-violence-charge-and-custody-colorado",
+  },
   image: {
     url: image.url,
     alt: "Cheyenne Mountain in Colorado Springs",

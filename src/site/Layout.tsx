@@ -2,7 +2,17 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
 import logoAsset from "@/assets/klf-logo-color.png.asset.json";
-import { NAV_LINKS, PRACTICE_AREAS, SITE, GLOBAL, type PracticeService } from "./site";
+import {
+  NAV_LINKS,
+  PRACTICE_AREAS,
+  SITE,
+  GLOBAL,
+  practiceService,
+  type PracticeService,
+} from "./site";
+
+/** Service pages also listed in the footer, under the practice areas. */
+const FOOTER_EXTRA_PAGES = [practiceService("/family-law/protection-orders-and-custody")];
 import { cn } from "@/lib/utils";
 
 /** Page frame used by every public page: header, main content, footer. */
@@ -347,6 +357,13 @@ function SiteFooter() {
               <li key={c.slug}>
                 <Link to={c.path} className="text-white/75 transition-colors hover:text-white">
                   {c.title}
+                </Link>
+              </li>
+            ))}
+            {FOOTER_EXTRA_PAGES.map((p) => (
+              <li key={p.path}>
+                <Link to={p.path} className="text-white/75 transition-colors hover:text-white">
+                  {p.title}
                 </Link>
               </li>
             ))}

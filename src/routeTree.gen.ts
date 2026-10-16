@@ -33,6 +33,8 @@ import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BlogDomesticViolenceChargeAndCustodyColoradoRouteImport } from './routes/blog.domestic-violence-charge-and-custody-colorado'
+import { Route as BlogProtectionOrderAgainstMeSeeMyKidsColoradoRouteImport } from './routes/blog.protection-order-against-me-see-my-kids-colorado'
 import { Route as CriminalDefenseIndexRouteImport } from './routes/criminal-defense.index'
 import { Route as CriminalDefenseBurglaryRouteImport } from './routes/criminal-defense.burglary'
 import { Route as CriminalDefenseCrimesAgainstAPersonRouteImport } from './routes/criminal-defense.crimes-against-a-person'
@@ -51,6 +53,7 @@ import { Route as FamilyLawAdoptionRouteImport } from './routes/family-law.adopt
 import { Route as FamilyLawAllocationOfParentalResponsibilitiesRouteImport } from './routes/family-law.allocation-of-parental-responsibilities'
 import { Route as FamilyLawChildSupportRouteImport } from './routes/family-law.child-support'
 import { Route as FamilyLawDivorceSeparationRouteImport } from './routes/family-law.divorce-separation'
+import { Route as FamilyLawProtectionOrdersAndCustodyRouteImport } from './routes/family-law.protection-orders-and-custody'
 import { Route as ProtectionOrdersIndexRouteImport } from './routes/protection-orders.index'
 import { Route as ProtectionOrdersPermanentProtectionOrderRouteImport } from './routes/protection-orders.permanent-protection-order'
 import { Route as ProtectionOrdersTemporaryProtectionOrderRouteImport } from './routes/protection-orders.temporary-protection-order'
@@ -184,6 +187,18 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => BlogRoute,
 } as any)
+const BlogDomesticViolenceChargeAndCustodyColoradoRoute =
+  BlogDomesticViolenceChargeAndCustodyColoradoRouteImport.update({
+    id: '/domestic-violence-charge-and-custody-colorado',
+    path: '/domestic-violence-charge-and-custody-colorado',
+    getParentRoute: () => BlogRoute,
+  } as any)
+const BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute =
+  BlogProtectionOrderAgainstMeSeeMyKidsColoradoRouteImport.update({
+    id: '/protection-order-against-me-see-my-kids-colorado',
+    path: '/protection-order-against-me-see-my-kids-colorado',
+    getParentRoute: () => BlogRoute,
+  } as any)
 const CriminalDefenseIndexRoute = CriminalDefenseIndexRouteImport.update({
   id: '/criminal-defense/',
   path: '/criminal-defense/',
@@ -286,6 +301,12 @@ const FamilyLawDivorceSeparationRoute =
     path: '/family-law/divorce-separation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FamilyLawProtectionOrdersAndCustodyRoute =
+  FamilyLawProtectionOrdersAndCustodyRouteImport.update({
+    id: '/family-law/protection-orders-and-custody',
+    path: '/family-law/protection-orders-and-custody',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProtectionOrdersIndexRoute = ProtectionOrdersIndexRouteImport.update({
   id: '/protection-orders/',
   path: '/protection-orders/',
@@ -372,6 +393,8 @@ export interface FileRoutesByFullPath {
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/domestic-violence-charge-and-custody-colorado': typeof BlogDomesticViolenceChargeAndCustodyColoradoRoute
+  '/blog/protection-order-against-me-see-my-kids-colorado': typeof BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute
   '/criminal-defense/burglary': typeof CriminalDefenseBurglaryRoute
   '/criminal-defense/crimes-against-a-person': typeof CriminalDefenseCrimesAgainstAPersonRoute
   '/criminal-defense/domestic-violence': typeof CriminalDefenseDomesticViolenceRoute
@@ -388,6 +411,7 @@ export interface FileRoutesByFullPath {
   '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   '/family-law/child-support': typeof FamilyLawChildSupportRoute
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
   '/team/erica-bertini': typeof TeamEricaBertiniRoute
@@ -424,6 +448,8 @@ export interface FileRoutesByTo {
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/domestic-violence-charge-and-custody-colorado': typeof BlogDomesticViolenceChargeAndCustodyColoradoRoute
+  '/blog/protection-order-against-me-see-my-kids-colorado': typeof BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute
   '/criminal-defense/burglary': typeof CriminalDefenseBurglaryRoute
   '/criminal-defense/crimes-against-a-person': typeof CriminalDefenseCrimesAgainstAPersonRoute
   '/criminal-defense/domestic-violence': typeof CriminalDefenseDomesticViolenceRoute
@@ -440,6 +466,7 @@ export interface FileRoutesByTo {
   '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   '/family-law/child-support': typeof FamilyLawChildSupportRoute
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
   '/team/erica-bertini': typeof TeamEricaBertiniRoute
@@ -481,6 +508,8 @@ export interface FileRoutesById {
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/blog/domestic-violence-charge-and-custody-colorado': typeof BlogDomesticViolenceChargeAndCustodyColoradoRoute
+  '/blog/protection-order-against-me-see-my-kids-colorado': typeof BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute
   '/criminal-defense/burglary': typeof CriminalDefenseBurglaryRoute
   '/criminal-defense/crimes-against-a-person': typeof CriminalDefenseCrimesAgainstAPersonRoute
   '/criminal-defense/domestic-violence': typeof CriminalDefenseDomesticViolenceRoute
@@ -497,6 +526,7 @@ export interface FileRoutesById {
   '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   '/family-law/child-support': typeof FamilyLawChildSupportRoute
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
   '/team/erica-bertini': typeof TeamEricaBertiniRoute
@@ -539,6 +569,8 @@ export interface FileRouteTypes {
     | '/admin/topics'
     | '/admin/users'
     | '/blog/$slug'
+    | '/blog/domestic-violence-charge-and-custody-colorado'
+    | '/blog/protection-order-against-me-see-my-kids-colorado'
     | '/criminal-defense/burglary'
     | '/criminal-defense/crimes-against-a-person'
     | '/criminal-defense/domestic-violence'
@@ -555,6 +587,7 @@ export interface FileRouteTypes {
     | '/family-law/allocation-of-parental-responsibilities'
     | '/family-law/child-support'
     | '/family-law/divorce-separation'
+    | '/family-law/protection-orders-and-custody'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
     | '/team/erica-bertini'
@@ -591,6 +624,8 @@ export interface FileRouteTypes {
     | '/admin/topics'
     | '/admin/users'
     | '/blog/$slug'
+    | '/blog/domestic-violence-charge-and-custody-colorado'
+    | '/blog/protection-order-against-me-see-my-kids-colorado'
     | '/criminal-defense/burglary'
     | '/criminal-defense/crimes-against-a-person'
     | '/criminal-defense/domestic-violence'
@@ -607,6 +642,7 @@ export interface FileRouteTypes {
     | '/family-law/allocation-of-parental-responsibilities'
     | '/family-law/child-support'
     | '/family-law/divorce-separation'
+    | '/family-law/protection-orders-and-custody'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
     | '/team/erica-bertini'
@@ -647,6 +683,8 @@ export interface FileRouteTypes {
     | '/admin/topics'
     | '/admin/users'
     | '/blog/$slug'
+    | '/blog/domestic-violence-charge-and-custody-colorado'
+    | '/blog/protection-order-against-me-see-my-kids-colorado'
     | '/criminal-defense/burglary'
     | '/criminal-defense/crimes-against-a-person'
     | '/criminal-defense/domestic-violence'
@@ -663,6 +701,7 @@ export interface FileRouteTypes {
     | '/family-law/allocation-of-parental-responsibilities'
     | '/family-law/child-support'
     | '/family-law/divorce-separation'
+    | '/family-law/protection-orders-and-custody'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
     | '/team/erica-bertini'
@@ -706,6 +745,7 @@ export interface RootRouteChildren {
   FamilyLawAllocationOfParentalResponsibilitiesRoute: typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   FamilyLawChildSupportRoute: typeof FamilyLawChildSupportRoute
   FamilyLawDivorceSeparationRoute: typeof FamilyLawDivorceSeparationRoute
+  FamilyLawProtectionOrdersAndCustodyRoute: typeof FamilyLawProtectionOrdersAndCustodyRoute
   ProtectionOrdersPermanentProtectionOrderRoute: typeof ProtectionOrdersPermanentProtectionOrderRoute
   ProtectionOrdersTemporaryProtectionOrderRoute: typeof ProtectionOrdersTemporaryProtectionOrderRoute
   TeamEricaBertiniRoute: typeof TeamEricaBertiniRoute
@@ -887,6 +927,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof BlogRoute
     }
+    '/blog/domestic-violence-charge-and-custody-colorado': {
+      id: '/blog/domestic-violence-charge-and-custody-colorado'
+      path: '/domestic-violence-charge-and-custody-colorado'
+      fullPath: '/blog/domestic-violence-charge-and-custody-colorado'
+      preLoaderRoute: typeof BlogDomesticViolenceChargeAndCustodyColoradoRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/protection-order-against-me-see-my-kids-colorado': {
+      id: '/blog/protection-order-against-me-see-my-kids-colorado'
+      path: '/protection-order-against-me-see-my-kids-colorado'
+      fullPath: '/blog/protection-order-against-me-see-my-kids-colorado'
+      preLoaderRoute: typeof BlogProtectionOrderAgainstMeSeeMyKidsColoradoRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/criminal-defense/': {
       id: '/criminal-defense/'
       path: '/criminal-defense'
@@ -1011,6 +1065,13 @@ declare module '@tanstack/react-router' {
       path: '/family-law/divorce-separation'
       fullPath: '/family-law/divorce-separation'
       preLoaderRoute: typeof FamilyLawDivorceSeparationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-law/protection-orders-and-custody': {
+      id: '/family-law/protection-orders-and-custody'
+      path: '/family-law/protection-orders-and-custody'
+      fullPath: '/family-law/protection-orders-and-custody'
+      preLoaderRoute: typeof FamilyLawProtectionOrdersAndCustodyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/protection-orders/': {
@@ -1168,11 +1229,17 @@ const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface BlogRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
+  BlogDomesticViolenceChargeAndCustodyColoradoRoute: typeof BlogDomesticViolenceChargeAndCustodyColoradoRoute
+  BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute: typeof BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const BlogRouteChildren: BlogRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
+  BlogDomesticViolenceChargeAndCustodyColoradoRoute:
+    BlogDomesticViolenceChargeAndCustodyColoradoRoute,
+  BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute:
+    BlogProtectionOrderAgainstMeSeeMyKidsColoradoRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 
@@ -1208,6 +1275,8 @@ const rootRouteChildren: RootRouteChildren = {
     FamilyLawAllocationOfParentalResponsibilitiesRoute,
   FamilyLawChildSupportRoute: FamilyLawChildSupportRoute,
   FamilyLawDivorceSeparationRoute: FamilyLawDivorceSeparationRoute,
+  FamilyLawProtectionOrdersAndCustodyRoute:
+    FamilyLawProtectionOrdersAndCustodyRoute,
   ProtectionOrdersPermanentProtectionOrderRoute:
     ProtectionOrdersPermanentProtectionOrderRoute,
   ProtectionOrdersTemporaryProtectionOrderRoute:

@@ -31,6 +31,11 @@ const content = {
   ],
   sections: [],
   expect: [],
+  seeAlso: {
+    text: "A protection order between the parents, or a finding of domestic violence, can change how parenting time and decision-making are decided.",
+    label: "How protection orders affect custody in Colorado",
+    to: "/family-law/protection-orders-and-custody",
+  },
   image: {
     url: image.url,
     alt: "Cheyenne Mountain in Colorado Springs",

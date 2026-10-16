@@ -12,6 +12,7 @@ import {
   reviewsFor,
   type Attorney,
   type PracticeArea,
+  type SeeAlso,
   type ServiceContent,
 } from "./site";
 
@@ -261,17 +262,31 @@ export function PostNotFound() {
 
 /* ───────────── Practice-area pages ───────────── */
 
+/** Closing paragraph with a link to a related guide (matches the overview paragraph style). */
+function SeeAlsoParagraph({ seeAlso, className }: { seeAlso: SeeAlso; className: string }) {
+  return (
+    <p className={className}>
+      {seeAlso.text}{" "}
+      <Link to={seeAlso.to} className="font-semibold text-brand hover:text-brass-text">
+        {seeAlso.label}
+      </Link>
+    </p>
+  );
+}
+
 /** Overview + services list on a practice-area page. */
 export function PracticeOverview({
   heading,
   intro,
   updated,
   area,
+  seeAlso,
 }: {
   heading: string;
   intro: string[];
   updated: string;
   area: PracticeArea;
+  seeAlso?: SeeAlso;
 }) {
   return (
     <section className="py-20 md:py-24">
@@ -286,6 +301,7 @@ export function PracticeOverview({
               {p}
             </p>
           ))}
+          {seeAlso && <SeeAlsoParagraph seeAlso={seeAlso} className="mt-5 text-muted-foreground" />}
           <div className="mt-8">
             <UpdatedByline updated={updated} />
           </div>
@@ -370,6 +386,9 @@ export function ServiceOverview({
               ))}
             </div>
           ))}
+          {content.seeAlso && (
+            <SeeAlsoParagraph seeAlso={content.seeAlso} className="text-muted-foreground" />
+          )}
           <div className="pt-3">
             <UpdatedByline updated={updated} />
           </div>

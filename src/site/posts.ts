@@ -1,4 +1,4 @@
-import { PRACTICE_AREAS, type Meta, type Source } from "./site";
+import { PAGE_UPDATED, PRACTICE_AREAS, type Meta, type Source } from "./site";
 
 /**
  * Blog posts, stored in code. The previous seven Supabase posts were "#seed" placeholders
@@ -21,6 +21,45 @@ export type Post = {
 export const POSTS: Post[] = [];
 
 export const findPost = (slug: string) => POSTS.find((p) => p.slug === slug);
+
+/**
+ * Articles with their own route file (src/routes/blog.<slug>.tsx). They are listed on the
+ * blog index and in the sitemap; their dates come from PAGE_UPDATED. Title and excerpt repeat
+ * the page H1 and meta description.
+ */
+export type Article = {
+  slug: string;
+  path: keyof typeof PAGE_UPDATED;
+  title: string;
+  excerpt: string;
+  /** Practice-area slug from PRACTICE_AREAS in ./site */
+  category: string;
+  datePublished: string;
+  readMinutes: number;
+};
+
+export const ARTICLES: Article[] = [
+  {
+    slug: "domestic-violence-charge-and-custody-colorado",
+    path: "/blog/domestic-violence-charge-and-custody-colorado",
+    title: "Will a Domestic Violence Charge Affect My Custody Case in Colorado?",
+    excerpt:
+      "How a Colorado domestic violence charge, its mandatory protection order and the family court's own findings affect parenting time and decision-making.",
+    category: "criminal-defense",
+    datePublished: "2026-10-16",
+    readMinutes: 7,
+  },
+  {
+    slug: "protection-order-against-me-see-my-kids-colorado",
+    path: "/blog/protection-order-against-me-see-my-kids-colorado",
+    title: "Can I See My Kids If There's a Protection Order Against Me in Colorado?",
+    excerpt:
+      "When a Colorado protection order lets you see your children, how to ask the court to change it (JDF 397, the two-year rule, background check), and what a violation costs you.",
+    category: "family-law",
+    datePublished: "2026-10-16",
+    readMinutes: 7,
+  },
+];
 export const sortedPosts = () =>
   [...POSTS].sort((a, b) => b.datePublished.localeCompare(a.datePublished));
 
@@ -79,10 +118,23 @@ function toCard(p: Post): PublicPostCard {
   };
 }
 
+function articleCard(a: Article): PublicPostCard {
+  return {
+    id: a.slug,
+    slug: a.slug,
+    title: a.title,
+    excerpt: a.excerpt,
+    featured_image_url: null,
+    read_time_minutes: a.readMinutes,
+    published_at: a.datePublished,
+    category: toCategory(a.category),
+  };
+}
+
 export function listPublicPosts(): { posts: PublicPostCard[]; categories: PublicCategory[] } {
-  const posts = [...POSTS]
-    .sort((a, b) => b.datePublished.localeCompare(a.datePublished))
-    .map(toCard);
+  const posts = [...POSTS.map(toCard), ...ARTICLES.map(articleCard)].sort((a, b) =>
+    (b.published_at ?? "").localeCompare(a.published_at ?? ""),
+  );
   const seen = new Set<string>();
   const categories: PublicCategory[] = [];
   for (const p of posts) {
