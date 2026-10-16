@@ -63,10 +63,10 @@ function TeamPage() {
       <section className="py-20 md:py-24">
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
               Meet Our Team
             </p>
-            <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+            <h2 className="mt-3 font-display font-semibold text-3xl text-ink md:text-4xl">
               Experienced attorneys and the staff who back them.
             </h2>
           </div>
@@ -93,24 +93,21 @@ function TeamPage() {
                       reverse ? "md:order-2" : ""
                     }`}
                   >
-                    <div
-                      aria-hidden
-                      className="absolute -inset-3 -z-10 rounded-2xl bg-gradient-to-br from-gold/30 via-transparent to-brand/30 blur-2xl"
-                    />
-                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-surface shadow-elegant ring-1 ring-border">
+                    <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-surface ring-1 ring-border">
                       {m.img ? (
                         <img
                           src={m.img}
                           alt={m.name}
                           loading="lazy"
-                          className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                          className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                           width={680}
                           height={850}
                         />
                       ) : (
                         <div
+                          role="img"
                           aria-label={`${m.name} portrait placeholder`}
-                          className="flex h-full w-full items-center justify-center bg-gradient-to-br from-muted to-surface text-muted-foreground"
+                          className="flex h-full w-full items-center justify-center bg-surface text-muted-foreground"
                         >
                           <svg
                             viewBox="0 0 100 120"
@@ -124,15 +121,15 @@ function TeamPage() {
                         </div>
                       )}
                     </div>
-                    <span className="absolute -bottom-3 left-6 h-1 w-16 bg-gold" />
                   </div>
 
                   <div className={`min-w-0 ${reverse ? "md:order-1" : ""}`}>
-                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                       {m.title}
                     </p>
-                    <h3 className="mt-3 font-display text-3xl text-ink md:text-4xl">{m.name}</h3>
-                    <div className="mt-3 h-1 w-12 bg-gold" />
+                    <h3 className="mt-3 font-display font-semibold text-3xl text-ink md:text-4xl">
+                      {m.name}
+                    </h3>
                     <div className="mt-6 space-y-4 text-muted-foreground">
                       {m.bio.map((p, idx) => (
                         <p key={idx}>{p}</p>

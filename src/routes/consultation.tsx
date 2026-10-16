@@ -91,28 +91,28 @@ function ConsultationPage() {
       <section className="py-20">
         <div className="container-page grid gap-12 md:grid-cols-[1fr_1.4fr]">
           <aside className="space-y-6">
-            <div className="rounded-xl border border-border bg-card p-6 shadow-card">
-              <Shield className="h-8 w-8 text-gold" />
-              <h3 className="mt-3 font-display text-xl text-brand">What to expect</h3>
+            <div className="rounded-lg border border-border bg-card p-6">
+              <Shield className="h-8 w-8 text-brass" />
+              <h2 className="mt-3 font-display text-xl font-semibold text-ink">What to expect</h2>
               <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
                 <li>• Confidential review of the facts</li>
                 <li>• Honest assessment of likely outcomes</li>
                 <li>• Clear explanation of fees and next steps</li>
               </ul>
             </div>
-            <div className="rounded-xl bg-brand p-6 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <div className="rounded-lg bg-ink p-6 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass-light">
                 Prefer to call?
               </p>
               <a
                 href={SITE.phoneHref}
-                className="mt-1 flex items-center gap-2 py-2 text-lg font-semibold hover:text-gold"
+                className="mt-1 flex items-center gap-2 py-2 text-lg font-semibold hover:text-brass-light"
               >
                 <Phone className="h-5 w-5" /> {SITE.phone}
               </a>
               <a
                 href={SITE.emailHref}
-                className="mt-2 flex items-center gap-2 text-sm text-white/85 hover:text-gold"
+                className="mt-2 flex items-center gap-2 text-sm text-white/80 hover:text-brass-light"
               >
                 <Mail className="h-4 w-4" /> {SITE.email}
               </a>
@@ -120,17 +120,17 @@ function ConsultationPage() {
           </aside>
 
           {done ? (
-            <div className="rounded-xl border border-border bg-card p-10 shadow-card flex flex-col items-start">
-              <div className="h-14 w-14 rounded-full bg-brand/10 text-brand flex items-center justify-center">
+            <div className="rounded-lg border border-border bg-card p-10 flex flex-col items-start">
+              <div className="h-14 w-14 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h3 className="mt-5 font-display text-2xl text-brand">
+              <h2 className="mt-5 font-display text-2xl font-semibold text-ink">
                 Thank you. We'll be in touch shortly.
-              </h3>
+              </h2>
               <p className="mt-3 text-muted-foreground max-w-xl">
                 Your request has been received. An attorney or member of our team will reach out at
                 the time you provided. If your matter is urgent, please call us directly at{" "}
-                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">
+                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-brass-text">
                   {SITE.phone}
                 </a>
                 .
@@ -138,16 +138,13 @@ function ConsultationPage() {
               <button
                 type="button"
                 onClick={() => setDone(false)}
-                className="mt-6 text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson"
+                className="mt-6 text-sm font-semibold text-brand hover:text-brass-text"
               >
                 Submit another request
               </button>
             </div>
           ) : (
-            <form
-              onSubmit={onSubmit}
-              className="rounded-xl border border-border bg-card p-8 shadow-card"
-            >
+            <form onSubmit={onSubmit} className="rounded-lg border border-border bg-card p-8">
               <div className="grid gap-4 md:grid-cols-2">
                 <Field label="Full name" name="name" required autoComplete="name" />
                 <Field label="Phone" name="phone" type="tel" required autoComplete="tel" />
@@ -160,10 +157,7 @@ function ConsultationPage() {
                   className="md:col-span-2"
                 />
                 <div className="md:col-span-2">
-                  <label
-                    htmlFor="field-case_type"
-                    className="text-xs font-semibold uppercase tracking-wide text-ink"
-                  >
+                  <label htmlFor="field-case_type" className="text-sm font-medium text-ink">
                     Case type
                   </label>
                   <select
@@ -185,10 +179,7 @@ function ConsultationPage() {
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label
-                    htmlFor="field-message"
-                    className="text-xs font-semibold uppercase tracking-wide text-ink"
-                  >
+                  <label htmlFor="field-message" className="text-sm font-medium text-ink">
                     Brief description
                   </label>
                   <textarea
@@ -212,14 +203,14 @@ function ConsultationPage() {
                 include privileged information.
               </p>
               {error && (
-                <div className="mt-4 rounded-md border border-crimson/30 bg-crimson/10 px-4 py-3 text-sm text-crimson">
+                <div className="mt-4 rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
                   {error}
                 </div>
               )}
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-crimson px-6 text-sm font-semibold uppercase tracking-wide text-crimson-foreground transition-colors hover:bg-crimson/90 disabled:opacity-70"
+                className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-brass px-6 text-sm font-semibold text-brass-foreground transition-colors hover:bg-brass-light disabled:opacity-70"
               >
                 {submitting ? (
                   <>
@@ -259,7 +250,7 @@ function Field({
   const id = `field-${name}`;
   return (
     <div className={className}>
-      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-ink">
+      <label htmlFor={id} className="text-sm font-medium text-ink">
         {label}
       </label>
       <input

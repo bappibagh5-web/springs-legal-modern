@@ -50,10 +50,11 @@ export type PublicPostFull = PublicPostCard & {
   meta_description: string | null;
 };
 
+/** Badge colors per practice area (design tokens; white badge text passes AA on all three). */
 const CATEGORY_COLORS: Record<string, string> = {
-  "criminal-defense": "purple",
-  "family-law": "#004AAD",
-  "protection-orders": "#FDBA34",
+  "criminal-defense": "var(--ink)",
+  "family-law": "var(--brand)",
+  "protection-orders": "var(--crimson)",
 };
 
 const readTime = (body: string) => Math.max(1, Math.round(body.split(/\s+/).length / 200));
@@ -61,7 +62,7 @@ const readTime = (body: string) => Math.max(1, Math.round(body.split(/\s+/).leng
 function toCategory(slug: string): PublicCategory | null {
   const c = PRACTICE_AREAS.find((a) => a.slug === slug);
   return c
-    ? { id: c.slug, name: c.title, slug: c.slug, color: CATEGORY_COLORS[c.slug] ?? "#004AAD" }
+    ? { id: c.slug, name: c.title, slug: c.slug, color: CATEGORY_COLORS[c.slug] ?? "var(--brand)" }
     : null;
 }
 

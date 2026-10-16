@@ -68,7 +68,7 @@ export const Route = createFileRoute("/blog/$slug")({
         </p>
         <Link
           to="/blog"
-          className="mt-4 inline-block text-sm font-semibold text-brand hover:text-crimson"
+          className="mt-4 inline-block text-sm font-semibold text-brand hover:text-brass-text"
         >
           ← Back to blog
         </Link>
@@ -148,24 +148,24 @@ function BlogPostPage() {
         <div className="container-page py-10 md:py-14">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-brass-text"
           >
             <ArrowLeft className="h-4 w-4" /> Back to blog
           </Link>
           <div className="mt-6 max-w-3xl">
             {post.category && (
               <span
-                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white"
+                className="inline-flex items-center rounded-md px-3 py-1 text-xs font-semibold text-white"
                 style={{ background: post.category.color }}
               >
                 {post.category.name}
               </span>
             )}
-            <h1 className="mt-4 font-display text-3xl leading-tight text-ink md:text-5xl">
+            <h1 className="mt-4 font-display text-3xl font-semibold leading-tight text-ink md:text-5xl">
               {post.title}
             </h1>
             {post.excerpt && (
-              <p className="mt-5 border-l-2 border-gold pl-4 text-lg italic text-muted-foreground">
+              <p className="mt-5 border-l-2 border-brass pl-4 text-lg italic text-muted-foreground">
                 {post.excerpt}
               </p>
             )}
@@ -186,7 +186,7 @@ function BlogPostPage() {
       {post.featured_image_url && (
         <div className="bg-background">
           <div className="container-page pt-8">
-            <div className="aspect-[16/7] w-full overflow-hidden rounded-xl bg-muted">
+            <div className="aspect-[16/7] w-full overflow-hidden rounded-lg bg-muted">
               <img
                 src={post.featured_image_url}
                 alt={post.title}
@@ -201,7 +201,7 @@ function BlogPostPage() {
       <section className="bg-background py-12 md:py-16">
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_320px]">
           <article className="min-w-0">
-            <div className="prose prose-neutral max-w-none prose-headings:font-display prose-headings:text-brand prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-xl prose-p:text-[17px] prose-p:leading-[1.75] prose-p:text-ink/85 prose-a:text-brand prose-a:no-underline hover:prose-a:text-crimson prose-strong:text-ink prose-blockquote:border-l-4 prose-blockquote:border-gold prose-blockquote:bg-white prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-ink/80 prose-ul:my-4 prose-li:my-1 prose-img:rounded-lg">
+            <div className="prose prose-neutral max-w-none prose-headings:font-display prose-headings:font-semibold prose-headings:text-ink prose-h2:mt-10 prose-h2:mb-4 prose-h2:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-xl prose-p:text-[17px] prose-p:leading-[1.75] prose-p:text-ink/85 prose-a:text-brand prose-a:no-underline hover:prose-a:text-brass-text prose-strong:text-ink prose-blockquote:border-l-4 prose-blockquote:border-brass prose-blockquote:bg-white prose-blockquote:px-5 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-ink/80 prose-ul:my-4 prose-li:my-1 prose-img:rounded-lg">
               <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
                 {post.body}
               </ReactMarkdown>
@@ -216,7 +216,7 @@ function BlogPostPage() {
             {/* Tags */}
             {post.tags.length > 0 && (
               <div className="mt-10 flex flex-wrap items-center gap-2 border-t border-border pt-6">
-                <span className="mr-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <span className="mr-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                   Tags
                 </span>
                 {post.tags.map((t) => (
@@ -231,7 +231,7 @@ function BlogPostPage() {
             )}
 
             {/* Share */}
-            <div className="mt-8 flex flex-wrap items-center gap-3 rounded-xl border border-border bg-white p-4">
+            <div className="mt-8 flex flex-wrap items-center gap-3 rounded-lg border border-border bg-white p-4">
               <span className="text-sm font-semibold text-ink">Share this article</span>
               <div className="ml-auto flex items-center gap-2">
                 <ShareIcon
@@ -266,8 +266,8 @@ function BlogPostPage() {
           {/* Sidebar */}
           <aside className="lg:sticky lg:top-28 lg:h-fit space-y-6">
             {headings.length > 0 && (
-              <div className="rounded-xl border border-border bg-white p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <div className="rounded-lg border border-border bg-white p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                   In this article
                 </p>
                 <ul className="mt-4 space-y-2 text-sm">
@@ -282,14 +282,14 @@ function BlogPostPage() {
               </div>
             )}
 
-            <div className="rounded-xl border border-brand bg-brand p-6 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <div className="rounded-lg bg-ink p-6 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass-light">
                 Need legal help?
               </p>
-              <h3 className="mt-2 font-display text-xl leading-snug">
+              <h3 className="mt-2 font-display text-xl font-semibold leading-snug">
                 Talk to an attorney at The Kohn Law Firm.
               </h3>
-              <p className="mt-2 text-sm text-white/85">
+              <p className="mt-2 text-sm text-white/80">
                 Confidential consultations for criminal defense and family law matters in Colorado
                 Springs.
               </p>
@@ -300,9 +300,9 @@ function BlogPostPage() {
               </div>
               <a
                 href={SITE.phoneHref}
-                className="mt-4 inline-flex items-center gap-2 text-sm text-white/90 hover:text-gold"
+                className="mt-4 inline-flex items-center gap-2 text-sm text-white/90 hover:text-white"
               >
-                <Phone className="h-4 w-4" /> {SITE.phone}
+                <Phone className="h-4 w-4 text-brass-light" /> {SITE.phone}
               </a>
             </div>
           </aside>
@@ -314,10 +314,12 @@ function BlogPostPage() {
         <section className="border-t border-border bg-white py-16">
           <div className="container-page">
             <div className="mb-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                 Keep reading
               </p>
-              <h2 className="mt-2 font-display text-3xl text-brand">More from the blog</h2>
+              <h2 className="mt-2 font-display font-semibold text-3xl text-ink">
+                More from the blog
+              </h2>
             </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((p) => (
@@ -351,7 +353,7 @@ function RelatedCard({ post }: { post: PublicPostCard }) {
     <Link
       to="/blog/$slug"
       params={{ slug: post.slug }}
-      className="group flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+      className="group flex flex-col overflow-hidden rounded-lg border border-border bg-white transition-colors hover:border-brass"
     >
       <div className="relative aspect-video overflow-hidden bg-muted">
         {post.featured_image_url ? (
@@ -368,7 +370,7 @@ function RelatedCard({ post }: { post: PublicPostCard }) {
         )}
         {post.category && (
           <span
-            className="absolute left-3 top-3 rounded-full px-2.5 py-1 text-xs font-semibold text-white shadow-md"
+            className="absolute left-3 top-3 rounded-md px-2.5 py-1 text-xs font-semibold text-white"
             style={{ background: post.category.color }}
           >
             {post.category.name}
@@ -376,7 +378,7 @@ function RelatedCard({ post }: { post: PublicPostCard }) {
         )}
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-lg leading-snug text-ink line-clamp-2 group-hover:text-brand">
+        <h3 className="font-display font-semibold text-lg leading-snug text-ink line-clamp-2 group-hover:text-ink">
           {post.title}
         </h3>
         {post.excerpt && (

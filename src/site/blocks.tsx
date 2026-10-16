@@ -29,16 +29,16 @@ type ActionButtonProps = {
 };
 
 const variants = {
-  primary: "bg-brand text-brand-foreground hover:bg-brand/90 shadow-elegant",
-  secondary: "bg-crimson text-crimson-foreground hover:bg-crimson/90",
-  gold: "bg-gold text-gold-foreground hover:bg-gold/90",
-  ghost: "bg-transparent text-foreground border border-border hover:bg-muted",
+  primary: "bg-brand text-brand-foreground hover:bg-ink",
+  secondary: "bg-slate text-white hover:bg-brand",
+  gold: "bg-brass text-brass-foreground hover:bg-brass-light",
+  ghost: "bg-transparent text-foreground border border-border hover:border-brass",
 };
 
 const sizes = {
-  sm: "h-9 px-4 text-sm",
+  sm: "h-10 px-5 text-sm",
   md: "h-11 px-6 text-sm",
-  lg: "h-13 px-8 text-base",
+  lg: "h-12 px-7 text-base",
 };
 
 export function ActionButton({
@@ -50,7 +50,7 @@ export function ActionButton({
   children = "Schedule a Consultation",
 }: ActionButtonProps) {
   const cls = cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-semibold uppercase tracking-wide transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     variants[variant],
     sizes[size],
     className,
@@ -97,17 +97,19 @@ export function PageHero({ eyebrow, title, subtitle, image = courthouse }: PageH
         width={1280}
         height={800}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+      <div aria-hidden className="absolute inset-0 bg-ink/75" />
       <div className="container-page relative py-20 md:py-28">
         <div className="max-w-3xl animate-fade-up">
           {eyebrow && (
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">{eyebrow}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brass-light">
+              {eyebrow}
+            </p>
           )}
-          <h1 className="mt-3 font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
+          <h1 className="mt-3 font-display text-4xl font-semibold leading-tight md:text-5xl lg:text-6xl">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-5 max-w-2xl text-base text-white/85 md:text-lg">{subtitle}</p>
+            <p className="mt-5 max-w-2xl text-base text-white/80 md:text-lg">{subtitle}</p>
           )}
           <div className="mt-8">
             <ActionButton variant="gold" size="lg">
@@ -127,19 +129,11 @@ export function CTASection(props: { title?: string; body?: string }) {
   const title = props.title ?? GLOBAL.cta.title;
   const body = props.body ?? GLOBAL.cta.body;
   return (
-    <section className="relative overflow-hidden bg-brand text-white">
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 30%, rgba(253,186,52,0.6), transparent 40%), radial-gradient(circle at 80% 70%, rgba(159,40,40,0.5), transparent 45%)",
-        }}
-      />
+    <section className="relative overflow-hidden bg-ink text-white">
       <div className="container-page relative grid gap-8 py-16 md:grid-cols-[1.5fr_1fr] md:items-center">
         <div>
-          <h2 className="font-display text-3xl leading-tight md:text-4xl">{title}</h2>
-          <p className="mt-4 max-w-2xl text-white/85">{body}</p>
+          <h2 className="font-display text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
+          <p className="mt-4 max-w-2xl text-white/80">{body}</p>
         </div>
         <div className="flex flex-col gap-3 md:items-end">
           <ActionButton variant="gold" size="lg">
@@ -147,9 +141,9 @@ export function CTASection(props: { title?: string; body?: string }) {
           </ActionButton>
           <a
             href={SITE.phoneHref}
-            className="-my-3 inline-flex items-center gap-2 py-3 text-sm text-white/90 hover:text-gold"
+            className="-my-3 inline-flex items-center gap-2 py-3 text-sm text-white/90 transition-colors hover:text-white"
           >
-            <Phone className="h-4 w-4" /> {SITE.phone}
+            <Phone className="h-4 w-4 text-brass-light" /> {SITE.phone}
           </a>
         </div>
       </div>
@@ -178,15 +172,15 @@ export function TestimonialsSection({ variant = "light", limit = 3, category }: 
     <section className={`${bg} py-20 md:py-28`}>
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
             {GLOBAL.testimonials.eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+          <h2 className="mt-3 font-display text-3xl font-semibold text-ink md:text-4xl">
             {GLOBAL.testimonials.heading}
           </h2>
           <div className="mt-4 flex items-center justify-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-5 w-5 fill-gold text-gold" />
+              <Star key={i} className="h-5 w-5 fill-brass text-brass" />
             ))}
             {/* TODO(firm): wrap in a link to the Google Business Profile once its URL is supplied. */}
             <span className="ml-2 text-sm font-semibold text-ink">
@@ -199,20 +193,20 @@ export function TestimonialsSection({ variant = "light", limit = 3, category }: 
           {items.map((t) => (
             <figure
               key={t.author + t.context}
-              className="relative flex h-full flex-col rounded-xl border border-border bg-card p-7 shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+              className="relative flex h-full flex-col rounded-lg border border-border bg-card p-7 transition-colors hover:border-brass"
             >
-              <Quote className="absolute -top-3 left-6 h-7 w-7 rounded bg-gold p-1.5 text-gold-foreground" />
+              <Quote className="absolute -top-3 left-6 h-7 w-7 rounded bg-brass p-1.5 text-brass-foreground" />
               <div className="mb-3 flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-gold text-gold" />
+                  <Star key={i} className="h-4 w-4 fill-brass text-brass" />
                 ))}
               </div>
               <blockquote className="flex-1 text-sm leading-relaxed text-foreground">
                 "{t.quote}"
               </blockquote>
               <figcaption className="mt-5 border-t border-border pt-4">
-                <p className="font-display text-base font-bold text-brand">{t.author}</p>
-                <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-crimson">
+                <p className="font-display text-base font-semibold text-ink">{t.author}</p>
+                <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.12em] text-brass-text">
                   {t.context}
                 </p>
               </figcaption>
@@ -233,12 +227,10 @@ export function TestimonialsSection({ variant = "light", limit = 3, category }: 
 /** "Written by The Kohn Law Firm · Updated [date]", styled with the site's existing card classes. */
 export function UpdatedByline({ updated }: { updated: string }) {
   return (
-    <aside
-      aria-label="About this page"
-      className="rounded-xl border border-border bg-card p-6 shadow-card"
-    >
+    <aside aria-label="About this page" className="rounded-lg border border-border bg-card p-6">
       <p className="text-sm text-muted-foreground">
-        Written by <span className="font-display text-base text-brand">The Kohn Law Firm</span> ·
+        Written by{" "}
+        <span className="font-display text-base font-semibold text-ink">The Kohn Law Firm</span> ·
         Updated <time dateTime={updated}>{formatDate(updated)}</time>
       </p>
     </aside>
@@ -251,14 +243,14 @@ export function PostNotFound() {
   return (
     <PageShell>
       <div className="container-page py-24 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">404</p>
-        <h1 className="mt-3 font-display text-3xl text-brand">Article not found</h1>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">404</p>
+        <h1 className="mt-3 font-display text-3xl font-semibold text-ink">Article not found</h1>
         <p className="mt-3 text-muted-foreground">
           The article you're looking for isn't published or may have been moved.
         </p>
         <Link
           to="/blog"
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson"
+          className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-brass-text"
         >
           <ArrowLeft className="h-4 w-4" /> Back to blog
         </Link>
@@ -285,8 +277,10 @@ export function PracticeOverview({
     <section className="py-20 md:py-24">
       <div className="container-page grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-start">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Overview</p>
-          <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">{heading}</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">Overview</p>
+          <h2 className="mt-3 font-display font-semibold text-3xl text-ink md:text-4xl">
+            {heading}
+          </h2>
           {intro.map((p, i) => (
             <p key={i} className="mt-5 text-muted-foreground">
               {p}
@@ -296,8 +290,8 @@ export function PracticeOverview({
             <UpdatedByline updated={updated} />
           </div>
         </div>
-        <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Services</p>
+        <div className="rounded-lg border border-border bg-surface p-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">Services</p>
           <ul className="mt-4 divide-y divide-border">
             {area.services.map((it) => (
               <li key={it.slug}>
@@ -322,17 +316,19 @@ export function PracticeExplore({ area }: { area: PracticeArea }) {
   return (
     <section className="bg-surface py-20">
       <div className="container-page">
-        <h2 className="font-display text-3xl text-ink md:text-4xl">Explore {area.title}</h2>
+        <h2 className="font-display font-semibold text-3xl text-ink md:text-4xl">
+          Explore {area.title}
+        </h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {area.services.map((it) => (
             <Link
               key={it.slug}
               to={it.path}
-              className="group rounded-xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand hover:shadow-elegant"
+              className="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-brass"
             >
-              <h3 className="font-display text-lg text-brand">{it.title}</h3>
+              <h3 className="font-display text-lg font-semibold text-ink">{it.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{it.summary}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-crimson group-hover:text-brand">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand group-hover:text-brass-text">
                 Learn more →
               </span>
             </Link>
@@ -357,8 +353,8 @@ export function ServiceOverview({
     <section className="py-20">
       <div className="container-page grid gap-12 md:grid-cols-[1.4fr_1fr] md:items-start">
         <article className="space-y-5 text-base leading-relaxed text-foreground">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Overview</p>
-          <h2 className="font-display text-3xl text-ink md:text-4xl">{heading}</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">Overview</p>
+          <h2 className="font-display font-semibold text-3xl text-ink md:text-4xl">{heading}</h2>
           {content.intro.map((p, i) => (
             <p key={i} className="text-muted-foreground">
               {p}
@@ -366,7 +362,7 @@ export function ServiceOverview({
           ))}
           {content.sections.map((sec) => (
             <div key={sec.heading} className="space-y-3 pt-2">
-              <h3 className="font-display text-xl text-ink">{sec.heading}</h3>
+              <h3 className="font-display font-semibold text-xl text-ink">{sec.heading}</h3>
               {sec.body.map((p, i) => (
                 <p key={i} className="text-muted-foreground">
                   {p}
@@ -381,14 +377,14 @@ export function ServiceOverview({
 
         <aside className="space-y-6 md:sticky md:top-24">
           {content.expect.length > 0 && (
-            <div className="rounded-xl border border-border bg-surface p-6 shadow-card">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <div className="rounded-lg border border-border bg-surface p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                 What to expect
               </p>
               <ul className="mt-4 space-y-3">
                 {content.expect.map((w) => (
                   <li key={w} className="flex items-start gap-3 text-sm">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brass" />
                     <span>{w}</span>
                   </li>
                 ))}
@@ -396,28 +392,28 @@ export function ServiceOverview({
             </div>
           )}
 
-          <figure className="relative overflow-hidden rounded-xl shadow-elegant">
+          <figure className="relative overflow-hidden rounded-lg">
             <img
               src={content.image.url}
               alt={content.image.alt}
               loading="lazy"
               width={1280}
               height={1600}
-              className="h-72 w-full object-cover transition-transform duration-700 hover:scale-105"
+              className="h-72 w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
             <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white">
-              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brass-light">
                 <MapPin className="h-3.5 w-3.5" /> Serving Colorado
               </p>
-              <p className="mt-1 font-display text-lg">
+              <p className="mt-1 font-display text-lg font-semibold">
                 Proudly representing clients across Colorado.
               </p>
             </figcaption>
           </figure>
 
-          <div className="rounded-xl border border-border bg-card p-6 shadow-card">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-crimson">
+          <div className="rounded-lg border border-border bg-card p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
               Confidential consultation
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -444,13 +440,10 @@ export function RelatedServices({
     <section className="bg-surface py-20">
       <div className="container-page">
         <div className="flex items-end justify-between gap-4">
-          <h2 className="font-display text-2xl text-ink md:text-3xl">
+          <h2 className="font-display font-semibold text-2xl text-ink md:text-3xl">
             Related {area.title} services
           </h2>
-          <Link
-            to={area.path}
-            className="text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson"
-          >
+          <Link to={area.path} className="text-sm font-semibold text-brand hover:text-brass-text">
             View all →
           </Link>
         </div>
@@ -459,11 +452,11 @@ export function RelatedServices({
             <Link
               key={r.slug}
               to={r.path}
-              className="group rounded-xl border border-border bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:border-brand hover:shadow-elegant"
+              className="group rounded-lg border border-border bg-card p-6 transition-colors hover:border-brass"
             >
-              <h3 className="font-display text-lg text-brand">{r.title}</h3>
+              <h3 className="font-display text-lg font-semibold text-ink">{r.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{r.summary}</p>
-              <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-crimson group-hover:text-brand">
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand group-hover:text-brass-text">
                 Learn more <ArrowRight className="h-3 w-3" />
               </span>
             </Link>
@@ -492,28 +485,24 @@ export function AttorneyBio({ a }: { a: Attorney }) {
         <div className="container-page">
           <article className="grid gap-10 md:grid-cols-[360px_1fr] md:items-center lg:gap-16">
             <div className="relative mx-auto w-full max-w-[360px] md:mx-0">
-              <div
-                aria-hidden
-                className="absolute -inset-3 -z-10 rounded-2xl bg-gradient-to-br from-gold/30 via-transparent to-brand/30 blur-2xl"
-              />
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl bg-surface shadow-elegant ring-1 ring-border">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-lg bg-surface ring-1 ring-border">
                 <img
                   src={a.image.src}
                   alt={a.image.alt}
-                  className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                  className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                   width={680}
                   height={850}
                 />
               </div>
-              <span className="absolute -bottom-3 left-6 h-1 w-16 bg-gold" />
             </div>
 
             <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                 {a.role}
               </p>
-              <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">{a.name}</h2>
-              <div className="mt-3 h-1 w-12 bg-gold" />
+              <h2 className="mt-3 font-display font-semibold text-3xl text-ink md:text-4xl">
+                {a.name}
+              </h2>
               <div className="mt-6 space-y-4 text-muted-foreground">
                 {a.bio.map((p, idx) => (
                   <p key={idx}>{p}</p>
@@ -529,10 +518,9 @@ export function AttorneyBio({ a }: { a: Attorney }) {
           <div className="container-page grid gap-10 md:grid-cols-2 lg:gap-16">
             {details.length > 0 && (
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                   Admissions and education
                 </p>
-                <div className="mt-3 h-1 w-12 bg-gold" />
                 <div className="mt-6 space-y-2 text-muted-foreground">
                   {details.map((d) => (
                     <p key={d}>{d}</p>
@@ -541,10 +529,9 @@ export function AttorneyBio({ a }: { a: Attorney }) {
               </div>
             )}
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                 Prior experience
               </p>
-              <div className="mt-3 h-1 w-12 bg-gold" />
               <div className="mt-6 space-y-2 text-muted-foreground">
                 {a.priorRoles.map((r) => (
                   <p key={r}>{r}</p>
@@ -554,7 +541,7 @@ export function AttorneyBio({ a }: { a: Attorney }) {
                     <a
                       href={u}
                       rel="noopener"
-                      className="font-semibold text-brand hover:text-crimson"
+                      className="font-semibold text-brand hover:text-brass-text"
                     >
                       {new URL(u).hostname.replace(/^www\./, "")} profile
                     </a>
@@ -564,7 +551,7 @@ export function AttorneyBio({ a }: { a: Attorney }) {
                   <p>
                     <a
                       href={`/${led.slug}`}
-                      className="font-semibold text-brand hover:text-crimson"
+                      className="font-semibold text-brand hover:text-brass-text"
                     >
                       {led.title} at The Kohn Law Firm →
                     </a>

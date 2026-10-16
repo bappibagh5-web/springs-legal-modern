@@ -10,8 +10,9 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  /* Loaded once from Google Fonts in src/routes/__root.tsx */
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -41,42 +42,57 @@
   --color-gold-foreground: var(--gold-foreground);
   --color-ink: var(--ink);
   --color-surface: var(--surface);
+  /* Design names for the same tokens: brass = gold, slate = crimson */
+  --color-brass: var(--gold);
+  --color-brass-foreground: var(--gold-foreground);
+  --color-brass-hover: var(--brass-hover);
+  --color-brass-light: var(--brass-light);
+  --color-brass-text: var(--brass-text);
+  --color-slate: var(--crimson);
 
-  --shadow-elegant: 0 18px 50px -22px color-mix(in oklab, var(--brand) 38%, transparent);
-  --shadow-card: 0 4px 24px -12px color-mix(in oklab, var(--ink) 28%, transparent);
+  /* Light, low-contrast shadows; borders do most of the work */
+  --shadow-elegant: 0 12px 32px -12px color-mix(in oklab, var(--ink) 18%, transparent);
+  --shadow-card: 0 1px 2px 0 color-mix(in oklab, var(--ink) 6%, transparent);
+  --shadow-menu: 0 12px 32px -12px color-mix(in oklab, var(--ink) 18%, transparent);
 }
 
 :root {
   --radius: 0.5rem;
 
-  /* Brand */
-  --brand: oklch(0.45 0.18 257);          /* #004AAD deep blue */
-  --brand-foreground: oklch(0.99 0 0);
-  --crimson: oklch(0.46 0.18 25);          /* #9F2828 */
-  --crimson-foreground: oklch(0.99 0 0);
-  --gold: oklch(0.82 0.16 80);             /* #FDBA34 */
-  --gold-foreground: oklch(0.2 0.04 260);
-  --ink: oklch(0.18 0.03 260);             /* deep navy text */
-  --surface: oklch(0.98 0.005 250);        /* off-white */
+  /* Brand. Token names are kept so existing classes keep working:
+     gold = brass, crimson = slate. */
+  --ink: #14213D;
+  --brand: #1F3A5F;
+  --brand-foreground: #FFFFFF;
+  --gold: #B08D57;                 /* brass: CTAs, stats, small marks */
+  /* Ink, not white, on brass: white on #B08D57 is only 3.09:1. Ink is 5.17:1. */
+  --gold-foreground: #14213D;
+  --brass-hover: #9A7A48;          /* borders/underlines only: text on it is under 4.5:1 */
+  --brass-light: #C9A877;          /* brass on dark (7.11:1 on ink); button hover (ink text 7.11:1) */
+  --brass-text: #8C6B3A;           /* brass text on white (4.91:1) and surface (4.53:1) */
+  --crimson: #5B6B80;              /* slate: eyebrows, secondary text */
+  --crimson-foreground: #FFFFFF;
+  --surface: #F4F6F8;
 
-  --background: oklch(1 0 0);
-  --foreground: var(--ink);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--ink);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--ink);
+  --background: #FFFFFF;
+  --foreground: #1B2430;
+  --card: #FFFFFF;
+  --card-foreground: #1B2430;
+  --popover: #FFFFFF;
+  --popover-foreground: #1B2430;
   --primary: var(--brand);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.96 0.01 250);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.45 0.02 260);
+  --muted: var(--surface);
+  --muted-foreground: #5E6876;
   --accent: oklch(0.95 0.03 80);
   --accent-foreground: var(--ink);
-  --destructive: var(--crimson);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.01 255);
-  --input: oklch(0.9 0.01 255);
+  /* Kept red (the old crimson) so admin delete/error states stay red now that crimson is slate. */
+  --destructive: #9F2828;
+  --destructive-foreground: #FFFFFF;
+  --border: #E2E6EB;
+  --input: #E2E6EB;
   --ring: var(--brand);
 }
 
@@ -109,8 +125,22 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  /* Headings: Newsreader, semibold, optical sizing, slight negative tracking, balanced lines */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .font-display {
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
 }
+
+/* Public pages: body copy at 1.65 line height (wins over text-size line heights, as on the home page). */
+:where(.site) p { line-height: 1.65; }
 
 @utility container-page {
   width: 100%;

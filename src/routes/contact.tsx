@@ -106,17 +106,17 @@ function ContactPage() {
           </div>
 
           {done ? (
-            <div className="rounded-xl border border-border bg-card p-10 shadow-card flex flex-col items-start">
-              <div className="h-14 w-14 rounded-full bg-brand/10 text-brand flex items-center justify-center">
+            <div className="rounded-lg border border-border bg-card p-10 flex flex-col items-start">
+              <div className="h-14 w-14 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h3 className="mt-5 font-display text-2xl text-brand">
+              <h2 className="mt-5 font-display text-2xl font-semibold text-ink">
                 Message sent. We'll be in touch shortly.
-              </h3>
+              </h2>
               <p className="mt-3 text-muted-foreground max-w-xl">
                 Thank you for reaching out. A member of our team will follow up soon. For urgent
                 matters, please call{" "}
-                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">
+                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-brass-text">
                   {SITE.phone}
                 </a>
                 .
@@ -124,17 +124,14 @@ function ContactPage() {
               <button
                 type="button"
                 onClick={() => setDone(false)}
-                className="mt-6 text-sm font-semibold uppercase tracking-wide text-brand hover:text-crimson"
+                className="mt-6 text-sm font-semibold text-brand hover:text-brass-text"
               >
                 Send another message
               </button>
             </div>
           ) : (
-            <form
-              onSubmit={onSubmit}
-              className="rounded-xl border border-border bg-card p-8 shadow-card"
-            >
-              <h2 className="font-display text-2xl text-ink">Send a message</h2>
+            <form onSubmit={onSubmit} className="rounded-lg border border-border bg-card p-8">
+              <h2 className="font-display text-2xl font-semibold text-ink">Send a message</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 For sensitive matters, please call instead. Email is not secure.
               </p>
@@ -156,10 +153,7 @@ function ContactPage() {
                   className="md:col-span-2"
                 />
                 <div className="md:col-span-2">
-                  <label
-                    htmlFor="field-message"
-                    className="text-xs font-semibold uppercase tracking-wide text-ink"
-                  >
+                  <label htmlFor="field-message" className="text-sm font-medium text-ink">
                     Message
                   </label>
                   <textarea
@@ -172,14 +166,14 @@ function ContactPage() {
                 </div>
               </div>
               {error && (
-                <div className="mt-4 rounded-md border border-crimson/30 bg-crimson/10 px-4 py-3 text-sm text-crimson">
+                <div className="mt-4 rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
                   {error}
                 </div>
               )}
               <button
                 type="submit"
                 disabled={submitting}
-                className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-md bg-brand px-6 text-sm font-semibold uppercase tracking-wide text-brand-foreground transition-colors hover:bg-brand/90 disabled:opacity-70 md:w-auto"
+                className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-md bg-brass px-6 text-sm font-semibold text-brass-foreground transition-colors hover:bg-brass-light disabled:opacity-70 md:w-auto"
               >
                 {submitting ? (
                   <>
@@ -201,12 +195,12 @@ type InfoRowProps = { icon: LucideIcon; label: string; value: string; href?: str
 
 function InfoRow({ icon: Icon, label, value, href }: InfoRowProps) {
   const content = (
-    <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 shadow-card transition-colors hover:border-brand">
+    <div className="flex items-start gap-4 rounded-lg border border-border bg-card p-6 transition-colors hover:border-brass">
       <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-brand/10 text-brand">
         <Icon className="h-5 w-5" />
       </span>
       <div className="min-w-0">
-        <p className="text-xs font-semibold uppercase tracking-wide text-crimson">{label}</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">{label}</p>
         <p className="mt-1 font-display text-lg text-ink break-words">{value}</p>
       </div>
     </div>
@@ -236,7 +230,7 @@ function Field({
   const id = `field-${name}`;
   return (
     <div className={className}>
-      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-ink">
+      <label htmlFor={id} className="text-sm font-medium text-ink">
         {label}
       </label>
       <input

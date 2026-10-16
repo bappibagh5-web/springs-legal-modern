@@ -10,6 +10,9 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+
+const FONTS_HREF =
+  "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE } from "@/site/site";
 import { siteGraph } from "@/lib/seo";
@@ -21,11 +24,13 @@ function NotFoundComponent() {
   return (
     <PageShell>
       <section className="container-page py-24 text-center md:py-32">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">404</p>
-        <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl">Page not found</h1>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">404</p>
+        <h1 className="mt-3 font-display text-4xl font-semibold text-ink md:text-5xl">
+          Page not found
+        </h1>
         <p className="mx-auto mt-4 max-w-md text-muted-foreground">
           The page you're looking for doesn't exist or has moved. Try one of these, or call us at{" "}
-          <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">
+          <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-brass-text">
             {SITE.phone}
           </a>
           .
@@ -41,7 +46,7 @@ function NotFoundComponent() {
             <li key={l.to}>
               <Link
                 to={l.to}
-                className="inline-flex min-h-11 items-center rounded-md border border-border bg-card px-4 text-sm font-semibold uppercase tracking-wide text-brand shadow-card hover:text-crimson"
+                className="inline-flex min-h-11 items-center rounded-md border border-border bg-card px-4 text-sm font-semibold text-brand transition-colors hover:border-brass hover:text-brass-text"
               >
                 {l.label}
               </Link>
@@ -107,6 +112,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "en_US" },
     ],
     links: [
+      // Newsreader (headings) + Public Sans (body), loaded once for the whole site.
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: FONTS_HREF },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", sizes: "32x32", href: favicon32.url },
       { rel: "apple-touch-icon", sizes: "180x180", href: appleTouchIcon.url },

@@ -87,23 +87,15 @@ function BlogArchivePage() {
   return (
     <PageShell>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-brand text-white">
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 15% 25%, rgba(253,186,52,0.6), transparent 40%), radial-gradient(circle at 85% 75%, rgba(159,40,40,0.4), transparent 45%)",
-          }}
-        />
+      <section className="relative overflow-hidden bg-ink text-white">
         <div className="container-page relative py-20 md:py-24">
-          <span className="inline-flex items-center rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          <span className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.18em] text-brass-light">
             Our Blog
           </span>
-          <h1 className="mt-5 max-w-3xl font-display text-4xl leading-tight md:text-5xl">
-            Legal insights for <span className="text-gold">Colorado Springs</span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-tight md:text-5xl">
+            Legal insights for <span className="text-brass-light">Colorado Springs</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/85">
+          <p className="mt-4 max-w-2xl text-lg text-white/80">
             Straightforward guidance from our attorneys on criminal defense, family law, and the
             rights you need to protect at every stage of your case.
           </p>
@@ -118,7 +110,7 @@ function BlogArchivePage() {
                 setPage(1);
               }}
               placeholder="Search articles..."
-              className="h-12 w-full rounded-md border border-white/20 bg-white pl-11 pr-4 text-sm text-ink placeholder:text-ink/50 focus:outline-none focus:ring-2 focus:ring-gold"
+              className="h-12 w-full rounded-md border border-white/20 bg-white pl-11 pr-4 text-sm text-ink placeholder:text-ink/50 focus:outline-none focus:ring-2 focus:ring-brass-light"
             />
           </div>
         </div>
@@ -134,7 +126,7 @@ function BlogArchivePage() {
                 setCat(null);
                 setPage(1);
               }}
-              color="#004AAD"
+              color="var(--brand)"
             >
               All
             </FilterPill>
@@ -160,10 +152,10 @@ function BlogArchivePage() {
         <div className="container-page">
           <div className="mb-10 flex items-end justify-between gap-4 flex-wrap">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
                 Latest Articles
               </p>
-              <h2 className="mt-2 font-display text-3xl text-brand md:text-4xl">
+              <h2 className="mt-2 font-display font-semibold text-3xl text-ink md:text-4xl">
                 Fresh from the firm
               </h2>
             </div>
@@ -173,7 +165,7 @@ function BlogArchivePage() {
           </div>
 
           {paged.length === 0 ? (
-            <div className="rounded-xl border border-dashed border-border bg-white py-20 text-center">
+            <div className="rounded-lg border border-dashed border-border bg-white py-20 text-center">
               <p className="text-muted-foreground">No articles match your search.</p>
               {(q || cat) && (
                 <button
@@ -182,7 +174,7 @@ function BlogArchivePage() {
                     setCat(null);
                     setPage(1);
                   }}
-                  className="mt-3 text-sm font-semibold text-brand hover:text-crimson"
+                  className="mt-3 text-sm font-semibold text-brand hover:text-brass-text"
                 >
                   Clear filters
                 </button>
@@ -289,7 +281,7 @@ function PostCard({ post }: { post: PublicPostCard }) {
     <Link
       to="/blog/$slug"
       params={{ slug: post.slug }}
-      className="group flex flex-col overflow-hidden rounded-xl border border-border bg-white shadow-card transition-all hover:-translate-y-1 hover:shadow-elegant"
+      className="group flex flex-col overflow-hidden rounded-lg border border-border bg-white transition-colors hover:border-brass"
     >
       <div className="relative aspect-video overflow-hidden bg-muted">
         {post.featured_image_url ? (
@@ -306,7 +298,7 @@ function PostCard({ post }: { post: PublicPostCard }) {
         )}
         {post.category && (
           <span
-            className="absolute left-3 top-3 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold text-white shadow-md"
+            className="absolute left-3 top-3 inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold text-white"
             style={{ background: post.category.color }}
           >
             {post.category.name}
@@ -314,7 +306,7 @@ function PostCard({ post }: { post: PublicPostCard }) {
         )}
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="font-display text-lg leading-snug text-ink line-clamp-2 group-hover:text-brand">
+        <h3 className="font-display font-semibold text-lg leading-snug text-ink line-clamp-2 group-hover:text-ink">
           {post.title}
         </h3>
         {post.excerpt && (
@@ -329,7 +321,7 @@ function PostCard({ post }: { post: PublicPostCard }) {
             <Clock className="h-3.5 w-3.5" />
             {post.read_time_minutes} min read
           </span>
-          <span className="ml-auto inline-flex items-center gap-1 text-brand font-semibold group-hover:text-crimson">
+          <span className="ml-auto inline-flex items-center gap-1 text-brand font-semibold group-hover:text-brass-text">
             Read{" "}
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </span>

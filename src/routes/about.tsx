@@ -67,20 +67,20 @@ function AboutPage() {
               src={buildingImg.url}
               alt="The Kohn Law Firm office building at 320 in downtown Colorado Springs"
               loading="lazy"
-              className="aspect-[4/3] w-full rounded-xl object-cover shadow-elegant"
+              className="aspect-[4/3] w-full rounded-lg object-cover"
               width={1280}
               height={960}
             />
-            <div className="absolute -bottom-5 -right-5 hidden rounded-xl bg-crimson p-5 text-white shadow-elegant md:block">
-              <p className="font-display text-2xl">Est. 2003</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wide">Colorado Springs</p>
+            <div className="absolute -bottom-5 -right-5 hidden rounded-lg bg-ink p-5 text-white md:block">
+              <p className="font-display text-2xl font-semibold text-brass-light">Est. 2003</p>
+              <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-white/75">
+                Colorado Springs
+              </p>
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
-              About Us
-            </p>
-            <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">About Us</p>
+            <h2 className="mt-3 font-display font-semibold text-3xl text-ink md:text-4xl">
               A Colorado Springs firm since 2003.
             </h2>
             <p className="mt-5 text-muted-foreground">
@@ -96,7 +96,7 @@ function AboutPage() {
                 "Careful, ethical representation",
               ].map((p) => (
                 <li key={p} className="flex items-start gap-3 text-sm">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brass" />
                   <span>{p}</span>
                 </li>
               ))}
@@ -109,18 +109,18 @@ function AboutPage() {
       <section className="bg-surface py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate">
               Who We Are
             </p>
-            <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+            <h2 className="mt-3 font-display font-semibold text-3xl text-ink md:text-4xl">
               Two former prosecutors and one standard of preparation for every case.
             </h2>
           </div>
 
           <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
-            <div className="rounded-xl border border-border bg-card p-7 shadow-card">
-              <Scale className="h-8 w-8 text-gold" />
-              <h3 className="mt-4 font-display text-xl text-brand">How We Work</h3>
+            <div className="rounded-lg border border-border bg-card p-7">
+              <Scale className="h-8 w-8 text-brass" />
+              <h3 className="mt-4 font-display text-xl font-semibold text-ink">How We Work</h3>
               <p className="mt-3 text-sm text-muted-foreground">
                 You meet with the attorney who will handle your case. Shimon Kohn started the firm
                 in 2003, after leaving the 4th Judicial District Attorney's Office, to defend people
@@ -133,9 +133,9 @@ function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-card p-7 shadow-card">
-              <Gavel className="h-8 w-8 text-gold" />
-              <h3 className="mt-4 font-display text-xl text-brand">Our Experience</h3>
+            <div className="rounded-lg border border-border bg-card p-7">
+              <Gavel className="h-8 w-8 text-brass" />
+              <h3 className="mt-4 font-display text-xl font-semibold text-ink">Our Experience</h3>
               <p className="mt-3 text-sm text-muted-foreground">
                 Both of our attorneys worked as prosecutors. We know how police reports are written
                 and what the State has to prove, and we use that when we gather information,
@@ -143,9 +143,9 @@ function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-card p-7 shadow-card">
-              <ShieldCheck className="h-8 w-8 text-gold" />
-              <h3 className="mt-4 font-display text-xl text-brand">Our Ethics</h3>
+            <div className="rounded-lg border border-border bg-card p-7">
+              <ShieldCheck className="h-8 w-8 text-brass" />
+              <h3 className="mt-4 font-display text-xl font-semibold text-ink">Our Ethics</h3>
               <p className="mt-3 text-sm text-muted-foreground">
                 We follow the Colorado Rules of Professional Conduct in every matter. We tell you
                 the truth about your case, including when it is not what you hoped to hear.
@@ -157,9 +157,11 @@ function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-border bg-card p-7 shadow-card">
-              <BookOpen className="h-8 w-8 text-gold" />
-              <h3 className="mt-4 font-display text-xl text-brand">Ongoing Education</h3>
+            <div className="rounded-lg border border-border bg-card p-7">
+              <BookOpen className="h-8 w-8 text-brass" />
+              <h3 className="mt-4 font-display text-xl font-semibold text-ink">
+                Ongoing Education
+              </h3>
               <p className="mt-3 text-sm text-muted-foreground">
                 Colorado law changes every year. Our attorneys take continuing legal education so
                 our advice reflects the law as it stands today.
@@ -175,7 +177,7 @@ function AboutPage() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label} className="text-center">
-                <p className="font-display text-4xl font-bold text-gold md:text-5xl">{s.n}</p>
+                <p className="font-display text-4xl font-semibold text-brass md:text-5xl">{s.n}</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/75">
                   {s.label}
                 </p>

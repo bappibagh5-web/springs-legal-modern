@@ -16,21 +16,6 @@ import maceyAsset from "@/assets/macey-jardee.jpg.asset.json";
 
 const updated = updatedFor("/");
 
-/*
- * Home page trial palette (scoped to this page only):
- * ink #14213D · brand #1F3A5F · brass #B08D57 (light brass on dark: #C9A877, text on light: #8C6B3A)
- * slate #5B6B80 · surface #F4F6F8 · text #1B2430 · muted #5E6876 · border #E2E6EB
- * Fonts: Newsreader (headings) + Public Sans (body)
- */
-const FONTS_HREF =
-  "https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap";
-
-const PAGE_CSS = `
-.hv2{font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1B2430}
-.hv2 .hv2-display{font-family:"Newsreader",Georgia,"Times New Roman",serif;font-optical-sizing:auto;letter-spacing:-0.01em;text-wrap:balance}
-.hv2 p{line-height:1.65}
-`;
-
 /** Home page text. */
 const content = {
   meta: {
@@ -159,20 +144,14 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <PageShell>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link rel="stylesheet" href={FONTS_HREF} />
-      <style dangerouslySetInnerHTML={{ __html: PAGE_CSS }} />
-      <div className="hv2">
-        <Hero />
-        <ServicesSection />
-        <AboutSection />
-        <TeamPreview />
-        <FAQSection />
-        <WhoWeAre />
-        <TestimonialsSection />
-        <CTASection />
-      </div>
+      <Hero />
+      <ServicesSection />
+      <AboutSection />
+      <TeamPreview />
+      <FAQSection />
+      <WhoWeAre />
+      <TestimonialsSection />
+      <CTASection />
     </PageShell>
   );
 }
@@ -182,8 +161,8 @@ function Eyebrow({ children, onDark = false }: { children: ReactNode; onDark?: b
     <p
       className={
         onDark
-          ? "text-xs font-semibold uppercase tracking-[0.18em] text-[#C9A877]"
-          : "text-xs font-semibold uppercase tracking-[0.18em] text-[#5B6B80]"
+          ? "text-xs font-semibold uppercase tracking-[0.18em] text-brass-light"
+          : "text-xs font-semibold uppercase tracking-[0.18em] text-slate"
       }
     >
       {children}
@@ -194,7 +173,7 @@ function Eyebrow({ children, onDark = false }: { children: ReactNode; onDark?: b
 function Hero() {
   const img = H.hero.image;
   return (
-    <section className="relative isolate overflow-hidden bg-[#14213D] text-white">
+    <section className="relative isolate overflow-hidden bg-ink text-white">
       {/* Background photo */}
       <img
         src={img.url}
@@ -206,18 +185,18 @@ function Hero() {
         fetchPriority="high"
       />
       {/* Dark sheet: even tint plus a deeper base so the stats stay readable */}
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[#14213D]/70" />
+      <div aria-hidden className="absolute inset-0 -z-10 bg-ink/70" />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-[#14213D]/30 via-transparent to-[#14213D]/90"
+        className="absolute inset-0 -z-10 bg-gradient-to-b from-ink/30 via-transparent to-ink/90"
       />
 
       <div className="container-page flex min-h-[620px] flex-col md:min-h-[720px] lg:min-h-[780px]">
         {/* Centered message */}
         <div className="mx-auto flex max-w-4xl flex-1 flex-col items-center justify-center py-20 text-center md:py-24">
-          <h1 className="hv2-display text-4xl font-semibold leading-[1.08] md:text-5xl lg:text-6xl animate-fade-up">
+          <h1 className="font-display text-4xl font-semibold leading-[1.08] md:text-5xl lg:text-6xl animate-fade-up">
             {H.hero.titleLine1}{" "}
-            <span className="block text-[#C9A877]">{H.hero.titleHighlight}</span>
+            <span className="block text-brass-light">{H.hero.titleHighlight}</span>
           </h1>
 
           <p
@@ -240,7 +219,7 @@ function Hero() {
           >
             <Link
               to="/consultation"
-              className="inline-flex h-12 items-center rounded-md bg-[#B08D57] px-7 text-base font-semibold text-white transition-colors hover:bg-[#9A7A48] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex h-12 items-center rounded-md bg-brass px-7 text-base font-semibold text-brass-foreground transition-colors hover:bg-brass-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {H.hero.ctaLabel}
             </Link>
@@ -248,7 +227,7 @@ function Hero() {
               href={SITE.phoneHref}
               className="inline-flex h-12 items-center gap-2.5 rounded-md border border-white/35 px-6 text-base font-semibold text-white transition-colors hover:border-white/70 hover:bg-white/10"
             >
-              <Phone className="h-4 w-4 text-[#C9A877]" />
+              <Phone className="h-4 w-4 text-brass-light" />
               {SITE.phone}
             </a>
           </div>
@@ -268,7 +247,7 @@ function Hero() {
 function Stat({ n, label, divider }: { n: string; label: string; divider?: boolean }) {
   return (
     <div className={`px-2 text-center ${divider ? "border-l border-white/15" : ""}`}>
-      <p className="hv2-display text-2xl font-semibold text-white md:text-4xl">{n}</p>
+      <p className="font-display text-2xl font-semibold text-white md:text-4xl">{n}</p>
       <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.16em] text-white/70 md:text-xs">
         {label}
       </p>
@@ -284,10 +263,10 @@ function ServicesSection() {
       <div className="container-page">
         <div className="mx-auto max-w-2xl text-center">
           <Eyebrow>{H.services.eyebrow}</Eyebrow>
-          <h2 className="hv2-display mt-3 text-3xl font-semibold text-[#14213D] md:text-4xl">
+          <h2 className="font-display mt-3 text-3xl font-semibold text-ink md:text-4xl">
             {H.services.heading}
           </h2>
-          <p className="mt-4 text-[#5E6876]">{H.services.intro}</p>
+          <p className="mt-4 text-muted-foreground">{H.services.intro}</p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {PRACTICE_AREAS.map((cat, i) => {
@@ -296,7 +275,7 @@ function ServicesSection() {
               <Link
                 key={cat.slug}
                 to={cat.path}
-                className="group relative overflow-hidden rounded-lg border border-[#E2E6EB] bg-white transition-colors hover:border-[#B08D57]"
+                className="group relative overflow-hidden rounded-lg border border-border bg-white transition-colors hover:border-brass"
               >
                 <div className="relative h-44 overflow-hidden">
                   <img
@@ -305,15 +284,15 @@ function ServicesSection() {
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#14213D]/70 to-transparent" />
-                  <div className="absolute bottom-3 left-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/95 text-[#14213D]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+                  <div className="absolute bottom-3 left-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/95 text-ink">
                     <Icon className="h-4 w-4" />
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="hv2-display text-xl font-semibold text-[#14213D]">{cat.title}</h3>
-                  <p className="mt-2 text-sm text-[#5E6876]">{cat.short}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1F3A5F] group-hover:text-[#8C6B3A]">
+                  <h3 className="font-display text-xl font-semibold text-ink">{cat.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{cat.short}</p>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand group-hover:text-brass-text">
                     Learn more →
                   </span>
                 </div>
@@ -329,7 +308,7 @@ function ServicesSection() {
 function AboutSection() {
   const aboutImg = H.about.image;
   return (
-    <section className="bg-[#F4F6F8] py-20 md:py-28">
+    <section className="bg-surface py-20 md:py-28">
       <div className="container-page grid gap-12 md:grid-cols-2 md:items-center">
         <div className="relative">
           <img
@@ -340,21 +319,25 @@ function AboutSection() {
             width={1280}
             height={960}
           />
-          <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-[#14213D] p-6 text-white md:block">
-            <p className="hv2-display text-3xl font-semibold text-[#C9A877]">{H.about.badgeNumber}</p>
-            <p className="mt-1 text-xs uppercase tracking-[0.14em] text-white/75">{H.about.badgeLabel}</p>
+          <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-ink p-6 text-white md:block">
+            <p className="font-display text-3xl font-semibold text-brass-light">
+              {H.about.badgeNumber}
+            </p>
+            <p className="mt-1 text-xs uppercase tracking-[0.14em] text-white/75">
+              {H.about.badgeLabel}
+            </p>
           </div>
         </div>
         <div>
           <Eyebrow>{H.about.eyebrow}</Eyebrow>
-          <h2 className="hv2-display mt-3 text-3xl font-semibold text-[#14213D] md:text-4xl">
+          <h2 className="font-display mt-3 text-3xl font-semibold text-ink md:text-4xl">
             {H.about.heading}
           </h2>
-          <p className="mt-5 text-[#5E6876]">{H.about.body}</p>
+          <p className="mt-5 text-muted-foreground">{H.about.body}</p>
           <ul className="mt-6 space-y-3">
             {H.about.bullets.map(({ text: p }, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-[#1B2430]">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#B08D57]" />
+              <li key={i} className="flex items-start gap-3 text-sm text-foreground">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-brass" />
                 <span>{p}</span>
               </li>
             ))}
@@ -362,7 +345,7 @@ function AboutSection() {
           <div className="mt-8">
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#1F3A5F] hover:text-[#8C6B3A]"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brass-text"
             >
               {H.about.linkLabel}
             </Link>
@@ -381,14 +364,11 @@ function TeamPreview() {
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-xl">
             <Eyebrow>{H.team.eyebrow}</Eyebrow>
-            <h2 className="hv2-display mt-3 text-3xl font-semibold text-[#14213D] md:text-4xl">
+            <h2 className="font-display mt-3 text-3xl font-semibold text-ink md:text-4xl">
               {H.team.heading}
             </h2>
           </div>
-          <Link
-            to="/team"
-            className="text-sm font-semibold text-[#1F3A5F] hover:text-[#8C6B3A]"
-          >
+          <Link to="/team" className="text-sm font-semibold text-brand hover:text-brass-text">
             {H.team.linkLabel}
           </Link>
         </div>
@@ -397,9 +377,9 @@ function TeamPreview() {
           {TEAM.map((m, i) => (
             <article
               key={i}
-              className="group relative overflow-hidden rounded-lg border border-[#E2E6EB] bg-white"
+              className="group relative overflow-hidden rounded-lg border border-border bg-white"
             >
-              <div className="relative h-80 overflow-hidden bg-[#F4F6F8]">
+              <div className="relative h-80 overflow-hidden bg-surface">
                 <img
                   src={m.image?.url}
                   alt={m.image?.alt || m.name}
@@ -410,11 +390,11 @@ function TeamPreview() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="hv2-display text-xl font-semibold text-[#14213D]">{m.name}</h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#8C6B3A]">
+                <h3 className="font-display text-xl font-semibold text-ink">{m.name}</h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-brass-text">
                   {m.title}
                 </p>
-                <p className="mt-3 text-sm text-[#5E6876]">{m.bio}</p>
+                <p className="mt-3 text-sm text-muted-foreground">{m.bio}</p>
               </div>
             </article>
           ))}
@@ -427,25 +407,25 @@ function TeamPreview() {
 function FAQSection() {
   const FAQS = H.faq.items;
   return (
-    <section className="bg-[#F4F6F8] py-20 md:py-28">
+    <section className="bg-surface py-20 md:py-28">
       <div className="container-page grid gap-12 md:grid-cols-[1fr_2fr]">
         <div>
           <Eyebrow>{H.faq.eyebrow}</Eyebrow>
-          <h2 className="hv2-display mt-3 text-3xl font-semibold text-[#14213D] md:text-4xl">
+          <h2 className="font-display mt-3 text-3xl font-semibold text-ink md:text-4xl">
             {H.faq.heading}
           </h2>
-          <p className="mt-4 text-[#5E6876]">{H.faq.intro}</p>
+          <p className="mt-4 text-muted-foreground">{H.faq.intro}</p>
         </div>
-        <ul className="divide-y divide-[#E2E6EB] rounded-lg border border-[#E2E6EB] bg-white">
+        <ul className="divide-y divide-border rounded-lg border border-border bg-white">
           {FAQS.map((f, i) => (
             <li key={i}>
               {/* Native <details> keeps every answer in the server HTML. */}
               <details name="home-faq" open={i === 0} className="group">
                 <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left [&::-webkit-details-marker]:hidden">
-                  <span className="hv2-display text-lg font-medium text-[#14213D]">{f.q}</span>
-                  <ChevronDown className="h-5 w-5 shrink-0 text-[#5B6B80] transition-transform group-open:rotate-180" />
+                  <span className="font-display text-lg font-medium text-ink">{f.q}</span>
+                  <ChevronDown className="h-5 w-5 shrink-0 text-slate transition-transform group-open:rotate-180" />
                 </summary>
-                <div className="px-6 pb-5 text-sm text-[#5E6876]">{f.a}</div>
+                <div className="px-6 pb-5 text-sm text-muted-foreground">{f.a}</div>
               </details>
             </li>
           ))}
@@ -457,7 +437,7 @@ function FAQSection() {
 
 function WhoWeAre() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#14213D] py-20 text-white md:py-28">
+    <section className="relative isolate overflow-hidden bg-ink py-20 text-white md:py-28">
       <img
         src={scalesImg}
         alt=""
@@ -467,7 +447,7 @@ function WhoWeAre() {
       <div className="container-page relative grid gap-12 md:grid-cols-2 md:items-center">
         <div>
           <Eyebrow onDark>{H.whoWeAre.eyebrow}</Eyebrow>
-          <h2 className="hv2-display mt-3 text-3xl font-semibold md:text-4xl">
+          <h2 className="font-display mt-3 text-3xl font-semibold md:text-4xl">
             {H.whoWeAre.heading}
           </h2>
         </div>
