@@ -1,21 +1,54 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { PageShell } from "@/components/PageShell";
-import { CmsHero } from "@/components/CmsHero";
-import { Phone, Mail, MapPin, Clock, CheckCircle2, Loader2 } from "lucide-react";
+import { PageShell } from "@/site/Layout";
+import { PageHero } from "@/site/blocks";
+import { SITE, updatedFor } from "@/site/site";
+import { Phone, Mail, MapPin, Clock, CheckCircle2, Loader2, type LucideIcon } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
-import { useSiteInfo, useCms } from "@/lib/cms/context";
-import { cmsHead } from "@/lib/cms/seo";
+import { pageHead, webPage, breadcrumbs } from "@/lib/seo";
+
+const updated = updatedFor("/contact");
+
+/** Page text. */
+const content = {
+  meta: {
+    title: "Contact The Kohn Law Firm | Colorado Springs | 719-328-9555",
+    description:
+      "Call 719-328-9555 or email contact@kohn.law to reach The Kohn Law Firm in Colorado Springs. Criminal calls are answered around the clock. Send us a message.",
+  },
+  hero: {
+    eyebrow: "Contact",
+    title: "Reach the firm directly.",
+    subtitle:
+      "Calls are answered around the clock for criminal matters. For all other questions, call or send a message and we will get back to you.",
+  },
+  availability: "24/7 for active criminal matters",
+};
 
 export const Route = createFileRoute("/contact")({
-  head: ({ matches }) => cmsHead(matches, "contact", { title: "Contact — The Kohn Law Firm", description: "Call 719-328-9555 or email contact@kohn.law to reach The Kohn Law Firm in Colorado Springs.", ogTitle: "Contact The Kohn Law Firm", ogDescription: "Reach our Colorado Springs office for a confidential consultation." }),
+  head: () =>
+    pageHead({
+      path: "/contact",
+      ...content.meta,
+      jsonLd: [
+        webPage({
+          path: "/contact",
+          name: content.meta.title,
+          description: content.meta.description,
+          type: "ContactPage",
+          modified: updated,
+        }),
+        breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ]),
+      ],
+    }),
   component: ContactPage,
 });
 
 function ContactPage() {
-  const SITE = useSiteInfo();
-  const cms = useCms("contact");
   const submit = useServerFn(submitConsultationLead);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -46,7 +79,10 @@ function ContactPage() {
       setDone(true);
       form.reset();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again or call us directly.");
+      console.error(err);
+      setError(
+        `Sorry, your message didn't go through. Please try again, or call us at ${SITE.phone}.`,
+      );
     } finally {
       setSubmitting(false);
     }
@@ -54,15 +90,19 @@ function ContactPage() {
 
   return (
     <PageShell>
-      <CmsHero page="contact" />
+      <PageHero {...content.hero} />
 
       <section className="py-20 md:py-28">
         <div className="container-page grid gap-12 md:grid-cols-[1fr_1.4fr]">
           <div className="space-y-8">
             <InfoRow icon={Phone} label="Phone" value={SITE.phone} href={SITE.phoneHref} />
             <InfoRow icon={Mail} label="Email" value={SITE.email} href={SITE.emailHref} />
-            <InfoRow icon={MapPin} label="Service Area" value={`${SITE.city} & surrounding counties`} />
-            <InfoRow icon={Clock} label="Availability" value={cms.text("info.availability")} />
+            <InfoRow
+              icon={MapPin}
+              label="Service Area"
+              value={`${SITE.city}, ${SITE.region} and surrounding counties`}
+            />
+            <InfoRow icon={Clock} label="Availability" value={content.availability} />
           </div>
 
           {done ? (
@@ -70,10 +110,16 @@ function ContactPage() {
               <div className="h-14 w-14 rounded-full bg-brand/10 text-brand flex items-center justify-center">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h3 className="mt-5 font-display text-2xl text-brand">Message sent — we'll be in touch shortly.</h3>
+              <h3 className="mt-5 font-display text-2xl text-brand">
+                Message sent. We'll be in touch shortly.
+              </h3>
               <p className="mt-3 text-muted-foreground max-w-xl">
-                Thank you for reaching out. A member of our team will follow up soon. For urgent matters,
-                please call <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">{SITE.phone}</a>.
+                Thank you for reaching out. A member of our team will follow up soon. For urgent
+                matters, please call{" "}
+                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">
+                  {SITE.phone}
+                </a>
+                .
               </p>
               <button
                 type="button"
@@ -84,19 +130,40 @@ function ContactPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={onSubmit} className="rounded-xl border border-border bg-card p-8 shadow-card">
+            <form
+              onSubmit={onSubmit}
+              className="rounded-xl border border-border bg-card p-8 shadow-card"
+            >
               <h2 className="font-display text-2xl text-ink">Send a message</h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                For sensitive matters, please call instead — email is not secure.
+                For sensitive matters, please call instead. Email is not secure.
               </p>
               <div className="mt-6 grid gap-4 md:grid-cols-2">
-                <Field label="Full name" name="name" required />
-                <Field label="Phone" name="phone" type="tel" />
-                <Field label="Email" name="email" type="email" required className="md:col-span-2" />
-                <Field label="Case type" name="case_type" placeholder="e.g. DUI, Divorce, TPO" className="md:col-span-2" />
+                <Field label="Full name" name="name" required autoComplete="name" />
+                <Field label="Phone" name="phone" type="tel" autoComplete="tel" />
+                <Field
+                  label="Email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  className="md:col-span-2"
+                />
+                <Field
+                  label="Case type"
+                  name="case_type"
+                  placeholder="e.g. DUI, Divorce, TPO"
+                  className="md:col-span-2"
+                />
                 <div className="md:col-span-2">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-ink">Message</label>
+                  <label
+                    htmlFor="field-message"
+                    className="text-xs font-semibold uppercase tracking-wide text-ink"
+                  >
+                    Message
+                  </label>
                   <textarea
+                    id="field-message"
                     name="message"
                     required
                     rows={5}
@@ -115,8 +182,12 @@ function ContactPage() {
                 className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-md bg-brand px-6 text-sm font-semibold uppercase tracking-wide text-brand-foreground transition-colors hover:bg-brand/90 disabled:opacity-70 md:w-auto"
               >
                 {submitting ? (
-                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending…</>
-                ) : "Send message"}
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending…
+                  </>
+                ) : (
+                  "Send message"
+                )}
               </button>
             </form>
           )}
@@ -126,7 +197,9 @@ function ContactPage() {
   );
 }
 
-function InfoRow({ icon: Icon, label, value, href }: any) {
+type InfoRowProps = { icon: LucideIcon; label: string; value: string; href?: string };
+
+function InfoRow({ icon: Icon, label, value, href }: InfoRowProps) {
   const content = (
     <div className="flex items-start gap-4 rounded-xl border border-border bg-card p-6 shadow-card transition-colors hover:border-brand">
       <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-brand/10 text-brand">
@@ -141,15 +214,38 @@ function InfoRow({ icon: Icon, label, value, href }: any) {
   return href ? <a href={href}>{content}</a> : content;
 }
 
-function Field({ label, name, type = "text", required, placeholder, className }: any) {
+type FieldProps = {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  placeholder?: string;
+  className?: string;
+  autoComplete?: string;
+};
+
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+  placeholder,
+  className,
+  autoComplete,
+}: FieldProps) {
+  const id = `field-${name}`;
   return (
     <div className={className}>
-      <label className="text-xs font-semibold uppercase tracking-wide text-ink">{label}</label>
+      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-ink">
+        {label}
+      </label>
       <input
+        id={id}
         type={type}
         name={name}
         required={required}
         placeholder={placeholder}
+        autoComplete={autoComplete}
         className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand focus:outline-none"
       />
     </div>

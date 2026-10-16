@@ -27,7 +27,7 @@ export const Route = createFileRoute("/admin/seo-schema")({
   component: SeoSchemaPage,
 });
 
-const SITE_URL = "https://www.shimonkohn.com";
+const SITE_URL = "https://shimonkohn.com";
 
 function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`rounded-xl border border-white/10 bg-[#0a1122] p-5 ${className}`}>{children}</div>;

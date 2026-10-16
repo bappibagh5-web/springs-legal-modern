@@ -5,8 +5,29 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
+// Generated files, plus the Lovable-managed admin/CMS area. The admin code is kept as Lovable
+// generated it (public pages don't use it), so it isn't reformatted here.
+// Lint it anyway with: bun run lint:all
+const ADMIN_AND_GENERATED = [
+  "src/routeTree.gen.ts",
+  "src/integrations/supabase/**",
+  "src/routes/admin*.tsx",
+  "src/components/admin/**",
+  "src/lib/cms/**",
+  "src/lib/ai-gateway.server.ts",
+  "src/lib/{admin,analytics,automation,categories,posts,seo,settings,topics}.functions.ts",
+];
+
 export default tseslint.config(
-  { ignores: ["dist", ".output", ".vinxi"] },
+  {
+    ignores: [
+      "dist",
+      ".output",
+      ".vinxi",
+      ".wrangler",
+      ...(process.env.LINT_ALL ? [] : ADMIN_AND_GENERATED),
+    ],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],

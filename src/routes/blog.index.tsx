@@ -2,34 +2,53 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { Search, Clock, Calendar, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { PageShell } from "@/components/PageShell";
-import { CTASection } from "@/components/CTASection";
-import { listPublicPosts, type PublicCategory, type PublicPostCard } from "@/lib/public-posts.functions";
+import { PageShell } from "@/site/Layout";
+import { CTASection } from "@/site/blocks";
+import { listPublicPosts, type PublicCategory, type PublicPostCard } from "@/site/posts";
+import { pageHead, webPage, breadcrumbs } from "@/lib/seo";
+
+/** Page text. */
+const content = {
+  meta: {
+    title: "Colorado Criminal and Family Law Articles | The Kohn Law Firm",
+    description:
+      "Articles from The Kohn Law Firm on Colorado criminal defense, family law and protection orders, written for people in Colorado Springs and El Paso County.",
+  },
+};
 
 const PER_PAGE = 9;
 
 const blogQueryOptions = queryOptions({
   queryKey: ["public-posts"],
-  queryFn: () => listPublicPosts(),
+  queryFn: async () => listPublicPosts(),
 });
 
 export const Route = createFileRoute("/blog/")({
-  head: () => ({
-    meta: [
-      { title: "Blog — Legal Insights | The Kohn Law Firm" },
-      { name: "description", content: "Practical legal guidance from Colorado Springs attorneys on criminal defense, family law, and protecting your rights." },
-      { property: "og:title", content: "Blog — Legal Insights | The Kohn Law Firm" },
-      { property: "og:description", content: "Practical legal guidance from Colorado Springs attorneys on criminal defense, family law, and protecting your rights." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      path: "/blog",
+      ...content.meta,
+      jsonLd: [
+        webPage({
+          path: "/blog",
+          name: content.meta.title,
+          description: content.meta.description,
+          type: "CollectionPage",
+        }),
+        breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: "Blog", path: "/blog" },
+        ]),
+      ],
+    }),
   loader: ({ context }) => context.queryClient.ensureQueryData(blogQueryOptions),
   component: BlogArchivePage,
   errorComponent: ({ error }) => (
     <PageShell>
       <div className="container-page py-24 text-center">
-        <p className="text-destructive">{error instanceof Error ? error.message : "Something went wrong."}</p>
+        <p className="text-destructive">
+          {error instanceof Error ? error.message : "Something went wrong."}
+        </p>
       </div>
     </PageShell>
   ),
@@ -37,7 +56,11 @@ export const Route = createFileRoute("/blog/")({
 
 function fmtDate(iso: string | null) {
   if (!iso) return "";
-  return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  return new Date(iso).toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 function BlogArchivePage() {
@@ -52,8 +75,7 @@ function BlogArchivePage() {
       if (cat && p.category?.slug !== cat) return false;
       if (!needle) return true;
       return (
-        p.title.toLowerCase().includes(needle) ||
-        (p.excerpt ?? "").toLowerCase().includes(needle)
+        p.title.toLowerCase().includes(needle) || (p.excerpt ?? "").toLowerCase().includes(needle)
       );
     });
   }, [data.posts, q, cat]);
@@ -82,7 +104,8 @@ function BlogArchivePage() {
             Legal insights for <span className="text-gold">Colorado Springs</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-white/85">
-            Straightforward guidance from our attorneys on criminal defense, family law, and the rights you need to protect at every stage of your case.
+            Straightforward guidance from our attorneys on criminal defense, family law, and the
+            rights you need to protect at every stage of your case.
           </p>
 
           <div className="relative mt-8 max-w-xl">
@@ -90,7 +113,10 @@ function BlogArchivePage() {
             <input
               type="search"
               value={q}
-              onChange={(e) => { setQ(e.target.value); setPage(1); }}
+              onChange={(e) => {
+                setQ(e.target.value);
+                setPage(1);
+              }}
               placeholder="Search articles..."
               className="h-12 w-full rounded-md border border-white/20 bg-white pl-11 pr-4 text-sm text-ink placeholder:text-ink/50 focus:outline-none focus:ring-2 focus:ring-gold"
             />
@@ -102,11 +128,26 @@ function BlogArchivePage() {
       <section className="border-b border-border bg-white">
         <div className="container-page overflow-x-auto py-4">
           <div className="flex items-center gap-2 whitespace-nowrap">
-            <FilterPill active={cat === null} onClick={() => { setCat(null); setPage(1); }} color="#004AAD">
+            <FilterPill
+              active={cat === null}
+              onClick={() => {
+                setCat(null);
+                setPage(1);
+              }}
+              color="#004AAD"
+            >
               All
             </FilterPill>
             {data.categories.map((c) => (
-              <FilterPill key={c.id} active={cat === c.slug} onClick={() => { setCat(c.slug); setPage(1); }} color={c.color}>
+              <FilterPill
+                key={c.id}
+                active={cat === c.slug}
+                onClick={() => {
+                  setCat(c.slug);
+                  setPage(1);
+                }}
+                color={c.color}
+              >
                 {c.name}
               </FilterPill>
             ))}
@@ -119,8 +160,12 @@ function BlogArchivePage() {
         <div className="container-page">
           <div className="mb-10 flex items-end justify-between gap-4 flex-wrap">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Latest Articles</p>
-              <h2 className="mt-2 font-display text-3xl text-brand md:text-4xl">Fresh from the firm</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+                Latest Articles
+              </p>
+              <h2 className="mt-2 font-display text-3xl text-brand md:text-4xl">
+                Fresh from the firm
+              </h2>
             </div>
             <p className="text-sm text-muted-foreground">
               {filtered.length} {filtered.length === 1 ? "article" : "articles"}
@@ -132,7 +177,11 @@ function BlogArchivePage() {
               <p className="text-muted-foreground">No articles match your search.</p>
               {(q || cat) && (
                 <button
-                  onClick={() => { setQ(""); setCat(null); setPage(1); }}
+                  onClick={() => {
+                    setQ("");
+                    setCat(null);
+                    setPage(1);
+                  }}
                   className="mt-3 text-sm font-semibold text-brand hover:text-crimson"
                 >
                   Clear filters
@@ -142,12 +191,17 @@ function BlogArchivePage() {
           ) : (
             <>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {paged.map((p) => <PostCard key={p.id} post={p} />)}
+                {paged.map((p) => (
+                  <PostCard key={p.id} post={p} />
+                ))}
               </div>
 
               {totalPages > 1 && (
                 <div className="mt-12 flex items-center justify-center gap-1">
-                  <PagerButton disabled={currentPage === 1} onClick={() => setPage(currentPage - 1)}>
+                  <PagerButton
+                    disabled={currentPage === 1}
+                    onClick={() => setPage(currentPage - 1)}
+                  >
                     <ChevronLeft className="h-4 w-4" />
                   </PagerButton>
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
@@ -163,7 +217,10 @@ function BlogArchivePage() {
                       {n}
                     </button>
                   ))}
-                  <PagerButton disabled={currentPage === totalPages} onClick={() => setPage(currentPage + 1)}>
+                  <PagerButton
+                    disabled={currentPage === totalPages}
+                    onClick={() => setPage(currentPage + 1)}
+                  >
                     <ChevronRight className="h-4 w-4" />
                   </PagerButton>
                 </div>
@@ -175,15 +232,23 @@ function BlogArchivePage() {
 
       <CTASection
         title="Have questions about your case?"
-        body="Every situation is different. Speak directly with an attorney at The Kohn Law Firm to understand your options — consultations are confidential."
+        body="Every situation is different. Speak directly with an attorney at The Kohn Law Firm to understand your options. Consultations are confidential."
       />
     </PageShell>
   );
 }
 
 function FilterPill({
-  active, onClick, color, children,
-}: { active: boolean; onClick: () => void; color: string; children: React.ReactNode }) {
+  active,
+  onClick,
+  color,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  color: string;
+  children: React.ReactNode;
+}) {
   return (
     <button
       onClick={onClick}
@@ -199,7 +264,15 @@ function FilterPill({
   );
 }
 
-function PagerButton({ children, disabled, onClick }: { children: React.ReactNode; disabled?: boolean; onClick: () => void }) {
+function PagerButton({
+  children,
+  disabled,
+  onClick,
+}: {
+  children: React.ReactNode;
+  disabled?: boolean;
+  onClick: () => void;
+}) {
   return (
     <button
       disabled={disabled}
@@ -248,10 +321,17 @@ function PostCard({ post }: { post: PublicPostCard }) {
           <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{post.excerpt}</p>
         )}
         <div className="mt-auto flex items-center gap-4 pt-4 text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{fmtDate(post.published_at)}</span>
-          <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{post.read_time_minutes} min read</span>
+          <span className="inline-flex items-center gap-1">
+            <Calendar className="h-3.5 w-3.5" />
+            {fmtDate(post.published_at)}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <Clock className="h-3.5 w-3.5" />
+            {post.read_time_minutes} min read
+          </span>
           <span className="ml-auto inline-flex items-center gap-1 text-brand font-semibold group-hover:text-crimson">
-            Read <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            Read{" "}
+            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </span>
         </div>
       </div>

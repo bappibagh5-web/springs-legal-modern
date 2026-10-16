@@ -1,5 +1,64 @@
+# robots.txt for https://shimonkohn.com
+# Search and AI crawlers are explicitly allowed. Admin, API and server-function routes are blocked.
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
+
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /api/
+Disallow: /_serverFn/
 
-Sitemap: https://www.shimonkohn.com/sitemap.xml
+Sitemap: https://shimonkohn.com/sitemap.xml

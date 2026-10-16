@@ -9,67 +9,69 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TeamRouteImport } from './routes/team'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ConsultationRouteImport } from './routes/consultation'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as ConsultationRouteImport } from './routes/consultation'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as CategoryIndexRouteImport } from './routes/$category.index'
-import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
-import { Route as AdminUsersRouteImport } from './routes/admin.users'
-import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
-import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
-import { Route as AdminSeoSchemaRouteImport } from './routes/admin.seo-schema'
-import { Route as AdminPostsRouteImport } from './routes/admin.posts'
-import { Route as AdminMediaRouteImport } from './routes/admin.media'
-import { Route as AdminLoginRouteImport } from './routes/admin.login'
-import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
-import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
-import { Route as AdminContentRouteImport } from './routes/admin.content'
-import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
-import { Route as AdminBlogAutomationRouteImport } from './routes/admin.blog-automation'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
-import { Route as CategoryServiceRouteImport } from './routes/$category.$service'
-import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
+import { Route as AdminBlogAutomationRouteImport } from './routes/admin.blog-automation'
+import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminMediaRouteImport } from './routes/admin.media'
+import { Route as AdminPostsRouteImport } from './routes/admin.posts'
+import { Route as AdminSeoSchemaRouteImport } from './routes/admin.seo-schema'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminTopicsRouteImport } from './routes/admin.topics'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CriminalDefenseIndexRouteImport } from './routes/criminal-defense.index'
+import { Route as CriminalDefenseBurglaryRouteImport } from './routes/criminal-defense.burglary'
+import { Route as CriminalDefenseCrimesAgainstAPersonRouteImport } from './routes/criminal-defense.crimes-against-a-person'
+import { Route as CriminalDefenseDomesticViolenceRouteImport } from './routes/criminal-defense.domestic-violence'
+import { Route as CriminalDefenseFelonyCrimesRouteImport } from './routes/criminal-defense.felony-crimes'
+import { Route as CriminalDefenseFinancialCrimesRouteImport } from './routes/criminal-defense.financial-crimes'
+import { Route as CriminalDefenseMisdemeanorCrimesRouteImport } from './routes/criminal-defense.misdemeanor-crimes'
+import { Route as CriminalDefenseMurderAttemptedMurderRouteImport } from './routes/criminal-defense.murder-attempted-murder'
+import { Route as CriminalDefenseSexualAssaultRouteImport } from './routes/criminal-defense.sexual-assault'
+import { Route as CriminalDefenseSexualAssaultOnAChildRouteImport } from './routes/criminal-defense.sexual-assault-on-a-child'
+import { Route as CriminalDefenseSexualExploitationOfAChildRouteImport } from './routes/criminal-defense.sexual-exploitation-of-a-child'
+import { Route as CriminalDefenseSexualOffensesRouteImport } from './routes/criminal-defense.sexual-offenses'
+import { Route as CriminalDefenseTheftRouteImport } from './routes/criminal-defense.theft'
+import { Route as FamilyLawIndexRouteImport } from './routes/family-law.index'
+import { Route as FamilyLawAdoptionRouteImport } from './routes/family-law.adoption'
+import { Route as FamilyLawAllocationOfParentalResponsibilitiesRouteImport } from './routes/family-law.allocation-of-parental-responsibilities'
+import { Route as FamilyLawChildSupportRouteImport } from './routes/family-law.child-support'
+import { Route as FamilyLawDivorceSeparationRouteImport } from './routes/family-law.divorce-separation'
+import { Route as ProtectionOrdersIndexRouteImport } from './routes/protection-orders.index'
+import { Route as ProtectionOrdersPermanentProtectionOrderRouteImport } from './routes/protection-orders.permanent-protection-order'
+import { Route as ProtectionOrdersTemporaryProtectionOrderRouteImport } from './routes/protection-orders.temporary-protection-order'
+import { Route as TeamIndexRouteImport } from './routes/team.index'
+import { Route as TeamEricaBertiniRouteImport } from './routes/team.erica-bertini'
+import { Route as TeamShimonKohnRouteImport } from './routes/team.shimon-kohn'
 import { Route as AdminContentIndexRouteImport } from './routes/admin.content.index'
-import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
 import { Route as AdminContentPageKeyRouteImport } from './routes/admin.content.$pageKey'
-import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media.$'
+import { Route as AdminPostsIndexRouteImport } from './routes/admin.posts.index'
+import { Route as AdminPostsNewRouteImport } from './routes/admin.posts.new'
 import { Route as AdminPostsIdEditRouteImport } from './routes/admin.posts.$id.edit'
+import { Route as ApiPublicMediaSplatRouteImport } from './routes/api/public/media.$'
 
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsultationRoute = ConsultationRouteImport.update({
-  id: '/consultation',
-  path: '/consultation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -77,89 +79,34 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => BlogRoute,
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultationRoute = ConsultationRouteImport.update({
+  id: '/consultation',
+  path: '/consultation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AdminRoute,
-} as any)
-const CategoryIndexRoute = CategoryIndexRouteImport.update({
-  id: '/$category/',
-  path: '/$category/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => BlogRoute,
-} as any)
-const AdminUsersRoute = AdminUsersRouteImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminTopicsRoute = AdminTopicsRouteImport.update({
-  id: '/topics',
-  path: '/topics',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSettingsRoute = AdminSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSeoSchemaRoute = AdminSeoSchemaRouteImport.update({
-  id: '/seo-schema',
-  path: '/seo-schema',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminPostsRoute = AdminPostsRouteImport.update({
-  id: '/posts',
-  path: '/posts',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminMediaRoute = AdminMediaRouteImport.update({
-  id: '/media',
-  path: '/media',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminLeadsRoute = AdminLeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminDashboardRoute = AdminDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminContentRoute = AdminContentRouteImport.update({
-  id: '/content',
-  path: '/content',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
-  id: '/categories',
-  path: '/categories',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminBlogAutomationRoute = AdminBlogAutomationRouteImport.update({
-  id: '/blog-automation',
-  path: '/blog-automation',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
@@ -167,52 +114,250 @@ const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AdminRoute,
 } as any)
-const CategoryServiceRoute = CategoryServiceRouteImport.update({
-  id: '/$category/$service',
-  path: '/$category/$service',
-  getParentRoute: () => rootRouteImport,
+const AdminBlogAutomationRoute = AdminBlogAutomationRouteImport.update({
+  id: '/blog-automation',
+  path: '/blog-automation',
+  getParentRoute: () => AdminRoute,
 } as any)
-const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
+const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMediaRoute = AdminMediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPostsRoute = AdminPostsRouteImport.update({
+  id: '/posts',
+  path: '/posts',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSeoSchemaRoute = AdminSeoSchemaRouteImport.update({
+  id: '/seo-schema',
+  path: '/seo-schema',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTopicsRoute = AdminTopicsRouteImport.update({
+  id: '/topics',
+  path: '/topics',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AdminPostsRoute,
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
+const CriminalDefenseIndexRoute = CriminalDefenseIndexRouteImport.update({
+  id: '/criminal-defense/',
+  path: '/criminal-defense/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CriminalDefenseBurglaryRoute = CriminalDefenseBurglaryRouteImport.update({
+  id: '/criminal-defense/burglary',
+  path: '/criminal-defense/burglary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CriminalDefenseCrimesAgainstAPersonRoute =
+  CriminalDefenseCrimesAgainstAPersonRouteImport.update({
+    id: '/criminal-defense/crimes-against-a-person',
+    path: '/criminal-defense/crimes-against-a-person',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseDomesticViolenceRoute =
+  CriminalDefenseDomesticViolenceRouteImport.update({
+    id: '/criminal-defense/domestic-violence',
+    path: '/criminal-defense/domestic-violence',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseFelonyCrimesRoute =
+  CriminalDefenseFelonyCrimesRouteImport.update({
+    id: '/criminal-defense/felony-crimes',
+    path: '/criminal-defense/felony-crimes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseFinancialCrimesRoute =
+  CriminalDefenseFinancialCrimesRouteImport.update({
+    id: '/criminal-defense/financial-crimes',
+    path: '/criminal-defense/financial-crimes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseMisdemeanorCrimesRoute =
+  CriminalDefenseMisdemeanorCrimesRouteImport.update({
+    id: '/criminal-defense/misdemeanor-crimes',
+    path: '/criminal-defense/misdemeanor-crimes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseMurderAttemptedMurderRoute =
+  CriminalDefenseMurderAttemptedMurderRouteImport.update({
+    id: '/criminal-defense/murder-attempted-murder',
+    path: '/criminal-defense/murder-attempted-murder',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseSexualAssaultRoute =
+  CriminalDefenseSexualAssaultRouteImport.update({
+    id: '/criminal-defense/sexual-assault',
+    path: '/criminal-defense/sexual-assault',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseSexualAssaultOnAChildRoute =
+  CriminalDefenseSexualAssaultOnAChildRouteImport.update({
+    id: '/criminal-defense/sexual-assault-on-a-child',
+    path: '/criminal-defense/sexual-assault-on-a-child',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseSexualExploitationOfAChildRoute =
+  CriminalDefenseSexualExploitationOfAChildRouteImport.update({
+    id: '/criminal-defense/sexual-exploitation-of-a-child',
+    path: '/criminal-defense/sexual-exploitation-of-a-child',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseSexualOffensesRoute =
+  CriminalDefenseSexualOffensesRouteImport.update({
+    id: '/criminal-defense/sexual-offenses',
+    path: '/criminal-defense/sexual-offenses',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CriminalDefenseTheftRoute = CriminalDefenseTheftRouteImport.update({
+  id: '/criminal-defense/theft',
+  path: '/criminal-defense/theft',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamilyLawIndexRoute = FamilyLawIndexRouteImport.update({
+  id: '/family-law/',
+  path: '/family-law/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamilyLawAdoptionRoute = FamilyLawAdoptionRouteImport.update({
+  id: '/family-law/adoption',
+  path: '/family-law/adoption',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamilyLawAllocationOfParentalResponsibilitiesRoute =
+  FamilyLawAllocationOfParentalResponsibilitiesRouteImport.update({
+    id: '/family-law/allocation-of-parental-responsibilities',
+    path: '/family-law/allocation-of-parental-responsibilities',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const FamilyLawChildSupportRoute = FamilyLawChildSupportRouteImport.update({
+  id: '/family-law/child-support',
+  path: '/family-law/child-support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamilyLawDivorceSeparationRoute =
+  FamilyLawDivorceSeparationRouteImport.update({
+    id: '/family-law/divorce-separation',
+    path: '/family-law/divorce-separation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProtectionOrdersIndexRoute = ProtectionOrdersIndexRouteImport.update({
+  id: '/protection-orders/',
+  path: '/protection-orders/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectionOrdersPermanentProtectionOrderRoute =
+  ProtectionOrdersPermanentProtectionOrderRouteImport.update({
+    id: '/protection-orders/permanent-protection-order',
+    path: '/protection-orders/permanent-protection-order',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProtectionOrdersTemporaryProtectionOrderRoute =
+  ProtectionOrdersTemporaryProtectionOrderRouteImport.update({
+    id: '/protection-orders/temporary-protection-order',
+    path: '/protection-orders/temporary-protection-order',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamIndexRoute = TeamIndexRouteImport.update({
+  id: '/team/',
+  path: '/team/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamEricaBertiniRoute = TeamEricaBertiniRouteImport.update({
+  id: '/team/erica-bertini',
+  path: '/team/erica-bertini',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamShimonKohnRoute = TeamShimonKohnRouteImport.update({
+  id: '/team/shimon-kohn',
+  path: '/team/shimon-kohn',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminContentIndexRoute = AdminContentIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminContentRoute,
 } as any)
-const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
-  id: '/new',
-  path: '/new',
-  getParentRoute: () => AdminPostsRoute,
-} as any)
 const AdminContentPageKeyRoute = AdminContentPageKeyRouteImport.update({
   id: '/$pageKey',
   path: '/$pageKey',
   getParentRoute: () => AdminContentRoute,
 } as any)
-const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
-  id: '/api/public/media/$',
-  path: '/api/public/media/$',
-  getParentRoute: () => rootRouteImport,
+const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminPostsRoute,
+} as any)
+const AdminPostsNewRoute = AdminPostsNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => AdminPostsRoute,
 } as any)
 const AdminPostsIdEditRoute = AdminPostsIdEditRouteImport.update({
   id: '/$id/edit',
   path: '/$id/edit',
   getParentRoute: () => AdminPostsRoute,
 } as any)
+const ApiPublicMediaSplatRoute = ApiPublicMediaSplatRouteImport.update({
+  id: '/api/public/media/$',
+  path: '/api/public/media/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/team': typeof TeamRoute
-  '/$category/$service': typeof CategoryServiceRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/blog-automation': typeof AdminBlogAutomationRoute
   '/admin/categories': typeof AdminCategoriesRoute
@@ -227,9 +372,32 @@ export interface FileRoutesByFullPath {
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/$category/': typeof CategoryIndexRoute
+  '/criminal-defense/burglary': typeof CriminalDefenseBurglaryRoute
+  '/criminal-defense/crimes-against-a-person': typeof CriminalDefenseCrimesAgainstAPersonRoute
+  '/criminal-defense/domestic-violence': typeof CriminalDefenseDomesticViolenceRoute
+  '/criminal-defense/felony-crimes': typeof CriminalDefenseFelonyCrimesRoute
+  '/criminal-defense/financial-crimes': typeof CriminalDefenseFinancialCrimesRoute
+  '/criminal-defense/misdemeanor-crimes': typeof CriminalDefenseMisdemeanorCrimesRoute
+  '/criminal-defense/murder-attempted-murder': typeof CriminalDefenseMurderAttemptedMurderRoute
+  '/criminal-defense/sexual-assault': typeof CriminalDefenseSexualAssaultRoute
+  '/criminal-defense/sexual-assault-on-a-child': typeof CriminalDefenseSexualAssaultOnAChildRoute
+  '/criminal-defense/sexual-exploitation-of-a-child': typeof CriminalDefenseSexualExploitationOfAChildRoute
+  '/criminal-defense/sexual-offenses': typeof CriminalDefenseSexualOffensesRoute
+  '/criminal-defense/theft': typeof CriminalDefenseTheftRoute
+  '/family-law/adoption': typeof FamilyLawAdoptionRoute
+  '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
+  '/family-law/child-support': typeof FamilyLawChildSupportRoute
+  '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
+  '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
+  '/team/erica-bertini': typeof TeamEricaBertiniRoute
+  '/team/shimon-kohn': typeof TeamShimonKohnRoute
   '/admin/': typeof AdminIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/criminal-defense/': typeof CriminalDefenseIndexRoute
+  '/family-law/': typeof FamilyLawIndexRoute
+  '/protection-orders/': typeof ProtectionOrdersIndexRoute
+  '/team/': typeof TeamIndexRoute
   '/admin/content/$pageKey': typeof AdminContentPageKeyRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/content/': typeof AdminContentIndexRoute
@@ -239,12 +407,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/team': typeof TeamRoute
-  '/$category/$service': typeof CategoryServiceRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/blog-automation': typeof AdminBlogAutomationRoute
   '/admin/categories': typeof AdminCategoriesRoute
@@ -257,9 +424,32 @@ export interface FileRoutesByTo {
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/$category': typeof CategoryIndexRoute
+  '/criminal-defense/burglary': typeof CriminalDefenseBurglaryRoute
+  '/criminal-defense/crimes-against-a-person': typeof CriminalDefenseCrimesAgainstAPersonRoute
+  '/criminal-defense/domestic-violence': typeof CriminalDefenseDomesticViolenceRoute
+  '/criminal-defense/felony-crimes': typeof CriminalDefenseFelonyCrimesRoute
+  '/criminal-defense/financial-crimes': typeof CriminalDefenseFinancialCrimesRoute
+  '/criminal-defense/misdemeanor-crimes': typeof CriminalDefenseMisdemeanorCrimesRoute
+  '/criminal-defense/murder-attempted-murder': typeof CriminalDefenseMurderAttemptedMurderRoute
+  '/criminal-defense/sexual-assault': typeof CriminalDefenseSexualAssaultRoute
+  '/criminal-defense/sexual-assault-on-a-child': typeof CriminalDefenseSexualAssaultOnAChildRoute
+  '/criminal-defense/sexual-exploitation-of-a-child': typeof CriminalDefenseSexualExploitationOfAChildRoute
+  '/criminal-defense/sexual-offenses': typeof CriminalDefenseSexualOffensesRoute
+  '/criminal-defense/theft': typeof CriminalDefenseTheftRoute
+  '/family-law/adoption': typeof FamilyLawAdoptionRoute
+  '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
+  '/family-law/child-support': typeof FamilyLawChildSupportRoute
+  '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
+  '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
+  '/team/erica-bertini': typeof TeamEricaBertiniRoute
+  '/team/shimon-kohn': typeof TeamShimonKohnRoute
   '/admin': typeof AdminIndexRoute
   '/blog': typeof BlogIndexRoute
+  '/criminal-defense': typeof CriminalDefenseIndexRoute
+  '/family-law': typeof FamilyLawIndexRoute
+  '/protection-orders': typeof ProtectionOrdersIndexRoute
+  '/team': typeof TeamIndexRoute
   '/admin/content/$pageKey': typeof AdminContentPageKeyRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/content': typeof AdminContentIndexRoute
@@ -270,14 +460,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/blog': typeof BlogRouteWithChildren
   '/consultation': typeof ConsultationRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/team': typeof TeamRoute
-  '/$category/$service': typeof CategoryServiceRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/blog-automation': typeof AdminBlogAutomationRoute
   '/admin/categories': typeof AdminCategoriesRoute
@@ -292,9 +481,32 @@ export interface FileRoutesById {
   '/admin/topics': typeof AdminTopicsRoute
   '/admin/users': typeof AdminUsersRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/$category/': typeof CategoryIndexRoute
+  '/criminal-defense/burglary': typeof CriminalDefenseBurglaryRoute
+  '/criminal-defense/crimes-against-a-person': typeof CriminalDefenseCrimesAgainstAPersonRoute
+  '/criminal-defense/domestic-violence': typeof CriminalDefenseDomesticViolenceRoute
+  '/criminal-defense/felony-crimes': typeof CriminalDefenseFelonyCrimesRoute
+  '/criminal-defense/financial-crimes': typeof CriminalDefenseFinancialCrimesRoute
+  '/criminal-defense/misdemeanor-crimes': typeof CriminalDefenseMisdemeanorCrimesRoute
+  '/criminal-defense/murder-attempted-murder': typeof CriminalDefenseMurderAttemptedMurderRoute
+  '/criminal-defense/sexual-assault': typeof CriminalDefenseSexualAssaultRoute
+  '/criminal-defense/sexual-assault-on-a-child': typeof CriminalDefenseSexualAssaultOnAChildRoute
+  '/criminal-defense/sexual-exploitation-of-a-child': typeof CriminalDefenseSexualExploitationOfAChildRoute
+  '/criminal-defense/sexual-offenses': typeof CriminalDefenseSexualOffensesRoute
+  '/criminal-defense/theft': typeof CriminalDefenseTheftRoute
+  '/family-law/adoption': typeof FamilyLawAdoptionRoute
+  '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
+  '/family-law/child-support': typeof FamilyLawChildSupportRoute
+  '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
+  '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
+  '/team/erica-bertini': typeof TeamEricaBertiniRoute
+  '/team/shimon-kohn': typeof TeamShimonKohnRoute
   '/admin/': typeof AdminIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/criminal-defense/': typeof CriminalDefenseIndexRoute
+  '/family-law/': typeof FamilyLawIndexRoute
+  '/protection-orders/': typeof ProtectionOrdersIndexRoute
+  '/team/': typeof TeamIndexRoute
   '/admin/content/$pageKey': typeof AdminContentPageKeyRoute
   '/admin/posts/new': typeof AdminPostsNewRoute
   '/admin/content/': typeof AdminContentIndexRoute
@@ -306,14 +518,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$'
     | '/about'
     | '/admin'
     | '/blog'
     | '/consultation'
     | '/contact'
     | '/sitemap.xml'
-    | '/team'
-    | '/$category/$service'
     | '/admin/analytics'
     | '/admin/blog-automation'
     | '/admin/categories'
@@ -328,9 +539,32 @@ export interface FileRouteTypes {
     | '/admin/topics'
     | '/admin/users'
     | '/blog/$slug'
-    | '/$category/'
+    | '/criminal-defense/burglary'
+    | '/criminal-defense/crimes-against-a-person'
+    | '/criminal-defense/domestic-violence'
+    | '/criminal-defense/felony-crimes'
+    | '/criminal-defense/financial-crimes'
+    | '/criminal-defense/misdemeanor-crimes'
+    | '/criminal-defense/murder-attempted-murder'
+    | '/criminal-defense/sexual-assault'
+    | '/criminal-defense/sexual-assault-on-a-child'
+    | '/criminal-defense/sexual-exploitation-of-a-child'
+    | '/criminal-defense/sexual-offenses'
+    | '/criminal-defense/theft'
+    | '/family-law/adoption'
+    | '/family-law/allocation-of-parental-responsibilities'
+    | '/family-law/child-support'
+    | '/family-law/divorce-separation'
+    | '/protection-orders/permanent-protection-order'
+    | '/protection-orders/temporary-protection-order'
+    | '/team/erica-bertini'
+    | '/team/shimon-kohn'
     | '/admin/'
     | '/blog/'
+    | '/criminal-defense/'
+    | '/family-law/'
+    | '/protection-orders/'
+    | '/team/'
     | '/admin/content/$pageKey'
     | '/admin/posts/new'
     | '/admin/content/'
@@ -340,12 +574,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$'
     | '/about'
     | '/consultation'
     | '/contact'
     | '/sitemap.xml'
-    | '/team'
-    | '/$category/$service'
     | '/admin/analytics'
     | '/admin/blog-automation'
     | '/admin/categories'
@@ -358,9 +591,32 @@ export interface FileRouteTypes {
     | '/admin/topics'
     | '/admin/users'
     | '/blog/$slug'
-    | '/$category'
+    | '/criminal-defense/burglary'
+    | '/criminal-defense/crimes-against-a-person'
+    | '/criminal-defense/domestic-violence'
+    | '/criminal-defense/felony-crimes'
+    | '/criminal-defense/financial-crimes'
+    | '/criminal-defense/misdemeanor-crimes'
+    | '/criminal-defense/murder-attempted-murder'
+    | '/criminal-defense/sexual-assault'
+    | '/criminal-defense/sexual-assault-on-a-child'
+    | '/criminal-defense/sexual-exploitation-of-a-child'
+    | '/criminal-defense/sexual-offenses'
+    | '/criminal-defense/theft'
+    | '/family-law/adoption'
+    | '/family-law/allocation-of-parental-responsibilities'
+    | '/family-law/child-support'
+    | '/family-law/divorce-separation'
+    | '/protection-orders/permanent-protection-order'
+    | '/protection-orders/temporary-protection-order'
+    | '/team/erica-bertini'
+    | '/team/shimon-kohn'
     | '/admin'
     | '/blog'
+    | '/criminal-defense'
+    | '/family-law'
+    | '/protection-orders'
+    | '/team'
     | '/admin/content/$pageKey'
     | '/admin/posts/new'
     | '/admin/content'
@@ -370,14 +626,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/$'
     | '/about'
     | '/admin'
     | '/blog'
     | '/consultation'
     | '/contact'
     | '/sitemap.xml'
-    | '/team'
-    | '/$category/$service'
     | '/admin/analytics'
     | '/admin/blog-automation'
     | '/admin/categories'
@@ -392,9 +647,32 @@ export interface FileRouteTypes {
     | '/admin/topics'
     | '/admin/users'
     | '/blog/$slug'
-    | '/$category/'
+    | '/criminal-defense/burglary'
+    | '/criminal-defense/crimes-against-a-person'
+    | '/criminal-defense/domestic-violence'
+    | '/criminal-defense/felony-crimes'
+    | '/criminal-defense/financial-crimes'
+    | '/criminal-defense/misdemeanor-crimes'
+    | '/criminal-defense/murder-attempted-murder'
+    | '/criminal-defense/sexual-assault'
+    | '/criminal-defense/sexual-assault-on-a-child'
+    | '/criminal-defense/sexual-exploitation-of-a-child'
+    | '/criminal-defense/sexual-offenses'
+    | '/criminal-defense/theft'
+    | '/family-law/adoption'
+    | '/family-law/allocation-of-parental-responsibilities'
+    | '/family-law/child-support'
+    | '/family-law/divorce-separation'
+    | '/protection-orders/permanent-protection-order'
+    | '/protection-orders/temporary-protection-order'
+    | '/team/erica-bertini'
+    | '/team/shimon-kohn'
     | '/admin/'
     | '/blog/'
+    | '/criminal-defense/'
+    | '/family-law/'
+    | '/protection-orders/'
+    | '/team/'
     | '/admin/content/$pageKey'
     | '/admin/posts/new'
     | '/admin/content/'
@@ -405,60 +683,54 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
   BlogRoute: typeof BlogRouteWithChildren
   ConsultationRoute: typeof ConsultationRoute
   ContactRoute: typeof ContactRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  TeamRoute: typeof TeamRoute
-  CategoryServiceRoute: typeof CategoryServiceRoute
-  CategoryIndexRoute: typeof CategoryIndexRoute
+  CriminalDefenseBurglaryRoute: typeof CriminalDefenseBurglaryRoute
+  CriminalDefenseCrimesAgainstAPersonRoute: typeof CriminalDefenseCrimesAgainstAPersonRoute
+  CriminalDefenseDomesticViolenceRoute: typeof CriminalDefenseDomesticViolenceRoute
+  CriminalDefenseFelonyCrimesRoute: typeof CriminalDefenseFelonyCrimesRoute
+  CriminalDefenseFinancialCrimesRoute: typeof CriminalDefenseFinancialCrimesRoute
+  CriminalDefenseMisdemeanorCrimesRoute: typeof CriminalDefenseMisdemeanorCrimesRoute
+  CriminalDefenseMurderAttemptedMurderRoute: typeof CriminalDefenseMurderAttemptedMurderRoute
+  CriminalDefenseSexualAssaultRoute: typeof CriminalDefenseSexualAssaultRoute
+  CriminalDefenseSexualAssaultOnAChildRoute: typeof CriminalDefenseSexualAssaultOnAChildRoute
+  CriminalDefenseSexualExploitationOfAChildRoute: typeof CriminalDefenseSexualExploitationOfAChildRoute
+  CriminalDefenseSexualOffensesRoute: typeof CriminalDefenseSexualOffensesRoute
+  CriminalDefenseTheftRoute: typeof CriminalDefenseTheftRoute
+  FamilyLawAdoptionRoute: typeof FamilyLawAdoptionRoute
+  FamilyLawAllocationOfParentalResponsibilitiesRoute: typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
+  FamilyLawChildSupportRoute: typeof FamilyLawChildSupportRoute
+  FamilyLawDivorceSeparationRoute: typeof FamilyLawDivorceSeparationRoute
+  ProtectionOrdersPermanentProtectionOrderRoute: typeof ProtectionOrdersPermanentProtectionOrderRoute
+  ProtectionOrdersTemporaryProtectionOrderRoute: typeof ProtectionOrdersTemporaryProtectionOrderRoute
+  TeamEricaBertiniRoute: typeof TeamEricaBertiniRoute
+  TeamShimonKohnRoute: typeof TeamShimonKohnRoute
+  CriminalDefenseIndexRoute: typeof CriminalDefenseIndexRoute
+  FamilyLawIndexRoute: typeof FamilyLawIndexRoute
+  ProtectionOrdersIndexRoute: typeof ProtectionOrdersIndexRoute
+  TeamIndexRoute: typeof TeamIndexRoute
   ApiPublicMediaSplatRoute: typeof ApiPublicMediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consultation': {
-      id: '/consultation'
-      path: '/consultation'
-      fullPath: '/consultation'
-      preLoaderRoute: typeof ConsultationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -468,123 +740,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
-      parentRoute: typeof BlogRoute
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consultation': {
+      id: '/consultation'
+      path: '/consultation'
+      fullPath: '/consultation'
+      preLoaderRoute: typeof ConsultationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/': {
       id: '/admin/'
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/$category/': {
-      id: '/$category/'
-      path: '/$category'
-      fullPath: '/$category/'
-      preLoaderRoute: typeof CategoryIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof BlogRoute
-    }
-    '/admin/users': {
-      id: '/admin/users'
-      path: '/users'
-      fullPath: '/admin/users'
-      preLoaderRoute: typeof AdminUsersRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/topics': {
-      id: '/admin/topics'
-      path: '/topics'
-      fullPath: '/admin/topics'
-      preLoaderRoute: typeof AdminTopicsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/settings': {
-      id: '/admin/settings'
-      path: '/settings'
-      fullPath: '/admin/settings'
-      preLoaderRoute: typeof AdminSettingsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/seo-schema': {
-      id: '/admin/seo-schema'
-      path: '/seo-schema'
-      fullPath: '/admin/seo-schema'
-      preLoaderRoute: typeof AdminSeoSchemaRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/posts': {
-      id: '/admin/posts'
-      path: '/posts'
-      fullPath: '/admin/posts'
-      preLoaderRoute: typeof AdminPostsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/media': {
-      id: '/admin/media'
-      path: '/media'
-      fullPath: '/admin/media'
-      preLoaderRoute: typeof AdminMediaRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/login': {
-      id: '/admin/login'
-      path: '/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminLoginRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/leads': {
-      id: '/admin/leads'
-      path: '/leads'
-      fullPath: '/admin/leads'
-      preLoaderRoute: typeof AdminLeadsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/dashboard': {
-      id: '/admin/dashboard'
-      path: '/dashboard'
-      fullPath: '/admin/dashboard'
-      preLoaderRoute: typeof AdminDashboardRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/content': {
-      id: '/admin/content'
-      path: '/content'
-      fullPath: '/admin/content'
-      preLoaderRoute: typeof AdminContentRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/categories': {
-      id: '/admin/categories'
-      path: '/categories'
-      fullPath: '/admin/categories'
-      preLoaderRoute: typeof AdminCategoriesRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/blog-automation': {
-      id: '/admin/blog-automation'
-      path: '/blog-automation'
-      fullPath: '/admin/blog-automation'
-      preLoaderRoute: typeof AdminBlogAutomationRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/analytics': {
@@ -594,19 +789,271 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAnalyticsRouteImport
       parentRoute: typeof AdminRoute
     }
-    '/$category/$service': {
-      id: '/$category/$service'
-      path: '/$category/$service'
-      fullPath: '/$category/$service'
-      preLoaderRoute: typeof CategoryServiceRouteImport
+    '/admin/blog-automation': {
+      id: '/admin/blog-automation'
+      path: '/blog-automation'
+      fullPath: '/admin/blog-automation'
+      preLoaderRoute: typeof AdminBlogAutomationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/categories': {
+      id: '/admin/categories'
+      path: '/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AdminCategoriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/media': {
+      id: '/admin/media'
+      path: '/media'
+      fullPath: '/admin/media'
+      preLoaderRoute: typeof AdminMediaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/posts': {
+      id: '/admin/posts'
+      path: '/posts'
+      fullPath: '/admin/posts'
+      preLoaderRoute: typeof AdminPostsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/seo-schema': {
+      id: '/admin/seo-schema'
+      path: '/seo-schema'
+      fullPath: '/admin/seo-schema'
+      preLoaderRoute: typeof AdminSeoSchemaRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/topics': {
+      id: '/admin/topics'
+      path: '/topics'
+      fullPath: '/admin/topics'
+      preLoaderRoute: typeof AdminTopicsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/criminal-defense/': {
+      id: '/criminal-defense/'
+      path: '/criminal-defense'
+      fullPath: '/criminal-defense/'
+      preLoaderRoute: typeof CriminalDefenseIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/posts/': {
-      id: '/admin/posts/'
-      path: '/'
-      fullPath: '/admin/posts/'
-      preLoaderRoute: typeof AdminPostsIndexRouteImport
-      parentRoute: typeof AdminPostsRoute
+    '/criminal-defense/burglary': {
+      id: '/criminal-defense/burglary'
+      path: '/criminal-defense/burglary'
+      fullPath: '/criminal-defense/burglary'
+      preLoaderRoute: typeof CriminalDefenseBurglaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/crimes-against-a-person': {
+      id: '/criminal-defense/crimes-against-a-person'
+      path: '/criminal-defense/crimes-against-a-person'
+      fullPath: '/criminal-defense/crimes-against-a-person'
+      preLoaderRoute: typeof CriminalDefenseCrimesAgainstAPersonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/domestic-violence': {
+      id: '/criminal-defense/domestic-violence'
+      path: '/criminal-defense/domestic-violence'
+      fullPath: '/criminal-defense/domestic-violence'
+      preLoaderRoute: typeof CriminalDefenseDomesticViolenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/felony-crimes': {
+      id: '/criminal-defense/felony-crimes'
+      path: '/criminal-defense/felony-crimes'
+      fullPath: '/criminal-defense/felony-crimes'
+      preLoaderRoute: typeof CriminalDefenseFelonyCrimesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/financial-crimes': {
+      id: '/criminal-defense/financial-crimes'
+      path: '/criminal-defense/financial-crimes'
+      fullPath: '/criminal-defense/financial-crimes'
+      preLoaderRoute: typeof CriminalDefenseFinancialCrimesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/misdemeanor-crimes': {
+      id: '/criminal-defense/misdemeanor-crimes'
+      path: '/criminal-defense/misdemeanor-crimes'
+      fullPath: '/criminal-defense/misdemeanor-crimes'
+      preLoaderRoute: typeof CriminalDefenseMisdemeanorCrimesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/murder-attempted-murder': {
+      id: '/criminal-defense/murder-attempted-murder'
+      path: '/criminal-defense/murder-attempted-murder'
+      fullPath: '/criminal-defense/murder-attempted-murder'
+      preLoaderRoute: typeof CriminalDefenseMurderAttemptedMurderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/sexual-assault': {
+      id: '/criminal-defense/sexual-assault'
+      path: '/criminal-defense/sexual-assault'
+      fullPath: '/criminal-defense/sexual-assault'
+      preLoaderRoute: typeof CriminalDefenseSexualAssaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/sexual-assault-on-a-child': {
+      id: '/criminal-defense/sexual-assault-on-a-child'
+      path: '/criminal-defense/sexual-assault-on-a-child'
+      fullPath: '/criminal-defense/sexual-assault-on-a-child'
+      preLoaderRoute: typeof CriminalDefenseSexualAssaultOnAChildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/sexual-exploitation-of-a-child': {
+      id: '/criminal-defense/sexual-exploitation-of-a-child'
+      path: '/criminal-defense/sexual-exploitation-of-a-child'
+      fullPath: '/criminal-defense/sexual-exploitation-of-a-child'
+      preLoaderRoute: typeof CriminalDefenseSexualExploitationOfAChildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/sexual-offenses': {
+      id: '/criminal-defense/sexual-offenses'
+      path: '/criminal-defense/sexual-offenses'
+      fullPath: '/criminal-defense/sexual-offenses'
+      preLoaderRoute: typeof CriminalDefenseSexualOffensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/criminal-defense/theft': {
+      id: '/criminal-defense/theft'
+      path: '/criminal-defense/theft'
+      fullPath: '/criminal-defense/theft'
+      preLoaderRoute: typeof CriminalDefenseTheftRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-law/': {
+      id: '/family-law/'
+      path: '/family-law'
+      fullPath: '/family-law/'
+      preLoaderRoute: typeof FamilyLawIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-law/adoption': {
+      id: '/family-law/adoption'
+      path: '/family-law/adoption'
+      fullPath: '/family-law/adoption'
+      preLoaderRoute: typeof FamilyLawAdoptionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-law/allocation-of-parental-responsibilities': {
+      id: '/family-law/allocation-of-parental-responsibilities'
+      path: '/family-law/allocation-of-parental-responsibilities'
+      fullPath: '/family-law/allocation-of-parental-responsibilities'
+      preLoaderRoute: typeof FamilyLawAllocationOfParentalResponsibilitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-law/child-support': {
+      id: '/family-law/child-support'
+      path: '/family-law/child-support'
+      fullPath: '/family-law/child-support'
+      preLoaderRoute: typeof FamilyLawChildSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-law/divorce-separation': {
+      id: '/family-law/divorce-separation'
+      path: '/family-law/divorce-separation'
+      fullPath: '/family-law/divorce-separation'
+      preLoaderRoute: typeof FamilyLawDivorceSeparationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/protection-orders/': {
+      id: '/protection-orders/'
+      path: '/protection-orders'
+      fullPath: '/protection-orders/'
+      preLoaderRoute: typeof ProtectionOrdersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/protection-orders/permanent-protection-order': {
+      id: '/protection-orders/permanent-protection-order'
+      path: '/protection-orders/permanent-protection-order'
+      fullPath: '/protection-orders/permanent-protection-order'
+      preLoaderRoute: typeof ProtectionOrdersPermanentProtectionOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/protection-orders/temporary-protection-order': {
+      id: '/protection-orders/temporary-protection-order'
+      path: '/protection-orders/temporary-protection-order'
+      fullPath: '/protection-orders/temporary-protection-order'
+      preLoaderRoute: typeof ProtectionOrdersTemporaryProtectionOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/': {
+      id: '/team/'
+      path: '/team'
+      fullPath: '/team/'
+      preLoaderRoute: typeof TeamIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/erica-bertini': {
+      id: '/team/erica-bertini'
+      path: '/team/erica-bertini'
+      fullPath: '/team/erica-bertini'
+      preLoaderRoute: typeof TeamEricaBertiniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/shimon-kohn': {
+      id: '/team/shimon-kohn'
+      path: '/team/shimon-kohn'
+      fullPath: '/team/shimon-kohn'
+      preLoaderRoute: typeof TeamShimonKohnRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/content/': {
       id: '/admin/content/'
@@ -615,13 +1062,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContentIndexRouteImport
       parentRoute: typeof AdminContentRoute
     }
-    '/admin/posts/new': {
-      id: '/admin/posts/new'
-      path: '/new'
-      fullPath: '/admin/posts/new'
-      preLoaderRoute: typeof AdminPostsNewRouteImport
-      parentRoute: typeof AdminPostsRoute
-    }
     '/admin/content/$pageKey': {
       id: '/admin/content/$pageKey'
       path: '/$pageKey'
@@ -629,12 +1069,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContentPageKeyRouteImport
       parentRoute: typeof AdminContentRoute
     }
-    '/api/public/media/$': {
-      id: '/api/public/media/$'
-      path: '/api/public/media/$'
-      fullPath: '/api/public/media/$'
-      preLoaderRoute: typeof ApiPublicMediaSplatRouteImport
-      parentRoute: typeof rootRouteImport
+    '/admin/posts/': {
+      id: '/admin/posts/'
+      path: '/'
+      fullPath: '/admin/posts/'
+      preLoaderRoute: typeof AdminPostsIndexRouteImport
+      parentRoute: typeof AdminPostsRoute
+    }
+    '/admin/posts/new': {
+      id: '/admin/posts/new'
+      path: '/new'
+      fullPath: '/admin/posts/new'
+      preLoaderRoute: typeof AdminPostsNewRouteImport
+      parentRoute: typeof AdminPostsRoute
     }
     '/admin/posts/$id/edit': {
       id: '/admin/posts/$id/edit'
@@ -642,6 +1089,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/posts/$id/edit'
       preLoaderRoute: typeof AdminPostsIdEditRouteImport
       parentRoute: typeof AdminPostsRoute
+    }
+    '/api/public/media/$': {
+      id: '/api/public/media/$'
+      path: '/api/public/media/$'
+      fullPath: '/api/public/media/$'
+      preLoaderRoute: typeof ApiPublicMediaSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -726,15 +1180,44 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
   BlogRoute: BlogRouteWithChildren,
   ConsultationRoute: ConsultationRoute,
   ContactRoute: ContactRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  TeamRoute: TeamRoute,
-  CategoryServiceRoute: CategoryServiceRoute,
-  CategoryIndexRoute: CategoryIndexRoute,
+  CriminalDefenseBurglaryRoute: CriminalDefenseBurglaryRoute,
+  CriminalDefenseCrimesAgainstAPersonRoute:
+    CriminalDefenseCrimesAgainstAPersonRoute,
+  CriminalDefenseDomesticViolenceRoute: CriminalDefenseDomesticViolenceRoute,
+  CriminalDefenseFelonyCrimesRoute: CriminalDefenseFelonyCrimesRoute,
+  CriminalDefenseFinancialCrimesRoute: CriminalDefenseFinancialCrimesRoute,
+  CriminalDefenseMisdemeanorCrimesRoute: CriminalDefenseMisdemeanorCrimesRoute,
+  CriminalDefenseMurderAttemptedMurderRoute:
+    CriminalDefenseMurderAttemptedMurderRoute,
+  CriminalDefenseSexualAssaultRoute: CriminalDefenseSexualAssaultRoute,
+  CriminalDefenseSexualAssaultOnAChildRoute:
+    CriminalDefenseSexualAssaultOnAChildRoute,
+  CriminalDefenseSexualExploitationOfAChildRoute:
+    CriminalDefenseSexualExploitationOfAChildRoute,
+  CriminalDefenseSexualOffensesRoute: CriminalDefenseSexualOffensesRoute,
+  CriminalDefenseTheftRoute: CriminalDefenseTheftRoute,
+  FamilyLawAdoptionRoute: FamilyLawAdoptionRoute,
+  FamilyLawAllocationOfParentalResponsibilitiesRoute:
+    FamilyLawAllocationOfParentalResponsibilitiesRoute,
+  FamilyLawChildSupportRoute: FamilyLawChildSupportRoute,
+  FamilyLawDivorceSeparationRoute: FamilyLawDivorceSeparationRoute,
+  ProtectionOrdersPermanentProtectionOrderRoute:
+    ProtectionOrdersPermanentProtectionOrderRoute,
+  ProtectionOrdersTemporaryProtectionOrderRoute:
+    ProtectionOrdersTemporaryProtectionOrderRoute,
+  TeamEricaBertiniRoute: TeamEricaBertiniRoute,
+  TeamShimonKohnRoute: TeamShimonKohnRoute,
+  CriminalDefenseIndexRoute: CriminalDefenseIndexRoute,
+  FamilyLawIndexRoute: FamilyLawIndexRoute,
+  ProtectionOrdersIndexRoute: ProtectionOrdersIndexRoute,
+  TeamIndexRoute: TeamIndexRoute,
   ApiPublicMediaSplatRoute: ApiPublicMediaSplatRoute,
 }
 export const routeTree = rootRouteImport

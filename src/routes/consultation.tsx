@@ -1,21 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { PageShell } from "@/components/PageShell";
-import { CmsHero } from "@/components/CmsHero";
-import { CATEGORIES } from "@/lib/site";
+import { PageShell } from "@/site/Layout";
+import { PageHero } from "@/site/blocks";
+import { SITE, updatedFor, PRACTICE_AREAS } from "@/site/site";
 import { Phone, Mail, Shield, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
-import { useSiteInfo } from "@/lib/cms/context";
-import { cmsHead } from "@/lib/cms/seo";
+import { pageHead, webPage, breadcrumbs } from "@/lib/seo";
+
+const updated = updatedFor("/consultation");
+
+/** Page text. */
+const content = {
+  meta: {
+    title: "Request a Consultation | The Kohn Law Firm, Colorado Springs",
+    description:
+      "Request a confidential consultation about a criminal, family law or protection order case in Colorado Springs. Tell us what happened and when to call you.",
+  },
+  hero: {
+    eyebrow: "Confidential Intake",
+    title: "Schedule a consultation.",
+    subtitle: "Tell us a little about your situation. We will reach out promptly to set a time.",
+  },
+};
 
 export const Route = createFileRoute("/consultation")({
-  head: ({ matches }) => cmsHead(matches, "consultation", { title: "Schedule a Consultation — The Kohn Law Firm", description: "Request a confidential consultation with The Kohn Law Firm in Colorado Springs.", ogTitle: "Schedule a Consultation", ogDescription: "Confidential case review with attorney Shimon Kohn." }),
+  head: () =>
+    pageHead({
+      path: "/consultation",
+      ...content.meta,
+      jsonLd: [
+        webPage({
+          path: "/consultation",
+          name: content.meta.title,
+          description: content.meta.description,
+          modified: updated,
+        }),
+        breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: "Schedule a consultation", path: "/consultation" },
+        ]),
+      ],
+    }),
   component: ConsultationPage,
 });
 
 function ConsultationPage() {
-  const SITE = useSiteInfo();
   const submit = useServerFn(submitConsultationLead);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
@@ -32,6 +62,7 @@ function ConsultationPage() {
       case_type: String(fd.get("case_type") ?? "").trim() || null,
       message: String(fd.get("message") ?? "").trim() || null,
       best_time_to_reach: String(fd.get("best_time") ?? "").trim() || null,
+      source: "consultation_form" as const,
     };
     if (!payload.name || !payload.email) {
       setError("Please provide your name and email.");
@@ -44,7 +75,10 @@ function ConsultationPage() {
       window.trackEvent?.("form_submit", "conversion", "consultation_form");
       setDone(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again or call us directly.");
+      console.error(err);
+      setError(
+        `Sorry, your message didn't go through. Please try again, or call us at ${SITE.phone}.`,
+      );
     } finally {
       setSubmitting(false);
     }
@@ -52,7 +86,7 @@ function ConsultationPage() {
 
   return (
     <PageShell>
-      <CmsHero page="consultation" />
+      <PageHero {...content.hero} />
 
       <section className="py-20">
         <div className="container-page grid gap-12 md:grid-cols-[1fr_1.4fr]">
@@ -67,11 +101,19 @@ function ConsultationPage() {
               </ul>
             </div>
             <div className="rounded-xl bg-brand p-6 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Prefer to call?</p>
-              <a href={SITE.phoneHref} className="mt-3 flex items-center gap-2 text-lg font-semibold hover:text-gold">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                Prefer to call?
+              </p>
+              <a
+                href={SITE.phoneHref}
+                className="mt-1 flex items-center gap-2 py-2 text-lg font-semibold hover:text-gold"
+              >
                 <Phone className="h-5 w-5" /> {SITE.phone}
               </a>
-              <a href={SITE.emailHref} className="mt-2 flex items-center gap-2 text-sm text-white/85 hover:text-gold">
+              <a
+                href={SITE.emailHref}
+                className="mt-2 flex items-center gap-2 text-sm text-white/85 hover:text-gold"
+              >
                 <Mail className="h-4 w-4" /> {SITE.email}
               </a>
             </div>
@@ -82,11 +124,16 @@ function ConsultationPage() {
               <div className="h-14 w-14 rounded-full bg-brand/10 text-brand flex items-center justify-center">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
-              <h3 className="mt-5 font-display text-2xl text-brand">Thank you — we'll be in touch shortly.</h3>
+              <h3 className="mt-5 font-display text-2xl text-brand">
+                Thank you. We'll be in touch shortly.
+              </h3>
               <p className="mt-3 text-muted-foreground max-w-xl">
-                Your request has been received. An attorney or member of our team will reach out at the
-                time you provided. If your matter is urgent, please call us directly at{" "}
-                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">{SITE.phone}</a>.
+                Your request has been received. An attorney or member of our team will reach out at
+                the time you provided. If your matter is urgent, please call us directly at{" "}
+                <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">
+                  {SITE.phone}
+                </a>
+                .
               </p>
               <button
                 type="button"
@@ -97,23 +144,39 @@ function ConsultationPage() {
               </button>
             </div>
           ) : (
-            <form onSubmit={onSubmit} className="rounded-xl border border-border bg-card p-8 shadow-card">
+            <form
+              onSubmit={onSubmit}
+              className="rounded-xl border border-border bg-card p-8 shadow-card"
+            >
               <div className="grid gap-4 md:grid-cols-2">
-                <Field label="Full name" name="name" required />
-                <Field label="Phone" name="phone" type="tel" required />
-                <Field label="Email" name="email" type="email" required className="md:col-span-2" />
+                <Field label="Full name" name="name" required autoComplete="name" />
+                <Field label="Phone" name="phone" type="tel" required autoComplete="tel" />
+                <Field
+                  label="Email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  className="md:col-span-2"
+                />
                 <div className="md:col-span-2">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-ink">Case type</label>
+                  <label
+                    htmlFor="field-case_type"
+                    className="text-xs font-semibold uppercase tracking-wide text-ink"
+                  >
+                    Case type
+                  </label>
                   <select
+                    id="field-case_type"
                     name="case_type"
                     required
                     className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand focus:outline-none"
                   >
                     <option value="">Select a practice area…</option>
-                    {CATEGORIES.flatMap((c) => [
+                    {PRACTICE_AREAS.flatMap((c) => [
                       <optgroup key={c.slug} label={c.title}>
-                        {c.items.map((i) => (
-                          <option key={i.slug} value={`${c.title} — ${i.title}`}>
+                        {c.services.map((i) => (
+                          <option key={i.slug} value={`${c.title}: ${i.title}`}>
                             {i.title}
                           </option>
                         ))}
@@ -122,8 +185,14 @@ function ConsultationPage() {
                   </select>
                 </div>
                 <div className="md:col-span-2">
-                  <label className="text-xs font-semibold uppercase tracking-wide text-ink">Brief description</label>
+                  <label
+                    htmlFor="field-message"
+                    className="text-xs font-semibold uppercase tracking-wide text-ink"
+                  >
+                    Brief description
+                  </label>
                   <textarea
+                    id="field-message"
                     name="message"
                     required
                     rows={6}
@@ -131,11 +200,16 @@ function ConsultationPage() {
                     className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand focus:outline-none"
                   />
                 </div>
-                <Field label="Best time to reach you" name="best_time" className="md:col-span-2" placeholder="e.g. weekdays after 5pm" />
+                <Field
+                  label="Best time to reach you"
+                  name="best_time"
+                  className="md:col-span-2"
+                  placeholder="e.g. weekdays after 5pm"
+                />
               </div>
               <p className="mt-4 text-xs text-muted-foreground">
-                Submitting this form does not create an attorney-client relationship.
-                Please do not include privileged information.
+                Submitting this form does not create an attorney-client relationship. Please do not
+                include privileged information.
               </p>
               {error && (
                 <div className="mt-4 rounded-md border border-crimson/30 bg-crimson/10 px-4 py-3 text-sm text-crimson">
@@ -148,8 +222,12 @@ function ConsultationPage() {
                 className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-crimson px-6 text-sm font-semibold uppercase tracking-wide text-crimson-foreground transition-colors hover:bg-crimson/90 disabled:opacity-70"
               >
                 {submitting ? (
-                  <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending…</>
-                ) : "Request Consultation"}
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending…
+                  </>
+                ) : (
+                  "Request Consultation"
+                )}
               </button>
             </form>
           )}
@@ -159,15 +237,38 @@ function ConsultationPage() {
   );
 }
 
-function Field({ label, name, type = "text", required, placeholder, className }: any) {
+type FieldProps = {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  placeholder?: string;
+  className?: string;
+  autoComplete?: string;
+};
+
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+  placeholder,
+  className,
+  autoComplete,
+}: FieldProps) {
+  const id = `field-${name}`;
   return (
     <div className={className}>
-      <label className="text-xs font-semibold uppercase tracking-wide text-ink">{label}</label>
+      <label htmlFor={id} className="text-xs font-semibold uppercase tracking-wide text-ink">
+        {label}
+      </label>
       <input
+        id={id}
         type={type}
         name={name}
         required={required}
         placeholder={placeholder}
+        autoComplete={autoComplete}
         className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:border-brand focus:outline-none"
       />
     </div>

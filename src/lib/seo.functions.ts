@@ -11,7 +11,7 @@ async function assertAdmin(userId: string) {
   if (data.role !== "super_admin" && data.role !== "admin") throw new Error("Forbidden");
 }
 
-const SITE_URL = "https://www.shimonkohn.com";
+const SITE_URL = "https://shimonkohn.com";
 const BUCKET = "post-images";
 const SIGNED_TTL = 60 * 60 * 24 * 7;
 

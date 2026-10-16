@@ -37,8 +37,22 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+// Lovable-hosted images (/__l5e/assets-v1/*) are served by the Lovable platform, not by this worker.
+// For a local production preview, set LOVABLE_PREVIEW_HOST (e.g. shimonkohn.com) to fetch them from there.
+// Unset in production, so this is a no-op.
+const LOVABLE_ASSET_RE = /^\/__l5e\/assets-v1\//;
+
+function lovableAssetHost(env: unknown): string | undefined {
+  const fromEnv = (env as Record<string, unknown> | undefined)?.LOVABLE_PREVIEW_HOST;
+  const host = typeof fromEnv === "string" ? fromEnv : process.env.LOVABLE_PREVIEW_HOST;
+  return host?.trim() || undefined;
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const url = new URL(request.url);
+    const assetHost = LOVABLE_ASSET_RE.test(url.pathname) ? lovableAssetHost(env) : undefined;
+    if (assetHost) return fetch(`https://${assetHost}${url.pathname}${url.search}`);
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);

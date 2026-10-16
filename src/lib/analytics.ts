@@ -70,7 +70,8 @@ function getBrowser(): string {
 function classifyTrafficSource(referrer: string, utmSource: string | null): string {
   if (utmSource) {
     const s = utmSource.toLowerCase();
-    if (/(facebook|twitter|instagram|linkedin|tiktok|youtube|x\.com|social)/.test(s)) return "Social Media";
+    if (/(facebook|twitter|instagram|linkedin|tiktok|youtube|x\.com|social)/.test(s))
+      return "Social Media";
     if (/(google|bing|yahoo|duckduckgo|organic)/.test(s)) return "Organic Search";
     return "Referral";
   }
@@ -79,8 +80,13 @@ function classifyTrafficSource(referrer: string, utmSource: string | null): stri
     const url = new URL(referrer);
     const host = url.hostname.toLowerCase();
     if (host === window.location.hostname) return "Direct";
-    if (/(google\.|bing\.|yahoo\.|duckduckgo\.|baidu\.|yandex\.)/.test(host)) return "Organic Search";
-    if (/(facebook\.|twitter\.|x\.com|instagram\.|linkedin\.|t\.co|tiktok\.|youtube\.|pinterest\.|reddit\.)/.test(host))
+    if (/(google\.|bing\.|yahoo\.|duckduckgo\.|baidu\.|yandex\.)/.test(host))
+      return "Organic Search";
+    if (
+      /(facebook\.|twitter\.|x\.com|instagram\.|linkedin\.|t\.co|tiktok\.|youtube\.|pinterest\.|reddit\.)/.test(
+        host,
+      )
+    )
       return "Social Media";
     return "Referral";
   } catch {

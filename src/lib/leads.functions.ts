@@ -5,7 +5,10 @@ import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 async function assertAdmin(userId: string) {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const { data, error } = await supabaseAdmin
-    .from("profiles").select("role, status").eq("id", userId).maybeSingle();
+    .from("profiles")
+    .select("role, status")
+    .eq("id", userId)
+    .maybeSingle();
   if (error) throw new Error(error.message);
   if (!data || data.status !== "active") throw new Error("Forbidden");
   if (data.role !== "super_admin" && data.role !== "admin") throw new Error("Forbidden");
@@ -46,8 +49,13 @@ const submitSchema = z.object({
 });
 
 async function tryNotifyAdmin(lead: {
-  id: string; name: string; email: string; phone: string | null;
-  case_type: string | null; message: string | null; best_time_to_reach: string | null;
+  id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  case_type: string | null;
+  message: string | null;
+  best_time_to_reach: string | null;
   source?: string;
 }): Promise<boolean> {
   try {
@@ -55,14 +63,26 @@ async function tryNotifyAdmin(lead: {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     // Prefer admin notification email from settings; fall back to global_schema email.
     const { data: setting } = await supabaseAdmin
-      .from("site_settings").select("value").eq("key", "email").maybeSingle();
+      .from("site_settings")
+      .select("value")
+      .eq("key", "email")
+      .maybeSingle();
     let toList: string[] = [];
-    const adminField = (setting?.value as any)?.general?.adminNotificationEmail as string | undefined;
-    if (adminField) toList = adminField.split(",").map((s) => s.trim()).filter(Boolean);
+    const adminField = (setting?.value as { general?: { adminNotificationEmail?: string } } | null)
+      ?.general?.adminNotificationEmail;
+    if (adminField)
+      toList = adminField
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
     if (toList.length === 0) {
       const { data: gs } = await supabaseAdmin
-        .from("global_schema").select("email").limit(1).maybeSingle();
-      if ((gs as any)?.email) toList = [(gs as any).email];
+        .from("global_schema")
+        .select("email")
+        .limit(1)
+        .maybeSingle();
+      const fallbackEmail = (gs as { email?: string | null } | null)?.email;
+      if (fallbackEmail) toList = [fallbackEmail];
     }
     if (toList.length === 0) return false;
 
@@ -90,12 +110,14 @@ async function tryNotifyAdmin(lead: {
 }
 
 function escapeHtml(s: string): string {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]!));
+  return s.replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
+  );
 }
 
-
 export const submitConsultationLead = createServerFn({ method: "POST" })
-  .inputValidator((d: unknown) => submitSchema.parse(d))
+  .validator((d: unknown) => submitSchema.parse(d))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data: inserted, error } = await supabaseAdmin
@@ -128,7 +150,9 @@ export const listLeads = createServerFn({ method: "GET" })
     await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { data, error } = await supabaseAdmin
-      .from("leads").select("*").order("created_at", { ascending: false });
+      .from("leads")
+      .select("*")
+      .order("created_at", { ascending: false });
     if (error) throw new Error(error.message);
     return (data ?? []) as LeadRow[];
   });
@@ -142,8 +166,14 @@ export const getLeadStats = createServerFn({ method: "GET" })
     const [totalR, newR, weekR, emailR] = await Promise.all([
       supabaseAdmin.from("leads").select("id", { count: "exact", head: true }),
       supabaseAdmin.from("leads").select("id", { count: "exact", head: true }).eq("status", "new"),
-      supabaseAdmin.from("leads").select("id", { count: "exact", head: true }).gte("created_at", weekAgo),
-      supabaseAdmin.from("leads").select("id", { count: "exact", head: true }).eq("email_sent", true),
+      supabaseAdmin
+        .from("leads")
+        .select("id", { count: "exact", head: true })
+        .gte("created_at", weekAgo),
+      supabaseAdmin
+        .from("leads")
+        .select("id", { count: "exact", head: true })
+        .eq("email_sent", true),
     ]);
     return {
       total: totalR.count ?? 0,
@@ -155,21 +185,28 @@ export const getLeadStats = createServerFn({ method: "GET" })
 
 export const updateLeadStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({
-    id: z.string().uuid(),
-    status: z.enum(["new", "read", "replied", "archived"]),
-  }).parse(d))
+  .validator((d: unknown) =>
+    z
+      .object({
+        id: z.string().uuid(),
+        status: z.enum(["new", "read", "replied", "archived"]),
+      })
+      .parse(d),
+  )
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { error } = await supabaseAdmin.from("leads").update({ status: data.status }).eq("id", data.id);
+    const { error } = await supabaseAdmin
+      .from("leads")
+      .update({ status: data.status })
+      .eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
 
 export const deleteLead = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
+  .validator((d: unknown) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
     await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");

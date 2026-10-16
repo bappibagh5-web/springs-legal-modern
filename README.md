@@ -1,26 +1,100 @@
-# Kohn Law Reimagined
+# The Kohn Law Firm website (shimonkohn.com)
 
-we are re designing a modern law firm website for Kohn Law Firm. Hero Banner we want half to be text and other half picture of the city of colorado springs and Schedule a Consultation and Phone number. You can use all the content on this https://new.shimonkohnlaw.com. The colors are #004AAD, #9F2828, #FDBA34, White. 1-719-482-8092, shimon@kohn.law. We will also have a mega menu. Each page will have its own separate content. the menu pages are Home, About, Criminal Defence (Misdemeanor Crimes, Financial Crimes, Sexual Assault, Burglary, Domestic Violence, Felony Crimes, Theft, Sexual Offenses, Crimes Against a Person, Murder/Attempted, Murder, Sexual Assault on a Child, Sexual Exploitation of a Child), Family Law (Divorce & Separation, Adoption, Child Support, Allocation of Parental Responsibilities), Protection Orders (Permanent Protection Order (PPO), Temporary Protection Order (TPO)), Team, Contact, Consultation Page.  Home page should have hero banner a little animation, services, about, Our Legal Team, FAQs, Who We Are and Testimonials, add pictures were appropriate. The separate Service pages will have a small hero banner with Schedule a Consultation button below the header and subheader text. We want a nice responive website for mobile, desktop, tablet. page should be aligned properly.
+TanStack Start (React 19) + Vite, built as a Cloudflare worker by Nitro. Public pages read from typed content files in `src/content/`. The admin area (`/admin`) uses Supabase.
 
-This project was built with [Lovable](https://lovable.dev).
+This project is connected to [Lovable](https://lovable.dev). Commits pushed to the connected branch sync back to Lovable. Don't force-push or rewrite pushed history.
 
-**Live app**: https://springs-legal-modern.lovable.app
+## Run it locally (Windows)
 
-## Build with Lovable
+### 1. Install the tools (once)
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/4fcb13c5-a5c6-4eb1-a8bc-9f6365cdf35a).
+- **Bun** (package manager; `bun.lock` is the lockfile). In PowerShell:
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+  ```powershell
+  powershell -c "irm bun.sh/install.ps1 | iex"
+  ```
 
-## Development
+  Close and reopen the terminal, then check it with `bun --version`.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- **Node.js 22 LTS** from https://nodejs.org. Vite runs on Node. Node 20 works, but supabase-js prints a deprecation notice.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+Don't use `npm install`. `package-lock.json` is ignored on purpose.
+
+### 2. Install dependencies
+
+```powershell
+bun install
 ```
+
+### 3. Environment variables
+
+Copy the example file and fill in the values from Lovable Cloud (Project settings > Supabase):
+
+```powershell
+copy .env.example .env
+```
+
+| Variable | Needed for |
+|---|---|
+| `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_PROJECT_ID` | Server-side Supabase access (admin sign-in checks) |
+| `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID` | Browser Supabase client (admin login) |
+| `SUPABASE_SERVICE_ROLE_KEY` | **Secret.** Contact and consultation forms (saving leads) and the admin screens. Without it the site still runs, but form submissions show an error. |
+| `LOVABLE_API_KEY` | Optional. AI blog automation in the admin area. |
+| `LOVABLE_PREVIEW_HOST` | Local only. Set to `shimonkohn.com` so Lovable-hosted images (`/__l5e/...`) load locally. |
+
+`.env` is never committed.
+
+> **Local runs use the live Supabase project.** A form you submit locally creates a real lead in the admin Contacts screen, and may email the firm's notification address. Mark test submissions clearly and delete them afterwards. Page-view analytics are switched off on `localhost` / `127.0.0.1`.
+
+### 4. Development server
+
+```powershell
+bun run dev
+```
+
+Open http://localhost:8080. Changes reload automatically.
+
+### 5. Production build and preview
+
+```powershell
+bun run build
+bun run preview
+```
+
+`build` writes the Cloudflare worker to `.output/`. `preview` copies `.env` to `.output/server/.dev.vars` and serves the built worker with Wrangler (`bunx wrangler@4.42.0`, downloaded on first run) at http://127.0.0.1:4173.
+
+Wrangler prints a compatibility-date warning. It's safe to ignore locally.
+
+### Checks
+
+```powershell
+bun run typecheck   # TypeScript
+bun run lint        # ESLint + Prettier (public site code)
+bun run lint:all    # also lints the Lovable-managed admin/CMS code
+```
+
+## Where things live
+
+Each public URL has its own route file in `src/routes/`. The file holds that page's text (a `content` object at the top), its title and description, its JSON-LD, and its layout.
+
+| Path | What it is |
+|---|---|
+| `src/routes/<page>.tsx` | One file per URL, for example `about.tsx`, `family-law.index.tsx` (`/family-law`) and `family-law.child-support.tsx` (`/family-law/child-support`) |
+| `src/site/site.ts` | Shared data: firm facts (phone, email), header/footer/CTA strings, navigation, the practice-area registry (menu labels, card blurbs, CTAs), page dates, attorneys and staff, reviews |
+| `src/site/Layout.tsx` | `PageShell`: header, mobile menu and footer |
+| `src/site/blocks.tsx` | Components used on two or more pages (hero, CTA band, testimonials, byline, practice-area and service sections, attorney bio) |
+| `src/site/posts.ts` | Blog posts (currently none) and the blog card shapes |
+| `src/lib/seo.ts` | Meta tag, canonical and JSON-LD helpers |
+| `src/routes/$.tsx` | Catch-all: unknown URLs get the 404 page |
+| `src/routeTree.gen.ts` | Generated by the dev server and build. Don't edit it |
+
+**Editing a page:** change the `content` object in its route file. A service's menu label and card blurb are in `PRACTICE_AREAS` in `src/site/site.ts`.
+
+**Adding a page:** create its route file, add its path and date to `PAGE_UPDATED` in `src/site/site.ts` (that drives the sitemap), and add it to `PRACTICE_AREAS` if it's a practice-area page.
+
+**Changing a page's date:** update its entry in `PAGE_UPDATED`. That date feeds the "Updated" byline, `dateModified` in the JSON-LD and the sitemap `lastmod`.
+
+| Other paths | What it is |
+|---|---|
+| `src/routes/admin*.tsx`, `src/components/admin/`, `src/lib/cms/` | Lovable admin/CMS (not used by public pages) |
+| `audit/` | SEO audit, change log and items waiting on the firm (`client-needs.md`) |

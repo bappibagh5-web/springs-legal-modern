@@ -281,7 +281,7 @@ function SeoHelper({ def, value }: { def: PageDef; value: (p: string) => unknown
   return (
     <div className="mt-4 space-y-3">
       <div className="rounded-lg bg-white p-4 text-left">
-        <p className="text-xs text-[#202124]">www.shimonkohn.com{def.path === "/" ? "" : def.path.replace(/\//g, " › ")}</p>
+        <p className="text-xs text-[#202124]">shimonkohn.com{def.path === "/" ? "" : def.path.replace(/\//g, " › ")}</p>
         <p className="mt-1 truncate text-lg leading-snug text-[#1a0dab]">{title}</p>
         <p className="mt-1 line-clamp-2 text-sm text-[#4d5156]">{desc || "Add a meta description to control this text."}</p>
       </div>

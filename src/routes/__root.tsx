@@ -10,31 +10,46 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SITE } from "@/site/site";
+import { siteGraph } from "@/lib/seo";
+import { PageShell } from "@/site/Layout";
 import favicon32 from "@/assets/klf-icon.png.asset.json";
 import appleTouchIcon from "@/assets/klf-icon.png.asset.json";
-import { reportLovableError } from "../lib/lovable-error-reporting";
-import { CodeSnippetsInjector } from "@/components/CodeSnippetsInjector";
-import { CmsProvider, cmsPublishedQuery, isPreviewWindow } from "@/lib/cms/context";
 
-export function NotFoundComponent() {
+function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <PageShell>
+      <section className="container-page py-24 text-center md:py-32">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">404</p>
+        <h1 className="mt-3 font-display text-4xl text-ink md:text-5xl">Page not found</h1>
+        <p className="mx-auto mt-4 max-w-md text-muted-foreground">
+          The page you're looking for doesn't exist or has moved. Try one of these, or call us at{" "}
+          <a href={SITE.phoneHref} className="font-semibold text-brand hover:text-crimson">
+            {SITE.phone}
+          </a>
+          .
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
-      </div>
-    </div>
+        <ul className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-3">
+          {[
+            { to: "/", label: "Home" },
+            { to: "/criminal-defense", label: "Criminal Defense" },
+            { to: "/family-law", label: "Family Law" },
+            { to: "/protection-orders", label: "Protection Orders" },
+            { to: "/contact", label: "Contact" },
+          ].map((l) => (
+            <li key={l.to}>
+              <Link
+                to={l.to}
+                className="inline-flex min-h-11 items-center rounded-md border border-border bg-card px-4 text-sm font-semibold uppercase tracking-wide text-brand shadow-card hover:text-crimson"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </PageShell>
   );
 }
 
@@ -77,40 +92,26 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  loader: ({ context }) => context.queryClient.ensureQueryData(cmsPublishedQuery),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Kohn Law Firm — Colorado Springs" },
-      { name: "description", content: "A modern law firm website for Kohn Law Firm, featuring clear service navigation and consultation booking." },
-      { name: "author", content: "The Kohn Law Firm" },
-      { property: "og:title", content: "The Kohn Law Firm — Colorado Springs" },
-      { property: "og:description", content: "A modern law firm website for Kohn Law Firm, featuring clear service navigation and consultation booking." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "The Kohn Law Firm — Colorado Springs" },
-      { name: "twitter:description", content: "A modern law firm website for Kohn Law Firm, featuring clear service navigation and consultation booking." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d73ba3e9-b91b-48dc-baf0-4c4c8621ee23/id-preview-cca180a6--4fcb13c5-a5c6-4eb1-a8bc-9f6365cdf35a.lovable.app-1782200319393.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d73ba3e9-b91b-48dc-baf0-4c4c8621ee23/id-preview-cca180a6--4fcb13c5-a5c6-4eb1-a8bc-9f6365cdf35a.lovable.app-1782200319393.png" },
+      { title: SITE.name },
+      {
+        name: "description",
+        content:
+          "The Kohn Law Firm: criminal defense, family law and protection orders in Colorado Springs, Colorado.",
+      },
+      { name: "author", content: SITE.name },
+      { property: "og:site_name", content: SITE.name },
+      { property: "og:locale", content: "en_US" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "icon",
-        type: "image/png",
-        sizes: "32x32",
-        href: favicon32.url,
-      },
-      {
-        rel: "apple-touch-icon",
-        sizes: "180x180",
-        href: appleTouchIcon.url,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: favicon32.url },
+      { rel: "apple-touch-icon", sizes: "180x180", href: appleTouchIcon.url },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(siteGraph()) }],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -135,11 +136,12 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
-  const published = Route.useLoaderData();
 
   useEffect(() => {
     let cancelled = false;
-    if (isPreviewWindow()) return;
+    if (window.location.pathname.startsWith("/admin")) return;
+    // Local dev/preview shares the production Supabase project; don't record test traffic.
+    if (/^(localhost|127\.\d+\.\d+\.\d+|\[::1\])$/.test(window.location.hostname)) return;
     void import("@/lib/analytics").then((m) => {
       if (cancelled) return;
       m.installAnalytics();
@@ -157,12 +159,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <CmsProvider published={published ?? {}}>
-        <Outlet />
-      </CmsProvider>
-      <CodeSnippetsInjector />
+      <Outlet />
     </QueryClientProvider>
   );
 }
-
-

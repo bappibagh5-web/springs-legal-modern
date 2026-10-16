@@ -7,9 +7,11 @@
     "dev": "vite dev",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "preview": "vite preview",
+    "preview": "bun -e \"require('fs').copyFileSync('.env', '.output/server/.dev.vars')\" && bunx wrangler@4.42.0 dev --config .output/server/wrangler.json --port 4173 --ip 127.0.0.1 --local --show-interactive-dev-session=false",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "lint:all": "LINT_ALL=1 eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^3.0.14",

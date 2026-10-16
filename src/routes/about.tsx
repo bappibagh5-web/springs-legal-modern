@@ -1,28 +1,63 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageShell } from "@/components/PageShell";
-import { CmsHero } from "@/components/CmsHero";
-import { cmsHead } from "@/lib/cms/seo";
-import { CTASection } from "@/components/CTASection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { PageShell } from "@/site/Layout";
+import { updatedFor } from "@/site/site";
+import { CTASection, PageHero, TestimonialsSection } from "@/site/blocks";
+import { pageHead, webPage, breadcrumbs } from "@/lib/seo";
 import buildingImg from "@/assets/kohn-firm-building.webp.asset.json";
 import { CheckCircle2, Scale, Gavel, ShieldCheck, BookOpen } from "lucide-react";
 
+const updated = updatedFor("/about");
+
+/** Page text. */
+const content = {
+  meta: {
+    title: "About The Kohn Law Firm | Colorado Springs Attorneys Since 2003",
+    description:
+      "Shimon Kohn founded The Kohn Law Firm in 2003 after serving as a deputy DA in El Paso and Teller Counties. Meet the firm behind our criminal and family cases.",
+  },
+  hero: {
+    eyebrow: "About Us",
+    title: "A Colorado Springs law firm since 2003.",
+    subtitle:
+      "The Kohn Law Firm protects your rights with careful, ethical representation. We handle criminal defense, protection order, and family law cases, and both of our attorneys are former prosecutors.",
+  },
+};
+
 export const Route = createFileRoute("/about")({
-  head: ({ matches }) => cmsHead(matches, "about", { title: "About — The Kohn Law Firm", description: "Founded in 2003 by former 4th Judicial Deputy District Attorney Shimon Kohn, The Kohn Law Firm is built on ethical service and aggressive advocacy for the Pikes Peak region.", ogTitle: "About The Kohn Law Firm", ogDescription: "A Colorado Springs boutique law firm built on ethics, preparation, and trial readiness." }),
+  head: () =>
+    pageHead({
+      path: "/about",
+      ...content.meta,
+      type: "website",
+      jsonLd: [
+        webPage({
+          path: "/about",
+          name: content.meta.title,
+          description: content.meta.description,
+          type: "AboutPage",
+          modified: updated,
+        }),
+        breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ]),
+      ],
+    }),
   component: AboutPage,
 });
 
+/* Only figures the site can back up (audit/client-needs.md §4). */
 const STATS = [
-  { n: "40+", label: "Combined Years of Experience" },
-  { n: "4,300+", label: "Cases Handled" },
-  { n: "150+", label: "Jury Trials" },
+  { n: "2003", label: "Year Founded" },
+  { n: "25+", label: "Years of Experience" },
+  { n: "2", label: "Former Prosecutors" },
   { n: "22+", label: "Years Serving Colorado" },
 ];
 
 function AboutPage() {
   return (
     <PageShell>
-      <CmsHero page="about" />
+      <PageHero {...content.hero} />
 
       {/* Story + building photo */}
       <section className="py-20 md:py-28">
@@ -42,22 +77,23 @@ function AboutPage() {
             </div>
           </div>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">About Us</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+              About Us
+            </p>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-              Providing top-notch legal representation.
+              A Colorado Springs firm since 2003.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Founded in 2003 by former 4th Judicial Deputy District Attorney
-              Shimon Kohn, our firm is built on ethical service and strong
-              advocacy. We give every client personal attention and clear legal
-              guidance. Our goal is to secure the best possible outcome for
-              your case.
+              Shimon Kohn founded the firm in 2003 after serving as a Deputy District Attorney in
+              Teller and El Paso Counties, which make up Colorado's 4th Judicial District. You work
+              directly with the attorney on your case, and we tell you plainly where your case
+              stands.
             </p>
             <ul className="mt-6 space-y-3">
               {[
                 "Former prosecutor experience",
                 "Clear and honest communication",
-                "Aggressive and ethical defense",
+                "Careful, ethical representation",
               ].map((p) => (
                 <li key={p} className="flex items-start gap-3 text-sm">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
@@ -73,30 +109,27 @@ function AboutPage() {
       <section className="bg-surface py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">Who We Are</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-crimson">
+              Who We Are
+            </p>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-              Professional management of every case and personal attention to every client — guaranteed.
+              Two former prosecutors and one standard of preparation for every case.
             </h2>
           </div>
 
           <div className="mx-auto mt-12 grid max-w-5xl gap-6 md:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-7 shadow-card">
               <Scale className="h-8 w-8 text-gold" />
-              <h3 className="mt-4 font-display text-xl text-brand">Our Philosophy</h3>
+              <h3 className="mt-4 font-display text-xl text-brand">How We Work</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                Our philosophy stems from the belief that our clients deserve
-                exceptional service, ethical treatment, and aggressive
-                representation. Established by Shimon Kohn in 2003 after
-                leaving the 4th Judicial District Attorney's Office, The Kohn
-                Law Firm is dedicated to serving the DUI and criminal defense
-                needs of the accused in the Pikes Peak region.
+                You meet with the attorney who will handle your case. Shimon Kohn started the firm
+                in 2003, after leaving the 4th Judicial District Attorney's Office, to defend people
+                charged with DUI and other crimes in the Pikes Peak region.
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
-                We know that your participation in the legal process is
-                critical to your defense. To effectively represent you, we
-                invest the time to translate "legalese" into clear definitions
-                and make sure you and your family understand the charges and
-                your options moving forward.
+                Your participation matters to your case. We take the time to explain the charges or
+                issues in plain language, and we make sure you and your family understand your
+                options before any decision is made.
               </p>
             </div>
 
@@ -104,28 +137,23 @@ function AboutPage() {
               <Gavel className="h-8 w-8 text-gold" />
               <h3 className="mt-4 font-display text-xl text-brand">Our Experience</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                Our experience in dealing with police and prosecutors gives
-                The Kohn Law Firm a substantial advantage in collecting
-                information, negotiating plea bargains, or proceeding to a
-                jury trial.
+                Both of our attorneys worked as prosecutors. We know how police reports are written
+                and what the State has to prove, and we use that when we gather information,
+                negotiate, or try a case.
               </p>
             </div>
 
             <div className="rounded-xl border border-border bg-card p-7 shadow-card">
               <ShieldCheck className="h-8 w-8 text-gold" />
-              <h3 className="mt-4 font-display text-xl text-brand">Our Adherence</h3>
+              <h3 className="mt-4 font-display text-xl text-brand">Our Ethics</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                Our adherence to a strict code of ethics guarantees your
-                ethical treatment in all matters. Our commitment to
-                aggressive representation of clients means gaining their
-                trust through executing everything we do with integrity.
+                We follow the Colorado Rules of Professional Conduct in every matter. We tell you
+                the truth about your case, including when it is not what you hoped to hear.
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
-                We believe quality and effective legal representation does
-                not require ethical compromise, and our reputation for
-                creative and aggressive representation proves it. Successful
-                representation does require a thorough understanding of the
-                law and meticulous preparation.
+                Strong representation does not require cutting corners. It requires knowing the law,
+                preparing carefully, and being ready for the hearing or trial if the case does not
+                settle.
               </p>
             </div>
 
@@ -133,10 +161,8 @@ function AboutPage() {
               <BookOpen className="h-8 w-8 text-gold" />
               <h3 className="mt-4 font-display text-xl text-brand">Ongoing Education</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                Beyond academic credentials and legal experience, The Kohn
-                Law Firm invests in continuing legal education and training
-                to ensure that our knowledge of Colorado law is current and
-                accurate.
+                Colorado law changes every year. Our attorneys take continuing legal education so
+                our advice reflects the law as it stands today.
               </p>
             </div>
           </div>
