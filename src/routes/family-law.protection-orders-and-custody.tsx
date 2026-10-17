@@ -366,6 +366,16 @@ function Page() {
               ))}
             </ol>
             <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">{C.local.help}</p>
+            <p className="mt-4 text-[15px] leading-relaxed text-foreground">
+              Filing a divorce or custody case in El Paso County?{" "}
+              <Link
+                to="/family-law/el-paso-county-family-court-guide"
+                className="font-medium text-brand underline decoration-border underline-offset-4 hover:text-brass-text"
+              >
+                See our El Paso County family court guide
+              </Link>
+              .
+            </p>
           </section>
 
           {/* Related */}

@@ -29,11 +29,13 @@ const content = {
   ],
   sections: [],
   expect: [],
-  seeAlso: {
-    text: "If you and the other party share children, a protection order can also affect who cares for them and how parenting time works.",
-    label: "How protection orders affect custody in Colorado",
-    to: "/family-law/protection-orders-and-custody",
-  },
+  seeAlso: [
+    {
+      text: "If you and the other party share children, a protection order can also affect who cares for them and how parenting time works.",
+      label: "How protection orders affect custody in Colorado",
+      to: "/family-law/protection-orders-and-custody",
+    },
+  ],
   image: {
     url: image.url,
     alt: "Colorado mountain wildflower meadow",

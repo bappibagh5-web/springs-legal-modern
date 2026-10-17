@@ -16,11 +16,13 @@ const updated = updatedFor(PATH);
 
 /** Page text. The area's name, short blurb and CTA come from PRACTICE_AREAS in src/site/site.ts. */
 const content = {
-  seeAlso: {
-    text: "Protection orders often overlap with custody. When the parties share children, an order can set temporary care of the children and conditions on parenting time.",
-    label: "How protection orders affect custody in Colorado",
-    to: "/family-law/protection-orders-and-custody",
-  },
+  seeAlso: [
+    {
+      text: "Protection orders often overlap with custody. When the parties share children, an order can set temporary care of the children and conditions on parenting time.",
+      label: "How protection orders affect custody in Colorado",
+      to: "/family-law/protection-orders-and-custody",
+    },
+  ],
   meta: {
     title: "Protection Order Lawyer in Colorado Springs | The Kohn Law Firm",
     description:

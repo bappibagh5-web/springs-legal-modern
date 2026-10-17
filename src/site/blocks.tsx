@@ -263,14 +263,29 @@ export function PostNotFound() {
 /* ───────────── Practice-area pages ───────────── */
 
 /** Closing paragraph with a link to a related guide (matches the overview paragraph style). */
-function SeeAlsoParagraph({ seeAlso, className }: { seeAlso: SeeAlso; className: string }) {
-  return (
+function SeeAlsoParagraph({
+  seeAlso,
+  className,
+  headingClassName,
+}: {
+  seeAlso: SeeAlso;
+  className: string;
+  headingClassName: string;
+}) {
+  const paragraph = (
     <p className={className}>
       {seeAlso.text}{" "}
       <Link to={seeAlso.to} className="font-semibold text-brand hover:text-brass-text">
         {seeAlso.label}
       </Link>
     </p>
+  );
+  if (!seeAlso.heading) return paragraph;
+  return (
+    <>
+      <h3 className={headingClassName}>{seeAlso.heading}</h3>
+      {paragraph}
+    </>
   );
 }
 
@@ -286,7 +301,7 @@ export function PracticeOverview({
   intro: string[];
   updated: string;
   area: PracticeArea;
-  seeAlso?: SeeAlso;
+  seeAlso?: SeeAlso[];
 }) {
   return (
     <section className="py-20 md:py-24">
@@ -301,7 +316,14 @@ export function PracticeOverview({
               {p}
             </p>
           ))}
-          {seeAlso && <SeeAlsoParagraph seeAlso={seeAlso} className="mt-5 text-muted-foreground" />}
+          {seeAlso?.map((item) => (
+            <SeeAlsoParagraph
+              key={item.to}
+              seeAlso={item}
+              className="mt-5 text-muted-foreground"
+              headingClassName="mt-8 font-display text-xl font-semibold text-ink"
+            />
+          ))}
           <div className="mt-8">
             <UpdatedByline updated={updated} />
           </div>
@@ -386,9 +408,15 @@ export function ServiceOverview({
               ))}
             </div>
           ))}
-          {content.seeAlso && (
-            <SeeAlsoParagraph seeAlso={content.seeAlso} className="text-muted-foreground" />
-          )}
+          {content.seeAlso?.map((item) => (
+            <div key={item.to} className="space-y-3 pt-2">
+              <SeeAlsoParagraph
+                seeAlso={item}
+                className="text-muted-foreground"
+                headingClassName="font-display font-semibold text-xl text-ink"
+              />
+            </div>
+          ))}
           <div className="pt-3">
             <UpdatedByline updated={updated} />
           </div>

@@ -30,6 +30,14 @@ const content = {
   ],
   sections: [],
   expect: [],
+  seeAlso: [
+    {
+      heading: "Filing in El Paso County",
+      text: "In El Paso County, the court addresses child support in cases involving children, and financial disclosures, including a sworn financial statement, are due within 42 days of service.",
+      label: "Read our El Paso County family court guide.",
+      to: "/family-law/el-paso-county-family-court-guide",
+    },
+  ],
   image: {
     url: image.url,
     alt: "Red Rock Canyon Open Space",

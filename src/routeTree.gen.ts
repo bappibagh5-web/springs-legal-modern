@@ -53,6 +53,7 @@ import { Route as FamilyLawAdoptionRouteImport } from './routes/family-law.adopt
 import { Route as FamilyLawAllocationOfParentalResponsibilitiesRouteImport } from './routes/family-law.allocation-of-parental-responsibilities'
 import { Route as FamilyLawChildSupportRouteImport } from './routes/family-law.child-support'
 import { Route as FamilyLawDivorceSeparationRouteImport } from './routes/family-law.divorce-separation'
+import { Route as FamilyLawElPasoCountyFamilyCourtGuideRouteImport } from './routes/family-law.el-paso-county-family-court-guide'
 import { Route as FamilyLawProtectionOrdersAndCustodyRouteImport } from './routes/family-law.protection-orders-and-custody'
 import { Route as ProtectionOrdersIndexRouteImport } from './routes/protection-orders.index'
 import { Route as ProtectionOrdersPermanentProtectionOrderRouteImport } from './routes/protection-orders.permanent-protection-order'
@@ -301,6 +302,12 @@ const FamilyLawDivorceSeparationRoute =
     path: '/family-law/divorce-separation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FamilyLawElPasoCountyFamilyCourtGuideRoute =
+  FamilyLawElPasoCountyFamilyCourtGuideRouteImport.update({
+    id: '/family-law/el-paso-county-family-court-guide',
+    path: '/family-law/el-paso-county-family-court-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FamilyLawProtectionOrdersAndCustodyRoute =
   FamilyLawProtectionOrdersAndCustodyRouteImport.update({
     id: '/family-law/protection-orders-and-custody',
@@ -411,6 +418,7 @@ export interface FileRoutesByFullPath {
   '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   '/family-law/child-support': typeof FamilyLawChildSupportRoute
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/family-law/el-paso-county-family-court-guide': typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
@@ -466,6 +474,7 @@ export interface FileRoutesByTo {
   '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   '/family-law/child-support': typeof FamilyLawChildSupportRoute
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/family-law/el-paso-county-family-court-guide': typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
@@ -526,6 +535,7 @@ export interface FileRoutesById {
   '/family-law/allocation-of-parental-responsibilities': typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   '/family-law/child-support': typeof FamilyLawChildSupportRoute
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
+  '/family-law/el-paso-county-family-court-guide': typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
@@ -587,6 +597,7 @@ export interface FileRouteTypes {
     | '/family-law/allocation-of-parental-responsibilities'
     | '/family-law/child-support'
     | '/family-law/divorce-separation'
+    | '/family-law/el-paso-county-family-court-guide'
     | '/family-law/protection-orders-and-custody'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
@@ -642,6 +653,7 @@ export interface FileRouteTypes {
     | '/family-law/allocation-of-parental-responsibilities'
     | '/family-law/child-support'
     | '/family-law/divorce-separation'
+    | '/family-law/el-paso-county-family-court-guide'
     | '/family-law/protection-orders-and-custody'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
@@ -701,6 +713,7 @@ export interface FileRouteTypes {
     | '/family-law/allocation-of-parental-responsibilities'
     | '/family-law/child-support'
     | '/family-law/divorce-separation'
+    | '/family-law/el-paso-county-family-court-guide'
     | '/family-law/protection-orders-and-custody'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
@@ -745,6 +758,7 @@ export interface RootRouteChildren {
   FamilyLawAllocationOfParentalResponsibilitiesRoute: typeof FamilyLawAllocationOfParentalResponsibilitiesRoute
   FamilyLawChildSupportRoute: typeof FamilyLawChildSupportRoute
   FamilyLawDivorceSeparationRoute: typeof FamilyLawDivorceSeparationRoute
+  FamilyLawElPasoCountyFamilyCourtGuideRoute: typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   FamilyLawProtectionOrdersAndCustodyRoute: typeof FamilyLawProtectionOrdersAndCustodyRoute
   ProtectionOrdersPermanentProtectionOrderRoute: typeof ProtectionOrdersPermanentProtectionOrderRoute
   ProtectionOrdersTemporaryProtectionOrderRoute: typeof ProtectionOrdersTemporaryProtectionOrderRoute
@@ -1067,6 +1081,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FamilyLawDivorceSeparationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/family-law/el-paso-county-family-court-guide': {
+      id: '/family-law/el-paso-county-family-court-guide'
+      path: '/family-law/el-paso-county-family-court-guide'
+      fullPath: '/family-law/el-paso-county-family-court-guide'
+      preLoaderRoute: typeof FamilyLawElPasoCountyFamilyCourtGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/family-law/protection-orders-and-custody': {
       id: '/family-law/protection-orders-and-custody'
       path: '/family-law/protection-orders-and-custody'
@@ -1275,6 +1296,8 @@ const rootRouteChildren: RootRouteChildren = {
     FamilyLawAllocationOfParentalResponsibilitiesRoute,
   FamilyLawChildSupportRoute: FamilyLawChildSupportRoute,
   FamilyLawDivorceSeparationRoute: FamilyLawDivorceSeparationRoute,
+  FamilyLawElPasoCountyFamilyCourtGuideRoute:
+    FamilyLawElPasoCountyFamilyCourtGuideRoute,
   FamilyLawProtectionOrdersAndCustodyRoute:
     FamilyLawProtectionOrdersAndCustodyRoute,
   ProtectionOrdersPermanentProtectionOrderRoute:

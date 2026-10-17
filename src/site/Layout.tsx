@@ -12,7 +12,10 @@ import {
 } from "./site";
 
 /** Service pages also listed in the footer, under the practice areas. */
-const FOOTER_EXTRA_PAGES = [practiceService("/family-law/protection-orders-and-custody")];
+const FOOTER_EXTRA_PAGES = [
+  practiceService("/family-law/protection-orders-and-custody"),
+  practiceService("/family-law/el-paso-county-family-court-guide"),
+];
 import { cn } from "@/lib/utils";
 
 /** Page frame used by every public page: header, main content, footer. */

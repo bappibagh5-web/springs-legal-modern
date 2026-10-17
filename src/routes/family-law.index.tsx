@@ -16,6 +16,14 @@ const updated = updatedFor(PATH);
 
 /** Page text. The area's name, short blurb and CTA come from PRACTICE_AREAS in src/site/site.ts. */
 const content = {
+  seeAlso: [
+    {
+      heading: "Filing in El Paso County",
+      text: "Family cases for Colorado Springs are filed in El Paso County District Court at 270 S. Tejon Street. The court's case management order sets early deadlines for parents, including a parenting class and an initial status conference.",
+      label: "Read our El Paso County family court guide.",
+      to: "/family-law/el-paso-county-family-court-guide",
+    },
+  ],
   meta: {
     title: "Family Law Attorney in Colorado Springs | The Kohn Law Firm",
     description:
@@ -59,6 +67,7 @@ function FamilyLawPage() {
         intro={content.intro}
         updated={updated}
         area={area}
+        seeAlso={content.seeAlso}
       />
       <PracticeExplore area={area} />
       <TestimonialsSection variant="light" />

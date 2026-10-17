@@ -40,12 +40,12 @@ export type ServiceContent = {
   /** "What to expect" checklist in the sidebar. */
   expect: string[];
   image: { url: string; alt: string };
-  /** Optional closing paragraph linking to a related guide. */
-  seeAlso?: SeeAlso;
+  /** Optional closing paragraphs, each linking to a related guide. */
+  seeAlso?: SeeAlso[];
 };
 
 /** A short paragraph that ends with a link to a related page. */
-export type SeeAlso = { text: string; label: string; to: string };
+export type SeeAlso = { heading?: string; text: string; label: string; to: string };
 
 /* ───────────── Firm facts ───────────── */
 
@@ -261,6 +261,12 @@ export const PRACTICE_AREAS = [
         title: "Protection Orders & Custody",
         summary: "How protection orders affect parenting time and decision-making.",
       },
+      {
+        slug: "el-paso-county-family-court-guide",
+        path: "/family-law/el-paso-county-family-court-guide",
+        title: "El Paso County Court Guide",
+        summary: "Where to file, the parenting class, mediation and timing in Colorado Springs.",
+      },
     ],
   },
   {
@@ -335,6 +341,7 @@ export const PAGE_UPDATED = {
   "/family-law/child-support": UPDATED,
   "/family-law/allocation-of-parental-responsibilities": UPDATED,
   "/family-law/protection-orders-and-custody": "2026-10-16",
+  "/family-law/el-paso-county-family-court-guide": "2026-10-17",
   "/protection-orders": UPDATED,
   "/protection-orders/permanent-protection-order": UPDATED,
   "/protection-orders/temporary-protection-order": UPDATED,

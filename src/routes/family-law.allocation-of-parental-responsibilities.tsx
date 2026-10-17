@@ -31,11 +31,19 @@ const content = {
   ],
   sections: [],
   expect: [],
-  seeAlso: {
-    text: "A protection order between the parents, or a finding of domestic violence, can change how parenting time and decision-making are decided.",
-    label: "How protection orders affect custody in Colorado",
-    to: "/family-law/protection-orders-and-custody",
-  },
+  seeAlso: [
+    {
+      text: "A protection order between the parents, or a finding of domestic violence, can change how parenting time and decision-making are decided.",
+      label: "How protection orders affect custody in Colorado",
+      to: "/family-law/protection-orders-and-custody",
+    },
+    {
+      heading: "Filing in El Paso County",
+      text: "Custody cases in El Paso County follow the same case management order as divorces, including the parenting class for parents of children under 18 and mediation for contested issues.",
+      label: "Read our El Paso County family court guide.",
+      to: "/family-law/el-paso-county-family-court-guide",
+    },
+  ],
   image: {
     url: image.url,
     alt: "Cheyenne Mountain in Colorado Springs",

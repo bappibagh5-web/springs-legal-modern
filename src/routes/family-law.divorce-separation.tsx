@@ -32,6 +32,14 @@ const content = {
   ],
   sections: [],
   expect: [],
+  seeAlso: [
+    {
+      heading: "Filing in El Paso County",
+      text: "Divorces for Colorado Springs residents are filed in El Paso County District Court. After filing, the court issues a case management order with deadlines for the parenting class, the initial status conference and financial disclosures.",
+      label: "Read our El Paso County family court guide.",
+      to: "/family-law/el-paso-county-family-court-guide",
+    },
+  ],
   image: {
     url: image.url,
     alt: "Colorado Springs downtown skyline with Pikes Peak",
