@@ -28,24 +28,24 @@ const content = {
   answerBox:
     "Yes. A domestic violence charge in Colorado comes with an automatic mandatory protection order that can limit contact with the other parent and sometimes the children. The family court also decides for itself whether domestic violence happened, and a finding limits joint decision-making even if the criminal case is still open.",
   keyFacts: [
-    "Every criminal charge creates a mandatory protection order at the first court appearance (C.R.S. 18-1-1001(1)).",
-    "It lasts until the case ends: dismissal, acquittal or a completed sentence (C.R.S. 18-1-1001(8)(b)).",
-    "Only the criminal court can change it. The defendant or the district attorney can ask at any time (C.R.S. 18-1-1001(3)(a)).",
-    "The family court decides whether domestic violence happened by a preponderance of the evidence, on its own record (C.R.S. 14-10-124(4)(a)(II)).",
+    "Anyone charged with a crime under Title 18, Colorado's criminal code, is subject to a mandatory protection order from arraignment or the first court appearance (C.R.S. 18-1-1001(1)(a)).",
+    "It lasts until the case ends: dismissal, acquittal or a completed sentence (C.R.S. 18-1-1001(8)(b)), unless the court orders otherwise (C.R.S. 18-1-1001(1)(a)).",
+    "Only the criminal court can change it. The defendant or the district attorney can ask at any time (C.R.S. 18-1-1001(3)(a)(I)).",
+    "The family court decides whether domestic violence happened by a preponderance of the evidence, with findings on the record (C.R.S. 14-10-124(1.5)(a)(III.5)).",
   ],
   sections: [
     {
       id: "automatic-order",
       q: "Does a domestic violence arrest create an automatic protection order?",
       answer:
-        "Yes. In Colorado, a mandatory protection order takes effect against anyone charged with a crime once they are informed of it at arraignment or the first court appearance. No one has to ask for it.",
+        "Yes. In Colorado, a mandatory protection order takes effect against anyone charged with a crime under Title 18, the criminal code, once they are informed of it at arraignment or the first court appearance. No one has to ask for it.",
       blocks: [
         {
           law: {
             cite: "C.R.S. § 18-1-1001(1)(a)",
             text: "There is created a mandatory protection order against a person charged with a criminal violation of the provisions of this title 18, which order remains in effect from the time that the person is advised of the person's rights at arraignment or the person's first appearance before the court and is informed of the order until final disposition of the action, unless otherwise ordered by the court pursuant to subsection (3)(a) or (6.5) of this section.",
             plain:
-              "The basic order bars harassing, molesting, intimidating, retaliating against or tampering with any victim or witness. In domestic violence cases, the court can add terms such as no contact, staying away from the home, and firearm restrictions.",
+              "The order must bar harassing, molesting, intimidating, retaliating against or tampering with any witness or victim (C.R.S. 18-1-1001(1)(a)). On the district attorney's motion or its own, the court can add terms such as staying away from the alleged victim's home, no contact, and no firearms or other weapons (C.R.S. 18-1-1001(3)(a)(II)).",
             url: "https://colorado.public.law/statutes/crs_18-1-1001",
           },
         },
@@ -99,10 +99,10 @@ const content = {
       blocks: [
         {
           law: {
-            cite: "C.R.S. § 14-10-124(1.5)(c)(I)",
-            text: "If a court determines by a preponderance of the evidence that a party has committed domestic violence, child abuse or neglect, or sexual assault that resulted in the conception of a child, it is not in the best interests of the child to allocate mutual decision-making responsibility over the objection of the other party or the legal representative of the child unless the court makes specific findings that mutual decision-making can occur without coercion, intimidation, retaliation, or risk of harm to the abused party or the child",
+            cite: "C.R.S. § 14-10-124(1.5)(c)",
+            text: "(I) If a court determines by a preponderance of the evidence that a party has committed domestic violence, child abuse or neglect, or sexual assault that resulted in the conception of a child, it is not in the best interests of the child to allocate mutual decision-making responsibility over the objection of the other party or the legal representative of the child unless the court makes specific findings that mutual decision-making can occur without coercion, intimidation, retaliation, or risk of harm to the abused party or the child; and (II) The court shall not appoint a parenting coordinator solely to ensure that mutual decision-making can be accomplished.",
             plain:
-              "If the family court finds domestic violence, the other parent can usually block joint decision-making. The court also treats the safety of the child and the abused parent as its primary concern when it sets parenting time (C.R.S. 14-10-124(4)(d)).",
+              "If the family court finds domestic violence and the other parent or the child's legal representative objects, joint decision-making is not ordered unless the court makes specific findings that it can happen without coercion, intimidation, retaliation, or risk of harm. After that finding, the safety and well-being of the child and the abused parent are the court's primary concern, and it must set parenting time conditions that keep them safe (C.R.S. 14-10-124(1.6)(a)).",
             url: "https://colorado.public.law/statutes/crs_14-10-124",
           },
         },
@@ -121,7 +121,7 @@ const content = {
           bullets: [
             "Accepting an invitation from the protected parent. The order restrains you, and the statute has no exception for contact the protected person invites. Only a judge can change the order.",
             "Treating a parenting plan as permission. Until the criminal court modifies the mandatory protection order, its terms still apply.",
-            "Keeping firearms when the order requires you to give them up. Possessing a firearm while barred by a protection order is its own violation (C.R.S. 18-6-803.5(1)(c)).",
+            "Keeping firearms when the order requires you to give them up. Possessing a firearm while barred by a protection order is its own violation (C.R.S. 18-6-803.5(1)(c)(II)(A)).",
           ],
         },
         {
@@ -133,7 +133,7 @@ const content = {
   faq: [
     {
       q: "Can the alleged victim drop the mandatory protection order?",
-      a: "No. It is a court order in the criminal case. The defendant or the district attorney can ask the judge to modify or dismiss it (C.R.S. 18-1-1001(3)(a)).",
+      a: "No. It is a court order in the criminal case. The defendant or the district attorney can ask the judge to modify or dismiss it (C.R.S. 18-1-1001(3)(a)(I)).",
     },
     {
       q: "How long does a mandatory protection order last?",

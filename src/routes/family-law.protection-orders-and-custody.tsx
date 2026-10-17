@@ -26,33 +26,33 @@ const content = {
   eyebrow: "Family Law · Colorado",
   h1: "How Protection Orders Affect Custody in Colorado",
   answer:
-    "A Colorado civil protection order can give one parent temporary care and control of the children for up to one year, set conditions on the other parent's parenting time, or stop parenting time when the court finds the children cannot be kept safe. In the family case, a finding of domestic violence also limits joint decision-making.",
+    "A Colorado civil protection order can give one parent temporary care and control of the children for up to one year, set conditions on the other parent's parenting time, or deny parenting time when the court finds the children's safety cannot be ensured with any form of parenting time reasonably available. In the family case, a finding of domestic violence also limits joint decision-making.",
   keyFacts: [
-    "Temporary care and control under a civil protection order lasts no more than one year (C.R.S. 13-14-105(1)(e)(I)).",
-    "The court can deny parenting time only if it finds the child's or protected party's safety cannot be ensured.",
+    "Temporary care and control under a civil protection order lasts no more than one year (C.R.S. 13-14-105(1.5)(a)).",
+    "The court may deny parenting time if it finds the safety of the child or the protected party cannot be ensured with any form of parenting time reasonably available (C.R.S. 13-14-105(1.5)(b)).",
     "A temporary order needs a finding of imminent danger. The hearing on a permanent order is set within 14 days.",
-    "After a domestic violence finding, joint decision-making is not ordered over the other parent's objection unless the court finds the parents can decide cooperatively and safely.",
-    "Child-related terms in a civil protection order end when a family court later rules on the same issue.",
+    "After a domestic violence finding, joint decision-making is not ordered over the other parent's objection unless the court makes specific findings that it can happen without coercion, intimidation, retaliation or risk of harm (C.R.S. 14-10-124(1.5)(c)(I)).",
+    "Temporary care and control, parenting time and interim decision-making terms in a civil protection order end when a family court later rules on the same issue (C.R.S. 13-14-108(1)).",
   ],
   sections: [
     {
       id: "how-it-affects-custody",
       q: "How does a protection order affect custody in Colorado?",
       answer:
-        "A protection order can change who has the children right away. In a civil protection order case, the court can award temporary care and control, set or deny parenting time, and give one parent interim decision-making, all judged by the same best-interests standard used in custody cases.",
+        "A protection order can change who has the children right away. In a civil protection order case, the court can award temporary care and control and give one parent interim decision-making, both judged by the same best-interests standard used in custody cases, and it can set conditions on parenting time or deny it when safety cannot be ensured.",
       blocks: [
         {
           p: "Colorado does not use the word custody in its statutes. Family courts allocate parental responsibilities, which means parenting time (where the children live and when) and decision-making (education, health care, religion). A protection order can touch both.",
         },
         {
-          p: "Two kinds of orders matter most. A civil protection order is one you ask for in a civil case, usually because of domestic abuse. A mandatory protection order is issued automatically in a criminal case when someone is charged with a crime. This page covers the civil order and how it fits with the family case. For the criminal side, see our guide to how a domestic violence charge affects custody.",
+          p: "Two kinds of orders matter most. A civil protection order is one you ask for in a civil case, usually because of domestic abuse. A mandatory protection order is issued automatically in a criminal case when someone is charged with a crime under Title 18, Colorado's criminal code. This page covers the civil order and how it fits with the family case. For the criminal side, see our guide to how a domestic violence charge affects custody.",
         },
         {
           law: {
             cite: "C.R.S. § 13-14-105(1.5)(d)",
             text: "Temporary care and control and interim decision-making responsibility must be determined in accordance with the standard contained in section 14-10-124.",
             plain:
-              "The protection order court uses the same best-interests test as a custody case. The question is what arrangement keeps the children safe.",
+              "The protection order court decides temporary care and control and interim decision-making under the same best-interests test that a family court uses in a custody case (C.R.S. 14-10-124).",
             url: "https://colorado.public.law/statutes/crs_13-14-105",
           },
         },
@@ -62,22 +62,22 @@ const content = {
       id: "temporary-custody",
       q: "Can a protection order give me temporary custody of my children?",
       answer:
-        "Yes. A Colorado civil protection order can award you temporary care and control of the children for up to one year. The court decides it using the best-interests standard in C.R.S. 14-10-124.",
+        "Yes. If you ask, a county court issuing a civil protection order must include temporary care and control of the children you share with the other party, for up to one year from the date it is awarded in the temporary order (C.R.S. 13-14-105(1.5)(a)). The court decides it using the best-interests standard in C.R.S. 14-10-124 (C.R.S. 13-14-105(1.5)(d)).",
       blocks: [
         {
           law: {
             cite: "C.R.S. § 13-14-105(1.5)(a)",
             text: "shall include in the order, at the request of the petitioner or respondent, a provision awarding temporary care and control of any joint or shared minor children of the parties involved for a period of not more than one year after the date on which the temporary care and control is awarded in the temporary protection order",
             plain:
-              "Temporary care and control is a short-term arrangement. It is meant to protect the children while a longer-term plan is made in a family case.",
+              "Temporary care and control is short term. It lasts at most one year from the date it is awarded in the temporary order (C.R.S. 13-14-105(1.5)(a)), and it ends sooner if a family court rules on the same issue (C.R.S. 13-14-108(1)).",
             url: "https://colorado.public.law/statutes/crs_13-14-105",
           },
         },
         {
-          p: "The court can also give one parent interim decision-making responsibility. It can only do that when the award is reasonably related to preventing domestic abuse or preventing the child from witnessing domestic abuse (C.R.S. 13-14-105(1)(e)(III)).",
+          p: "The court must also award interim decision-making responsibility to a parent, or another person entitled to seek parental responsibilities, when that is reasonably related to preventing domestic violence or preventing the child from witnessing domestic violence (C.R.S. 13-14-105(1.5)(c)).",
         },
         {
-          p: "Because these terms are temporary, most families also need a case in domestic relations court, such as a divorce or an allocation of parental responsibilities case. When that court enters its own order on the same issue, the child-related terms of the civil protection order end (C.R.S. 13-14-108(1)).",
+          p: "Because these terms are temporary, most families also need a case in domestic relations court, such as a divorce or an allocation of parental responsibilities case. When that court enters its own order on the same issue, the temporary care and control, parenting time and interim decision-making terms of the civil protection order end (C.R.S. 13-14-108(1)).",
         },
       ],
     },
@@ -85,14 +85,14 @@ const content = {
       id: "parenting-time",
       q: "What happens to parenting time when there's a protection order?",
       answer:
-        "The court can allow parenting time with conditions, such as supervision by a third party, or deny it. It can deny parenting time only if it finds that the safety of the child or the protected parent cannot be ensured.",
+        "The court can allow parenting time with conditions, such as supervision by a third party, or deny it. It may deny parenting time if it finds that the safety of the child or the protected party cannot be ensured with any form of parenting time reasonably available (C.R.S. 13-14-105(1.5)(b)).",
       blocks: [
         {
           law: {
             cite: "C.R.S. § 13-14-105(1.5)(b)",
             text: "The order for temporary care and control described in subsection (1.5)(a) of this section may include parenting time responsibilities for both parties involved and any conditions of parenting time, including supervised parenting time by a third party who agrees to the terms of the supervised parenting time, and any costs associated with supervised parenting time, if necessary.",
             plain:
-              "Supervision is the most common middle ground. A friend, relative or agency agrees to be present. The court can split the cost between the parents but cannot assign it to a publicly funded agency.",
+              "Supervised parenting time means a third party who agrees to the terms is present. The order can also deal with the costs of supervision. If the restrained party cannot pay the ordered costs, the court cannot shift them to a publicly funded agency or to the petitioner (C.R.S. 13-14-105(1.5)(b)).",
             url: "https://colorado.public.law/statutes/crs_13-14-105",
           },
         },
@@ -100,7 +100,7 @@ const content = {
           bullets: [
             "Supervised parenting time with an approved third party.",
             "Exchanges at a set place or through another person, so the parents do not meet.",
-            "No parenting time, only when the court finds safety cannot be ensured.",
+            "No parenting time, if the court finds safety cannot be ensured with any form of parenting time reasonably available.",
           ],
         },
         {
@@ -112,22 +112,22 @@ const content = {
       id: "decision-making",
       q: "How does a domestic violence finding affect decision-making?",
       answer:
-        "If a Colorado court finds that a parent committed domestic violence, it will not order joint decision-making over the other parent's objection unless it finds credible evidence that the parents can make decisions together safely.",
+        "If a Colorado court finds that a parent committed domestic violence, it will not order joint decision-making over the other parent's objection unless it makes specific findings that joint decisions can happen without coercion, intimidation, retaliation, or risk of harm to the abused parent or the child.",
       blocks: [
         {
           law: {
-            cite: "C.R.S. § 14-10-124(1.5)(c)(I)",
-            text: "If a court determines by a preponderance of the evidence that a party has committed domestic violence, child abuse or neglect, or sexual assault that resulted in the conception of a child, it is not in the best interests of the child to allocate mutual decision-making responsibility over the objection of the other party or the legal representative of the child unless the court makes specific findings that mutual decision-making can occur without coercion, intimidation, retaliation, or risk of harm to the abused party or the child",
+            cite: "C.R.S. § 14-10-124(1.5)(c)",
+            text: "(I) If a court determines by a preponderance of the evidence that a party has committed domestic violence, child abuse or neglect, or sexual assault that resulted in the conception of a child, it is not in the best interests of the child to allocate mutual decision-making responsibility over the objection of the other party or the legal representative of the child unless the court makes specific findings that mutual decision-making can occur without coercion, intimidation, retaliation, or risk of harm to the abused party or the child; and (II) The court shall not appoint a parenting coordinator solely to ensure that mutual decision-making can be accomplished.",
             plain:
-              "The court decides whether domestic violence happened by a preponderance of the evidence. If it did, the abused parent's objection usually decides the question, and the court leans toward giving decisions to one parent.",
+              "The court decides whether domestic violence happened by a preponderance of the evidence (C.R.S. 14-10-124(1.5)(a)(III.5)). If it did, and the other parent or the child's legal representative objects, joint decision-making is not ordered unless the court makes those specific findings. The court also cannot appoint a parenting coordinator just to make joint decision-making work.",
             url: "https://colorado.public.law/statutes/crs_14-10-124",
           },
         },
         {
-          p: "Two more rules apply. The court cannot appoint a parenting coordinator just to make joint decision-making work (C.R.S. 14-10-124(4)(a)(II)(B)). And once it makes a domestic violence finding, the safety and well-being of the child and the abused parent become the court's primary concern when it sets parenting time (C.R.S. 14-10-124(4)(d)).",
+          p: "Two more rules apply. The court cannot appoint a parenting coordinator just to make joint decision-making work (C.R.S. 14-10-124(1.5)(c)(II)). And once it makes a domestic violence finding, the safety and well-being of the child and the abused parent become the court's primary concern when it sets parenting time (C.R.S. 14-10-124(1.6)(a)).",
         },
         {
-          p: "Some websites call this a rebuttable presumption. In the statute, that phrase appears only in the separate rule about a child conceived through sexual assault (C.R.S. 14-10-124(4)(a)(III)). For domestic violence, the test is the objection rule quoted above.",
+          p: "Some websites call this a rebuttable presumption. The current statute does not use that phrase. For domestic violence, the test is the objection rule quoted above (C.R.S. 14-10-124(1.5)(c)(I)).",
         },
       ],
     },
@@ -158,19 +158,19 @@ const content = {
       id: "conflicting-orders",
       q: "What happens if a protection order and a parenting plan conflict?",
       answer:
-        "For a civil protection order, the later family court order controls on the same issue. The child-related terms of the protection order end when a domestic relations court enters an order on the same subject. A criminal mandatory protection order stays in place until the criminal court changes it or the case ends.",
+        "For a civil protection order, the later family court order controls on the same issue. The temporary care and control, parenting time and interim decision-making terms of the protection order end when a domestic relations court enters an order on the same subject. A criminal mandatory protection order stays in place until the criminal court changes it or the case ends.",
       blocks: [
         {
           law: {
             cite: "C.R.S. § 13-14-108(1)",
             text: 'Any order granted pursuant to section 13-14-105 (1)(c) or (1.5) terminates whenever a subsequent order regarding the same subject matter is granted pursuant to the "Uniform Dissolution of Marriage Act", article 10 of title 14; the "Uniform Child-custody Jurisdiction and Enforcement Act", article 13 of title 14; or the "Colorado Children\'s Code", title 19.',
             plain:
-              "Temporary care and control and the parenting time terms of a civil order are placeholders. Once the family court rules on the same subject, its order takes over on that subject.",
+              "This covers terms ordered under C.R.S. 13-14-105(1.5) (temporary care and control, parenting time, interim decision-making) and (1)(c) (excluding a party from the family home). When a family court, juvenile court or interstate custody order rules on the same subject, those terms end. Other terms, such as a no-contact order, are not on that list.",
             url: "https://colorado.public.law/statutes/crs_13-14-108",
           },
         },
         {
-          p: "A mandatory protection order from a criminal case works differently. It lasts until the criminal case ends, and the criminal court keeps the power to enforce, modify or dismiss it (C.R.S. 18-1-1001(1) and (3)(a)). If that order blocks contact a parenting plan would allow, ask the criminal court to modify it. Until it does, the order's terms still apply.",
+          p: "A mandatory protection order from a criminal case works differently. It lasts until the criminal case ends unless the court orders otherwise, and the criminal court keeps the power to enforce, modify or dismiss it (C.R.S. 18-1-1001(1)(a) and (3)(a)(I)). If that order blocks contact a parenting plan would allow, ask the criminal court to modify it. Until it does, the order's terms still apply.",
         },
       ],
     },
@@ -217,7 +217,7 @@ const content = {
     },
     {
       q: "What is supervised parenting time?",
-      a: "Parenting time with another adult present. Under a protection order, the supervisor must be a third party who agrees to the terms, and the court decides who pays.",
+      a: "Parenting time with another adult present. Under a protection order, the supervisor must be a third party who agrees to the terms, and the order can deal with the costs. If the restrained party cannot pay, the court cannot shift the costs to a publicly funded agency or to the petitioner (C.R.S. 13-14-105(1.5)(b)).",
     },
     {
       q: "Does dismissing the protection order restore my parenting time?",

@@ -29,10 +29,10 @@ const content = {
     "Only if the order allows it. If your children are protected persons, or the order bars contact with them, you cannot see or call them until a judge changes the order, even if the other parent agrees. You can ask the court for parenting time, supervised visits or a change to the order.",
   keyFacts: [
     "A civil protection order can bar contact with the minor child of either party (C.R.S. 13-14-105(1)(b)).",
-    "It can also allow parenting time with conditions, such as a third-party supervisor (C.R.S. 13-14-105(1)(e)(II)).",
+    "It can also allow parenting time with conditions, such as a third-party supervisor (C.R.S. 13-14-105(1.5)(b)).",
     "A restrained party must wait two years after a permanent order, or after a prior motion was decided, before asking to change it (C.R.S. 13-14-108(2)(b)).",
     "The motion needs a fingerprint-based background check done within 90 days before filing (C.R.S. 13-14-108(3)(b)).",
-    "Child-related terms of a civil order end when a family court later enters an order on the same subject (C.R.S. 13-14-108(1)).",
+    "Temporary care and control, parenting time and interim decision-making terms of a civil order end when a family court later enters an order on the same subject (C.R.S. 13-14-108(1)).",
   ],
   sections: [
     {
@@ -75,15 +75,15 @@ const content = {
             cite: "C.R.S. § 13-14-108(3)(a)(I)",
             text: "Notwithstanding any provision of subsection (2) of this section to the contrary, after issuance of the permanent protection order, if the restrained party has been convicted of or pled guilty to any misdemeanor or any felony against the protected person, other than the original offense, if any, that formed the basis for the issuance of the protection order, then the protection order remains permanent and must not be modified or dismissed by the court.",
             plain:
-              "A new conviction for a crime against the protected person locks the order in place.",
+              "If you are convicted of, or plead guilty to, a misdemeanor or felony against the protected person, other than the offense the order was based on, the court cannot modify or dismiss the permanent order on your request. The protected person can still ask (C.R.S. 13-14-108(3)(a)(II)).",
             url: "https://colorado.public.law/statutes/crs_13-14-108",
           },
         },
         {
-          p: "There is a second route for the children. Because the child-related terms of a civil protection order end when a family court enters an order on the same subject (C.R.S. 13-14-108(1)), filing an allocation of parental responsibilities case lets a family judge set parenting time directly.",
+          p: "There is a second route for the children. Because the temporary care and control, parenting time and interim decision-making terms of a civil protection order end when a family court enters an order on the same subject (C.R.S. 13-14-108(1)), filing an allocation of parental responsibilities case lets a family judge set parenting time directly.",
         },
         {
-          p: "If the order comes from a criminal case, it is a mandatory protection order. You ask the criminal court to modify it, and you can do that at any time while the case is open (C.R.S. 18-1-1001(3)(a)).",
+          p: "If the order comes from a criminal case, it is a mandatory protection order. You ask the criminal court to modify it, and you can do that at any time until the criminal case reaches final disposition (C.R.S. 18-1-1001(3)(a)(I)).",
         },
       ],
     },
@@ -98,7 +98,7 @@ const content = {
             cite: "C.R.S. § 13-14-105(1.5)(b)",
             text: "The order for temporary care and control described in subsection (1.5)(a) of this section may include parenting time responsibilities for both parties involved and any conditions of parenting time, including supervised parenting time by a third party who agrees to the terms of the supervised parenting time, and any costs associated with supervised parenting time, if necessary.",
             plain:
-              "The court can split the supervisor's cost between the parents but cannot assign it to a publicly funded agency. It can deny parenting time only if it finds the safety of the child or the protected party cannot be ensured.",
+              "The order can deal with the costs of supervision. If the restrained party cannot pay the ordered costs, the court cannot shift them to a publicly funded agency or to the petitioner. The court may deny parenting time if it finds the safety of the child or the protected party cannot be ensured with any form of parenting time reasonably available (C.R.S. 13-14-105(1.5)(b)).",
             url: "https://colorado.public.law/statutes/crs_13-14-105",
           },
         },
@@ -118,7 +118,7 @@ const content = {
             cite: "C.R.S. § 18-6-803.5(3)(b)",
             text: "A peace officer shall arrest, or, if an arrest would be impractical under the circumstances, seek a warrant for the arrest of a restrained person when the peace officer has information amounting to probable cause that: (I) The restrained person has violated or attempted to violate any provision of a protection order; and (II) The restrained person has been properly served with a copy of the protection order or the restrained person has received actual notice of the existence and substance of such order.",
             plain:
-              "Once an officer has probable cause, the statute requires an arrest or a warrant. Seeing your own children is not an exception.",
+              "Once an officer has probable cause that you violated the order and that you were served with it or knew of it, the statute requires an arrest, or a warrant if an arrest is impractical. The exceptions added in C.R.S. 18-6-803.5(3)(b.5) do not include contacting the protected person. Seeing your own children is not an exception.",
             url: "https://colorado.public.law/statutes/crs_18-6-803.5",
           },
         },
@@ -126,7 +126,7 @@ const content = {
           bullets: [
             "The other parent's permission does not change the order. The statute has no exception for contact the protected person invites, and only a judge can modify the order.",
             "A sentence for the violation runs consecutively with the sentence for the crime behind the order (C.R.S. 18-6-803.5(2)(c)).",
-            "A new charge can be raised in your custody case, and a conviction for a crime against the protected person can make a civil order impossible to modify (C.R.S. 13-14-108(3)(a)(I)).",
+            "A new charge can be raised in your custody case, and a conviction or guilty plea for a crime against the protected person stops the court from modifying or dismissing a permanent civil order at your request (C.R.S. 13-14-108(3)(a)(I)).",
           ],
         },
       ],
@@ -135,7 +135,7 @@ const content = {
   faq: [
     {
       q: "The other parent says it's okay. Can I see the kids?",
-      a: "No. The order binds you until a judge changes it. If both of you want contact, the protected party can ask the court to modify the order at any time (C.R.S. 13-14-108(2)(a)).",
+      a: "No. The order binds you until a judge changes it, even if the other parent agrees. The other parent, as the protected party, can ask the court to modify the order at any time (C.R.S. 13-14-108(2)(a)). As the restrained parent, you must wait two years after a permanent order issues, or after your last motion was decided, before you can file your own request (C.R.S. 13-14-108(2)(b)).",
     },
     {
       q: "Can I call or text my kids?",
