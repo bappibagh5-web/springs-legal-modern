@@ -32,27 +32,28 @@ const content = {
   eyebrow: "Family Law · El Paso County, Colorado",
   h1: "El Paso County, Colorado Family Court Guide",
   answer:
-    "Divorce and custody cases in Colorado Springs are filed in El Paso County District Court, part of Colorado's 4th Judicial District, at 270 S. Tejon Street. Every case gets a case management order that sets three early deadlines: a parenting class, an initial status conference and financial disclosures, each within 42 days. Contested issues must go to mediation before a hearing.",
+    "Divorce and custody cases in Colorado Springs are filed in El Paso County District Court, part of Colorado's 4th Judicial District, at 270 S. Tejon Street. Every case gets a case management order that sets early deadlines: a parenting class (if you have children under 18) and an initial status conference within 42 days of filing, and financial disclosures within 42 days of service. Contested issues must go to mediation before a hearing unless the court waives it.",
   keyFacts: [
     "Court: El Paso County Judicial Building, 270 S. Tejon St., Colorado Springs. Clerk's Office and Self-Help Center in Room S101.",
     "Parents of children under 18 must attend a Level 1 parenting seminar within 42 days of filing (Case Management Order FCF 400).",
     "The initial status conference must take place within 42 days of filing, usually with a Family Court Facilitator.",
-    "Mediation is mandatory for contested issues: a two-hour minimum session, held remotely. Court-contract mediators charge $150 per party.",
+    "Mediation is mandatory for contested issues unless the court waives it: a two-hour minimum session, held remotely. Court-contract mediators charge $150 per party for the two-hour session.",
     "No divorce decree can enter until 91 days after the court has jurisdiction over the other spouse (C.R.S. 14-10-106).",
+    "The filing fee for a divorce petition is $260 (Colorado Judicial Branch List of Fees). The fee statute changes again on July 1, 2027, so check the current fee before you file.",
   ],
   sections: [
     {
       id: "where-is-family-court",
       q: "Where is family court in Colorado Springs?",
       answer:
-        "Family court for Colorado Springs is El Paso County District Court, in the El Paso County Judicial Building at 270 S. Tejon Street, Colorado Springs, CO 80903. The Clerk's Office is in Room S101 and is open Monday through Friday, 7:30 a.m. to 4:30 p.m.",
+        "Family court for Colorado Springs is El Paso County District Court, in the El Paso County Judicial Building at 270 S. Tejon Street, Colorado Springs, CO 80903. The Clerk's Office is in Room S101 and is open Monday through Friday, 7:30 a.m. to 4:30 p.m. In 2026 it closes at 3:30 p.m. on the third Wednesday of each month.",
       blocks: [
         {
           p: "El Paso County and Teller County together make up Colorado's 4th Judicial District. Divorce, legal separation, allocation of parental responsibilities (custody), child support and protection order cases for Colorado Springs are all handled here.",
         },
         {
           bullets: [
-            "Clerk's Office, Room S101: Monday to Friday, 7:30 a.m. to 4:30 p.m.",
+            "Clerk's Office, Room S101: Monday to Friday, 7:30 a.m. to 4:30 p.m. In 2026 it closes at 3:30 p.m. on the third Wednesday of each month.",
             "Self-Help Center, Room S101: Monday, Tuesday, Thursday and Friday, 7:30 a.m. to 4:30 p.m.; Wednesday, 7:30 a.m. to noon. WebEx appointments: 719-452-5100.",
             "Family Court Facilitator's Office, for general questions about family cases: 719-452-5104.",
           ],
@@ -66,23 +67,23 @@ const content = {
       id: "how-to-file",
       q: "How do I file for divorce in El Paso County, Colorado?",
       answer:
-        "File a Case Information Sheet (JDF 1000) and a Petition for Dissolution of Marriage (JDF 1101) with El Paso County District Court, pay the filing fee or ask for a fee waiver, and have your spouse served unless you file together. At least one spouse must have lived in Colorado for 91 days before filing.",
+        "File a Case Information Sheet (JDF 1000) and a Petition for Divorce or Legal Separation (JDF 1011) with El Paso County District Court, pay the filing fee or ask for a fee waiver, and have your spouse served (or sign a Waiver of Service) unless you file together. At least one spouse must have lived in Colorado for 91 days before filing.",
       blocks: [
         {
           law: {
             cite: "C.R.S. § 14-10-106(1)(a)(I)",
             text: "The court finds that one of the parties has been domiciled in this state for ninety-one days next preceding the commencement of the proceeding",
             plain:
-              "One spouse must have lived in Colorado for at least 91 days before the petition is filed. If you have children, file in the county where they have lived for the last 182 days.",
-            url: "https://colorado.public.law/statutes/crs_14-10-106",
+              'One spouse must have lived in Colorado for at least 91 days before the petition is filed. The court\'s guide, JDF 1010, adds: "If you have children, they must have lived in Colorado for at least 182 days or since birth if under six months old." You file with the Court Clerk "in the county where you or your spouse lives."',
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-14.pdf",
           },
         },
         {
           steps: [
-            "Complete JDF 1000 (Case Information Sheet) and JDF 1101 (Petition). Both are required whether you file jointly or separately.",
-            "If you file alone, also complete JDF 1102 (Summons). Your spouse is then served in person, or signs a Waiver of Service (JDF 1102(a)). File the Return of Service (JDF 1102(b)) or the waiver with the court.",
-            "File in person at the Clerk's Office (Room S101) or through Colorado's e-filing system. The filing fee to start the case is $260. You can ask the court to waive it with JDF 205 and JDF 206, but fees cannot be waived when you e-file.",
-            "The court issues its Case Management Order (FCF 400) and a notice of your initial status conference. Read the order closely: it sets your deadlines.",
+            "Complete JDF 1000 (Case Information Sheet) and JDF 1011 (Petition). Both are required whether you file jointly or separately.",
+            "If you file alone, also complete a Summons (JDF 1012). Your spouse is then served in person, or signs a Waiver of Service (JDF 1013). File the Return of Service (JDF 1014) or the waiver with the court. JDF 1099 explains how to serve your spouse.",
+            "File in person at the Clerk's Office (Room S101) or through Colorado Courts E-Filing. The filing fee to start the case is $260 (Colorado Judicial Branch List of Fees). If you cannot afford it, ask the court to waive it with JDF 205 and JDF 206. You currently cannot e-file with a fee waiver, so file in person or by mail.",
+            "The court issues its Case Management Order (FCF 400) and a notice of your initial status conference. If a party has a lawyer, the lawyer schedules the conference. The petitioner must give the other party a copy of the order. Read it closely: it sets your deadlines.",
             "Exchange financial disclosures within 42 days of service, including a Sworn Financial Statement (JDF 1111), and file a Certificate of Compliance (JDF 1104).",
           ],
         },
@@ -118,7 +119,7 @@ const content = {
         "The first court event is an initial status conference, which must happen within 42 days of filing. It is usually held with a Family Court Facilitator, sometimes with a judge or magistrate, and its job is to check your case's progress and set next steps.",
       blocks: [
         {
-          p: "It is a case management meeting. The facilitator checks whether service and disclosures are complete, which issues you agree on, and what still needs to happen, including mediation. You can schedule mediation through the court's mediation office at the conference.",
+          p: "It is a case management meeting. The facilitator may discuss the issues in your case, set deadlines and schedule court dates. Bring your Sworn Financial Statement. You can schedule mediation through the court's mediation office at the conference.",
         },
         {
           bullets: [
@@ -133,7 +134,7 @@ const content = {
       id: "mediation",
       q: "Is mediation required for divorce in El Paso County, Colorado?",
       answer:
-        "Yes, for any contested issue. The 4th Judicial District has a standing order requiring at least a two-hour mediation session before a court hearing. Sessions are remote, and the court's contract mediators charge $150 per party for the first two hours.",
+        "Yes, for any contested issue, unless the court waives it. The 4th Judicial District has a standing order requiring at least a two-hour mediation session before a court hearing. Sessions are remote, and the court's contract mediators charge $150 per party for the first two hours.",
       blocks: [
         {
           p: "The requirement comes from the district's mediation order (FCF 300A), issued under Colorado's dispute resolution statute (C.R.S. 13-22-311), and from the Case Management Order, which says your final orders date may be canceled or your case dismissed if you do not complete mediation.",
@@ -141,15 +142,15 @@ const content = {
         {
           bullets: [
             "Mediator: any qualified private mediator, or a contract mediator through the 4th Judicial District Office of Dispute Resolution (04JDMediation@judicial.state.co.us).",
-            "Cost through the court office: $150 per party for the two-hour session, $75 per hour per party after that, paid directly to the mediator. Fee reductions are available with JDF 211 for parties without a private attorney.",
-            "Format: all sessions are remote. Each party attends from their own device, and children may not attend or listen.",
+            "Cost through the court office: $150 per party for the two-hour session, $75 per hour per party after that, paid directly to the mediator. Low-income parties can apply for a reduced fee with JDF 211 at least 14 days before the session. This is not available if you have a lawyer, unless the lawyer is pro bono or court-appointed.",
+            "Format: all court-office sessions are remote. Each party must attend virtually, and children may not attend or listen.",
             "Timing: sessions are usually set four to five weeks out. Cancelling with less than seven days' notice can cost up to two hours.",
-            "Abuse: a party unwilling to mediate because of physical or psychological abuse can ask the court to waive mediation by filing a motion.",
-            "Proof: the mediator files a Certificate of Mediation/ADR Compliance (JDF 1337) within five business days.",
+            "Waiver: the court can waive mediation because of domestic violence or another case-specific reason. A party unwilling to mediate because of physical or psychological abuse by the other party can ask for a waiver by filing a motion.",
+            "Proof: within five business days after the session, the mediator completes a Certificate of Mediation/ADR Compliance (JDF 1337), and the Mediation Office processes it.",
           ],
         },
         {
-          p: "If you reach a full agreement and file it at least seven days before mediation, you can cancel without charge once the Mediation Office confirms the cancellation.",
+          p: "If you reach a full agreement on all issues and file the signed agreement at least seven days before mediation, you can cancel without charge if both parties notify the Mediation Office and it confirms the cancellation. If a lawyer represents either party, the lawyer must agree to the cancellation.",
         },
       ],
     },
@@ -157,19 +158,19 @@ const content = {
       id: "how-long",
       q: "How long does a divorce take in El Paso County, Colorado?",
       answer:
-        "At least 91 days. Colorado law bars a final decree until 91 days after the court gains jurisdiction over the other spouse, through service, a signed waiver or a joint filing. How much longer it takes depends on whether you agree and how quickly the local steps get done.",
+        "At least 91 days. Colorado law bars a final decree until 91 days after the court gains jurisdiction over the other spouse, through service, a signed waiver, a joint filing, or the other spouse otherwise appearing in the case. How much longer it takes depends on whether you agree and how quickly the local steps get done.",
       blocks: [
         {
           law: {
             cite: "C.R.S. § 14-10-106(1)(a)(III)",
             text: "The court finds that ninety-one days or more have elapsed since it acquired jurisdiction over the respondent either as the result of process pursuant to rule 4 of the Colorado rules of civil procedure or as the result of the act of the respondent in joining as copetitioner in the petition or in entering an appearance in any other manner.",
             plain:
-              "The 91-day clock starts when your spouse is served, signs a waiver, or files jointly with you. It does not start on the date you file alone.",
-            url: "https://colorado.public.law/statutes/crs_14-10-106",
+              "The 91-day clock starts when your spouse is served, signs a waiver, files jointly with you, or otherwise appears in the case, for example by filing a response. It does not start on the date you file alone.",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-14.pdf",
           },
         },
         {
-          p: "In El Paso County, the early deadlines all fall within the first six weeks: parenting class within 42 days of filing, initial status conference within 42 days of filing, and disclosures within 42 days of service. Contested cases then add mediation, usually booked four to five weeks ahead, before any hearing.",
+          p: "In El Paso County, most early deadlines fall within about six weeks: the parenting class (if you have children under 18) and the initial status conference within 42 days of filing, and disclosures within 42 days of service. Contested cases then add mediation, usually booked four to five weeks ahead, before any hearing.",
         },
       ],
     },
@@ -206,11 +207,11 @@ const content = {
     },
     {
       q: "Do we need mediation if we agree on everything?",
-      a: "Mediation is mandatory for contested issues. If you file a full agreement at least seven days before a scheduled session, you can cancel it at no charge once the Mediation Office confirms.",
+      a: "Mediation is mandatory for contested issues unless the court waives it. If you file a signed agreement on all issues at least seven days before a scheduled session, you can cancel at no charge once both parties notify the Mediation Office and it confirms. If either party has a lawyer, the lawyer must agree to the cancellation.",
     },
     {
       q: "Can I file for divorce online in El Paso County?",
-      a: "Yes, through Colorado's e-filing system. E-filing adds a convenience fee and a service fee to each filing, and filing fees cannot be waived when you e-file.",
+      a: "Yes, through Colorado Courts E-Filing. Each filing adds an $18 e-filing fee, charged once the court accepts it, plus a service fee if you have the system serve the other party. You currently cannot e-file if you have a fee waiver. File in person or by mail instead.",
     },
     {
       q: "Is the initial status conference private?",
@@ -237,16 +238,48 @@ const content = {
       url: "https://www.coloradojudicial.gov/courts/trial-courts/el-paso-county/self-help-center",
     },
     {
-      label: "Colorado Legal Help Center, divorce with children: forms and fees",
-      url: "https://lawhelp.colorado.gov/DivorceKids2",
+      label:
+        "Colorado Judicial Branch, JDF 1010 How to File for Divorce or Legal Separation (rev. July 24, 2025)",
+      url: "https://www.coloradojudicial.gov/sites/default/files/2025-07/JDF1010.pdf",
     },
     {
-      label: "C.R.S. § 14-10-106 (residency and 91-day waiting period)",
-      url: "https://colorado.public.law/statutes/crs_14-10-106",
+      label:
+        "Colorado Judicial Branch, Divorce or Legal Separation (forms JDF 1000, 1011-1014, 1099)",
+      url: "https://www.coloradojudicial.gov/self-help/divorce-and-separation/divorce-or-legal-separation",
     },
     {
-      label: "C.R.S. § 14-10-123.7 (parenting education programs)",
-      url: "https://colorado.public.law/statutes/crs_14-10-123.7",
+      label: "Colorado Judicial Branch, List of Fees (divorce petition $260; C.R.S. 13-32-101)",
+      url: "https://www.coloradojudicial.gov/self-help/list-fees",
+    },
+    {
+      label: "Colorado Judicial Branch, Fee Waivers (JDF 205, JDF 206)",
+      url: "https://www.coloradojudicial.gov/self-help/fee-waivers",
+    },
+    {
+      label: "Colorado Judicial Branch, E-Filing for Non-Attorneys",
+      url: "https://www.coloradojudicial.gov/e-filing-non-attorneys",
+    },
+    {
+      label: "Colorado Judicial Branch, Dispute Resolution Library (JDF 211, JDF 1337)",
+      url: "https://www.coloradojudicial.gov/dispute-resolution-library",
+    },
+    {
+      label:
+        "Colorado Judicial Branch, El Paso County court page (4th Judicial District; Clerk's Office hours)",
+      url: "https://www.coloradojudicial.gov/courts/trial-courts/el-paso-county",
+    },
+    {
+      label:
+        "C.R.S. § 14-10-106 (residency and 91-day waiting period), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-14.pdf",
+    },
+    {
+      label: "C.R.S. § 14-10-123.7 (parenting education programs), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-14.pdf",
+    },
+    {
+      label: "C.R.S. § 13-22-311 (mediation in court cases), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
   ],
   cta: {
