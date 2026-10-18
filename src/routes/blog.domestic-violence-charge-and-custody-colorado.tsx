@@ -213,7 +213,7 @@ function Page() {
   const C = content;
   return (
     <PageShell>
-      <section className="bg-ink text-white">
+      <section className="bg-ink text-white" data-link-location="hero">
         <div className="container-page max-w-4xl py-14 md:py-20">
           <nav aria-label="Breadcrumb" className="text-xs text-white/60">
             <Link to="/" className="hover:text-white">
@@ -333,7 +333,7 @@ function Page() {
         </section>
       </article>
 
-      <section className="bg-ink text-white">
+      <section className="bg-ink text-white" data-link-location="cta">
         <div className="container-page py-14 md:py-16">
           <h2 className="font-display max-w-2xl text-3xl font-semibold">{C.cta.title}</h2>
           <p className="mt-4 max-w-2xl text-white/80">{C.cta.body}</p>

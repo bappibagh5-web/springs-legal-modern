@@ -56,22 +56,15 @@ export function ActionButton({
     sizes[size],
     className,
   );
-  const label = typeof children === "string" ? children : "cta";
-  const onClickTrack = () => {
-    if (typeof window !== "undefined") {
-      const isPhone = href?.startsWith("tel:");
-      window.trackEvent?.(isPhone ? "book_call_click" : "cta_click", "conversion", label);
-    }
-  };
   if (href) {
     return (
-      <a href={href} className={cls} onClick={onClickTrack}>
+      <a href={href} className={cls}>
         {children}
       </a>
     );
   }
   return (
-    <Link to={to ?? "/consultation"} className={cls} onClick={onClickTrack}>
+    <Link to={to ?? "/consultation"} className={cls}>
       {children}
     </Link>
   );
@@ -130,7 +123,7 @@ export function CTASection(props: { title?: string; body?: string }) {
   const title = props.title ?? GLOBAL.cta.title;
   const body = props.body ?? GLOBAL.cta.body;
   return (
-    <section className="relative overflow-hidden bg-ink text-white">
+    <section className="relative overflow-hidden bg-ink text-white" data-link-location="cta">
       <div className="container-page relative grid gap-8 py-16 md:grid-cols-[1.5fr_1fr] md:items-center">
         <div>
           <h2 className="font-display text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>

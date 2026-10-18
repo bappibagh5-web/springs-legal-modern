@@ -44,7 +44,7 @@ copy .env.example .env
 
 `.env` is never committed.
 
-> **Local runs use the live Supabase project.** A form you submit locally creates a real lead in the admin Contacts screen, and may email the firm's notification address. Mark test submissions clearly and delete them afterwards. Page-view analytics are switched off on `localhost` / `127.0.0.1`.
+> **Local runs use the live Supabase project.** A form you submit locally creates a real lead in the admin Contacts screen, and may email the firm's notification address. Mark test submissions clearly and delete them afterwards. Google Analytics never loads locally (see [Analytics](#analytics-google-analytics-4)).
 
 ### 4. Development server
 
@@ -72,6 +72,28 @@ bun run typecheck   # TypeScript
 bun run lint        # ESLint + Prettier (public site code)
 bun run lint:all    # also lints the Lovable-managed admin/CMS code
 ```
+
+## Analytics (Google Analytics 4)
+
+GA4 property `G-B9DFKVM4MB`, set up in `src/lib/ga.ts` and loaded from the root route (`src/routes/__root.tsx`).
+
+- **Production only.** gtag.js loads once, and only when the hostname is `shimonkohn.com` or `www.shimonkohn.com`. It never loads on localhost, 127.0.0.1, `*.lovable.app` or preview hosts, or in the admin area.
+- **Page views:** GA4 enhanced measurement records them, including client-side navigation (browser history changes). No manual `page_view` events are sent.
+- **No personal data.** Events never include names, emails, phone numbers or message text.
+
+| Event | When | Parameters |
+|---|---|---|
+| `generate_lead` | After the contact or consultation form submits successfully (not on validation errors or failed submissions) | `form_name`: `contact` or `consultation`. `practice_area`: consultation form only, the practice area picked from the list (e.g. `Family Law`). The contact form's "case type" is free text, so it is not sent. |
+| `click_to_call` | Any `tel:` link click, site-wide | `link_location`: `header`, `hero`, `footer`, `cta`, `sidebar` or `page` |
+| `click_email` | Any `mailto:` link click, site-wide | `link_location` (same values) |
+
+How `link_location` is decided:
+1. An explicit `data-link-location` on the link or an ancestor wins. CTA bands use `data-link-location="cta"`, and the standalone guide pages mark their hero `hero`.
+2. Otherwise: inside `<header>` (including the mobile menu) = `header`; `<footer>` = `footer`; `<aside>` = `sidebar`; the first section of `<main>` = `hero`; anything else = `page`.
+
+Set up `generate_lead` as a key event (conversion) in GA4 if you want it counted as a conversion.
+
+The previous custom page-view tracking (inserts into the Supabase `analytics_events` table) was removed from the public site. The table and the admin Analytics screen are unchanged; that screen will show no new public traffic.
 
 ## Where things live
 

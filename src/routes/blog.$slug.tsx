@@ -117,12 +117,10 @@ function BlogPostPage() {
   const { data } = useSuspenseQuery(postQueryOptions(slug));
   const [copied, setCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
-  const title = data?.post.title;
 
   useEffect(() => {
     setShareUrl(window.location.href);
-    if (title) window.trackEvent?.("blog_post_read", "engagement", title);
-  }, [slug, title]);
+  }, [slug]);
 
   if (!data) return <PostNotFound />;
   const { post, related } = data;

@@ -6,6 +6,7 @@ import { PageHero } from "@/site/blocks";
 import { SITE, updatedFor } from "@/site/site";
 import { Phone, Mail, MapPin, Clock, CheckCircle2, Loader2, type LucideIcon } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
+import { gaEvent } from "@/lib/ga";
 import { pageHead, webPage, breadcrumbs } from "@/lib/seo";
 
 const updated = updatedFor("/contact");
@@ -74,8 +75,8 @@ function ContactPage() {
     setSubmitting(true);
     try {
       await submit({ data: payload });
-      window.trackEvent?.("lead_generated", "conversion", "contact_form");
-      window.trackEvent?.("form_submit", "conversion", "contact_form");
+      // GA4: no personal data. The contact form's case type is free text, so it is not sent.
+      gaEvent("generate_lead", { form_name: "contact" });
       setDone(true);
       form.reset();
     } catch (err) {

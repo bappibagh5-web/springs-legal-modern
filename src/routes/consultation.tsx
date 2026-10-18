@@ -6,6 +6,7 @@ import { PageHero } from "@/site/blocks";
 import { SITE, updatedFor, PRACTICE_AREAS } from "@/site/site";
 import { Phone, Mail, Shield, CheckCircle2, Loader2 } from "lucide-react";
 import { submitConsultationLead } from "@/lib/leads.functions";
+import { gaEvent } from "@/lib/ga";
 import { pageHead, webPage, breadcrumbs } from "@/lib/seo";
 
 const updated = updatedFor("/consultation");
@@ -71,8 +72,12 @@ function ConsultationPage() {
     setSubmitting(true);
     try {
       await submit({ data: payload });
-      window.trackEvent?.("lead_generated", "conversion", "consultation_form");
-      window.trackEvent?.("form_submit", "conversion", "consultation_form");
+      // GA4: no personal data, only the form and the practice area chosen from the list.
+      const practiceArea = payload.case_type?.split(":")[0]?.trim();
+      gaEvent("generate_lead", {
+        form_name: "consultation",
+        ...(practiceArea ? { practice_area: practiceArea } : {}),
+      });
       setDone(true);
     } catch (err) {
       console.error(err);

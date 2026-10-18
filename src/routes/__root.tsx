@@ -16,6 +16,7 @@ const FONTS_HREF =
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE } from "@/site/site";
 import { siteGraph } from "@/lib/seo";
+import { loadGoogleAnalytics } from "@/lib/ga";
 import { PageShell } from "@/site/Layout";
 import favicon32 from "@/assets/klf-icon.png.asset.json";
 import appleTouchIcon from "@/assets/klf-icon.png.asset.json";
@@ -145,26 +146,12 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
 
   useEffect(() => {
-    let cancelled = false;
+    // Google Analytics 4: production hostnames only (see src/lib/ga.ts). Not on the admin area.
     if (window.location.pathname.startsWith("/admin")) return;
-    // Local dev/preview shares the production Supabase project; don't record test traffic.
-    if (/^(localhost|127\.\d+\.\d+\.\d+|\[::1\])$/.test(window.location.hostname)) return;
-    void import("@/lib/analytics").then((m) => {
-      if (cancelled) return;
-      m.installAnalytics();
-      m.trackPageview();
-      const unsub = router.subscribe("onResolved", () => m.trackPageview());
-      (window as unknown as { __klfAnalyticsUnsub?: () => void }).__klfAnalyticsUnsub = unsub;
-    });
-    return () => {
-      cancelled = true;
-      const w = window as unknown as { __klfAnalyticsUnsub?: () => void };
-      w.__klfAnalyticsUnsub?.();
-    };
-  }, [router]);
+    loadGoogleAnalytics();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
