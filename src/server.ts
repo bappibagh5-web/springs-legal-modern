@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { redirectFor } from "./site/redirects";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -53,6 +54,9 @@ export default {
     const url = new URL(request.url);
     const assetHost = LOVABLE_ASSET_RE.test(url.pathname) ? lovableAssetHost(env) : undefined;
     if (assetHost) return fetch(`https://${assetHost}${url.pathname}${url.search}`);
+    // Old URLs: real 301s before any rendering (src/site/redirects.ts).
+    const redirect = redirectFor(url);
+    if (redirect) return redirect;
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
