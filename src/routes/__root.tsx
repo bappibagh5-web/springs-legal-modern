@@ -110,6 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: SITE.name },
       { property: "og:site_name", content: SITE.name },
       { property: "og:locale", content: "en_US" },
+      { name: "google-site-verification", content: "RRUxBCdGVAs9ihi5pKCb5JAlUr8aBUEjtBK_xxdQ71U" },
     ],
     links: [
       // Newsreader (headings) + Public Sans (body), loaded once for the whole site.
