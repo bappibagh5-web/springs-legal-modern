@@ -38,7 +38,7 @@ const content = {
   ],
   image: {
     url: image.url,
-    alt: "Colorado mountain wildflower meadow",
+    alt: "Purple lupine and yellow sunflowers in a mountain meadow",
   },
 };
 

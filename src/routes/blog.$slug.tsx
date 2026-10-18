@@ -358,6 +358,7 @@ function RelatedCard({ post }: { post: PublicPostCard }) {
           <img
             src={post.featured_image_url}
             alt=""
+            aria-hidden="true"
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />

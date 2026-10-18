@@ -230,7 +230,7 @@ function MobileDrawer({ open, onClose }: { open: boolean; onClose: () => void })
       <div className="absolute right-0 top-0 h-full w-[88%] max-w-sm overflow-y-auto bg-ink text-white shadow-menu animate-[slide-in-right_0.3s_ease-out]">
         <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
           <div className="rounded-md bg-white px-2 py-1">
-            <img src={logoAsset.url} alt="" className="h-9 w-auto" />
+            <img src={logoAsset.url} alt="" aria-hidden="true" className="h-9 w-auto" />
           </div>
           <button
             type="button"

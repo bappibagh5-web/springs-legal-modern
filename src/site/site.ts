@@ -394,7 +394,7 @@ export const ATTORNEYS: Attorney[] = [
     image: {
       src: shimonAsset.url,
       srcLarge: shimonAsset.url,
-      alt: "Shimon Kohn, founding attorney of The Kohn Law Firm",
+      alt: "Shimon Kohn, founding attorney at The Kohn Law Firm",
       width: 680,
       height: 850,
     },
@@ -425,7 +425,7 @@ export const ATTORNEYS: Attorney[] = [
     image: {
       src: ericaAsset.url,
       srcLarge: ericaAsset.url,
-      alt: "Erica Bertini, managing attorney for family law at The Kohn Law Firm",
+      alt: "Erica Bertini, family law attorney at The Kohn Law Firm",
       width: 680,
       height: 850,
     },

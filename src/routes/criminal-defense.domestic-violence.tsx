@@ -45,7 +45,7 @@ const content = {
   ],
   image: {
     url: image.url,
-    alt: "Cheyenne Mountain in Colorado Springs",
+    alt: "Snow-capped mountain peak above a dense pine forest",
   },
 };
 

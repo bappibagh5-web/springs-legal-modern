@@ -31,7 +31,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Serene Colorado alpine lake",
+    alt: "Snowy mountain peaks reflected in a still alpine lake",
   },
 };
 

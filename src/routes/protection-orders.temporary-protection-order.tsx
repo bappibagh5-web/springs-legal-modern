@@ -38,7 +38,7 @@ const content = {
   ],
   image: {
     url: image.url,
-    alt: "United States Air Force Academy Chapel",
+    alt: "Air Force Academy Cadet Chapel with its aluminum spires",
   },
 };
 

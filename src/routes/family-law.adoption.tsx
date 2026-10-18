@@ -32,7 +32,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Seven Falls waterfall in Colorado Springs",
+    alt: "Tiered waterfall cascading down a narrow rocky canyon",
   },
 };
 

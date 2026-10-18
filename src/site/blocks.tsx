@@ -86,6 +86,7 @@ export function PageHero({ eyebrow, title, subtitle, image = courthouse }: PageH
       <img
         src={image}
         alt=""
+        aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover opacity-35"
         loading="eager"
         width={1280}

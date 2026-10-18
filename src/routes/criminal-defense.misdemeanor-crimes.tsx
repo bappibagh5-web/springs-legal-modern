@@ -49,7 +49,7 @@ const content = {
   ],
   image: {
     url: image.url,
-    alt: "Colorado Springs downtown skyline with Pikes Peak",
+    alt: "Downtown city buildings and trees below a large mountain",
   },
 };
 

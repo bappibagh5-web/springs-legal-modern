@@ -65,7 +65,7 @@ function AboutPage() {
           <div className="relative">
             <img
               src={buildingImg.url}
-              alt="The Kohn Law Firm office building at 320 in downtown Colorado Springs"
+              alt="The Kohn Law Firm office, a white building with a yellow sign"
               loading="lazy"
               className="aspect-[4/3] w-full rounded-lg object-cover"
               width={1280}

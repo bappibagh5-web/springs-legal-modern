@@ -30,10 +30,8 @@ const content = {
     subtitle:
       "Shimon Kohn handles criminal and protection order cases. Erica Bertini handles family law. You work directly with your attorney from the first call.",
     ctaLabel: "Schedule a Consultation",
-    image: {
-      url: skylineImg,
-      alt: "Colorado Springs skyline with Pikes Peak and the Front Range",
-    },
+    // Decorative background behind the headline (alt="" in Hero).
+    image: { url: skylineImg },
     stats: [
       { n: "Since 2000", label: "Practicing law" },
       { n: "2003", label: "Firm founded" },
@@ -48,7 +46,7 @@ const content = {
   about: {
     image: {
       url: aboutFirmImg.url,
-      alt: "Modern courthouse exterior in Colorado",
+      alt: "Modern multi-story government building behind a lawn and trees",
     },
     badgeNumber: "25+",
     badgeLabel: "Years of Experience",
@@ -72,19 +70,22 @@ const content = {
         name: "Shimon Kohn",
         title: "Founding Attorney",
         bio: "Over 25 years fighting for clients' rights. Former Deputy District Attorney in Teller and El Paso Counties, now leading the firm's criminal defense practice.",
-        image: { url: shimonAsset.url, alt: "Shimon Kohn" },
+        image: { url: shimonAsset.url, alt: "Shimon Kohn, founding attorney at The Kohn Law Firm" },
       },
       {
         name: "Erica Bertini",
         title: "Managing Attorney – Family Law",
         bio: "Leads our family law practice, with a focus on family cases that intersect with criminal court. Former Deputy District Attorney in Colorado and Illinois.",
-        image: { url: ericaAsset.url, alt: "Erica Bertini" },
+        image: {
+          url: ericaAsset.url,
+          alt: "Erica Bertini, family law attorney at The Kohn Law Firm",
+        },
       },
       {
         name: "Macey",
         title: "Family Law Paralegal",
         bio: "Supports clients at every stage of their case, assisting our family law attorneys with case preparation, file management, deadlines, and the litigation process.",
-        image: { url: maceyAsset.url, alt: "Macey" },
+        image: { url: maceyAsset.url, alt: "Macey, family law paralegal at The Kohn Law Firm" },
       },
     ],
   },
@@ -177,7 +178,8 @@ function Hero() {
       {/* Background photo */}
       <img
         src={img.url}
-        alt={img.alt}
+        alt=""
+        aria-hidden="true"
         className="absolute inset-0 -z-20 h-full w-full object-cover"
         width={2400}
         height={1000}
@@ -257,7 +259,11 @@ function Stat({ n, label, divider }: { n: string; label: string; divider?: boole
 
 function ServicesSection() {
   const icons = [Shield, Scale, Users];
-  const images = [courthouseImg, familyImg, scalesImg];
+  const images: { src: string; alt: string }[] = [
+    { src: courthouseImg, alt: "Courthouse entrance with tall stone columns and wide steps" },
+    { src: familyImg, alt: "Two people holding hands across a wooden table" },
+    { src: scalesImg, alt: "Brass scales of justice beside an open law book" },
+  ];
   return (
     <section className="bg-white py-20 md:py-28">
       <div className="container-page">
@@ -279,8 +285,8 @@ function ServicesSection() {
               >
                 <div className="relative h-44 overflow-hidden">
                   <img
-                    src={images[i]}
-                    alt=""
+                    src={images[i].src}
+                    alt={images[i].alt}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
@@ -381,8 +387,8 @@ function TeamPreview() {
             >
               <div className="relative h-80 overflow-hidden bg-surface">
                 <img
-                  src={m.image?.url}
-                  alt={m.image?.alt || m.name}
+                  src={m.image.url}
+                  alt={m.image.alt}
                   loading="lazy"
                   className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   width={1024}
@@ -441,6 +447,7 @@ function WhoWeAre() {
       <img
         src={scalesImg}
         alt=""
+        aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover opacity-10"
         loading="lazy"
       />

@@ -32,7 +32,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Red Rock Canyon Open Space",
+    alt: "Jagged red rock ridge above green shrubs and grass",
   },
 };
 

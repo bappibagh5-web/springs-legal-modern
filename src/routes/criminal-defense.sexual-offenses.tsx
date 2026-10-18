@@ -31,7 +31,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Royal Gorge Bridge spanning the canyon",
+    alt: "Suspension bridge spanning a deep rocky canyon with a river",
   },
 };
 

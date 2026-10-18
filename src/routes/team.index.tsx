@@ -46,13 +46,27 @@ type Member = {
   name: string;
   title: string;
   img: string;
+  /** Required: the photo's alt text (from ATTORNEYS / STAFF in src/site/site.ts). */
+  alt: string;
   bio: string[];
 };
 
 /** Built from src/content/attorneys.ts so the bios live in one place. */
 const MEMBERS: Member[] = [
-  ...ATTORNEYS.map((a) => ({ name: a.name, title: a.role, img: a.image.src, bio: a.bio })),
-  ...STAFF.map((m) => ({ name: m.name, title: m.role, img: m.image?.src ?? "", bio: m.bio })),
+  ...ATTORNEYS.map((a) => ({
+    name: a.name,
+    title: a.role,
+    img: a.image.src,
+    alt: a.image.alt,
+    bio: a.bio,
+  })),
+  ...STAFF.map((m) => ({
+    name: m.name,
+    title: m.role,
+    img: m.image?.src ?? "",
+    alt: m.image?.alt ?? "",
+    bio: m.bio,
+  })),
 ];
 
 function TeamPage() {
@@ -97,7 +111,7 @@ function TeamPage() {
                       {m.img ? (
                         <img
                           src={m.img}
-                          alt={m.name}
+                          alt={m.alt}
                           loading="lazy"
                           className="h-full w-full object-cover object-top transition-transform duration-700 hover:scale-[1.03]"
                           width={680}

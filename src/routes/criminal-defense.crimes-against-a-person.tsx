@@ -31,7 +31,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Pikes Peak mountain summit",
+    alt: "Mountain range at sunset under dramatic clouds, with pine trees",
   },
 };
 

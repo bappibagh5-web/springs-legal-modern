@@ -38,7 +38,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Golden aspen trees in Colorado fall",
+    alt: "Trail through golden aspen trees toward snowy mountain peaks",
   },
 };
 

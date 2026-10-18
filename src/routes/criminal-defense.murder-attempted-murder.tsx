@@ -31,7 +31,7 @@ const content = {
   expect: [],
   image: {
     url: image.url,
-    alt: "Garden of the Gods red rock formations",
+    alt: "Red sandstone rock formations below a snow-covered mountain",
   },
 };
 
