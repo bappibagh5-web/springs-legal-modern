@@ -28,7 +28,7 @@ const content = {
   answerBox:
     "Yes. A domestic violence charge in Colorado comes with an automatic mandatory protection order that can limit contact with the other parent and sometimes the children. The family court also decides for itself whether domestic violence happened, and a finding limits joint decision-making even if the criminal case is still open.",
   keyFacts: [
-    "Anyone charged with a crime under Title 18, Colorado's criminal code, is subject to a mandatory protection order from arraignment or the first court appearance (C.R.S. 18-1-1001(1)(a)).",
+    "Anyone charged with a crime under Title 18, Colorado's criminal code, is subject to a mandatory protection order from the time they are advised of their rights at arraignment or first appearance and informed of the order (C.R.S. 18-1-1001(1)(a)).",
     "It lasts until the case ends: dismissal, acquittal or a completed sentence (C.R.S. 18-1-1001(8)(b)), unless the court orders otherwise (C.R.S. 18-1-1001(1)(a)).",
     "Only the criminal court can change it. The defendant or the district attorney can ask at any time (C.R.S. 18-1-1001(3)(a)(I)).",
     "The family court decides whether domestic violence happened by a preponderance of the evidence, with findings on the record (C.R.S. 14-10-124(1.5)(a)(III.5)).",
@@ -38,7 +38,7 @@ const content = {
       id: "automatic-order",
       q: "Does a domestic violence arrest create an automatic protection order?",
       answer:
-        "Yes. In Colorado, a mandatory protection order takes effect against anyone charged with a crime under Title 18, the criminal code, once they are informed of it at arraignment or the first court appearance. No one has to ask for it.",
+        "Yes. In Colorado, a mandatory protection order takes effect against anyone charged with a crime under Title 18, the criminal code, once they are informed of it at arraignment or first appearance. No one has to ask for it.",
       blocks: [
         {
           law: {
@@ -46,7 +46,7 @@ const content = {
             text: "There is created a mandatory protection order against a person charged with a criminal violation of the provisions of this title 18, which order remains in effect from the time that the person is advised of the person's rights at arraignment or the person's first appearance before the court and is informed of the order until final disposition of the action, unless otherwise ordered by the court pursuant to subsection (3)(a) or (6.5) of this section.",
             plain:
               "The order must bar harassing, molesting, intimidating, retaliating against or tampering with any witness or victim (C.R.S. 18-1-1001(1)(a)). On the district attorney's motion or its own, the court can add terms such as staying away from the alleged victim's home, no contact, and no firearms or other weapons (C.R.S. 18-1-1001(3)(a)(II)).",
-            url: "https://colorado.public.law/statutes/crs_18-1-1001",
+            url: "https://leg.colorado.gov/bill_files/40703/download",
           },
         },
         {
@@ -80,7 +80,7 @@ const content = {
             text: "Nothing in this section precludes the defendant from applying to the court at any time for modification or dismissal of the protection order issued pursuant to this section or the district attorney from applying to the court at any time for further orders, additional provisions under the protection order, or modification or dismissal of the same. The trial court retains jurisdiction to enforce, modify, or dismiss the protection order until final disposition of the action.",
             plain:
               "You or your lawyer file the request in the criminal case. Ask for a specific change, such as allowing exchanges at a set place or through a third party, or allowing contact with the children while keeping the order in place for the other parent.",
-            url: "https://colorado.public.law/statutes/crs_18-1-1001",
+            url: "https://leg.colorado.gov/bill_files/40703/download",
           },
         },
         {
@@ -103,7 +103,7 @@ const content = {
             text: "(I) If a court determines by a preponderance of the evidence that a party has committed domestic violence, child abuse or neglect, or sexual assault that resulted in the conception of a child, it is not in the best interests of the child to allocate mutual decision-making responsibility over the objection of the other party or the legal representative of the child unless the court makes specific findings that mutual decision-making can occur without coercion, intimidation, retaliation, or risk of harm to the abused party or the child; and (II) The court shall not appoint a parenting coordinator solely to ensure that mutual decision-making can be accomplished.",
             plain:
               "If the family court finds domestic violence and the other parent or the child's legal representative objects, joint decision-making is not ordered unless the court makes specific findings that it can happen without coercion, intimidation, retaliation, or risk of harm. After that finding, the safety and well-being of the child and the abused parent are the court's primary concern, and it must set parenting time conditions that keep them safe (C.R.S. 14-10-124(1.6)(a)).",
-            url: "https://colorado.public.law/statutes/crs_14-10-124",
+            url: "https://leg.colorado.gov/laws/session-laws/HB26-1309/163/download",
           },
         },
         {
@@ -125,7 +125,7 @@ const content = {
           ],
         },
         {
-          p: "Violating a protection order is a class 2 misdemeanor, and more serious in some situations, such as a prior conviction for the same offense. Officers must arrest, or seek a warrant, when they have probable cause (C.R.S. 18-6-803.5(2) and (3)).",
+          p: "Violating a protection order is a class 2 misdemeanor, but it is a class 1 misdemeanor if the order is a mandatory protection order from a criminal case, if you have a prior conviction for violating a protection order, if the basis for the order included an allegation of stalking, or if the parties were in an intimate relationship, which includes two parents of the same child (C.R.S. 18-6-803.5(2)(a); 18-6-800.3(2)). Officers must arrest, or seek a warrant if an arrest is impractical, when they have probable cause, with limited exceptions (C.R.S. 18-6-803.5(3)(b), (3)(b.5)).",
         },
       ],
     },
@@ -161,16 +161,23 @@ const content = {
   ],
   sources: [
     {
-      label: "C.R.S. § 18-1-1001 (mandatory protection order)",
-      url: "https://colorado.public.law/statutes/crs_18-1-1001",
+      label:
+        "C.R.S. § 18-6-800.3 (definitions: domestic violence, intimate relationship), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-18.pdf",
     },
     {
-      label: "C.R.S. § 18-6-803.5 (violation of a protection order)",
-      url: "https://colorado.public.law/statutes/crs_18-6-803.5",
+      label: "C.R.S. § 18-1-1001 (mandatory protection order), as amended by HB25-1148",
+      url: "https://leg.colorado.gov/bill_files/40703/download",
     },
     {
-      label: "C.R.S. § 14-10-124 (best interests of the child)",
-      url: "https://colorado.public.law/statutes/crs_14-10-124",
+      label:
+        "C.R.S. § 18-6-803.5 (violation of a protection order), Colorado Revised Statutes 2024; (1)(a), (1)(c), (2)(c) amended by HB25-1148",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-18.pdf",
+    },
+    {
+      label:
+        "C.R.S. § 14-10-124 (best interests of the child), as amended by HB26-1309, Session Laws 2026, ch. 163",
+      url: "https://leg.colorado.gov/laws/session-laws/HB26-1309/163/download",
     },
   ],
   cta: {

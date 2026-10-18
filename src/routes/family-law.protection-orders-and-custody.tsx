@@ -30,7 +30,7 @@ const content = {
   keyFacts: [
     "Temporary care and control under a civil protection order lasts no more than one year (C.R.S. 13-14-105(1.5)(a)).",
     "The court may deny parenting time if it finds the safety of the child or the protected party cannot be ensured with any form of parenting time reasonably available (C.R.S. 13-14-105(1.5)(b)).",
-    "A temporary order needs a finding of imminent danger. The hearing on a permanent order is set within 14 days.",
+    "A temporary order needs a finding of a risk or threat of physical harm, or a threat of psychological or emotional harm (C.R.S. 13-14-104.5(7)(a)). The permanent order hearing is set no more than 14 days later (C.R.S. 13-14-104.5(10)).",
     "After a domestic violence finding, joint decision-making is not ordered over the other parent's objection unless the court makes specific findings that it can happen without coercion, intimidation, retaliation or risk of harm (C.R.S. 14-10-124(1.5)(c)(I)).",
     "Temporary care and control, parenting time and interim decision-making terms in a civil protection order end when a family court later rules on the same issue (C.R.S. 13-14-108(1)).",
   ],
@@ -42,7 +42,7 @@ const content = {
         "A protection order can change who has the children right away. In a civil protection order case, the court can award temporary care and control and give one parent interim decision-making, both judged by the same best-interests standard used in custody cases, and it can set conditions on parenting time or deny it when safety cannot be ensured.",
       blocks: [
         {
-          p: "Colorado does not use the word custody in its statutes. Family courts allocate parental responsibilities, which means parenting time (where the children live and when) and decision-making (education, health care, religion). A protection order can touch both.",
+          p: "Colorado's family law statute speaks of allocating parental responsibilities rather than custody. That means parenting time and decision-making responsibility (C.R.S. 14-10-124(1.5)). A protection order can touch both.",
         },
         {
           p: "Two kinds of orders matter most. A civil protection order is one you ask for in a civil case, usually because of domestic abuse. A mandatory protection order is issued automatically in a criminal case when someone is charged with a crime under Title 18, Colorado's criminal code. This page covers the civil order and how it fits with the family case. For the criminal side, see our guide to how a domestic violence charge affects custody.",
@@ -53,7 +53,7 @@ const content = {
             text: "Temporary care and control and interim decision-making responsibility must be determined in accordance with the standard contained in section 14-10-124.",
             plain:
               "The protection order court decides temporary care and control and interim decision-making under the same best-interests test that a family court uses in a custody case (C.R.S. 14-10-124).",
-            url: "https://colorado.public.law/statutes/crs_13-14-105",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
       ],
@@ -70,7 +70,7 @@ const content = {
             text: "shall include in the order, at the request of the petitioner or respondent, a provision awarding temporary care and control of any joint or shared minor children of the parties involved for a period of not more than one year after the date on which the temporary care and control is awarded in the temporary protection order",
             plain:
               "Temporary care and control is short term. It lasts at most one year from the date it is awarded in the temporary order (C.R.S. 13-14-105(1.5)(a)), and it ends sooner if a family court rules on the same issue (C.R.S. 13-14-108(1)).",
-            url: "https://colorado.public.law/statutes/crs_13-14-105",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
@@ -93,7 +93,7 @@ const content = {
             text: "The order for temporary care and control described in subsection (1.5)(a) of this section may include parenting time responsibilities for both parties involved and any conditions of parenting time, including supervised parenting time by a third party who agrees to the terms of the supervised parenting time, and any costs associated with supervised parenting time, if necessary.",
             plain:
               "Supervised parenting time means a third party who agrees to the terms is present. The order can also deal with the costs of supervision. If the restrained party cannot pay the ordered costs, the court cannot shift them to a publicly funded agency or to the petitioner (C.R.S. 13-14-105(1.5)(b)).",
-            url: "https://colorado.public.law/statutes/crs_13-14-105",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
@@ -120,7 +120,7 @@ const content = {
             text: "(I) If a court determines by a preponderance of the evidence that a party has committed domestic violence, child abuse or neglect, or sexual assault that resulted in the conception of a child, it is not in the best interests of the child to allocate mutual decision-making responsibility over the objection of the other party or the legal representative of the child unless the court makes specific findings that mutual decision-making can occur without coercion, intimidation, retaliation, or risk of harm to the abused party or the child; and (II) The court shall not appoint a parenting coordinator solely to ensure that mutual decision-making can be accomplished.",
             plain:
               "The court decides whether domestic violence happened by a preponderance of the evidence (C.R.S. 14-10-124(1.5)(a)(III.5)). If it did, and the other parent or the child's legal representative objects, joint decision-making is not ordered unless the court makes those specific findings. The court also cannot appoint a parenting coordinator just to make joint decision-making work.",
-            url: "https://colorado.public.law/statutes/crs_14-10-124",
+            url: "https://leg.colorado.gov/laws/session-laws/HB26-1309/163/download",
           },
         },
         {
@@ -143,7 +143,7 @@ const content = {
             text: 'Any district court, in an action commenced under the "Uniform Dissolution of Marriage Act", article 10 of title 14, C.R.S., shall have authority to issue temporary and permanent protection orders pursuant to the provisions of subsection (1) of this section.',
             plain:
               "You file a motion with a supporting affidavit in the divorce case. Either spouse can ask.",
-            url: "https://colorado.public.law/statutes/crs_13-14-104.5",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
@@ -166,7 +166,7 @@ const content = {
             text: 'Any order granted pursuant to section 13-14-105 (1)(c) or (1.5) terminates whenever a subsequent order regarding the same subject matter is granted pursuant to the "Uniform Dissolution of Marriage Act", article 10 of title 14; the "Uniform Child-custody Jurisdiction and Enforcement Act", article 13 of title 14; or the "Colorado Children\'s Code", title 19.',
             plain:
               "This covers terms ordered under C.R.S. 13-14-105(1.5) (temporary care and control, parenting time, interim decision-making) and (1)(c) (excluding a party from the family home). When a family court, juvenile court or interstate custody order rules on the same subject, those terms end. Other terms, such as a no-contact order, are not on that list.",
-            url: "https://colorado.public.law/statutes/crs_13-14-108",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
@@ -181,15 +181,19 @@ const content = {
     intro:
       "Civil protection orders in Colorado Springs are filed at the El Paso County Judicial Building, 270 S. Tejon Street. Check the court's page or call before you go, because filing times change.",
     steps: [
-      "Fill out the Verified Complaint or Motion for Civil Protection Order (JDF 402) from the Colorado Judicial Branch self-help forms.",
-      "File it with the Clerk's Office in Room S101. For a same-day hearing, the court's page says to file Monday through Friday between 7:30 and 9:30 a.m. Petitions filed later are heard the next business day.",
-      "A judge or magistrate reviews it the same day. A temporary order issues if the court finds imminent danger (C.R.S. 13-14-104.5(7)(a)).",
-      "The other party must be served. There is no filing fee and no service fee from a public agency when the order is sought because of domestic abuse, domestic violence, stalking or sexual assault (C.R.S. 13-14-109).",
+      'Fill out the Complaint/Motion for Civil Protection Order (JDF 402) from the Colorado Judicial Branch self-help forms. The statute calls for a complaint "duly verified" (C.R.S. 13-14-104.5(8)(a)).',
+      "File it with the Clerk's Office in Room S101. The El Paso County court page says the cut-off for temporary protection orders is 2 p.m. (effective October 1, 2026), and that temporary order hearings are held in person, with the docket heard at 3 p.m. (effective October 6, 2026). Check the court's page before you go, because times change.",
+      "A judge or magistrate reviews it at the temporary order hearing. A temporary order may issue if the court finds a risk or threat of physical harm, or a threat of psychological or emotional harm (C.R.S. 13-14-104.5(7)(a)).",
+      "The other party must be served. The court may not charge a filing fee if it determines you are seeking the order as a victim of domestic violence, stalking or sexual violence, and a public agency may not charge you for service in those cases (C.R.S. 13-14-109(1)(a), (2)).",
       "Come back for the permanent order hearing, set no more than 14 days after the temporary order issues. It is extended if the other party cannot be served in time (C.R.S. 13-14-104.5(10)).",
     ],
     help: "The Self-Help Center is also in Room S101 and schedules WebEx appointments at 719-452-5100. Staff can explain forms but cannot give legal advice.",
   },
   related: [
+    {
+      label: "El Paso County family court guide",
+      to: "/family-law/el-paso-county-family-court-guide",
+    },
     {
       label: "Will a domestic violence charge affect my custody case?",
       to: "/blog/domestic-violence-charge-and-custody-colorado",
@@ -226,32 +230,48 @@ const content = {
   ],
   sources: [
     {
-      label: "C.R.S. § 13-14-104.5 (procedure for civil protection orders)",
-      url: "https://colorado.public.law/statutes/crs_13-14-104.5",
+      label: "SB26-085, signed act (amends C.R.S. 13-14-104.5(7)(a), effective August 12, 2026)",
+      url: "https://leg.colorado.gov/bill_files/115903/download",
     },
     {
-      label: "C.R.S. § 13-14-105 (provisions of civil protection orders)",
-      url: "https://colorado.public.law/statutes/crs_13-14-105",
+      label: "Colorado Judicial Branch, JDF 402 Complaint/Motion for Civil Protection Order",
+      url: "https://www.coloradojudicial.gov/self-help-and-forms/self-help-forms/complaintmotion-civil-protection-order",
     },
     {
-      label: "C.R.S. § 13-14-108 (modification and termination)",
-      url: "https://colorado.public.law/statutes/crs_13-14-108",
+      label:
+        "Colorado Judicial Branch, El Paso County court page (Clerk's Office Room S101; temporary protection order notices)",
+      url: "https://www.coloradojudicial.gov/courts/trial-courts/el-paso-county",
     },
     {
-      label: "C.R.S. § 13-14-109 (fees and costs)",
-      url: "https://colorado.public.law/statutes/crs_13-14-109",
+      label:
+        "C.R.S. § 13-14-104.5 (procedure for civil protection orders), Colorado Revised Statutes 2024; (7)(a) amended by SB26-085",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
     {
-      label: "C.R.S. § 14-10-108 (temporary orders in a divorce)",
-      url: "https://colorado.public.law/statutes/crs_14-10-108",
+      label:
+        "C.R.S. § 13-14-105 (provisions of civil protection orders), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
     {
-      label: "C.R.S. § 14-10-124 (best interests of the child)",
-      url: "https://colorado.public.law/statutes/crs_14-10-124",
+      label: "C.R.S. § 13-14-108 (modification and termination), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
     {
-      label: "C.R.S. § 18-1-1001 (mandatory protection order)",
-      url: "https://colorado.public.law/statutes/crs_18-1-1001",
+      label: "C.R.S. § 13-14-109 (fees and costs), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
+    },
+    {
+      label: "C.R.S. § 14-10-108 (temporary orders in a divorce), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-14.pdf",
+    },
+    {
+      label:
+        "C.R.S. § 14-10-124 (best interests of the child), as amended by HB26-1309, Session Laws 2026, ch. 163",
+      url: "https://leg.colorado.gov/laws/session-laws/HB26-1309/163/download",
+    },
+    {
+      label: "C.R.S. § 18-1-1001 (mandatory protection order), as amended by HB25-1148",
+      url: "https://leg.colorado.gov/bill_files/40703/download",
     },
     {
       label: "Colorado Judicial Branch, El Paso County Judicial Building",

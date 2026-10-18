@@ -315,7 +315,7 @@ export const practiceArea = (slug: PracticeSlug): PracticeArea =>
 const UPDATED = "2026-10-15";
 
 export const PAGE_UPDATED = {
-  "/": UPDATED,
+  "/": "2026-10-18",
   "/about": UPDATED,
   "/team": UPDATED,
   "/contact": UPDATED,
@@ -340,13 +340,13 @@ export const PAGE_UPDATED = {
   "/family-law/adoption": UPDATED,
   "/family-law/child-support": UPDATED,
   "/family-law/allocation-of-parental-responsibilities": UPDATED,
-  "/family-law/protection-orders-and-custody": "2026-10-16",
-  "/family-law/el-paso-county-family-court-guide": "2026-10-17",
+  "/family-law/protection-orders-and-custody": "2026-10-18",
+  "/family-law/el-paso-county-family-court-guide": "2026-10-18",
   "/protection-orders": UPDATED,
   "/protection-orders/permanent-protection-order": UPDATED,
   "/protection-orders/temporary-protection-order": UPDATED,
-  "/blog/domestic-violence-charge-and-custody-colorado": "2026-10-16",
-  "/blog/protection-order-against-me-see-my-kids-colorado": "2026-10-16",
+  "/blog/domestic-violence-charge-and-custody-colorado": "2026-10-18",
+  "/blog/protection-order-against-me-see-my-kids-colorado": "2026-10-18",
 } as const;
 
 export type PagePath = keyof typeof PAGE_UPDATED;

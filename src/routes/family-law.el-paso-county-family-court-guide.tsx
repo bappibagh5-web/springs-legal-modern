@@ -37,9 +37,9 @@ const content = {
     "Court: El Paso County Judicial Building, 270 S. Tejon St., Colorado Springs. Clerk's Office and Self-Help Center in Room S101.",
     "Parents of children under 18 must attend a Level 1 parenting seminar within 42 days of filing (Case Management Order FCF 400).",
     "The initial status conference must take place within 42 days of filing, usually with a Family Court Facilitator.",
-    "Mediation is mandatory for contested issues unless the court waives it: a two-hour minimum session, held remotely. Court-contract mediators charge $150 per party for the two-hour session.",
+    "Mediation is mandatory for contested issues unless the court waives it: a two-hour minimum session. Sessions through the court's mediation office are remote. Court-contract mediators charge $150 per party for the two-hour session.",
     "No divorce decree can enter until 91 days after the court has jurisdiction over the other spouse (C.R.S. 14-10-106).",
-    "The filing fee for a divorce petition is $260 (Colorado Judicial Branch List of Fees). The fee statute changes again on July 1, 2027, so check the current fee before you file.",
+    "The filing fee for a divorce petition is $260 (Colorado Judicial Branch List of Fees). A 2026 law, HB26-1422, lowers the base divorce docket fee by $5 and adds a $10 court security surcharge starting July 1, 2027, so check the current fee before you file.",
   ],
   sections: [
     {
@@ -219,6 +219,11 @@ const content = {
     },
   ],
   sources: [
+    {
+      label:
+        "HB26-1422, Session Laws 2026, ch. 331 (amends C.R.S. 13-32-101; court security surcharge from July 1, 2027)",
+      url: "https://leg.colorado.gov/laws/session-laws/HB26-1422/331/download",
+    },
     {
       label:
         "4th Judicial District, Domestic Relations Case Management Order (FCF 400), rev. 08/2026",

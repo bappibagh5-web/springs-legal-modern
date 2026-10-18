@@ -35,7 +35,7 @@ const content = {
       alt: "Colorado Springs skyline with Pikes Peak and the Front Range",
     },
     stats: [
-      { n: "25+", label: "Years in practice" },
+      { n: "Since 2000", label: "Practicing law" },
       { n: "2003", label: "Firm founded" },
       { n: "24/7", label: "Criminal case line" },
     ],

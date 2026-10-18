@@ -47,7 +47,7 @@ const content = {
             text: "Restraining a party from contacting any other party or the minor child of either of the parties",
             plain:
               "If the order includes this term for your children, calls, texts, social media messages and visits are all off limits until a judge changes it.",
-            url: "https://colorado.public.law/statutes/crs_13-14-105",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
@@ -59,13 +59,13 @@ const content = {
       id: "change-the-order",
       q: "How do I ask the court to change the order so I can see my kids?",
       answer:
-        "File a Motion to Modify or Dismiss Temporary or Permanent Protection Order (JDF 397) in the case that issued the order. For a permanent civil order, you must wait two years after it issued, file a recent fingerprint-based background check, serve the other party in person, and prove the change is appropriate.",
+        "File a Motion to Modify / Dismiss a Protection Order (JDF 397) in the case that issued the order. For a permanent civil order, you must wait two years after it issued, file a recent fingerprint-based background check, serve the other party in person, and prove the change is appropriate.",
       blocks: [
         {
           steps: [
             "Check your timing. The two-year wait runs from the date the permanent order issued, or from the decision on your last motion, whether or not it was granted (C.R.S. 13-14-108(2)(b)).",
             "Get a fingerprint-based criminal history check from the Colorado Bureau of Investigation and the FBI, done within 90 days before you file. You pay for it (C.R.S. 13-14-108(3)(b)).",
-            "Fill out JDF 397 and file it with the court that issued the order. Say exactly what you want changed, such as supervised parenting time or exchanges through a third party.",
+            "Fill out the Motion to Modify / Dismiss a Protection Order (JDF 397) and file it with the court that issued the order. Say exactly what you want changed, such as supervised parenting time or exchanges through a third party.",
             "Have the other party personally served with the motion and the hearing notice under C.R.C.P. 4(e) (C.R.S. 13-14-108(5)).",
             "At the hearing, you must show by a preponderance of the evidence that the change is appropriate. The court considers the circumstances, including whether you and the other party have minor children together (C.R.S. 13-14-108(5) and (6)(i)).",
           ],
@@ -76,11 +76,11 @@ const content = {
             text: "Notwithstanding any provision of subsection (2) of this section to the contrary, after issuance of the permanent protection order, if the restrained party has been convicted of or pled guilty to any misdemeanor or any felony against the protected person, other than the original offense, if any, that formed the basis for the issuance of the protection order, then the protection order remains permanent and must not be modified or dismissed by the court.",
             plain:
               "If you are convicted of, or plead guilty to, a misdemeanor or felony against the protected person, other than the offense the order was based on, the court cannot modify or dismiss the permanent order on your request. The protected person can still ask (C.R.S. 13-14-108(3)(a)(II)).",
-            url: "https://colorado.public.law/statutes/crs_13-14-108",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
-          p: "There is a second route for the children. Because the temporary care and control, parenting time and interim decision-making terms of a civil protection order end when a family court enters an order on the same subject (C.R.S. 13-14-108(1)), filing an allocation of parental responsibilities case lets a family judge set parenting time directly.",
+          p: "There is a second route for the children. The temporary care and control, parenting time and interim decision-making terms of a civil protection order end when a family court enters an order on the same subject (C.R.S. 13-14-108(1)). Filing an allocation of parental responsibilities case does not end them by itself. It asks a family judge to enter parenting orders, and those orders then replace the protection order's terms on the same subject.",
         },
         {
           p: "If the order comes from a criminal case, it is a mandatory protection order. You ask the criminal court to modify it, and you can do that at any time until the criminal case reaches final disposition (C.R.S. 18-1-1001(3)(a)(I)).",
@@ -99,7 +99,7 @@ const content = {
             text: "The order for temporary care and control described in subsection (1.5)(a) of this section may include parenting time responsibilities for both parties involved and any conditions of parenting time, including supervised parenting time by a third party who agrees to the terms of the supervised parenting time, and any costs associated with supervised parenting time, if necessary.",
             plain:
               "The order can deal with the costs of supervision. If the restrained party cannot pay the ordered costs, the court cannot shift them to a publicly funded agency or to the petitioner. The court may deny parenting time if it finds the safety of the child or the protected party cannot be ensured with any form of parenting time reasonably available (C.R.S. 13-14-105(1.5)(b)).",
-            url: "https://colorado.public.law/statutes/crs_13-14-105",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
           },
         },
         {
@@ -111,7 +111,7 @@ const content = {
       id: "violations",
       q: "What happens if I violate the order to see my kids?",
       answer:
-        "Violating a Colorado protection order is a crime. It is a class 2 misdemeanor, and more serious in some situations, such as a prior conviction for violating a protection order. Officers must arrest you, or seek a warrant, when they have probable cause.",
+        "Violating a Colorado protection order is a crime. It is a class 2 misdemeanor, but a class 1 misdemeanor in several situations, including when the parties are in an intimate relationship, which covers two parents of the same child (C.R.S. 18-6-803.5(2)(a); 18-6-800.3(2)). Officers must arrest you, or seek a warrant if an arrest is impractical, when they have probable cause, with limited exceptions (C.R.S. 18-6-803.5(3)(b), (3)(b.5)).",
       blocks: [
         {
           law: {
@@ -119,13 +119,13 @@ const content = {
             text: "A peace officer shall arrest, or, if an arrest would be impractical under the circumstances, seek a warrant for the arrest of a restrained person when the peace officer has information amounting to probable cause that: (I) The restrained person has violated or attempted to violate any provision of a protection order; and (II) The restrained person has been properly served with a copy of the protection order or the restrained person has received actual notice of the existence and substance of such order.",
             plain:
               "Once an officer has probable cause that you violated the order and that you were served with it or knew of it, the statute requires an arrest, or a warrant if an arrest is impractical. The exceptions added in C.R.S. 18-6-803.5(3)(b.5) do not include contacting the protected person. Seeing your own children is not an exception.",
-            url: "https://colorado.public.law/statutes/crs_18-6-803.5",
+            url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-18.pdf",
           },
         },
         {
           bullets: [
             "The other parent's permission does not change the order. The statute has no exception for contact the protected person invites, and only a judge can modify the order.",
-            "A sentence for the violation runs consecutively with the sentence for the crime behind the order (C.R.S. 18-6-803.5(2)(c)).",
+            "A sentence for the violation must run consecutively with any sentence for a domestic violence crime or a crime listed in C.R.S. 24-4.1-302, with two listed exceptions (C.R.S. 18-6-803.5(2)(c)).",
             "A new charge can be raised in your custody case, and a conviction or guilty plea for a crime against the protected person stops the court from modifying or dismissing a permanent civil order at your request (C.R.S. 13-14-108(3)(a)(I)).",
           ],
         },
@@ -135,7 +135,7 @@ const content = {
   faq: [
     {
       q: "The other parent says it's okay. Can I see the kids?",
-      a: "No. The order binds you until a judge changes it, even if the other parent agrees. The other parent, as the protected party, can ask the court to modify the order at any time (C.R.S. 13-14-108(2)(a)). As the restrained parent, you must wait two years after a permanent order issues, or after your last motion was decided, before you can file your own request (C.R.S. 13-14-108(2)(b)).",
+      a: "No. The order binds you until a judge changes it, even if the other parent agrees. The protected party is the person the order protects, here the other parent. The restrained party is the person the order restrains, here you. The protected party can ask the court to modify the order at any time (C.R.S. 13-14-108(2)(a)). As the restrained party, you must wait two years after a permanent order issues, or after your last motion was decided, before you can file your own request (C.R.S. 13-14-108(2)(b)).",
     },
     {
       q: "Can I call or text my kids?",
@@ -163,28 +163,40 @@ const content = {
   ],
   sources: [
     {
-      label: "C.R.S. § 13-14-104.5 (procedure for civil protection orders)",
-      url: "https://colorado.public.law/statutes/crs_13-14-104.5",
+      label: "SB26-085, signed act (amends C.R.S. 13-14-104.5(7)(a), effective August 12, 2026)",
+      url: "https://leg.colorado.gov/bill_files/115903/download",
     },
     {
-      label: "C.R.S. § 13-14-105 (provisions of civil protection orders)",
-      url: "https://colorado.public.law/statutes/crs_13-14-105",
+      label:
+        "C.R.S. § 18-6-800.3 (definitions: domestic violence, intimate relationship), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-18.pdf",
     },
     {
-      label: "C.R.S. § 13-14-108 (modification and termination)",
-      url: "https://colorado.public.law/statutes/crs_13-14-108",
+      label:
+        "C.R.S. § 13-14-104.5 (procedure for civil protection orders), Colorado Revised Statutes 2024; (7)(a) amended by SB26-085",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
     {
-      label: "C.R.S. § 18-1-1001 (mandatory protection order)",
-      url: "https://colorado.public.law/statutes/crs_18-1-1001",
+      label:
+        "C.R.S. § 13-14-105 (provisions of civil protection orders), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
     {
-      label: "C.R.S. § 18-6-803.5 (violation of a protection order)",
-      url: "https://colorado.public.law/statutes/crs_18-6-803.5",
+      label: "C.R.S. § 13-14-108 (modification and termination), Colorado Revised Statutes 2024",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-13.pdf",
     },
     {
-      label: "Colorado Judicial Branch, JDF 397 Motion to Modify or Dismiss Protection Order",
-      url: "https://www.coloradojudicial.gov/sites/default/files/2023-06/JDF%20397%20Motion%20to%20Modify%20Dismiss%20Temporary%20Permanent%20PO.pdf",
+      label: "C.R.S. § 18-1-1001 (mandatory protection order), as amended by HB25-1148",
+      url: "https://leg.colorado.gov/bill_files/40703/download",
+    },
+    {
+      label:
+        "C.R.S. § 18-6-803.5 (violation of a protection order), Colorado Revised Statutes 2024; (1)(a), (1)(c), (2)(c) amended by HB25-1148",
+      url: "https://leg.colorado.gov/sites/default/files/images/olls/crs2024-title-18.pdf",
+    },
+    {
+      label: "Colorado Judicial Branch, JDF 397 Motion to Modify / Dismiss a Protection Order",
+      url: "https://www.coloradojudicial.gov/self-help-and-forms/self-help-forms/motion-modify-dismiss-protection-order",
     },
   ],
   cta: {
