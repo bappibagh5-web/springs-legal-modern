@@ -252,7 +252,7 @@ export const PRACTICE_AREAS = [
       {
         slug: "allocation-of-parental-responsibilities",
         path: "/family-law/allocation-of-parental-responsibilities",
-        title: "Allocation of Parental Responsibilities",
+        title: "Child Custody",
         summary: "Decision-making and parenting time, with or without a divorce.",
       },
       {
@@ -339,7 +339,7 @@ export const PAGE_UPDATED = {
   "/family-law/divorce-separation": "2026-11-10",
   "/family-law/adoption": UPDATED,
   "/family-law/child-support": UPDATED,
-  "/family-law/allocation-of-parental-responsibilities": UPDATED,
+  "/family-law/allocation-of-parental-responsibilities": "2026-11-10",
   "/family-law/protection-orders-and-custody": "2026-11-10",
   "/family-law/el-paso-county-family-court-guide": "2026-10-18",
   "/protection-orders": "2026-11-10",
