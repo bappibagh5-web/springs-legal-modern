@@ -234,7 +234,7 @@ export const PRACTICE_AREAS = [
       {
         slug: "divorce-separation",
         path: "/family-law/divorce-separation",
-        title: "Divorce & Child Custody",
+        title: "Divorce",
         summary: "Dissolution, parenting time, and decision-making in Colorado.",
       },
       {
@@ -336,7 +336,7 @@ export const PAGE_UPDATED = {
   "/criminal-defense/sexual-assault-on-a-child": UPDATED,
   "/criminal-defense/sexual-exploitation-of-a-child": UPDATED,
   "/family-law": UPDATED,
-  "/family-law/divorce-separation": UPDATED,
+  "/family-law/divorce-separation": "2026-11-10",
   "/family-law/adoption": UPDATED,
   "/family-law/child-support": UPDATED,
   "/family-law/allocation-of-parental-responsibilities": UPDATED,
