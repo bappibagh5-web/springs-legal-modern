@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/site/Layout";
 import { AttorneyBio } from "@/site/blocks";
-import { attorneyBySlug, type Attorney } from "@/site/site";
+import { attorneyBySlug, updatedFor, type Attorney } from "@/site/site";
 import { pageHead, breadcrumbs, profilePage } from "@/lib/seo";
 
 const PATH = "/team/shimon-kohn";
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/team/shimon-kohn")({
       image: attorney.image.srcLarge,
       imageAlt: attorney.image.alt,
       jsonLd: [
-        profilePage(attorney, content.meta.description),
+        profilePage(attorney, content.meta.description, updatedFor(PATH)),
         breadcrumbs([
           { name: "Home", path: "/" },
           { name: "Our team", path: "/team" },

@@ -251,7 +251,7 @@ export function blogPosting(post: Post): JsonLd {
 }
 
 /** ProfilePage for an attorney bio, with the full Person as mainEntity. */
-export function profilePage(a: Attorney, description: string): JsonLd {
+export function profilePage(a: Attorney, description: string, modified?: string): JsonLd {
   const url = personUrl(a.slug);
   return {
     "@context": ctx,
@@ -260,6 +260,7 @@ export function profilePage(a: Attorney, description: string): JsonLd {
     url,
     name: `${a.name}, ${a.role}`,
     description,
+    ...(modified ? { dateModified: modified } : {}),
     isPartOf: { "@id": WEBSITE_ID },
     mainEntity: { ...personNode(a), description: a.bio.join(" ") },
   };

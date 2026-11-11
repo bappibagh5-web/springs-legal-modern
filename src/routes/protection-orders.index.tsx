@@ -29,7 +29,7 @@ const content = {
       "Seeking or contesting a protection order in El Paso County? We prepare witnesses and evidence for temporary and permanent order hearings. 719-328-9555.",
   },
   intro: [
-    "A protection order can decide where you live, where you work, and who you can see. It can be issued within hours, and the hearing that decides whether it becomes permanent comes quickly.",
+    "A protection order can decide where you live, where you work, and who you can see. It can be issued within hours, and the hearing that decides whether it becomes permanent comes quickly. We represent both people seeking a protection order and people defending against one in El Paso County.",
     "We represent people on both sides: those asking the court for protection and those defending against an order. Either way, we prepare the witnesses, gather the documents, and present an organized case at the hearing.",
   ],
 };

@@ -26,7 +26,7 @@ const content = {
   eyebrow: "Family Law · Colorado",
   h1: "How Protection Orders Affect Custody in Colorado",
   answer:
-    "A Colorado civil protection order can give one parent temporary care and control of the children for up to one year, set conditions on the other parent's parenting time, or deny parenting time when the court finds the children's safety cannot be ensured with any form of parenting time reasonably available. In the family case, a finding of domestic violence also limits joint decision-making.",
+    "A Colorado civil protection order can give one parent temporary care and control of the children for up to one year, set conditions on the other parent's parenting time, or deny parenting time when the court finds the children's safety cannot be ensured with any form of parenting time reasonably available. In the family case, a finding of domestic violence also limits joint decision-making. We represent both people seeking a protection order and people defending against one in El Paso County.",
   keyFacts: [
     "Temporary care and control under a civil protection order lasts no more than one year (C.R.S. 13-14-105(1.5)(a)).",
     "The court may deny parenting time if it finds the safety of the child or the protected party cannot be ensured with any form of parenting time reasonably available (C.R.S. 13-14-105(1.5)(b)).",
