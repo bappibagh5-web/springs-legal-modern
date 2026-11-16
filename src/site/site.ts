@@ -455,15 +455,6 @@ export const STAFF: StaffMember[] = [
     ],
   },
   {
-    name: "Victoria",
-    role: "Senior Family Law Paralegal",
-    bio: [
-      "Victoria is a Colorado Springs native and a 2012 graduate of Widefield High School. She spent four years in administration at a large Colorado law firm, helping clients through the legal process and supporting attorneys day to day, before becoming a family law paralegal in 2023.",
-      "Victoria drafts complex legal documents, researches family law issues such as military divorce and grandparents' rights, and keeps clients' cases moving. Whether you are ending a marriage or seeking more time with your child, she is here to help you through it.",
-      "Victoria enjoys spending time with her family in her spare time.",
-    ],
-  },
-  {
     name: "Macey",
     role: "Family Law Paralegal",
     bio: [
