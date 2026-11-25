@@ -338,7 +338,7 @@ export const PAGE_UPDATED = {
   "/family-law": UPDATED,
   "/family-law/divorce-separation": "2026-11-10",
   "/family-law/adoption": UPDATED,
-  "/family-law/child-support": UPDATED,
+  "/family-law/child-support": "2026-11-24",
   "/family-law/allocation-of-parental-responsibilities": "2026-11-10",
   "/family-law/protection-orders-and-custody": "2026-11-10",
   "/family-law/el-paso-county-family-court-guide": "2026-10-18",
