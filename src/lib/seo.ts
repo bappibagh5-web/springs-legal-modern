@@ -231,7 +231,9 @@ export function serviceNode({
   };
 }
 
-export function blogPosting(post: Post): JsonLd {
+export function blogPosting(
+  post: Pick<Post, "slug" | "title" | "meta" | "datePublished" | "dateModified">,
+): JsonLd {
   const url = absoluteUrl(`/blog/${post.slug}`);
   return {
     "@context": ctx,

@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/site/Layout";
 import { SITE, updatedFor } from "@/site/site";
-import { pageHead, webPage, faqPage, breadcrumbs } from "@/lib/seo";
+import { ARTICLES } from "@/site/posts";
+import { pageHead, webPage, faqPage, breadcrumbs, blogPosting } from "@/lib/seo";
 import { Phone, ChevronDown, ArrowRight } from "lucide-react";
 
 /*
@@ -12,6 +13,7 @@ import { Phone, ChevronDown, ArrowRight } from "lucide-react";
 
 const PATH = "/blog/protection-order-against-me-see-my-kids-colorado";
 const updated = updatedFor(PATH);
+const article = ARTICLES.find((a) => a.path === PATH)!;
 
 type Law = { cite: string; text: string; plain: string; url: string };
 type Block = { p: string } | { law: Law } | { bullets: string[] } | { steps: string[] };
@@ -216,6 +218,13 @@ export const Route = createFileRoute("/blog/protection-order-against-me-see-my-k
           name: content.meta.title,
           description: content.meta.description,
           modified: updated,
+        }),
+        blogPosting({
+          slug: article.slug,
+          title: content.h1,
+          meta: content.meta,
+          datePublished: article.datePublished,
+          dateModified: updated,
         }),
         faqPage(content.faq.map((f) => ({ q: f.q, a: [f.a] }))),
         breadcrumbs([

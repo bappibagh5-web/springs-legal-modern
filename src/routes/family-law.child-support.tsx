@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/site/Layout";
 import { TestimonialsSection } from "@/site/blocks";
-import { SITE, updatedFor } from "@/site/site";
-import { pageHead, webPage, faqPage } from "@/lib/seo";
+import { SITE, practiceArea, practiceService, updatedFor } from "@/site/site";
+import { pageHead, webPage, faqPage, serviceNode, breadcrumbs } from "@/lib/seo";
 import { Phone, ChevronDown, ArrowRight } from "lucide-react";
 
 /*
@@ -12,6 +12,8 @@ import { Phone, ChevronDown, ArrowRight } from "lucide-react";
  */
 
 const PATH = "/family-law/child-support";
+const area = practiceArea("family-law");
+const service = practiceService(PATH);
 const UPDATED = updatedFor(PATH);
 const FCF400 = "https://www.coloradojudicial.gov/es/media/11126";
 
@@ -307,6 +309,12 @@ export const Route = createFileRoute("/family-law/child-support")({
           modified: UPDATED,
         }),
         faqPage(content.faq.map((f) => ({ q: f.q, a: [f.a] }))),
+        serviceNode({ path: PATH, name: service.title, serviceType: area.title }),
+        breadcrumbs([
+          { name: "Home", path: "/" },
+          { name: area.title, path: area.path },
+          { name: service.title, path: PATH },
+        ]),
       ],
     }),
   component: Page,
