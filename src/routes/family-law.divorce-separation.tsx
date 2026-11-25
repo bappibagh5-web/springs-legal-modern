@@ -23,7 +23,12 @@ const FCF300A =
   "https://www.coloradojudicial.gov/sites/default/files/2025-07/FCF%20300A%20Mediation%20ADR%20Order%20FJ%20signed.pdf";
 
 type Law = { cite: string; text: string; plain: string; url: string };
-type Block = { p: string } | { law: Law } | { steps: string[] } | { bullets: string[] };
+type Block =
+  | { p: string }
+  | { law: Law }
+  | { steps: string[] }
+  | { bullets: string[] }
+  | { link: { label: string; to: string } };
 type Sec = { id: string; q: string; answer: string; blocks: Block[] };
 
 const content = {
@@ -163,6 +168,12 @@ const content = {
         {
           p: "The guideline is a starting point. The court first decides whether maintenance is appropriate at all, and it can depart from the guideline after considering the factors in the statute. Above $240,000 combined, the formula does not apply and the court decides from those factors alone. In marriages under three years, there is no guideline, but the court can still award maintenance when the property division alone would not be fair (C.R.S. 14-10-114(3)(h)).",
         },
+        {
+          link: {
+            label: "Estimate maintenance with our Colorado spousal maintenance calculator",
+            to: "/family-law/spousal-maintenance",
+          },
+        },
       ],
     },
     {
@@ -232,6 +243,7 @@ const content = {
       to: "/family-law/allocation-of-parental-responsibilities",
     },
     { label: "Child support", to: "/family-law/child-support" },
+    { label: "Spousal maintenance calculator", to: "/family-law/spousal-maintenance" },
     {
       label: "El Paso County family court guide",
       to: "/family-law/el-paso-county-family-court-guide",
@@ -552,6 +564,16 @@ function QSection({ s }: { s: Sec }) {
 }
 
 function BlockView({ b }: { b: Block }) {
+  if ("link" in b)
+    return (
+      <Link
+        to={b.link.to}
+        className="group inline-flex items-center gap-2 text-[16px] font-semibold text-brand underline decoration-border underline-offset-4 hover:decoration-brass"
+      >
+        {b.link.label}
+        <ArrowRight className="h-4 w-4 shrink-0 text-slate transition-transform group-hover:translate-x-0.5" />
+      </Link>
+    );
   if ("p" in b) return <p className="text-[16px] leading-relaxed text-foreground">{b.p}</p>;
   if ("bullets" in b)
     return (

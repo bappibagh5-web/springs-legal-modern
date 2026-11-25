@@ -55,6 +55,7 @@ import { Route as FamilyLawChildSupportRouteImport } from './routes/family-law.c
 import { Route as FamilyLawDivorceSeparationRouteImport } from './routes/family-law.divorce-separation'
 import { Route as FamilyLawElPasoCountyFamilyCourtGuideRouteImport } from './routes/family-law.el-paso-county-family-court-guide'
 import { Route as FamilyLawProtectionOrdersAndCustodyRouteImport } from './routes/family-law.protection-orders-and-custody'
+import { Route as FamilyLawSpousalMaintenanceRouteImport } from './routes/family-law.spousal-maintenance'
 import { Route as ProtectionOrdersIndexRouteImport } from './routes/protection-orders.index'
 import { Route as ProtectionOrdersPermanentProtectionOrderRouteImport } from './routes/protection-orders.permanent-protection-order'
 import { Route as ProtectionOrdersTemporaryProtectionOrderRouteImport } from './routes/protection-orders.temporary-protection-order'
@@ -314,6 +315,12 @@ const FamilyLawProtectionOrdersAndCustodyRoute =
     path: '/family-law/protection-orders-and-custody',
     getParentRoute: () => rootRouteImport,
   } as any)
+const FamilyLawSpousalMaintenanceRoute =
+  FamilyLawSpousalMaintenanceRouteImport.update({
+    id: '/family-law/spousal-maintenance',
+    path: '/family-law/spousal-maintenance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProtectionOrdersIndexRoute = ProtectionOrdersIndexRouteImport.update({
   id: '/protection-orders/',
   path: '/protection-orders/',
@@ -420,6 +427,7 @@ export interface FileRoutesByFullPath {
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
   '/family-law/el-paso-county-family-court-guide': typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
+  '/family-law/spousal-maintenance': typeof FamilyLawSpousalMaintenanceRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
   '/team/erica-bertini': typeof TeamEricaBertiniRoute
@@ -476,6 +484,7 @@ export interface FileRoutesByTo {
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
   '/family-law/el-paso-county-family-court-guide': typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
+  '/family-law/spousal-maintenance': typeof FamilyLawSpousalMaintenanceRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
   '/team/erica-bertini': typeof TeamEricaBertiniRoute
@@ -537,6 +546,7 @@ export interface FileRoutesById {
   '/family-law/divorce-separation': typeof FamilyLawDivorceSeparationRoute
   '/family-law/el-paso-county-family-court-guide': typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   '/family-law/protection-orders-and-custody': typeof FamilyLawProtectionOrdersAndCustodyRoute
+  '/family-law/spousal-maintenance': typeof FamilyLawSpousalMaintenanceRoute
   '/protection-orders/permanent-protection-order': typeof ProtectionOrdersPermanentProtectionOrderRoute
   '/protection-orders/temporary-protection-order': typeof ProtectionOrdersTemporaryProtectionOrderRoute
   '/team/erica-bertini': typeof TeamEricaBertiniRoute
@@ -599,6 +609,7 @@ export interface FileRouteTypes {
     | '/family-law/divorce-separation'
     | '/family-law/el-paso-county-family-court-guide'
     | '/family-law/protection-orders-and-custody'
+    | '/family-law/spousal-maintenance'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
     | '/team/erica-bertini'
@@ -655,6 +666,7 @@ export interface FileRouteTypes {
     | '/family-law/divorce-separation'
     | '/family-law/el-paso-county-family-court-guide'
     | '/family-law/protection-orders-and-custody'
+    | '/family-law/spousal-maintenance'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
     | '/team/erica-bertini'
@@ -715,6 +727,7 @@ export interface FileRouteTypes {
     | '/family-law/divorce-separation'
     | '/family-law/el-paso-county-family-court-guide'
     | '/family-law/protection-orders-and-custody'
+    | '/family-law/spousal-maintenance'
     | '/protection-orders/permanent-protection-order'
     | '/protection-orders/temporary-protection-order'
     | '/team/erica-bertini'
@@ -760,6 +773,7 @@ export interface RootRouteChildren {
   FamilyLawDivorceSeparationRoute: typeof FamilyLawDivorceSeparationRoute
   FamilyLawElPasoCountyFamilyCourtGuideRoute: typeof FamilyLawElPasoCountyFamilyCourtGuideRoute
   FamilyLawProtectionOrdersAndCustodyRoute: typeof FamilyLawProtectionOrdersAndCustodyRoute
+  FamilyLawSpousalMaintenanceRoute: typeof FamilyLawSpousalMaintenanceRoute
   ProtectionOrdersPermanentProtectionOrderRoute: typeof ProtectionOrdersPermanentProtectionOrderRoute
   ProtectionOrdersTemporaryProtectionOrderRoute: typeof ProtectionOrdersTemporaryProtectionOrderRoute
   TeamEricaBertiniRoute: typeof TeamEricaBertiniRoute
@@ -1095,6 +1109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FamilyLawProtectionOrdersAndCustodyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/family-law/spousal-maintenance': {
+      id: '/family-law/spousal-maintenance'
+      path: '/family-law/spousal-maintenance'
+      fullPath: '/family-law/spousal-maintenance'
+      preLoaderRoute: typeof FamilyLawSpousalMaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/protection-orders/': {
       id: '/protection-orders/'
       path: '/protection-orders'
@@ -1300,6 +1321,7 @@ const rootRouteChildren: RootRouteChildren = {
     FamilyLawElPasoCountyFamilyCourtGuideRoute,
   FamilyLawProtectionOrdersAndCustodyRoute:
     FamilyLawProtectionOrdersAndCustodyRoute,
+  FamilyLawSpousalMaintenanceRoute: FamilyLawSpousalMaintenanceRoute,
   ProtectionOrdersPermanentProtectionOrderRoute:
     ProtectionOrdersPermanentProtectionOrderRoute,
   ProtectionOrdersTemporaryProtectionOrderRoute:

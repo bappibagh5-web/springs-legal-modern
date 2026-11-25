@@ -250,6 +250,12 @@ export const PRACTICE_AREAS = [
         summary: "Establishing, enforcing, and modifying support orders.",
       },
       {
+        slug: "spousal-maintenance",
+        path: "/family-law/spousal-maintenance",
+        title: "Spousal Maintenance",
+        summary: "The guideline formula, how long maintenance lasts, and a calculator.",
+      },
+      {
         slug: "allocation-of-parental-responsibilities",
         path: "/family-law/allocation-of-parental-responsibilities",
         title: "Child Custody",
@@ -339,6 +345,7 @@ export const PAGE_UPDATED = {
   "/family-law/divorce-separation": "2026-11-10",
   "/family-law/adoption": UPDATED,
   "/family-law/child-support": "2026-11-24",
+  "/family-law/spousal-maintenance": "2026-11-24",
   "/family-law/allocation-of-parental-responsibilities": "2026-11-10",
   "/family-law/protection-orders-and-custody": "2026-11-10",
   "/family-law/el-paso-county-family-court-guide": "2026-10-18",

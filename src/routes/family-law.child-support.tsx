@@ -212,6 +212,7 @@ const content = {
   },
   related: [
     { label: "Divorce lawyer in Colorado Springs", to: "/family-law/divorce-separation" },
+    { label: "Colorado spousal maintenance calculator", to: "/family-law/spousal-maintenance" },
     {
       label: "Child custody lawyer in Colorado Springs",
       to: "/family-law/allocation-of-parental-responsibilities",
