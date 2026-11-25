@@ -92,7 +92,7 @@ const content = {
           ],
         },
         {
-          p: "Adjusted gross income means gross income minus court-ordered child support or maintenance a spouse already pays for a prior relationship (C.R.S. 14-10-114(8)(a)). Salary, bonuses, self-employment income and most other income count.",
+          p: "Adjusted gross income means gross income minus court-ordered child support or maintenance a spouse already pays for a prior relationship (C.R.S. 14-10-114(8)(a)). Prior maintenance that is not tax-deductible is subtracted at 1.25 times the amount paid. Income is also adjusted for other children the spouse has a legal duty to support. Salary, bonuses, self-employment income and most other income count.",
         },
       ],
     },
@@ -134,7 +134,7 @@ const content = {
         },
         { termTable: true },
         {
-          p: "Marriage length is measured from the date of marriage to the date the decree enters. For marriages over 20 years, C.R.S. 14-10-114(3)(b)(II)(A) lets the court award maintenance for a specified term of years or for an indefinite term.",
+          p: "Marriage length is counted in whole months, from the first day of the month after the wedding to the decree, or to the property division hearing if it comes first (C.R.S. 14-10-114(8)(b)). For marriages over 20 years, C.R.S. 14-10-114(3)(b)(II)(A) lets the court award maintenance for a specified term of years or for an indefinite term.",
         },
       ],
     },
@@ -147,7 +147,7 @@ const content = {
         {
           bullets: [
             "Marriages under 3 years: there is no guideline, but the court can still award maintenance when the property division alone would not be fair (C.R.S. 14-10-114(3)(h)).",
-            "Combined income over $240,000 a year: the court sets maintenance from the statutory factors without the formula (C.R.S. 14-10-114(3.5)).",
+            "Combined income over $240,000 a year: the court sets maintenance from the statutory factors without the formula, and may still consider the guideline term (C.R.S. 14-10-114(3.5)).",
             "Every case: the Judicial Branch's guideline form says the calculation is for informational purposes only and that, without an agreement, the court retains full discretion.",
           ],
         },
@@ -199,7 +199,7 @@ const content = {
       id: "temporary",
       q: "Can I get spousal maintenance while the divorce is pending?",
       answer:
-        "Yes. Either spouse can ask the court for temporary maintenance through temporary orders, which cover the months between filing and the final decree (C.R.S. 14-10-108). Temporary orders end when the final decree enters.",
+        "Yes. Either spouse can ask the court for temporary maintenance through temporary orders, which cover the months between filing and the final decree (C.R.S. 14-10-108). The court sets the amount under C.R.S. 14-10-114(4), and the guideline term does not apply to temporary orders. Temporary orders end when the final decree enters, unless the court continues them for good cause (C.R.S. 14-10-108(5)(c)).",
       blocks: [],
     },
   ] as Sec[],
@@ -684,7 +684,9 @@ function MaintenanceCalculator() {
       </h2>
       <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
         Enter each spouse's monthly adjusted gross income: gross income minus any court-ordered
-        child support or maintenance already paid for a prior relationship.
+        child support or maintenance already paid for a prior relationship. Prior maintenance that
+        is not tax-deductible counts at 1.25 times the amount paid. Income is also adjusted for
+        other children a spouse has a legal duty to support.
       </p>
 
       <div className="mt-6 grid gap-5 sm:grid-cols-2">
@@ -715,6 +717,7 @@ function MaintenanceCalculator() {
             inputMode="numeric"
             value={years}
             onChange={(e) => setYears(e.target.value)}
+            aria-describedby="calc-months-note"
           />
         </label>
         <label className={label}>
@@ -724,8 +727,12 @@ function MaintenanceCalculator() {
             inputMode="numeric"
             value={extraMonths}
             onChange={(e) => setExtraMonths(e.target.value)}
+            aria-describedby="calc-months-note"
           />
         </label>
+        <p id="calc-months-note" className="-mt-2 text-sm text-muted-foreground sm:col-span-2">
+          Count whole months from the first day of the month after your wedding.
+        </p>
       </div>
 
       <div aria-live="polite" className="mt-6 rounded-lg bg-surface p-5">
@@ -744,7 +751,8 @@ function MaintenanceCalculator() {
         {r.kind === "high" && (
           <p className="text-[15px] leading-relaxed text-foreground">
             Combined income of {money(r.annual)} a year is above $240,000, so the guideline formula
-            does not apply. The court sets maintenance from the statutory factors.
+            does not apply. The court sets maintenance from the statutory factors and may still
+            consider the guideline term.
           </p>
         )}
         {r.kind === "ok" && (
